@@ -11,9 +11,14 @@ $CUSTOM_FOLDER = str_replace( rtrim($_SERVER['DOCUMENT_ROOT'], '/').'/', '', $FL
 
 define('FX_CONFIG_FILE', $_SERVER['DOCUMENT_ROOT'].'/config.php');
 
-if (file_exists(FX_CONFIG_FILE) && $_POST['action'] != 4) {
-    echo "Floxim is already installed";
-    die();
+$action = fx_post_get('action');
+
+if (file_exists(FX_CONFIG_FILE) && $action != 4) {
+    $c_config = include(FX_CONFIG_FILE);
+    if ($c_config) {
+        echo "Floxim is already installed";
+        die();
+    }
 }
 
 // normalize path
@@ -31,7 +36,6 @@ if (isset($_REQUEST['pwd'])) {
 header("Content-type: text/html; charset=utf-8");
 
 error_reporting(E_ALL);
-$action = fx_post_get('action');
 $ajax = false;
 
 switch ($action) {
@@ -646,10 +650,9 @@ function fx_update_db() {
 		"UPDATE `fx_site` SET `domain` = '" . mysql_real_escape_string($_SERVER['HTTP_HOST']) . "' WHERE `id` = 18",
 		"UPDATE `fx_site` SET `domain` = '" . mysql_real_escape_string('alt.'.$_SERVER['HTTP_HOST']) . "' WHERE `id` = 1",
 		"UPDATE `fx_content_user` SET `password` = '" 
-                    //. md5($_SESSION['pwd']) 
                     .crypt($_SESSION['pwd'],  uniqid(mt_rand(), true))
                     . "', `email` = '" . mysql_real_escape_string( fx_post_get('email') ) 
-                    . "' WHERE `email` = 'admin@floxim.loc'",
+                    . "' WHERE `email` = 'admin@fx.loc'",
 		"UPDATE `fx_settings` SET `value` = '" . mysql_real_escape_string( fx_post_get('email') ) . "' WHERE `key` = 'spam_from_email'"
 	);
 	
@@ -782,14 +785,15 @@ function fx_write_log($message, $time = true) {
     $message_time = "";
     if ($time) {
         $message_time = date("H:i:s d.m.Y") . ' ';
-        if (substr($message, -1) != '.')
+        if (substr($message, -1) != '.') {
             $message = $message . '.';
+        }
     }
     $result_str = PHP_EOL . $message_time . $message;
     $log_file = FX_FILES_DIR."install_log.txt";
-    if (is_writable($log_file)) {
+    //if (is_writable($log_file)) {
         file_put_contents($log_file, $result_str, FILE_APPEND);
-    }
+    //}
 }
 
 function fx_func_enabled($function) {
