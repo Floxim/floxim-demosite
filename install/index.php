@@ -603,7 +603,7 @@ function fx_standardize_path_to_folder($path) {
     return rtrim($path, '/') . '/';
 }
 
-function fx_install_db($dir = 'sql/', $level = 0) {
+function fx_install_db($dir = '', $level = 0) {
     
     if (!$level) fx_connect_db();
     
@@ -617,7 +617,7 @@ function fx_install_db($dir = 'sql/', $level = 0) {
     $module_arr = array();
     
     // clear system
-    $system_arr[0] = array('core');
+    $system_arr[0] = array('floxim');
 
 	for ($i = 0; $i <= $install_type; $i++):
 		foreach ($system_arr[$i] as $row):    
