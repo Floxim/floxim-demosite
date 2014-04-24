@@ -178,7 +178,7 @@ pip-log.txt
 /nbproject/private/
 /_test/*
 /floxim_files/compiled_templates/*
-#/config.php
+/config.php
 /floxim_files/fx_thumbs/*
 /floxim_files/php_dictionaries/*
 /floxim.php
