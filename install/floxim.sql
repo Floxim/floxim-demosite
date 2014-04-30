@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2014 at 04:10 AM
+-- Generation Time: Apr 30, 2014 at 06:44 PM
 -- Server version: 5.5.25
 -- PHP Version: 5.3.13
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `fx_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2759 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2761 ;
 
 --
 -- Dumping data for table `fx_content`
@@ -127,7 +127,7 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2681, 240, 1, '2014-01-30 15:40:08', '2014-04-15 08:42:08', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
 (2682, 1, 1, '2014-01-30 15:41:44', '2014-04-15 08:42:07', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
 (2684, 0, 1, '2014-01-30 15:41:45', '2014-04-15 08:42:07', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
-(2688, 3, 1, '2014-01-30 16:20:08', '2014-04-21 10:26:24', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
+(2688, 2, 1, '2014-01-30 16:20:08', '2014-04-25 09:24:26', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2689, 242, 1, '2014-01-30 16:24:00', '2014-04-15 08:42:08', 2367, 'project', 385, 18, 2688, '2635.2639.2688.', 3),
 (2690, 1, 1, '2014-01-30 16:25:46', '2014-04-15 08:42:08', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2691, 0, 1, '2014-01-30 17:04:01', '2014-04-15 08:42:07', 2367, 'select_linker', 387, 18, 2635, '2635.', 1),
@@ -163,7 +163,7 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2754, 277, 1, '2014-03-14 18:28:13', '2014-04-15 08:42:09', 2367, 'photo', 389, 18, 2751, '2635.2639.2751.', 3),
 (2755, 278, 1, '2014-03-14 18:31:09', '2014-04-15 08:42:09', 2367, 'photo', 389, 18, 2690, '2635.2639.2690.', 3),
 (2756, 279, 1, '2014-03-14 18:31:52', '2014-04-15 08:42:09', 2367, 'photo', 389, 18, 2690, '2635.2639.2690.', 3),
-(2757, 2, 1, '2014-03-14 18:34:09', '2014-04-21 10:26:24', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
+(2757, 3, 1, '2014-03-14 18:34:09', '2014-04-25 09:24:26', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2758, 2, 1, '2014-04-24 02:13:33', '2014-04-23 22:13:33', 2367, 'select_linker', 381, 18, 2635, '2635.', 1);
 
 -- --------------------------------------------------------
@@ -314,7 +314,7 @@ INSERT INTO `fx_content_page` (`id`, `url`, `name`, `title`, `comments_counter`,
 (2679, '/Moscow-Streetshot-Contest', 'Moscow Streetshot Contest', '', 0, NULL, NULL),
 (2680, '/Stet-clita-kasd-gubergren', 'Free ride proof pics!', 'Stet clita kasd gubergren', 0, NULL, NULL),
 (2681, '/Moscow-Athletics-Championship', 'Moscow Athletics Championship', 'Moscow Athletics Championship', 0, NULL, NULL),
-(2688, '/Carnival-of-miners', 'Carnival of miners', '', 0, NULL, NULL),
+(2688, '/Carnival-of-miners', 'Carnival of Figiners', '', 0, NULL, NULL),
 (2689, '/At-vero-eos-et', 'At vero eos et', 'At vero eos et', 0, NULL, NULL),
 (2690, '/Cockfights', 'Cockfights', '', 0, NULL, NULL),
 (2728, '/studio', 'studio', NULL, 0, NULL, NULL),
@@ -437,7 +437,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_project` (
 --
 
 INSERT INTO `fx_content_project` (`id`, `image`, `client`, `short_description`, `date`) VALUES
-(2688, '/floxim_files/content/project/image/6_Carnival_of_miners_7_0.jpg', '', '', '2014-01-09 00:00:00'),
+(2688, '/floxim_files/content/project/image/6_Carnival_of_miners_7_0.jpg', '', 'Short desc here olo', '2014-01-09 00:00:00'),
 (2689, '', '', 'Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Lorem ipsum do', '0000-00-00 00:00:00'),
 (2690, '/floxim_files/content/project/image/6_cockfights_3_0.JPG', '', '', '2014-01-16 00:00:00'),
 (2751, '/floxim_files/content/project/image/6_kupala_7_0.jpg', '', '', '0000-00-00 00:00:00'),
@@ -590,7 +590,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_user` (
 --
 
 INSERT INTO `fx_content_user` (`id`, `email`, `login`, `name`, `registration_code`, `avatar`, `forum_messages`, `pa_balance`, `auth_hash`, `is_admin`, `password`) VALUES
-(2367, 'admin@fx.loc', '', 'Admin', NULL, NULL, 0, 0, '', 1, '20EAfcH0JSFQY');
+(2367, 'admin@fx.loc', '', 'Admin', NULL, NULL, 0, 0, '', 1, '20v/hQsPIPlPg');
 
 -- --------------------------------------------------------
 
@@ -1028,7 +1028,7 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (376, 0, 18, 2656, 1, 'Vacancy / Single entry', 'component_vacancy', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";}'),
 (378, 345, 18, 2657, 1, '', '', '', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
 (379, 0, 18, 2657, 1, 'News', 'component_news', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(381, 0, 18, 2635, 1, 'Featured news', 'component_news', 'list_selected', 'a:2:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(381, 0, 18, 2635, 1, 'Featured news', 'component_news', 'list_selected', 'a:3:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (382, 345, 18, 2639, 1, '', '', '', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (385, 0, 18, 2639, 1, 'Projects', 'component_project', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:13:"mount_page_id";}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (386, 0, 18, 2639, 1, 'Project / Single entry', 'component_project', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
@@ -1098,7 +1098,7 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (448, 376, 12, '', '', 'layout_v3.vacancy_record', 'a:4:{s:21:"responsibilities_2677";s:23:"What you will be doing";s:17:"requirements_2677";s:16:"We need from you";s:21:"responsibilities_2737";s:16:"Your duties are:";s:17:"requirements_2737";s:22:"You should be able to:";}', 'main_column', 8),
 (450, 378, 12, '', '', 'layout_v3.two_columns', '', '', 7),
 (451, 379, 12, '', '', 'layout_v3.news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"0";s:14:"count_featured";s:1:"2";}', 'main_column', 9),
-(453, 381, 12, '', '', 'layout_v3.featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";}', 'main_column', 19),
+(453, 381, 12, 'layout_v3.gray_block', '', 'layout_v3.featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";}', 'main_column', 19),
 (454, 382, 12, '', '', 'layout_v3.full_width', '', '', 8),
 (457, 385, 12, '', '', 'layout_v3.full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:32:"/floxim_files/content/2a_2_0.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 15),
 (458, 386, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:13:"About Project";}', 'layout_v3.project_record', '', 'main_column', 16),
@@ -1136,7 +1136,7 @@ CREATE TABLE IF NOT EXISTS `fx_lang` (
   `lang_code` varchar(5) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `lang_code` (`lang_code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `fx_lang`
@@ -1159,7 +1159,7 @@ CREATE TABLE IF NOT EXISTS `fx_lang_string` (
   `lang_en` text,
   `lang_ru` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1079 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1083 ;
 
 --
 -- Dumping data for table `fx_lang_string`
@@ -1653,7 +1653,11 @@ INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALU
 (1075, 'system', 'Previous', 'Previous', 'Предыдущий'),
 (1076, 'system', 'Status', 'Status', 'Статус'),
 (1077, 'system', 'Install', 'Install', 'Установить'),
-(1078, 'system', 'User name', 'User name', 'Имя пользователя');
+(1078, 'system', 'User name', 'User name', 'Имя пользователя'),
+(1079, 'system', 'Items', 'Items', NULL),
+(1080, 'system', 'Unable to save essence "lang_string"', 'Unable to save essence "lang_string"', NULL),
+(1081, 'system', 'HTML code snippet', 'HTML code snippet', NULL),
+(1082, 'system', 'Is admin?', 'Is admin?', NULL);
 
 -- --------------------------------------------------------
 
@@ -1724,10 +1728,7 @@ CREATE TABLE IF NOT EXISTS `fx_patch` (
 --
 
 INSERT INTO `fx_patch` (`id`, `to`, `created`, `description`, `from`, `status`, `url`) VALUES
-(20, '0.1.1', '2013-08-19 15:24:17', 'Adding some trolo file!', '0.1.0', 'installed', 'http://floxim.org/getfloxim/patches/0.1.0-0.1.1/patch_0.1.1.zip'),
-(21, '0.1.2', '2013-08-19 15:25:46', '', '0.1.1', 'ready', 'http://floxim.org/getfloxim/patches/0.1.1-0.1.2/patch_0.1.2.zip'),
-(22, '0.1.5', '2013-08-19 15:48:58', '', '0.1.2', 'pending', 'http://floxim.org/getfloxim/patches/0.1.2-0.1.5/patch_0.1.5.zip'),
-(23, '0.2.0', '2013-08-19 15:48:58', '', '0.1.5', 'pending', 'http://floxim.org/getfloxim/patches/0.1.5-0.2.0/patch_0.2.0.zip');
+(20, '0.1.1', '2013-08-19 15:24:17', 'Test patch', '0.1.0', 'installed', 'http://floxim.org/getfloxim/patches/0.1.0-0.1.1/patch_0.1.1.zip');
 
 -- --------------------------------------------------------
 
@@ -1747,15 +1748,15 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `fx_session`
 --
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
-(18, '2ff9e63b5d4a029afa172c8f1cfe096e', 2367, 18, 1398255258, 1398294698, 2130706433, 1),
-(19, '96d1f18a4474109d6723b9135bb04969', 2367, 18, 1398255283, 1398295441, 2130706433, 1);
+(23, '72f02cb84ef0106144cfbd98759ad78e', 2367, 18, 1398682218, 1398684971, 2130706433, 1),
+(24, '2c92a7e4fd8c1ab04124111ef9145edf', 2367, 18, 1398862460, 1398869030, 2130706433, 1);
 
 -- --------------------------------------------------------
 
@@ -1853,7 +1854,7 @@ CREATE TABLE IF NOT EXISTS `fx_site` (
 --
 
 INSERT INTO `fx_site` (`id`, `parent_id`, `name`, `domain`, `layout_id`, `color`, `mirrors`, `priority`, `checked`, `index_page_id`, `error_page_id`, `created`, `last_updated`, `robots`, `disallow_indexing`, `type`, `language`, `offline_text`, `store_id`) VALUES
-(18, 0, 'The Photo Team', 'fx.loc', 12, 0, '', 4, 1, 2635, 2636, '2014-01-28 11:39:50', '2014-04-15 11:28:24', NULL, 0, 'useful', 'en', NULL, NULL);
+(18, 0, 'The Photo Team', 'phototeam.loc', 12, 0, '', 4, 1, 2635, 2636, '2014-01-28 11:39:50', '2014-04-15 11:28:24', '', 0, 'useful', 'en', '', '');
 
 -- --------------------------------------------------------
 
@@ -1870,19 +1871,16 @@ CREATE TABLE IF NOT EXISTS `fx_widget` (
   `description_ru` text NOT NULL,
   `checked` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `fx_widget`
 --
 
 INSERT INTO `fx_widget` (`id`, `name_en`, `name_ru`, `keyword`, `description_en`, `description_ru`, `checked`) VALUES
-(1, 'Authorization form', 'Форма авторизации', 'authform', '', 'Отображает простую форму входа на сайт', 1),
-(2, 'Password recover form', 'Форма восстановления пароля', 'recoverpasswd', '', '', 1),
-(3, 'Search Line', 'Поисковая строка', 'search', NULL, '', 1),
 (4, 'Block set', 'Набор блоков', 'blockset', NULL, '', 1),
-(7, 'Subscribe form', 'Форма подписки', 'subscribe_form', NULL, '', 1),
-(8, 'Grid', 'Сетка', 'grid', NULL, '', 1);
+(8, 'Grid', 'Сетка', 'grid', NULL, '', 1),
+(9, 'Сustom code', '', 'custom_code', NULL, '', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
