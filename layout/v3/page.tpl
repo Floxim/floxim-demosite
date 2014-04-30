@@ -119,73 +119,17 @@
                 </div>
             </div>
         </section>
-        {*
-        <section fx:if="$index" class="one-column grey">
+        <section fx:template="gray_block" fx:of="wrapper" class="one-column grey">
             <div class="holder">
-                <div
-                        fx:if="!$index"
-                        fx:area="breadcrumbs-area"
-                        fx:size="wide,low"
-                        class="breadcrumbs-area">
-                </div>
-                <div
-                        fx:if="$index"
-                        class="breadcrumbs-area">
+                <div class="breadcrumbs-area">
                     <h2>
                         {%one_column_header}Today{/%}
                     </h2>
                 </div>
-                <div
-                    fx:area="index_one_column"
-                    fx:size="wide,high"
-                    class="main-column">
-                </div>
+                <div class="main-column">{$content}</div>
                 <div style="clear: both;"></div>
             </div>
         </section>
-        <section fx:if="$one_column" class="one-column">
-            <div class="holder">
-                <div
-                    fx:area="breadcrumbs-area"
-                    fx:size="wide,low"
-                    class="breadcrumbs-area">
-                </div>
-                <div
-                    fx:area="main_column"
-                    fx:size="wide,high"
-                    class="main-column">
-                </div>
-                <div style="clear: both;"></div>
-            </div>
-        </section>
-        
-        <section fx:if="$two_columns_inverted" class="two-column-invert">
-            <div class="holder">
-                <div
-                    fx:area="breadcrumbs-area"
-                    fx:size="wide,low"
-                    class="breadcrumbs-area">
-                </div>
-
-                <div
-                    fx:area="main_column"
-                    fx:size="wide,high"
-                    class="main-column">
-                </div>
-                <div
-                    fx:area="right_column"
-                    fx:size="narrow,high"
-                    class="right-column">
-
-                    <div fx:template="right_block_titled" fx:of="wrapper" fx:omit="true">
-                        <h3>{%header}Header{/%}</h3>
-                        {$content}
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-            </div>
-        </section>
-        *}
         <footer>
             <div class="holder">
                 <div class="top-block">

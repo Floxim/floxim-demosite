@@ -61,9 +61,10 @@ img {
   vertical-align: middle;
 }
 .holder {
-    padding: 40px 20px;
+    padding: 0 20px;
     width: 100%;
-    margin: auto;
+    margin: 0 auto;
+    .clearfix();
     box-sizing: border-box;
     -moz-box-sizing: border-box; /*Firefox 1-3*/
     -webkit-box-sizing: border-box; /* Safari */
@@ -327,6 +328,9 @@ nav {
 section {
     width: 100%;
     .clearfix();
+    &.two-column {
+        margin:40px 0;
+    }
     h2 {
         margin-top: 0;
         margin-bottom: 30px;
@@ -918,6 +922,9 @@ section {
     
     &.grey  .holder {
         background-color: #f2f2f0;
+        padding-top:20px;
+        padding-bottom:20px;
+        margin:30px auto;
     }
     &.full-width {
         .holder {
@@ -983,6 +990,7 @@ section {
 
 footer {
     width: 100%;
+    padding:21px 0;
     background-color: #202020;
     .footer-menu-area {
         float: left;
