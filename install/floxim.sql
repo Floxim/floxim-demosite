@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2014 at 06:44 PM
+-- Generation Time: Apr 30, 2014 at 07:18 PM
 -- Server version: 5.5.25
 -- PHP Version: 5.3.13
 
@@ -308,7 +308,7 @@ INSERT INTO `fx_content_page` (`id`, `url`, `name`, `title`, `comments_counter`,
 (2662, '/Swimming', 'Swimming', '', 0, NULL, NULL),
 (2671, '/Ken-Cold', 'Ken Cold', '', 0, NULL, NULL),
 (2673, '/Leila-Stoparsson', 'Leila Stoparsson', '', 0, NULL, NULL),
-(2675, '/Nika-Lightman', 'Nika Lightman', '', 0, NULL, NULL),
+(2675, '/Nika-Lightman', 'Nika Lightman', '', 0, '<p>\n	Hello!\n</p>\n<p>\n	Your Floxim playground is ready. Here it is:\n</p>\n<ul>\n	<li>Site: </li>\n	<li>Backoffice:</li>\n	<li>E-mail:</li>\n	<li>Passsword:</li>\n</ul>\n<p>\n	Write us if you have any questions and ideas: info@floxim.org\n</p>\n<p>\n	Thank you!\n</p>', NULL),
 (2677, '/Maker-up', 'Maker-up', '', 0, NULL, NULL),
 (2678, '/Duis-autem-vel-eum', 'Redecoration in our new studio', 'Duis autem vel eum', 0, NULL, NULL),
 (2679, '/Moscow-Streetshot-Contest', 'Moscow Streetshot Contest', '', 0, NULL, NULL),
@@ -1108,7 +1108,7 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (462, 390, 12, '', '', 'layout_v3.one_column', '', '', 9),
 (463, 391, 12, '', '', 'layout_v3.banner', 'a:3:{s:18:"banner_header_2656";s:19:"<p>\n	Need job?\n</p>";s:16:"banner_text_2656";s:31:"<p>\n	Look at our vacancies\n</p>";s:17:"banner_image_2656";s:40:"/floxim_files/content/5_open_air_2_0.jpg";}', 'main_column', 10),
 (464, 392, 12, 'layout_v3.right_block_titled', 'a:1:{s:6:"header";s:11:"Latest news";}', 'layout_v3.featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/News";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";}', 'main_column', 11),
-(465, 393, 12, '', '', 'layout_v3.two_columns_inverted', '', '', 10),
+(465, 393, 12, '', '', 'layout_v3.two_columns', '', '', 10),
 (469, 397, 12, '', '', 'layout_v3.addres_block', 'a:2:{s:9:"blue_2701";s:1:"1";s:9:"blue_2700";s:1:"0";}', 'main_column', 12),
 (470, 398, 12, '', '', 'layout_v3.news_record', '', 'main_column', 13),
 (471, 399, 12, '', '', 'layout_v3.index', '', '', 11),
@@ -1756,7 +1756,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
 (23, '72f02cb84ef0106144cfbd98759ad78e', 2367, 18, 1398682218, 1398684971, 2130706433, 1),
-(24, '2c92a7e4fd8c1ab04124111ef9145edf', 2367, 18, 1398862460, 1398869030, 2130706433, 1);
+(24, '2c92a7e4fd8c1ab04124111ef9145edf', 2367, 18, 1398862460, 1398870975, 2130706433, 1);
 
 -- --------------------------------------------------------
 
