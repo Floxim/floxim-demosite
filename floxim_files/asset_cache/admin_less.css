@@ -1565,6 +1565,12 @@
   margin-bottom: 5px;
   margin-top: 14px;
 }
+.fx_admin_form .field_checkbox {
+  margin: 10px 0;
+}
+.fx_admin_form .field_checkbox input[type="checkbox"] {
+  margin-left: 0;
+}
 #fx_admin_fields {
   position: relative;
   top: -6px;
@@ -1935,6 +1941,8 @@ img.fx_hilight {
   min-height: 100px;
   min-width: 100px;
   background: #DFD;
+  box-sizing: border-box;
+  padding: 30px;
 }
 .fx_hidden_placeholded {
   background: #FFFF5C;
