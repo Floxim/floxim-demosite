@@ -4,8 +4,8 @@
     fx:of="project.record"
     fx:omit="true">
     <div fx:with="$item" class="project-record">
-        {$short_description}
+        <div class="summary">{$short_description}</div>
         
-        {$description}
+        <div class="desc">{$description}</div>
     </div>
 </div>

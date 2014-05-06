@@ -12,6 +12,10 @@
     padding-top:40px;
 }
 
+blockquote {
+    font-style:italic;
+}
+
 .g_record() {
     width: 100%;
     .image {
@@ -50,6 +54,7 @@
             width: 76%;
             font-size: 16px;
             font-family: Arial;
+            line-height:165%;
     }
 }
 
@@ -359,7 +364,7 @@ section {
         font-weight: 100;
         font-size: 36px;
         color: black;
-        margin-bottom: 30px;
+        margin: 15px 0;
         h2 {
             margin: 0;
         }
@@ -399,7 +404,7 @@ section {
             line-height: 32px;
             min-height: 40px;
             padding: 20px;
-            padding-right: 175px;
+            padding-right: 120px;
             background-color: #32ccfe;
             color: white;
             position: relative;
@@ -580,11 +585,11 @@ section {
         .more {
             color: #32ccfe;
             font-weight: 300;
-            margin-top: 50px;
+            margin-top: 20px;
             font-size: 34px;
             text-decoration: none;
             float: left;
-            padding-right: 30px;
+            padding-right: 45px;
             background-image: url(../img/metro-arrow_small.png);
             background-repeat: no-repeat;
             background-position-x: 100%;
@@ -597,40 +602,45 @@ section {
             width: 100%;
             border-bottom: 1px solid #e8e8e8;
             position: relative;
-            margin-bottom: 120px;
+            margin-bottom: 30px;
+            .clearfix();
+            clear:both;
             &:nth-child(2n) {
                 .container {
-                    margin-left: 40%;
+                    float:right;
                 }
                 img {
-                    right: auto;
+                    float:left;
                 }
             }
 
-            &:last-child {
-                margin-bottom: 160px;
+            .text, img {
+                margin-bottom:30px;
             }
+
             .container {
                 float: left;
                 width: 60%;
                 h3 {
                     padding: 10px;
+                    margin-top:0;
                     background-color: #f2f2f0;
                     display: inline-block;
                     font-size: 30px;
                     font-weight: 300;
+                    a {
+                        color:#32ccfe;
+                        text-decoration:none;
+                    }
                 }
                 .text {
-                    padding-left: 20px;
-                    margin-bottom: 40px;
+                    padding-left: 10px;
                     font-family: Arial;
                     font-size: 16px;
                 }
             }
             img {
-                position: absolute;
-                right: 0;
-                top: 0;
+                float:right;
                 width: 30%;
             }
             .social-icons {
@@ -690,7 +700,7 @@ section {
 
         }
     }
-    .address-block {
+    .hilight-text {
         h4 {
             font-family: Arial;
             font-weight: bold;
@@ -702,7 +712,11 @@ section {
         .address {
             font-family: Arial;
         }
-        .info {
+        .hilight, .regular {
+            clear:left;
+            margin:15px 0;
+        }
+        .hilight {
             margin-left: -10px;
             margin-top: 10px;
             padding: 10px;
@@ -771,8 +785,6 @@ section {
 
     .vacancy-record {
         padding: 0 20px;
-        padding-bottom: 40px;
-        border-bottom: 1px solid #e8e8e8;
         font-family: Arial;
                         .vacancy_image {
                             float:right;
@@ -900,6 +912,21 @@ section {
     .news-record {
         .g_record();
     }
+    .person-record {
+        .g_record();
+        .extra .birthday_title {
+            position: absolute;
+            top: -30px;
+            font-size: 19px;
+            font-weight: normal;
+        }
+        .text span.name {
+            font-size:19px;
+        }
+        .text .speciality {
+            margin-top:10px;
+        }
+    }
     .left-titled-block {
         margin-top: 50px;
         margin-bottom: 40px;
@@ -918,47 +945,45 @@ section {
     .project-record {
         width: 75%;
         font-family: Arial;
+        .summary {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 20px;
+        }
     }
     
-    &.grey  .holder {
-        background-color: #f2f2f0;
-        padding-top:20px;
-        padding-bottom:20px;
-        margin:30px auto;
+    &.full-width .holder {
+        padding: 0;
     }
-    &.full-width {
-        .holder {
-            padding: 0;
+
+    .left-titled-block {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box; /*Firefox 1-3*/
+        -webkit-box-sizing: border-box; /* Safari */
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .full-back {
+        width: 100%;
+        padding: 40px 0;
+        padding-top: 80px;
+        background-image: url(../img/HansIsland.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+        .caption {
+            position: absolute;
+            left: 20px;
+            max-width: 60%;
         }
-        .left-titled-block {
-            box-sizing: border-box;
-            -moz-box-sizing: border-box; /*Firefox 1-3*/
-            -webkit-box-sizing: border-box; /* Safari */
-            padding-left: 20px;
-            padding-right: 20px;
+        .side-menu {
+            position: absolute;
+            right: 120px;
         }
-        .full-back {
-            width: 100%;
-            padding: 40px 0;
-            padding-top: 80px;
-            background-image: url(../img/HansIsland.png);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            position: relative;
-            .caption {
-                position: absolute;
-                left: 20px;
-                max-width: 60%;
-            }
-            .side-menu {
-                position: absolute;
-                right: 120px;
-            }
-            a.content_anchor {
-                position:absolute;
-                bottom:30px;
-            }
+        a.content_anchor {
+            position:absolute;
+            bottom:30px;
         }
     }
     &.two-column {
@@ -984,6 +1009,15 @@ section {
     &.one-column {
         .main-column {
             width: 100%;
+        }
+    }
+    &.titled_wrapper {
+        margin:30px 0;
+        box-sizing:border-box;
+        -mox-box-sizing:border-box;
+        &.gray {
+            background-color: #f2f2f0;
+            padding:20px;
         }
     }
 }
@@ -1479,5 +1513,15 @@ footer {
                 }
             }
         }
+    }
+}
+
+.fx_neighbours {
+    margin:30px 0;
+    border-top:1px solid #CCC;
+    padding:15px;
+    font-size:14px;
+    a {
+        color:#32ccfe;
     }
 }

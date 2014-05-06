@@ -66,14 +66,12 @@
                     </div>
             </div>
         </section>
-        <section fx:template="two_columns_grid" fx:of="widget_grid.two_columns" class="two-column">
-            <div class="holder" fx:with-each="$areas">
-                <div fx:item="$keyword == 'sidebar'" class="left-column" fx:area="$id" fx:area-name="$name">
-                    
-                </div>
-                <div fx:item="$keyword == 'content'" class="main-column" fx:area="$id" fx:area-name="$name">
-                    
-                </div>
+        <section fx:template="two_columns_grid" fx:of="widget_grid.two_columns" fx:with-each="$areas" class="two-column">
+            <div fx:item="$keyword == 'sidebar'" class="left-column" fx:area="$id" fx:area-name="$name">
+
+            </div>
+            <div fx:item="$keyword == 'content'" class="main-column" fx:area="$id" fx:area-name="$name">
+
             </div>
         </section>
         <section 
@@ -119,16 +117,15 @@
                 </div>
             </div>
         </section>
-        <section fx:template="gray_block" fx:of="wrapper" class="one-column grey">
-            <div class="holder">
-                <div class="breadcrumbs-area">
-                    <h2>
-                        {%one_column_header}Today{/%}
-                    </h2>
-                </div>
-                <div class="main-column">{$content}</div>
-                <div style="clear: both;"></div>
-            </div>
+        <section fx:template="gray_block" fx:of="wrapper" class="titled_wrapper gray">
+            <h2>{%header}Today{/%}</h2>
+            <div class="main-column">{$content}</div>
+            <div style="clear: both;"></div>
+        </section>
+        <section fx:template="titled_block" fx:of="wrapper" class="titled_wrapper">
+            <h2>{%header}Today{/%}</h2>
+            <div class="main-column">{$content}</div>
+            <div style="clear: both;"></div>
         </section>
         <footer>
             <div class="holder">

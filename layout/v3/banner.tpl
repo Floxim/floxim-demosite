@@ -19,7 +19,7 @@
                     <p>This is <strong>text</strong></p>
                     {/%}
                 </div>
-                <a class="go" href="{$url}">Go</a>
+                <a class="go" href="{$url}"></a>
             </div>
         </div>
     </div>

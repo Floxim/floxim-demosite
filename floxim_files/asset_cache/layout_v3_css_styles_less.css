@@ -8,6 +8,9 @@
 .wrapper {
   padding-top: 40px;
 }
+blockquote {
+  font-style: italic;
+}
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -322,7 +325,7 @@ section .breadcrumbs {
   font-weight: 100;
   font-size: 36px;
   color: black;
-  margin-bottom: 30px;
+  margin: 15px 0;
 }
 section .breadcrumbs h2 {
   margin: 0;
@@ -370,7 +373,7 @@ section .caption .text {
   line-height: 32px;
   min-height: 40px;
   padding: 20px;
-  padding-right: 175px;
+  padding-right: 120px;
   background-color: #32ccfe;
   color: white;
   position: relative;
@@ -547,11 +550,11 @@ section .featuared-news-list .featuared-news-list-item .text {
 section .featuared-news-list .more {
   color: #32ccfe;
   font-weight: 300;
-  margin-top: 50px;
+  margin-top: 20px;
   font-size: 34px;
   text-decoration: none;
   float: left;
-  padding-right: 30px;
+  padding-right: 45px;
   background-image: url(/layout/v3/css/../img/metro-arrow_small.png);
   background-repeat: no-repeat;
   background-position-x: 100%;
@@ -564,16 +567,25 @@ section .person-list .person-list-item {
   width: 100%;
   border-bottom: 1px solid #e8e8e8;
   position: relative;
-  margin-bottom: 120px;
+  margin-bottom: 30px;
+  clear: both;
+}
+section .person-list .person-list-item:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden !important;
 }
 section .person-list .person-list-item:nth-child(2n) .container {
-  margin-left: 40%;
+  float: right;
 }
 section .person-list .person-list-item:nth-child(2n) img {
-  right: auto;
+  float: left;
 }
-section .person-list .person-list-item:last-child {
-  margin-bottom: 160px;
+section .person-list .person-list-item .text,
+section .person-list .person-list-item img {
+  margin-bottom: 30px;
 }
 section .person-list .person-list-item .container {
   float: left;
@@ -581,21 +593,23 @@ section .person-list .person-list-item .container {
 }
 section .person-list .person-list-item .container h3 {
   padding: 10px;
+  margin-top: 0;
   background-color: #f2f2f0;
   display: inline-block;
   font-size: 30px;
   font-weight: 300;
 }
+section .person-list .person-list-item .container h3 a {
+  color: #32ccfe;
+  text-decoration: none;
+}
 section .person-list .person-list-item .container .text {
-  padding-left: 20px;
-  margin-bottom: 40px;
+  padding-left: 10px;
   font-family: Arial;
   font-size: 16px;
 }
 section .person-list .person-list-item img {
-  position: absolute;
-  right: 0;
-  top: 0;
+  float: right;
   width: 30%;
 }
 section .person-list .person-list-item .social-icons {
@@ -649,18 +663,23 @@ section .contacts-list .contacts-list-item .text p {
   margin: 0;
   padding: 0;
 }
-section .address-block h4 {
+section .hilight-text h4 {
   font-family: Arial;
   font-weight: bold;
 }
-section .address-block p {
+section .hilight-text p {
   padding: 0;
   margin: 0;
 }
-section .address-block .address {
+section .hilight-text .address {
   font-family: Arial;
 }
-section .address-block .info {
+section .hilight-text .hilight,
+section .hilight-text .regular {
+  clear: left;
+  margin: 15px 0;
+}
+section .hilight-text .hilight {
   margin-left: -10px;
   margin-top: 10px;
   padding: 10px;
@@ -670,7 +689,7 @@ section .address-block .info {
   clear: left;
   font-family: Arial;
 }
-section .address-block .info h4 {
+section .hilight-text .hilight h4 {
   font-weight: bold;
   font-family: Arial;
 }
@@ -725,8 +744,6 @@ section .news-list .month-container .news-list-item .date {
 }
 section .vacancy-record {
   padding: 0 20px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid #e8e8e8;
   font-family: Arial;
 }
 section .vacancy-record .vacancy_image {
@@ -880,6 +897,7 @@ section .product-record .desc {
   width: 76%;
   font-size: 16px;
   font-family: Arial;
+  line-height: 165%;
 }
 section .news-record {
   width: 100%;
@@ -920,6 +938,60 @@ section .news-record .desc {
   width: 76%;
   font-size: 16px;
   font-family: Arial;
+  line-height: 165%;
+}
+section .person-record {
+  width: 100%;
+}
+section .person-record .image {
+  width: 76%;
+  height: 360px;
+  float: left;
+}
+section .person-record .short-desc {
+  width: 23%;
+  float: right;
+  height: 360px;
+  padding: 20px;
+  background-color: #f2f2ef;
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+section .person-record .short-desc .text {
+  font-family: Arial;
+  height: 260px;
+  font-size: 22px;
+}
+section .person-record .short-desc .extra {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 34px;
+  background-color: white;
+  white-space: nowrap;
+}
+section .person-record .desc {
+  margin-top: 25px;
+  width: 76%;
+  font-size: 16px;
+  font-family: Arial;
+  line-height: 165%;
+}
+section .person-record .extra .birthday_title {
+  position: absolute;
+  top: -30px;
+  font-size: 19px;
+  font-weight: normal;
+}
+section .person-record .text span.name {
+  font-size: 19px;
+}
+section .person-record .text .speciality {
+  margin-top: 10px;
 }
 section .left-titled-block {
   margin-top: 50px;
@@ -940,23 +1012,22 @@ section .project-record {
   width: 75%;
   font-family: Arial;
 }
-section.grey  .holder {
-  background-color: #f2f2f0;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin: 30px auto;
+section .project-record .summary {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 20px;
 }
 section.full-width .holder {
   padding: 0;
 }
-section.full-width .left-titled-block {
+section .left-titled-block {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   padding-left: 20px;
   padding-right: 20px;
 }
-section.full-width .full-back {
+section .full-back {
   width: 100%;
   padding: 40px 0;
   padding-top: 80px;
@@ -966,16 +1037,16 @@ section.full-width .full-back {
   background-position: center center;
   position: relative;
 }
-section.full-width .full-back .caption {
+section .full-back .caption {
   position: absolute;
   left: 20px;
   max-width: 60%;
 }
-section.full-width .full-back .side-menu {
+section .full-back .side-menu {
   position: absolute;
   right: 120px;
 }
-section.full-width .full-back a.content_anchor {
+section .full-back a.content_anchor {
   position: absolute;
   bottom: 30px;
 }
@@ -997,6 +1068,15 @@ section.two-column-invert .main-column {
 }
 section.one-column .main-column {
   width: 100%;
+}
+section.titled_wrapper {
+  margin: 30px 0;
+  box-sizing: border-box;
+  -mox-box-sizing: border-box;
+}
+section.titled_wrapper.gray {
+  background-color: #f2f2f0;
+  padding: 20px;
 }
 footer {
   width: 100%;
@@ -1420,4 +1500,13 @@ footer .footer-social-area .social-icons-list .social-icons-list-item.gp a {
     position: absolute;
     font-size: 14px;
   }
+}
+.fx_neighbours {
+  margin: 30px 0;
+  border-top: 1px solid #CCC;
+  padding: 15px;
+  font-size: 14px;
+}
+.fx_neighbours a {
+  color: #32ccfe;
 }
