@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2014 at 12:41 PM
+-- Generation Time: May 13, 2014 at 01:18 PM
 -- Server version: 5.5.25
 -- PHP Version: 5.3.13
 
@@ -67,8 +67,8 @@ INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group
 (75, 'product', 'Product', NULL, '', '', NULL, 23, 'Product', 'Продукты', 'Продукт', ''),
 (77, 'select_linker', 'Select Linker', NULL, '', '', NULL, 36, 'select_linker', 'Избранные записи', 'Избранная запись', ''),
 (78, 'tag', 'Tag', NULL, '', '', NULL, 64, 'Tag', 'Теги', 'Тег', ''),
-(80, 'message_template', 'Message templates', NULL, 'Main', '', NULL, 36, 'Message template', NULL, NULL, NULL),
-(81, 'mail_template', 'Mail templates', NULL, 'Main', '', NULL, 80, 'Mail template', NULL, NULL, NULL);
+(80, 'message_template', 'Message templates', NULL, 'Main', '', NULL, 36, 'Message template', 'Шаблоны сообщений', 'Шаблон сообщения', ''),
+(81, 'mail_template', 'Mail templates', NULL, 'Main', '', NULL, 80, 'Mail template', 'Почтовые шаблоны', 'Почтовый шаблон', '');
 
 -- --------------------------------------------------------
 
@@ -128,9 +128,9 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2680, 239, 1, '2014-01-30 15:39:49', '2014-04-15 08:42:08', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
 (2681, 240, 1, '2014-01-30 15:40:08', '2014-04-15 08:42:08', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
 (2684, 1, 1, '2014-01-30 15:41:45', '2014-04-15 08:42:07', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
-(2688, 2, 1, '2014-01-30 16:20:08', '2014-04-25 09:24:26', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
+(2688, 2, 1, '2014-01-30 16:20:08', '2014-05-12 14:50:32', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2689, 242, 1, '2014-01-30 16:24:00', '2014-04-15 08:42:08', 2367, 'project', 385, 18, 2688, '2635.2639.2688.', 3),
-(2690, 1, 1, '2014-01-30 16:25:46', '2014-04-15 08:42:08', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
+(2690, 1, 1, '2014-01-30 16:25:46', '2014-05-12 14:50:32', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2692, 244, 1, '2014-01-31 18:14:59', '2014-04-15 08:42:08', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2693, 245, 1, '2014-01-31 18:16:05', '2014-04-15 08:42:08', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2694, 0, 1, '2014-01-31 18:27:50', '2014-04-15 08:42:08', 2367, 'select_linker', 391, 18, 2640, '2635.2640.', 2),
@@ -737,7 +737,7 @@ CREATE TABLE IF NOT EXISTS `fx_field` (
   KEY `component_id` (`component_id`),
   KEY `TypeOfData_ID` (`type`),
   KEY `TypeOfEdit_ID` (`type_of_edit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=95 AUTO_INCREMENT=321 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=95 AUTO_INCREMENT=320 ;
 
 --
 -- Dumping data for table `fx_field`
@@ -793,19 +793,19 @@ INSERT INTO `fx_field` (`id`, `component_id`, `keyword`, `name_en`, `name_ru`, `
 (290, 36, 'created', 'Creation date', 'Дата создания', 8, '', 0, 1, 0, '', 3, 1, 0),
 (291, 36, 'user_id', 'User', 'Пользователь', 13, 'a:4:{s:6:"target";s:1:"1";s:9:"prop_name";s:4:"user";s:9:"is_parent";s:1:"0";s:11:"render_type";s:10:"livesearch";}', 0, 2, 0, '', 3, 1, 0),
 (292, 36, 'site_id', 'Site', 'Сайт', 13, 'a:4:{s:6:"target";s:4:"site";s:9:"prop_name";s:4:"site";s:9:"is_parent";s:1:"0";s:11:"render_type";s:10:"livesearch";}', 0, 3, 0, '', 3, 1, 0),
-(294, 77, 'linked_id', 'Linking content id', '', 13, 'a:4:{s:6:"target";s:2:"36";s:9:"prop_name";s:7:"content";s:9:"is_parent";s:1:"0";s:11:"render_type";s:10:"livesearch";}', 0, 247, 0, '', 1, 1, 0),
+(294, 77, 'linked_id', 'Linked content id', '', 13, 'a:4:{s:6:"target";s:2:"36";s:9:"prop_name";s:7:"content";s:9:"is_parent";s:1:"0";s:11:"render_type";s:10:"livesearch";}', 0, 247, 0, '', 1, 1, 0),
 (295, 49, 'tags', 'Tags', 'Теги', 14, 'a:5:{s:11:"render_type";s:10:"livesearch";s:13:"linking_field";s:3:"255";s:16:"linking_datatype";s:2:"65";s:8:"mm_field";s:3:"254";s:11:"mm_datatype";s:2:"78";}', 0, 248, 0, '', 1, 1, 0),
 (300, 63, 'currency', 'Currency', '', 1, '', 0, 253, 0, '$', 1, 1, 0),
 (304, 23, 'children', 'Children', 'Потомки', 14, 'a:3:{s:11:"render_type";s:10:"livesearch";s:13:"linking_field";s:3:"196";s:16:"linking_datatype";s:2:"36";}', 0, 257, 0, '', 3, 1, 0),
 (305, 63, 'image', 'Image', 'Изображение', 11, '', 0, 258, 0, '', 1, 1, 4),
 (306, 23, 'description', 'Description', 'Описание', 3, 'a:2:{s:4:"html";s:1:"1";s:5:"nl2br";s:1:"0";}', 0, 259, 0, '', 1, 1, 2),
 (307, 23, 'h1', 'H1', '', 1, '', 0, 260, 0, '', 1, 1, 0),
-(314, 80, 'subject', 'Subject', '', 1, '', 0, 6, 0, '', 1, 1, 0),
-(315, 80, 'message', 'Message', '', 3, 'a:2:{s:4:"html";s:1:"1";s:5:"nl2br";s:1:"0";}', 0, 7, 0, '', 1, 1, 0),
-(316, 80, 'language_id', 'Language', '', 13, 'a:4:{s:6:"target";s:4:"lang";s:9:"prop_name";s:8:"language";s:9:"is_parent";s:1:"0";s:11:"render_type";s:6:"select";}', 0, 5, 0, '', 1, 1, 0),
-(317, 80, 'keyword', 'Keyword', '', 1, '', 0, 4, 0, '', 1, 1, 0),
-(318, 81, 'from', 'From', '', 1, '', 0, 265, 0, '', 1, 1, 0),
-(319, 81, 'bcc', 'BCC', '', 1, '', 0, 266, 0, '', 1, 1, 0);
+(314, 80, 'subject', 'Subject', 'Заголовок', 1, '', 0, 6, 0, '', 1, 1, 0),
+(315, 80, 'message', 'Message', 'Сообщение', 3, 'a:2:{s:4:"html";s:1:"1";s:5:"nl2br";s:1:"0";}', 0, 7, 0, '', 1, 1, 0),
+(316, 80, 'language_id', 'Language', 'Язык', 13, 'a:4:{s:6:"target";s:4:"lang";s:9:"prop_name";s:8:"language";s:9:"is_parent";s:1:"0";s:11:"render_type";s:6:"select";}', 0, 5, 0, '', 1, 1, 0),
+(317, 80, 'keyword', 'Keyword', 'Ключевое слово', 1, '', 0, 4, 0, '', 1, 1, 0),
+(318, 81, 'from', 'From', 'От кого', 1, '', 0, 265, 0, '', 1, 1, 0),
+(319, 81, 'bcc', 'BCC', 'Скрытая копия', 1, '', 0, 266, 0, '', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1143,7 +1143,7 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (451, 379, 12, '', '', 'layout_v3.news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"2";}', 'main_column', 8),
 (453, 381, 12, 'layout_v3.gray_block', 'a:1:{s:6:"header";s:17:"What''s happening?";}', 'layout_v3.featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";}', 'main_column', 19),
 (454, 382, 12, '', '', 'layout_v3.full_width', '', '', 8),
-(457, 385, 12, '', '', 'layout_v3.full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:32:"/floxim_files/content/2a_2_0.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 14),
+(457, 385, 12, '', '', 'layout_v3.full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:30:"/floxim_files/content/2a_2.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 14),
 (458, 386, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:17:"About the project";}', 'layout_v3.project_record', '', 'main_column', 15),
 (460, 388, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 1),
 (461, 389, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:6:"Images";}', 'layout_v3.slider', 'a:1:{s:10:"thumbnails";s:1:"1";}', 'main_column', 16),
@@ -1160,7 +1160,7 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (575, 408, 12, '', '', 'layout_v3.auth_form', '', 'icons_area', 1),
 (576, 409, 12, '', '', 'component_user.greet', '', 'icons_area', 2),
 (577, 410, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:51:"We shoot everything and everywhere around the world";}', 'layout_v3.two_columns_grid', '', 'main_column', 18),
-(578, 411, 12, '', '', 'layout_v3.full_screen_menu', 'a:3:{s:11:"header_2635";s:44:"<p>\n	Team of professional photographers\n</p>";s:12:"caption_2635";s:87:"<p>\n	We come in all sizes and shapes ready to\n</p>\n<p>\n	shoot any series you like.\n</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 17),
+(578, 411, 12, '', '', 'layout_v3.full_screen_menu', 'a:3:{s:11:"header_2635";s:39:"<p>\n	  Team of super photographers\n</p>";s:12:"caption_2635";s:87:"<p>\n	We come in all sizes and shapes ready to\n</p>\n<p>\n	shoot any series you like.\n</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 17),
 (579, 412, 12, '', '', 'component_page.neighbours', '', 'main_column', 20),
 (580, 413, 12, '', '', 'component_page.neighbours', '', 'main_column', 21),
 (581, 414, 12, '', '', 'component_page.neighbours', '', 'main_column', 22),
@@ -1204,7 +1204,7 @@ CREATE TABLE IF NOT EXISTS `fx_lang_string` (
   `lang_en` text,
   `lang_ru` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1088 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1089 ;
 
 --
 -- Dumping data for table `fx_lang_string`
@@ -1603,7 +1603,7 @@ INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALU
 (440, 'system', 'Add new Components', 'Add new Components', 'Добавить новые компоненты'),
 (441, 'system', 'Add new widget', 'Add new widget', 'Создать новый виджет'),
 (442, 'system', 'Add new field', 'Add new field', 'Создать новое поле'),
-(443, 'system', 'Keyword (название папки с макетом)', 'Keyword (название папки с макетом)', NULL),
+(443, 'system', 'Keyword (название папки с макетом)', 'Keyword (название папки с макетом)', 'Ключевое слово'),
 (444, 'system', 'Layout keyword', 'Layout keyword', 'Ключевое слово лейаута'),
 (445, 'system', 'Add new layout', 'Add new layout', 'Создать новый лейаут'),
 (446, 'system', 'Finish', 'Finish', 'Закончить'),
@@ -1693,21 +1693,22 @@ INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALU
 (1070, 'system', 'Execute', 'Execute', 'Выполнить'),
 (1071, 'component_user', 'New %s password', 'New %s password', 'Новый пароль на %s'),
 (1072, 'component_user', 'Hello, %s! Your new password: %s', 'Hello, %s! Your new password: %s', 'Здравствуйте, %s! Ваш новый пароль: %s'),
-(1073, 'system', 'Add user', 'Add user', NULL),
+(1073, 'system', 'Add user', 'Add user', 'Добавить пользователя'),
 (1074, 'system', 'Version', 'Version', 'Версия'),
 (1075, 'system', 'Previous', 'Previous', 'Предыдущий'),
 (1076, 'system', 'Status', 'Status', 'Статус'),
 (1077, 'system', 'Install', 'Install', 'Установить'),
 (1078, 'system', 'User name', 'User name', 'Имя пользователя'),
-(1079, 'system', 'Items', 'Items', NULL),
-(1080, 'system', 'Unable to save essence "lang_string"', 'Unable to save essence "lang_string"', NULL),
-(1081, 'system', 'HTML code snippet', 'HTML code snippet', NULL),
-(1082, 'system', 'Is admin?', 'Is admin?', NULL),
-(1083, 'system', 'Is multi-language field?', 'Is multi-language field?', NULL),
+(1079, 'system', 'Items', 'Items', 'Объекты'),
+(1080, 'system', 'Unable to save essence "lang_string"', 'Unable to save essence "lang_string"', 'Не удается сохранить языковую строку'),
+(1081, 'system', 'HTML code snippet', 'HTML code snippet', 'Фрагмент HTML-кода'),
+(1082, 'system', 'Is admin?', 'Is admin?', 'Администратор?'),
+(1083, 'system', 'Is multi-language field?', 'Is multi-language field?', 'Многоязычное поле?'),
 (1084, 'system', 'Nane', 'Nane', NULL),
-(1085, 'system', 'Field name', 'Field name', NULL),
-(1086, 'controller_component', 'Auto', 'Auto', NULL),
-(1087, 'controller_component', 'Group by parent', 'Group by parent', NULL);
+(1085, 'system', 'Field name', 'Field name', 'Название поля'),
+(1086, 'controller_component', 'Auto', 'Auto', 'Автоматически'),
+(1087, 'controller_component', 'Group by parent', 'Group by parent', 'Группировать по родителю'),
+(1088, 'system', ' by tag', ' by tag', 'по тегу');
 
 -- --------------------------------------------------------
 
@@ -1798,7 +1799,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `fx_session`
@@ -1806,8 +1807,10 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
 (29, '5b6851281054df1c2ca4e79a2970ac1e', 2367, 18, 1399196777, 1399283173, 2130706433, 1),
-(30, '02c6ccc97c2878b8725f9f99ea97825e', 2367, 18, 1399283268, 1399364934, 2130706433, 1),
-(31, '0f5213455297a0ca85a22b07df9518ac', 2367, 18, 1399364047, 1399364542, 2130706433, 1);
+(30, '02c6ccc97c2878b8725f9f99ea97825e', 2367, 18, 1399283268, 1399368828, 2130706433, 1),
+(31, '0f5213455297a0ca85a22b07df9518ac', 2367, 18, 1399364047, 1399364542, 2130706433, 1),
+(32, 'c78b4fc2f1c9d032419a7fe22c120e53', 2367, 18, 1399905921, 1399905935, 2130706433, 1),
+(34, '70761e3776228e81afabc80f1a596e16', 2367, 18, 1399906196, 1399972678, 2130706433, 1);
 
 -- --------------------------------------------------------
 

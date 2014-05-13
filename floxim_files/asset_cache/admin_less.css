@@ -1,3 +1,6 @@
+.fx_overlay {
+  font-family: Arial;
+}
 .fx_overlay .ui-tabs,
 .fx_overlay .ui-tabs .ui-tabs-nav,
 .fx_overlay .ui-tabs .ui-tabs-panel {
@@ -876,7 +879,6 @@
 }
 .fx_overlay * {
   line-height: normal;
-  font-family: Arial;
   vertical-align: baseline;
 }
 .fx_overlay td {
@@ -1311,30 +1313,24 @@
   clear: both;
 }
 .fx_admin_form label {
-  font-size: 14px;
+  font-size: 13px;
   color: #333;
 }
-.fx_admin_form input.fx_input,
-.fx_admin_form select.fx_input,
-.fx_admin_form textarea.fx_input {
+.fx_admin_form .fx_input {
   display: block;
-  margin: 7px 0 0;
+  margin: 7px 0 20px 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 2px;
+  font-size: 14px;
 }
-.fx_admin_form input[type=text].fx_input,
-.fx_admin_form select.fx_input {
+#fx_admin_content .fx_admin_form .fx_input,
+#fx_admin_content .fx_admin_form .redactor_box,
+#fx_admin_content .fx_admin_form .livesearch {
   width: 50%;
 }
-.fx_admin_form select.fx_input {
-  margin-bottom: 12px;
-  padding: 0;
-}
-.fx_admin_form textarea.fx_input {
-  width: 95%;
-}
-.date_field {
-  position: relative;
-}
 .date_field .icon {
+  display: none;
   width: 26px;
   height: 26px;
   position: absolute;
@@ -1352,11 +1348,6 @@
 .fx_admin_form label input[type=radio] {
   display: inline !important;
   margin: 0 5px 0 0;
-}
-.fx_admin_form input.fx_input,
-.fx_admin_form textarea.fx_input {
-  margin-bottom: 10px;
-  padding: .4em;
 }
 .fx_admin_form .fx_file_choice {
   border: 1px solid #C6C7C3;
@@ -1397,7 +1388,7 @@
   left: 0;
   top: 0;
   border: none;
-  border-bottom: 1px solid #e1e1e1 !important;
+  min-width: 525px;
 }
 #fx_admin_control .redactor_toolbar .redactor_separator,
 .fx_node_panel .redactor_toolbar .redactor_separator {
@@ -1745,10 +1736,15 @@
   display: inline-block;
 }
 .fx_infoblock.ui-sortable-helper {
-  max-width: 500px;
-  max-height: 150px;
   overflow: hidden;
-  opacity: 0.5;
+  opacity: 0.7;
+}
+.fx_area_target {
+  display: block !important;
+  min-height: 100px;
+  min-width: 100px;
+  background: #DFD !important;
+  box-sizing: border-box;
 }
 .fx_var_editable::selection,
 .fx_var_editable *::selection {
@@ -1843,11 +1839,11 @@
   height: 31px;
   display: none;
 }
-.fx_node_panel .editor_panel {
-  width: 435px;
-}
 .fx_node_panel .redactor_toolbar {
   background: none;
+}
+.fx_node_panel .redactor_toolbar li {
+  width: 32px;
 }
 .fx_node_panel > ul,
 .fx_node_panel > div {
@@ -1936,14 +1932,6 @@ img.fx_hilight {
 .fx_infoblock_hidden .fx_infoblock_hidden {
   opacity: 1;
 }
-.fx_area_target {
-  display: block !important;
-  min-height: 100px;
-  min-width: 100px;
-  background: #DFD;
-  box-sizing: border-box;
-  padding: 30px;
-}
 .fx_hidden_placeholded {
   background: #FFFF5C;
   color: #000;
@@ -1953,8 +1941,9 @@ img.fx_hilight {
 }
 .fx_hidden_placeholded.fx_infoblock,
 .fx_hidden_placeholded.fx_area {
-  display: block;
+  display: block !important;
   padding: 15px !important;
+  margin-bottom: 2px;
   box-sizing: border-box !important;
   border: 2px dashed #000 !important;
 }

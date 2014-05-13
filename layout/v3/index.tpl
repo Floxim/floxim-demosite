@@ -147,8 +147,6 @@
                     <a class="phone">{%phone}8 (800) 192 16 81{/%}</a>
                     <div style="clear:both;"></div>
                     <div
-                        fx:area="footer_social_icons"
-                        fx:size="wide,low"
                         class="footer-social-area">
                         <ul
                             fx:template="social_icons"
