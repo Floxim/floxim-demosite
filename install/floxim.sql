@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2014 at 01:18 PM
+-- Generation Time: May 17, 2014 at 01:29 PM
 -- Server version: 5.5.25
 -- PHP Version: 5.3.13
 
@@ -39,36 +39,38 @@ CREATE TABLE IF NOT EXISTS `fx_component` (
   `name_ru` varchar(255) DEFAULT NULL,
   `item_name_ru` varchar(255) DEFAULT NULL,
   `description_ru` text,
+  `vendor` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Class_Group` (`group`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=100 AUTO_INCREMENT=82 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=100 AUTO_INCREMENT=96 ;
 
 --
 -- Dumping data for table `fx_component`
 --
 
-INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group`, `icon`, `store_id`, `parent_id`, `item_name_en`, `name_ru`, `item_name_ru`, `description_ru`) VALUES
-(1, 'user', 'Users', '', '', '', 'component.user', 36, 'User', 'Пользователи', 'Пользователь', ''),
-(19, 'text', 'Text', '', '', '', 'component.text', 36, 'text', 'Текст', 'Текст', ''),
-(23, 'page', 'Pages', '', '', '', NULL, 36, 'page', 'Страницы', 'Страница', ''),
-(24, 'section', 'Sections', '', '', '', NULL, 23, 'Section', 'Разделы', 'Раздел', ''),
-(36, 'content', 'Content', '', 'Basic', '', NULL, 0, 'Content', 'Контент', 'Контент', NULL),
-(48, 'photo', 'Photos', '', '', '', NULL, 36, 'Photo', 'Фото', 'Фото', ''),
-(49, 'publication', 'Publications', NULL, '', '', NULL, 23, 'Publication', 'Публикации', 'Публикация', ''),
-(50, 'comment', 'Comment', NULL, '', '', NULL, 36, 'comment', 'Комментарии', 'Комментарий', ''),
-(59, 'video', 'Video', NULL, '', '', NULL, 36, 'Video', 'Видео', 'Видео', ''),
-(62, 'project', 'Project', NULL, '', '', NULL, 23, 'Project', 'Проекты', 'Проект', ''),
-(63, 'vacancy', 'Vacancy', NULL, '', '', NULL, 23, 'Vacancy', 'Вакансии', 'Вакансия', ''),
-(64, 'classifier', 'Classifier', '', '', '', NULL, 23, 'Classifier', 'Классификаторы', 'Классификатор', ''),
-(65, 'classifier_linker', 'Classifier Linker', NULL, '', '', NULL, 36, 'Classifier Linker', 'Привязка к классификатору', 'Привязка к классификатору', ''),
-(68, 'news', 'News', NULL, '', '', NULL, 49, 'News', 'Новости', 'Новость', ''),
-(69, 'person', 'Person', NULL, '', '', NULL, 23, 'Person', 'Персоналии', 'Персона', ''),
-(70, 'contact', 'Contact', NULL, '', '', NULL, 36, 'Contact', 'Контакты', 'Контакт', ''),
-(75, 'product', 'Product', NULL, '', '', NULL, 23, 'Product', 'Продукты', 'Продукт', ''),
-(77, 'select_linker', 'Select Linker', NULL, '', '', NULL, 36, 'select_linker', 'Избранные записи', 'Избранная запись', ''),
-(78, 'tag', 'Tag', NULL, '', '', NULL, 64, 'Tag', 'Теги', 'Тег', ''),
-(80, 'message_template', 'Message templates', NULL, 'Main', '', NULL, 36, 'Message template', 'Шаблоны сообщений', 'Шаблон сообщения', ''),
-(81, 'mail_template', 'Mail templates', NULL, 'Main', '', NULL, 80, 'Mail template', 'Почтовые шаблоны', 'Почтовый шаблон', '');
+INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group`, `icon`, `store_id`, `parent_id`, `item_name_en`, `name_ru`, `item_name_ru`, `description_ru`, `vendor`) VALUES
+(1, 'user', 'Users', '', '', '', 'component.user', 36, 'User', 'Пользователи', 'Пользователь', '', ''),
+(19, 'text', 'Text', '', '', '', 'component.text', 36, 'text', 'Текст', 'Текст', '', ''),
+(23, 'page', 'Pages', '', '', '', NULL, 36, 'page', 'Страницы', 'Страница', '', ''),
+(24, 'section', 'Sections', '', '', '', NULL, 23, 'Section', 'Разделы', 'Раздел', '', ''),
+(36, 'content', 'Content', '', 'Basic', '', NULL, 0, 'Content', 'Контент', 'Контент', NULL, ''),
+(48, 'photo', 'Photos', '', '', '', NULL, 36, 'Photo', 'Фото', 'Фото', '', ''),
+(49, 'publication', 'Publications', NULL, '', '', NULL, 23, 'Publication', 'Публикации', 'Публикация', '', ''),
+(50, 'comment', 'Comment', NULL, '', '', NULL, 36, 'comment', 'Комментарии', 'Комментарий', '', ''),
+(59, 'video', 'Video', NULL, '', '', NULL, 36, 'Video', 'Видео', 'Видео', '', ''),
+(62, 'project', 'Project', NULL, '', '', NULL, 23, 'Project', 'Проекты', 'Проект', '', ''),
+(63, 'vacancy', 'Vacancy', NULL, '', '', NULL, 23, 'Vacancy', 'Вакансии', 'Вакансия', '', ''),
+(64, 'classifier', 'Classifier', '', '', '', NULL, 23, 'Classifier', 'Классификаторы', 'Классификатор', '', ''),
+(65, 'classifier_linker', 'Classifier Linker', NULL, '', '', NULL, 36, 'Classifier Linker', 'Привязка к классификатору', 'Привязка к классификатору', '', ''),
+(68, 'news', 'News', NULL, '', '', NULL, 49, 'News', 'Новости', 'Новость', '', ''),
+(69, 'person', 'Person', NULL, '', '', NULL, 23, 'Person', 'Персоналии', 'Персона', '', ''),
+(70, 'contact', 'Contact', NULL, '', '', NULL, 36, 'Contact', 'Контакты', 'Контакт', '', ''),
+(75, 'product', 'Product', NULL, '', '', NULL, 23, 'Product', 'Продукты', 'Продукт', '', ''),
+(77, 'select_linker', 'Select Linker', NULL, '', '', NULL, 36, 'select_linker', 'Избранные записи', 'Избранная запись', '', ''),
+(78, 'tag', 'Tag', NULL, '', '', NULL, 64, 'Tag', 'Теги', 'Тег', '', ''),
+(80, 'message_template', 'Message templates', NULL, 'Main', '', NULL, 36, 'Message template', 'Шаблоны сообщений', 'Шаблон сообщения', '', ''),
+(81, 'mail_template', 'Mail templates', NULL, 'Main', '', NULL, 80, 'Mail template', 'Почтовые шаблоны', 'Почтовый шаблон', '', ''),
+(94, 'trolo_page', '', NULL, 'Main', '', NULL, 23, NULL, 'Trolo page', '', NULL, 'local');
 
 -- --------------------------------------------------------
 
@@ -612,6 +614,17 @@ INSERT INTO `fx_content_text` (`id`, `text`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fx_content_trolo_page`
+--
+
+CREATE TABLE IF NOT EXISTS `fx_content_trolo_page` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `fx_content_user`
 --
 
@@ -737,7 +750,7 @@ CREATE TABLE IF NOT EXISTS `fx_field` (
   KEY `component_id` (`component_id`),
   KEY `TypeOfData_ID` (`type`),
   KEY `TypeOfEdit_ID` (`type_of_edit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=95 AUTO_INCREMENT=320 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=95 AUTO_INCREMENT=321 ;
 
 --
 -- Dumping data for table `fx_field`
@@ -1204,7 +1217,7 @@ CREATE TABLE IF NOT EXISTS `fx_lang_string` (
   `lang_en` text,
   `lang_ru` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1089 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1091 ;
 
 --
 -- Dumping data for table `fx_lang_string`
@@ -1708,7 +1721,9 @@ INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALU
 (1085, 'system', 'Field name', 'Field name', 'Название поля'),
 (1086, 'controller_component', 'Auto', 'Auto', 'Автоматически'),
 (1087, 'controller_component', 'Group by parent', 'Group by parent', 'Группировать по родителю'),
-(1088, 'system', ' by tag', ' by tag', 'по тегу');
+(1088, 'system', ' by tag', ' by tag', 'по тегу'),
+(1089, 'system', 'Standard', 'Standard', NULL),
+(1090, 'system', 'Local', 'Local', NULL);
 
 -- --------------------------------------------------------
 
@@ -1799,7 +1814,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `fx_session`
@@ -1810,7 +1825,10 @@ INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time
 (30, '02c6ccc97c2878b8725f9f99ea97825e', 2367, 18, 1399283268, 1399368828, 2130706433, 1),
 (31, '0f5213455297a0ca85a22b07df9518ac', 2367, 18, 1399364047, 1399364542, 2130706433, 1),
 (32, 'c78b4fc2f1c9d032419a7fe22c120e53', 2367, 18, 1399905921, 1399905935, 2130706433, 1),
-(34, '70761e3776228e81afabc80f1a596e16', 2367, 18, 1399906196, 1399972678, 2130706433, 1);
+(35, '7984c88d53d170b594e3c619835a982e', 2367, 18, 1399975288, 1399997058, 2130706433, 1),
+(36, '8e9f953418f91d9b55ccdc11e7734d2f', 2367, 18, 1399975447, 1399975851, 2130706433, 1),
+(37, 'f90c14e106e793966efdf62915884c35', 2367, 18, 1400163999, 1400249081, 2130706433, 1),
+(38, '9e60968b51a7e17b36019e5cac3f033c', 2367, 18, 1400314140, 1400318743, 2130706433, 1);
 
 -- --------------------------------------------------------
 
@@ -1924,17 +1942,18 @@ CREATE TABLE IF NOT EXISTS `fx_widget` (
   `description_en` text,
   `description_ru` text NOT NULL,
   `checked` tinyint(1) NOT NULL DEFAULT '1',
+  `vendor` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `fx_widget`
 --
 
-INSERT INTO `fx_widget` (`id`, `name_en`, `name_ru`, `keyword`, `description_en`, `description_ru`, `checked`) VALUES
-(4, 'Block set', 'Набор блоков', 'blockset', NULL, '', 1),
-(8, 'Grid', 'Сетка', 'grid', NULL, '', 1),
-(9, 'Сustom code', '', 'custom_code', NULL, '', 1);
+INSERT INTO `fx_widget` (`id`, `name_en`, `name_ru`, `keyword`, `description_en`, `description_ru`, `checked`, `vendor`) VALUES
+(4, 'Block set', 'Набор блоков', 'blockset', NULL, '', 1, ''),
+(8, 'Grid', 'Сетка', 'grid', NULL, '', 1, ''),
+(9, 'Сustom code', '', 'custom_code', NULL, '', 1, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

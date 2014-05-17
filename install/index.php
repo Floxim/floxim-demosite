@@ -791,9 +791,7 @@ function fx_write_log($message, $time = true) {
     }
     $result_str = PHP_EOL . $message_time . $message;
     $log_file = FX_FILES_DIR."install_log.txt";
-    //if (is_writable($log_file)) {
-        file_put_contents($log_file, $result_str, FILE_APPEND);
-    //}
+    file_put_contents($log_file, $result_str, FILE_APPEND);
 }
 
 function fx_func_enabled($function) {
@@ -837,26 +835,20 @@ function fx_exec_sql($file) {
 function fx_get_config($MYSQL_HOST, $MYSQL_USER, $MYSQL_PASSWORD, $MYSQL_DB_NAME) {
     ob_start();
     ?>
-ini_set('apc.cache_by_default', 0);
-define("FX_JQUERY_PATH", '/floxim/lib/js/jquery-1.9.1.min.js');
-define("FX_JQUERY_UI_PATH", '/floxim/lib/js/jquery-ui-1.10.3.custom.min.js');
-$db_config = array(
-    'default' =>  array(
-        'DB_DSN' => 'mysql:dbname=<?=$MYSQL_DB_NAME?>;host=<?=$MYSQL_HOST?>',
-        'DB_USER' => '<?=$MYSQL_USER?>',
-        'DB_PASSWORD' => '<?=$MYSQL_PASSWORD?>',
-        'IS_DEV_MODE' => false,
-        'COMPILED_TEMPLATES_TTL' => 0
+$config = array(
+    'dev' =>  array(
+        'dn.name' => '<?php echo $MYSQL_DB_NAME; ?>',
+        'db.host' => '<?php echo $MYSQL_HOST; ?>',
+        'db.user' => '<?php echo $MYSQL_USER; ?>',
+        'db.password' => '<?php echo $MYSQL_PASSWORD; ?>',
+        'dev.on' => true,
+        'templates.ttl' => 0
     )
 );
-
-return $db_config['default'];
+return $config['dev'];
 <?php
     $cfg_file = ob_get_clean();
-	
-	$cfg_file = '<?php'.PHP_EOL.PHP_EOL.$cfg_file;
-	$cfg_file = $cfg_file.'?>';
-	
+    $cfg_file = '<?php'.PHP_EOL.PHP_EOL.$cfg_file;
     return $cfg_file;
 }
 

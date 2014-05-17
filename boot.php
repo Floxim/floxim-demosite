@@ -4,17 +4,14 @@ if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
 }
 define("DOCUMENT_ROOT", dirname(__FILE__)); 
 
-@ $config_res = include_once( DOCUMENT_ROOT. '/config.php');
+$config_res = include_once( DOCUMENT_ROOT. '/config.php');
 if (!$config_res) {
     header("Location: /install/");
     die();
 }
 
-require_once DOCUMENT_ROOT.'/floxim/system/config.php';
 require_once DOCUMENT_ROOT.'/floxim/system/fx.php';
-
-fx::config()->load($config_res);
-fx::load();
+fx::load($config_res);
 
 fx::listen('unlink', function($e) {
     if (fx::path()->is_inside($e->file, fx::path('thumbs'))) {
