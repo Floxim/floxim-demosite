@@ -14,6 +14,10 @@
   border: none !important;
   list-style: none;
 }
+.fx_overlay .ui-tabs .ui-tabs-nav,
+.fx_overlay .ui-tabs .ui-tabs-nav * {
+  outline: none !important;
+}
 .fx_overlay .ui-tabs .ui-tabs-nav li {
   border: none;
   margin: 0 7px 1px 0;
@@ -31,6 +35,7 @@
   padding: 3px 5px;
   text-decoration: none;
   display: inline-block;
+  outline: none !important;
 }
 .fx_overlay .ui-tabs-nav .ui-state-default {
   background: none !important;
@@ -261,11 +266,15 @@
   position: relative !important;
   left: auto;
   top: auto;
-  height: 31px;
 }
 .fx_overlay#fx_admin_control #fx_admin_buttons,
 .fx_overlay #fx_admin_control #fx_admin_buttons {
-  margin: 6px 0 0 10px;
+  overflow: hidden;
+  margin-left: 20px;
+}
+.fx_overlay#fx_admin_control #fx_admin_buttons>div,
+.fx_overlay #fx_admin_control #fx_admin_buttons>div {
+  margin-top: 20px;
 }
 .fx_overlay#fx_admin_control #fx_admin_statustext span,
 .fx_overlay #fx_admin_control #fx_admin_statustext span {
@@ -405,7 +414,8 @@
   padding: 0 10px 7px 0;
 }
 .fx_overlay #fx_admin_breadcrumb {
-  padding: 10px 0 0 30px;
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px solid #EEE;
 }
 .fx_overlay #fx_admin_breadcrumb a,
 .fx_overlay #fx_admin_breadcrumb span {
@@ -586,6 +596,10 @@
 .fx_overlay .fx_list_buttons {
   display: none;
 }
+.fx_overlay .fx_list_row:hover {
+  background: #F9F9F9;
+  border-bottom: 1px solid #ddd;
+}
 .fx_overlay .fx_list_row:hover .fx_list_buttons {
   display: block;
   opacity: 0.6;
@@ -648,9 +662,6 @@
 .fx_overlay .fx_list_row_item h2 {
   margin: 0;
 }
-.fx_overlay .fx_list_cell {
-  width: 15%;
-}
 .fx_overlay .fx_list_cell .fx_button {
   margin-right: 10px;
 }
@@ -658,7 +669,7 @@
   width: 1%;
 }
 .fx_overlay .fx_list_cell_last {
-  width: 40%;
+  width: 50%;
 }
 .fx_overlay span.fx_admin_current {
   font-weight: normal !important;
