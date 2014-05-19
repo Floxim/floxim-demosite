@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2014 at 01:29 PM
+-- Generation Time: May 19, 2014 at 05:44 PM
 -- Server version: 5.5.25
 -- PHP Version: 5.3.13
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `fx_component` (
   `vendor` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Class_Group` (`group`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=100 AUTO_INCREMENT=96 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=100 AUTO_INCREMENT=82 ;
 
 --
 -- Dumping data for table `fx_component`
@@ -69,8 +69,7 @@ INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group
 (77, 'select_linker', 'Select Linker', NULL, '', '', NULL, 36, 'select_linker', 'Избранные записи', 'Избранная запись', '', ''),
 (78, 'tag', 'Tag', NULL, '', '', NULL, 64, 'Tag', 'Теги', 'Тег', '', ''),
 (80, 'message_template', 'Message templates', NULL, 'Main', '', NULL, 36, 'Message template', 'Шаблоны сообщений', 'Шаблон сообщения', '', ''),
-(81, 'mail_template', 'Mail templates', NULL, 'Main', '', NULL, 80, 'Mail template', 'Почтовые шаблоны', 'Почтовый шаблон', '', ''),
-(94, 'trolo_page', '', NULL, 'Main', '', NULL, 23, NULL, 'Trolo page', '', NULL, 'local');
+(81, 'mail_template', 'Mail templates', NULL, 'Main', '', NULL, 80, 'Mail template', 'Почтовые шаблоны', 'Почтовый шаблон', '', '');
 
 -- --------------------------------------------------------
 
@@ -614,17 +613,6 @@ INSERT INTO `fx_content_text` (`id`, `text`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_trolo_page`
---
-
-CREATE TABLE IF NOT EXISTS `fx_content_trolo_page` (
-  `id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `fx_content_user`
 --
 
@@ -750,7 +738,7 @@ CREATE TABLE IF NOT EXISTS `fx_field` (
   KEY `component_id` (`component_id`),
   KEY `TypeOfData_ID` (`type`),
   KEY `TypeOfEdit_ID` (`type_of_edit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=95 AUTO_INCREMENT=321 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=95 AUTO_INCREMENT=320 ;
 
 --
 -- Dumping data for table `fx_field`
@@ -764,7 +752,7 @@ INSERT INTO `fx_field` (`id`, `component_id`, `keyword`, `name_en`, `name_ru`, `
 (165, 23, 'url', 'URL', '', 1, '', 0, 2, 0, '', 1, 1, 0),
 (190, 23, 'name', 'Name', 'Название', 1, '', 1, 1, 1, '', 1, 1, 0),
 (191, 23, 'title', 'Title', 'Заголовок (title)', 1, '', 0, 158, 0, '', 1, 1, 0),
-(196, 36, 'parent_id', 'Parent', 'Родитель', 13, 'a:4:{s:6:"target";s:2:"23";s:9:"prop_name";s:6:"parent";s:9:"is_parent";s:1:"0";s:11:"render_type";s:6:"select";}', 0, 0, 0, '', 2, 1, 0),
+(196, 36, 'parent_id', 'Parent', 'Родитель', 13, 'a:4:{s:6:"target";s:2:"36";s:9:"prop_name";s:6:"parent";s:9:"is_parent";s:1:"0";s:11:"render_type";s:6:"select";}', 0, 0, 0, '', 2, 1, 0),
 (203, 48, 'photo', 'Image', '', 11, '', 1, 168, 0, '', 1, 1, 0),
 (204, 48, 'description', 'Description', '', 3, 'a:2:{s:4:"html";s:1:"1";s:5:"nl2br";s:1:"0";}', 0, 169, 0, '', 1, 1, 0),
 (205, 48, 'copy', 'Copy', '', 1, '', 0, 170, 0, '', 1, 1, 0),
@@ -1814,7 +1802,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `fx_session`
@@ -1828,7 +1816,8 @@ INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time
 (35, '7984c88d53d170b594e3c619835a982e', 2367, 18, 1399975288, 1399997058, 2130706433, 1),
 (36, '8e9f953418f91d9b55ccdc11e7734d2f', 2367, 18, 1399975447, 1399975851, 2130706433, 1),
 (37, 'f90c14e106e793966efdf62915884c35', 2367, 18, 1400163999, 1400249081, 2130706433, 1),
-(38, '9e60968b51a7e17b36019e5cac3f033c', 2367, 18, 1400314140, 1400318743, 2130706433, 1);
+(38, '9e60968b51a7e17b36019e5cac3f033c', 2367, 18, 1400314140, 1400390720, 2130706433, 1),
+(39, '95a176ef751c3ad23de013973f401652', 2367, 18, 1400462721, 1400498126, 2130706433, 1);
 
 -- --------------------------------------------------------
 
@@ -1944,7 +1933,7 @@ CREATE TABLE IF NOT EXISTS `fx_widget` (
   `checked` tinyint(1) NOT NULL DEFAULT '1',
   `vendor` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `fx_widget`

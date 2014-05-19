@@ -837,7 +837,7 @@ function fx_get_config($MYSQL_HOST, $MYSQL_USER, $MYSQL_PASSWORD, $MYSQL_DB_NAME
     ?>
 $config = array(
     'dev' =>  array(
-        'dn.name' => '<?php echo $MYSQL_DB_NAME; ?>',
+        'db.name' => '<?php echo $MYSQL_DB_NAME; ?>',
         'db.host' => '<?php echo $MYSQL_HOST; ?>',
         'db.user' => '<?php echo $MYSQL_USER; ?>',
         'db.password' => '<?php echo $MYSQL_PASSWORD; ?>',
