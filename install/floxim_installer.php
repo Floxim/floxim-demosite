@@ -28,7 +28,7 @@ function fx_run_remote() {
         fclose($fh);
     }
     fx_unzip($file, '.');
-    header("Location: /floxim.php");
+    header("Location: /install/");
     die();
 }
 
