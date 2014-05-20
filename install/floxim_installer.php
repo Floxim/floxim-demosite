@@ -21,10 +21,13 @@ function fx_run_remote() {
         }
     }
 
-    $file_data = file_get_contents($get_floxim_path.$file);
-    $fh = fopen($file, 'w');
-    fputs($fh, $file_data);
-    fclose($fh);
+    if (!file_exists($file)) {
+        $file_data = file_get_contents($get_floxim_path.$file);
+        $fh = fopen($file, 'w');
+        fputs($fh, $file_data);
+        fclose($fh);
+    }
+    fx_unzip($file, '.');
     header("Location: /floxim.php");
     die();
 }
@@ -118,11 +121,12 @@ function fx_curl_exists () {
     return function_exists('curl_version');
 }
 
-function fx_unzip($file, $dir) {
-    if ( !file_exists($dir) ) {
-        fx_installer_safe_mkdir($dir);
+function fx_unzip($file) {
+    if (!file_exists($file)) {
+        return false;
     }
-    $zip_handle = zip_open($dir . $file);
+    $dir = realpath(dirname($file)).DIRECTORY_SEPARATOR;
+    $zip_handle = zip_open($file);
     if (!is_resource($zip_handle)) {
         die("Problems while reading zip archive");
     }
