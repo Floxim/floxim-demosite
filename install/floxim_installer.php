@@ -34,11 +34,12 @@ function fx_run_remote() {
 
 function fx_check_env() {
     $errors = array();
+    $dir = realpath(dirname(__FILE__));
     if (!fx_check_docroot()) {
-        $errors['errors']['docroot'] = "Please, put installer file into your document root directory (<b>".$_SERVER['DOCUMENT_ROOT'].'</b>)';
+        $errors['errors']['docroot'] = "Please, put installer file into your document root directory (<b>".$dir.'</b>)';
     }
-    if (fx_check_writable()) {
-        $errors['errors']['unwritable'] = "Target directory is not writable by the script. Please change permissions and try again.";
+    if (fx_check_writable() === false) {
+        $errors['errors']['unwritable'] = "Target directory <code>".$dir."</code> is not writable by the script. Please change permissions and try again.";
     }
 
     if (!fx_zip_exists()) {
@@ -46,15 +47,15 @@ function fx_check_env() {
     }
 
     if (!fx_check_version()) {
-        $errors['errors']['version'] = "5.3+ php version required.";
+        $errors['errors']['version'] = "Floxim requires PHP <code>5.3</code> or greater (your server runs <code>".phpversion().'</code>)';
     }
 
     if (!fx_curl_exists()) {
-        $errors['errors']['curl'] = 'curl doesn\'t exist';
+        $errors['errors']['curl'] = '<code>cURL</code> extension doesn\'t exist';
     }
 
     if (!fx_check_pdo()) {
-        $errors['errors']['pdo'] = 'PDO & pdo_mysql extension required.';
+        $errors['errors']['pdo'] = 'PDO & pdo_mysql extensions are required.';
     }
 
     if (!fx_check_gd()){
@@ -63,7 +64,7 @@ function fx_check_env() {
 
     try {
         if (!in_array('mod_rewrite', apache_get_modules())) {
-            $errors['warnings']['rewrite'] = 'mod_rewrite not enable.';    
+            $errors['warnings']['rewrite'] = '<code>mod_rewrite</code> is not enabled.';    
         }
     } catch (Exeption $e) {
         $errors['warnings']['apache']= 'We recommend to use Apache server.';
@@ -83,6 +84,7 @@ function fx_check_writable() {
         return false;
     }
     fclose($test_f);
+    $test_name.' created';
     unlink($test_name);
 }
 
