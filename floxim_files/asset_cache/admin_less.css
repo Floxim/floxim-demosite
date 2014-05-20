@@ -1533,6 +1533,15 @@
 .fx_node_panel .fx_image_field .fx_admin_button_text {
   margin-right: 10px;
 }
+#fx_admin_control .fx_form_horizontal .field_text .input_container {
+  max-width: none;
+  width: 550px;
+}
+#fx_admin_control .fx_form_horizontal textarea.fx_input {
+  max-width: none;
+  width: 100%;
+  height: 100px;
+}
 #fx_admin_extra_panel form.fx_form_vertical .field {
   margin-bottom: 10px;
   overflow: hidden;

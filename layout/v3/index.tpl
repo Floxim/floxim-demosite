@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <nav class="fx_top_fixed">
+        <header class="fixed fx_top_fixed">
             <div class="holder">
                 <a href="/" class="logo">
                     <img fx:if="$logo" src="{%logo | 'max-height:40'}">
@@ -56,7 +56,7 @@
                 </div>
                 <a class="phone">{%phone}8 (800) 123 12 45{/%}</a>
             </div>
-        </nav>
+        </header>
         <section fx:if="!$index && !$full_width">
             <div class="holder">
                     <div

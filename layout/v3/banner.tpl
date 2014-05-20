@@ -2,9 +2,7 @@
     fx:template="banner"
     fx:name="Simple banner"
     fx:of="page.list"
-    fx:size="high,wide"
-    fx:omit="true"
-    >
+    fx:size="high,wide">
     <div
         fx:item
         class="banner">

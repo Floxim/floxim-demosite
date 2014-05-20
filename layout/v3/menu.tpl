@@ -1,8 +1,7 @@
-<div
+<nav
         fx:template="main_menu"
         fx:name="Main menu"
-        fx:of="section.list"
-        fx:omit="true">
+        fx:of="section.list">
     <div class="menu-icon"></div>
     <ul class="main-menu">
         <div class="close"></div>
@@ -26,7 +25,7 @@
             </div>
         </li>
     </ul>
-</div>
+</nav>
                     
 <ul
     fx:template="side_menu"
