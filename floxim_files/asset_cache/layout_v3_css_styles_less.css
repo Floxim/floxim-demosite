@@ -825,15 +825,19 @@ section .slider .arrow {
   background-image: url(/layout/v3/css/../img/left-arrow.png);
   background-repeat: no-repeat;
   background-position: center center;
+  margin-left: 20px;
+  opacity: 0.6;
 }
 section .slider .arrow.right {
   background-image: url(/layout/v3/css/../img/right-arrow.png);
   left: auto;
   right: 0;
+  margin-right: 20px;
 }
 section .slider .slide {
   position: absolute;
   display: none;
+  width: 100%;
 }
 section .slider .slide img {
   width: 100%;

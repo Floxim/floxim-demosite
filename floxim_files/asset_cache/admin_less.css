@@ -586,6 +586,9 @@
 .fx_overlay .fx_list_labels td select {
   display: block;
 }
+.fx_overlay .fx_list {
+  clear: both;
+}
 .fx_overlay .fx_list .fx_list_separator {
   font-size: 10px;
   color: #777;

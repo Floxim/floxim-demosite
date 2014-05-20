@@ -382,6 +382,8 @@ function fx_html_end() {
         }
       });
       
+    $(':input:visible').first().focus();
+      
 	$('#show_block1').click(function(){        
 		if ($('#show_block1').is('.nonselected_tab')) {
 			$('#show_block1').removeClass('nonselected_tab'); 
