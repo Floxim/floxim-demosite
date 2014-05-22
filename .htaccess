@@ -1,11 +1,7 @@
-
 DirectoryIndex index.php
 
 AddDefaultCharset utf-8
 
-# Если Floxim стоит в подпапке, например mysite, то
-# ErrorDocument 404 /mysite/floxim/require/e404.php
-# в противном случае
 ErrorDocument 404 /floxim/require/e404.php
 
 AddEncoding gzip .jsgz
@@ -18,8 +14,8 @@ Options -Indexes
 Options +FollowSymLinks
 
 <IfModule mod_php5.c>
-php_flag magic_quotes_gpc off
-php_flag display_errors on
+php_flag magic_quotes_gpc Off
+php_flag display_errors Off
 php_value error_reporting 255
 php_value arg_separator.output "&amp;"
 php_value mbstring.internal_encoding UTF-8
@@ -30,9 +26,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
-# Если Floxim стоит в подпапке, например mysite, то
-# RewriteRule ^(.+)$ /mysite/floxim/require/e404.php?REQUEST_URI=$1 [L,QSA]
-# в противном случае
+
 RewriteRule ^(.+)$ /floxim/index.php?REQUEST_URI=$1 [L,QSA]
 RewriteRule .* - [E=HTTP_IF_MODIFIED_SINCE:%{HTTP:If-Modified-Since}]
 RewriteRule .* - [E=HTTP_IF_NONE_MATCH:%{HTTP:If-None-Match}]
