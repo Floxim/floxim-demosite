@@ -1422,6 +1422,11 @@
   vertical-align: top;
   margin-right: 15px;
 }
+#fx_admin_control .fx_form_horizontal .field.field_checkbox,
+.fx_node_panel .fx_form_horizontal .field.field_checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 #fx_admin_control .fx_form_horizontal .fx_input,
 .fx_node_panel .fx_form_horizontal .fx_input {
   max-width: 300px;

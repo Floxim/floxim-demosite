@@ -5,8 +5,8 @@
     fx:size="high,wide"
     class="vacancies-list">
     <div fx:each="$items" class="vacancies-list-item">
-        <div fx:if="$image" class="vacancy_image">
-            <img src="{$image | 'width:200'}" alt='{$name}' />
+        <div class="vacancy_image">
+            <img src="{$image | 'width:200'}img/ship.jpg{/$}" alt='{$name}' />
         </div>
         <div class="vacancy_data">
             <h3><a href="{$url}">{$name}</a></h3>
@@ -25,7 +25,7 @@
     fx:of="vacancy.record"
     fx:with="$item" 
     class="vacancy-record">
-        <div fx:if="$image" class="vacancy_image">
+        <div fx:if="$image || $_is_admin" class="vacancy_image">
             <img src="{$image | 'width:300'}" alt='{$name}' />
         </div>
         <h4>{%responsibilities_$id}Responsibilities{/%}</h4>
