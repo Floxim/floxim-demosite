@@ -2,10 +2,10 @@
 -- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 19, 2014 at 05:44 PM
--- Server version: 5.5.25
--- PHP Version: 5.3.13
+-- Хост: 127.0.0.1
+-- Время создания: Июн 18 2014 г., 15:38
+-- Версия сервера: 5.5.25
+-- Версия PHP: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `fx_loc`
+-- База данных: `fx_loc`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_component`
+-- Структура таблицы `fx_component`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_component` (
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `fx_component` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=100 AUTO_INCREMENT=82 ;
 
 --
--- Dumping data for table `fx_component`
+-- Дамп данных таблицы `fx_component`
 --
 
 INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group`, `icon`, `store_id`, `parent_id`, `item_name_en`, `name_ru`, `item_name_ru`, `description_ru`, `vendor`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content`
+-- Структура таблицы `fx_content`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content` (
@@ -92,10 +92,10 @@ CREATE TABLE IF NOT EXISTS `fx_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2768 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2770 ;
 
 --
--- Dumping data for table `fx_content`
+-- Дамп данных таблицы `fx_content`
 --
 
 INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`, `user_id`, `type`, `infoblock_id`, `site_id`, `parent_id`, `materialized_path`, `level`) VALUES
@@ -103,14 +103,14 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2635, 216, 1, '2014-01-28 11:39:50', '2014-01-28 07:39:50', 2367, 'page', 0, 18, NULL, '', 0),
 (2636, 217, 1, '2014-01-28 11:39:50', '2014-04-15 08:42:07', 2367, 'page', 0, 18, 2635, '2635.', 1),
 (2638, 1, 1, '2014-01-28 12:04:17', '2014-04-21 10:23:29', 2367, 'section', 346, 18, 2635, '2635.', 1),
-(2639, 2, 1, '2014-01-28 12:04:33', '2014-04-21 10:23:29', 2367, 'section', 346, 18, 2635, '2635.', 1),
-(2640, 3, 1, '2014-01-28 12:07:04', '2014-04-15 08:42:07', 2367, 'section', 346, 18, 2635, '2635.', 1),
+(2639, 3, 1, '2014-01-28 12:04:33', '2014-05-25 22:50:07', 2367, 'section', 346, 18, 2635, '2635.', 1),
+(2640, 2, 1, '2014-01-28 12:07:04', '2014-05-25 22:50:07', 2367, 'section', 346, 18, 2635, '2635.', 1),
 (2641, 4, 1, '2014-01-28 12:07:17', '2014-04-21 10:23:45', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
 (2652, 3, 1, '2014-01-30 13:34:21', '2014-04-21 10:28:48', 2367, 'section', 346, 18, 2638, '2635.2638.', 2),
 (2654, 4, 1, '2014-01-30 13:34:34', '2014-04-15 08:42:08', 2367, 'section', 346, 18, 2638, '2635.2638.', 2),
 (2655, 1, 1, '2014-01-30 13:38:14', '2014-04-15 08:42:08', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
 (2656, 3, 1, '2014-01-30 13:38:26', '2014-04-15 08:42:08', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
-(2657, 2, 1, '2014-01-30 13:38:46', '2014-04-15 08:42:08', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
+(2657, 2, 1, '2014-01-30 13:38:46', '2014-06-02 11:10:29', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
 (2658, 1, 1, '2014-01-30 14:00:50', '2014-04-16 15:55:22', 2367, 'section', 346, 18, 2638, '2635.2638.', 2),
 (2659, 0, 1, '2014-01-30 14:07:10', '2014-04-15 08:42:08', 2367, 'select_linker', 362, 18, 2638, '2635.2638.', 2),
 (2660, 230, 1, '2014-01-30 14:38:47', '2014-04-16 15:55:11', 2367, 'product', 364, 18, 2652, '2635.2638.2652.', 3),
@@ -124,25 +124,25 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2675, 1, 1, '2014-01-30 15:19:48', '2014-04-15 08:42:08', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2676, 235, 1, '2014-01-30 15:19:48', '2014-04-15 08:42:09', 2367, 'contact', 0, 18, 2675, '2635.2640.2655.2675.', 4),
 (2677, 236, 1, '2014-01-30 15:33:49', '2014-04-15 08:42:08', 2367, 'vacancy', 374, 18, 2656, '2635.2640.2656.', 3),
-(2678, 237, 1, '2014-01-30 15:37:21', '2014-04-15 08:42:08', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
-(2679, 238, 1, '2014-01-30 15:38:00', '2014-04-15 08:42:08', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
-(2680, 239, 1, '2014-01-30 15:39:49', '2014-04-15 08:42:08', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
-(2681, 240, 1, '2014-01-30 15:40:08', '2014-04-15 08:42:08', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
+(2678, 237, 1, '2014-01-30 15:37:21', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
+(2679, 238, 1, '2014-01-30 15:38:00', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
+(2680, 239, 1, '2014-01-30 15:39:49', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
+(2681, 240, 1, '2014-01-30 15:40:08', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
 (2684, 1, 1, '2014-01-30 15:41:45', '2014-04-15 08:42:07', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
 (2688, 2, 1, '2014-01-30 16:20:08', '2014-05-12 14:50:32', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2689, 242, 1, '2014-01-30 16:24:00', '2014-04-15 08:42:08', 2367, 'project', 385, 18, 2688, '2635.2639.2688.', 3),
 (2690, 1, 1, '2014-01-30 16:25:46', '2014-05-12 14:50:32', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
-(2692, 244, 1, '2014-01-31 18:14:59', '2014-04-15 08:42:08', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
-(2693, 245, 1, '2014-01-31 18:16:05', '2014-04-15 08:42:08', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
+(2692, 1, 1, '2014-01-31 18:14:59', '2014-05-20 08:26:14', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
+(2693, 3, 1, '2014-01-31 18:16:05', '2014-05-20 08:26:14', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2694, 0, 1, '2014-01-31 18:27:50', '2014-04-15 08:42:08', 2367, 'select_linker', 391, 18, 2640, '2635.2640.', 2),
 (2701, 1, 1, '2014-01-31 19:09:46', '2014-04-21 10:23:45', 2367, 'text', 397, 18, 2641, '2635.2640.2641.', 3),
 (2728, 260, 1, '2014-03-07 18:51:44', '2014-03-07 14:51:44', 2367, 'tag', 0, 18, NULL, '', 0),
-(2729, 260, 1, '2014-03-07 18:51:44', '2014-04-15 08:42:09', 2367, 'classifier_linker', 0, 18, 2678, '2635.2640.2657.2678.', 4),
-(2730, 261, 1, '2014-03-08 07:08:29', '2014-04-15 08:42:09', 2367, 'classifier_linker', 0, 18, 2679, '2635.2640.2657.2679.', 4),
+(2729, 260, 1, '2014-03-07 18:51:44', '2014-06-02 11:10:29', 2367, 'classifier_linker', 0, 18, 2678, '2635.2640.2657.', 4),
+(2730, 261, 1, '2014-03-08 07:08:29', '2014-06-02 11:10:29', 2367, 'classifier_linker', 0, 18, 2679, '2635.2640.2657.', 4),
 (2731, 261, 1, '2014-03-08 07:08:29', '2014-03-08 03:08:30', 2367, 'tag', 0, 18, NULL, '', 0),
-(2732, 261, 1, '2014-03-08 07:08:29', '2014-04-15 08:42:09', 2367, 'classifier_linker', 0, 18, 2679, '2635.2640.2657.2679.', 4),
+(2732, 261, 1, '2014-03-08 07:08:29', '2014-06-02 11:10:29', 2367, 'classifier_linker', 0, 18, 2679, '2635.2640.2657.', 4),
 (2733, 262, 1, '2014-03-11 15:59:01', '2014-03-11 11:59:01', 2367, 'tag', 0, 18, NULL, '', 0),
-(2734, 262, 1, '2014-03-11 15:59:01', '2014-04-15 08:42:09', 2367, 'classifier_linker', 0, 18, 2681, '2635.2640.2657.2681.', 4),
+(2734, 262, 1, '2014-03-11 15:59:01', '2014-06-02 11:10:29', 2367, 'classifier_linker', 0, 18, 2681, '2635.2640.2657.', 4),
 (2735, 4, 1, '2014-03-11 16:15:11', '2014-04-15 08:42:09', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2736, 263, 1, '2014-03-11 16:15:12', '2014-04-15 08:42:09', 2367, 'contact', 0, 18, 2735, '2635.2640.2655.2735.', 4),
 (2737, 264, 1, '2014-03-11 17:08:49', '2014-04-15 08:42:09', 2367, 'vacancy', 374, 18, 2656, '2635.2640.2656.', 3),
@@ -157,7 +157,7 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2747, 1, 1, '2014-03-12 05:01:05', '2014-04-15 08:42:07', 2367, 'select_linker', 370, 18, 2635, '2635.', 1),
 (2748, 2, 1, '2014-03-12 05:01:05', '2014-04-15 08:42:07', 2367, 'select_linker', 370, 18, 2635, '2635.', 1),
 (2749, 0, 1, '2014-03-12 05:02:10', '2014-04-15 08:42:07', 2367, 'select_linker', 369, 18, 2635, '2635.', 1),
-(2750, 273, 1, '2014-03-14 14:09:54', '2014-04-15 08:42:09', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
+(2750, 2, 1, '2014-03-14 14:09:54', '2014-05-20 08:26:14', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2751, 4, 1, '2014-03-14 18:24:30', '2014-04-21 10:22:26', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2752, 275, 1, '2014-03-14 18:26:57', '2014-04-15 08:42:09', 2367, 'photo', 389, 18, 2751, '2635.2639.2751.', 3),
 (2753, 276, 1, '2014-03-14 18:27:36', '2014-04-15 08:42:09', 2367, 'photo', 389, 18, 2751, '2635.2639.2751.', 3),
@@ -169,12 +169,13 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2762, 280, 1, '2014-05-04 13:43:11', '2014-05-04 09:43:11', 2367, 'mail_template', 0, 18, 0, '.', 1),
 (2764, 3, 1, '2014-05-04 15:40:55', '2014-05-04 11:40:55', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
 (2765, 0, 1, '2014-05-05 00:44:29', '2014-05-04 20:44:29', 2367, 'select_linker', 411, 18, 2635, '2635.', 1),
-(2767, 2, 1, '2014-05-06 11:26:33', '2014-05-06 07:26:33', 2367, 'text', 397, 18, 2641, '2635.2640.2641.', 3);
+(2767, 2, 1, '2014-05-06 11:26:33', '2014-05-06 07:26:33', 2367, 'text', 397, 18, 2641, '2635.2640.2641.', 3),
+(2769, 281, 1, '2014-05-22 08:05:53', '2014-05-22 12:05:53', 2367, 'section', 346, 18, 2640, '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_classifier`
+-- Структура таблицы `fx_content_classifier`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_classifier` (
@@ -183,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_classifier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_classifier`
+-- Дамп данных таблицы `fx_content_classifier`
 --
 
 INSERT INTO `fx_content_classifier` (`id`) VALUES
@@ -194,7 +195,7 @@ INSERT INTO `fx_content_classifier` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_classifier_linker`
+-- Структура таблицы `fx_content_classifier_linker`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_classifier_linker` (
@@ -205,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_classifier_linker` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_classifier_linker`
+-- Дамп данных таблицы `fx_content_classifier_linker`
 --
 
 INSERT INTO `fx_content_classifier_linker` (`id`, `classifier_id`, `content_id`) VALUES
@@ -217,7 +218,7 @@ INSERT INTO `fx_content_classifier_linker` (`id`, `classifier_id`, `content_id`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_comment`
+-- Структура таблицы `fx_content_comment`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_comment` (
@@ -232,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_comment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_contact`
+-- Структура таблицы `fx_content_contact`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_contact` (
@@ -243,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_contact` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_contact`
+-- Дамп данных таблицы `fx_content_contact`
 --
 
 INSERT INTO `fx_content_contact` (`id`, `value`, `contact_type`) VALUES
@@ -255,7 +256,7 @@ INSERT INTO `fx_content_contact` (`id`, `value`, `contact_type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_mail_template`
+-- Структура таблицы `fx_content_mail_template`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_mail_template` (
@@ -266,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_mail_template` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_mail_template`
+-- Дамп данных таблицы `fx_content_mail_template`
 --
 
 INSERT INTO `fx_content_mail_template` (`id`, `from`, `bcc`) VALUES
@@ -275,7 +276,7 @@ INSERT INTO `fx_content_mail_template` (`id`, `from`, `bcc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_message_template`
+-- Структура таблицы `fx_content_message_template`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_message_template` (
@@ -288,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_message_template` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_message_template`
+-- Дамп данных таблицы `fx_content_message_template`
 --
 
 INSERT INTO `fx_content_message_template` (`id`, `subject`, `message`, `language_id`, `keyword`) VALUES
@@ -297,7 +298,7 @@ INSERT INTO `fx_content_message_template` (`id`, `subject`, `message`, `language
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_news`
+-- Структура таблицы `fx_content_news`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_news` (
@@ -306,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_news`
+-- Дамп данных таблицы `fx_content_news`
 --
 
 INSERT INTO `fx_content_news` (`id`) VALUES
@@ -318,7 +319,7 @@ INSERT INTO `fx_content_news` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_page`
+-- Структура таблицы `fx_content_page`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_page` (
@@ -334,11 +335,11 @@ CREATE TABLE IF NOT EXISTS `fx_content_page` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=62;
 
 --
--- Dumping data for table `fx_content_page`
+-- Дамп данных таблицы `fx_content_page`
 --
 
 INSERT INTO `fx_content_page` (`id`, `url`, `name`, `title`, `comments_counter`, `description`, `h1`) VALUES
-(2635, '/', 'Cover Page', NULL, 0, NULL, NULL),
+(2635, '/', 'Home', NULL, 0, NULL, NULL),
 (2636, '/404', 'Page not found', NULL, 0, NULL, NULL),
 (2638, '/Catalog', 'Our services', 'Catalog', 0, NULL, NULL),
 (2639, '/Projects', 'Projects', 'Projects', 0, NULL, NULL),
@@ -378,12 +379,13 @@ INSERT INTO `fx_content_page` (`id`, `url`, `name`, `title`, `comments_counter`,
 (2745, '/Birthday-parties', 'Birthday parties', '', 0, '<p>\n	We are ready to shoot the most exotic and extreme birthday parties. We have all the gear to shoot in the swimming pool or on the dance floor. Yes, you can put down your phone for once and enjoy celebrating.\n</p>\n<p>\n	By the way, our team came up with a great device. It includes wide-angle lens and some really technical stuff, like a stick, to make a massive selfie of you and all your party guests. Imagine the joy of tagging them all later on Instagram!\n</p>', NULL),
 (2746, '/Corporate-events', 'Corporate events', '', 0, '<p>\n	We have a long experience in shooting corporate sessions, conferences, parties, and awards ceremonies. Your business rivals will be envious of how great your corporate events look.\n</p>\n<p>\n	With our digital team ready to work around the clock, all images are published on a password protected website within 48 hours.\n</p>', NULL),
 (2751, '/Kupala-Night', 'Kupala Night', '', 0, '<p>\n	The fest has pagan roots. According to an ancient pagan belief, on the eve of Ivan Kupala is the only time of the year when ferns bloom. Prosperity, luck and power would befall whoever finds a fern flower. On that night village folks would roam through the forests in search of magical herbs and especially the elusive fern flower.\n</p>\n<p>\n	Traditionally, unmarried women would be the first to enter the forest. They are followed by young men. In 2010, they were also followed by Ken who made fantastic photo series.\n</p>', NULL),
-(2757, '/Bull-Easter', 'Bull Easter', '', 0, '<p>\n	Pascua Toro is celebrated during Holy Saturday.\n</p>\n<p>\n	This holiday is famous for colorful running of the bulls through the streets of the town.\n</p>\n<p>\n	In 2011, our Ken took a huge risk and ran along with bulls. Fortunately, no bulls were harmed.\n</p>', NULL);
+(2757, '/Bull-Easter', 'Bull Easter', '', 0, '<p>\n	Pascua Toro is celebrated during Holy Saturday.\n</p>\n<p>\n	This holiday is famous for colorful running of the bulls through the streets of the town.\n</p>\n<p>\n	In 2011, our Ken took a huge risk and ran along with bulls. Fortunately, no bulls were harmed.\n</p>', NULL),
+(2769, '/V2', 'V2', '', 0, '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_person`
+-- Структура таблицы `fx_content_person`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_person` (
@@ -397,7 +399,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_person` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_person`
+-- Дамп данных таблицы `fx_content_person`
 --
 
 INSERT INTO `fx_content_person` (`id`, `full_name`, `department`, `photo`, `short_description`, `birthday`) VALUES
@@ -409,7 +411,7 @@ INSERT INTO `fx_content_person` (`id`, `full_name`, `department`, `photo`, `shor
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_photo`
+-- Структура таблицы `fx_content_photo`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_photo` (
@@ -421,7 +423,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_photo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_photo`
+-- Дамп данных таблицы `fx_content_photo`
 --
 
 INSERT INTO `fx_content_photo` (`id`, `photo`, `description`, `copy`) VALUES
@@ -437,7 +439,7 @@ INSERT INTO `fx_content_photo` (`id`, `photo`, `description`, `copy`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_product`
+-- Структура таблицы `fx_content_product`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_product` (
@@ -449,7 +451,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_product`
+-- Дамп данных таблицы `fx_content_product`
 --
 
 INSERT INTO `fx_content_product` (`id`, `short_description`, `image`, `price`) VALUES
@@ -467,7 +469,7 @@ INSERT INTO `fx_content_product` (`id`, `short_description`, `image`, `price`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_project`
+-- Структура таблицы `fx_content_project`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_project` (
@@ -480,7 +482,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_project` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_project`
+-- Дамп данных таблицы `fx_content_project`
 --
 
 INSERT INTO `fx_content_project` (`id`, `image`, `client`, `short_description`, `date`) VALUES
@@ -493,7 +495,7 @@ INSERT INTO `fx_content_project` (`id`, `image`, `client`, `short_description`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_publication`
+-- Структура таблицы `fx_content_publication`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_publication` (
@@ -505,7 +507,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_publication` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_publication`
+-- Дамп данных таблицы `fx_content_publication`
 --
 
 INSERT INTO `fx_content_publication` (`id`, `publish_date`, `image`, `text`) VALUES
@@ -517,7 +519,7 @@ INSERT INTO `fx_content_publication` (`id`, `publish_date`, `image`, `text`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_section`
+-- Структура таблицы `fx_content_section`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_section` (
@@ -526,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_section` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=7;
 
 --
--- Dumping data for table `fx_content_section`
+-- Дамп данных таблицы `fx_content_section`
 --
 
 INSERT INTO `fx_content_section` (`id`) VALUES
@@ -540,12 +542,13 @@ INSERT INTO `fx_content_section` (`id`) VALUES
 (2656),
 (2657),
 (2658),
-(2744);
+(2744),
+(2769);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_select_linker`
+-- Структура таблицы `fx_content_select_linker`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_select_linker` (
@@ -555,7 +558,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_select_linker` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_select_linker`
+-- Дамп данных таблицы `fx_content_select_linker`
 --
 
 INSERT INTO `fx_content_select_linker` (`id`, `linked_id`) VALUES
@@ -573,7 +576,7 @@ INSERT INTO `fx_content_select_linker` (`id`, `linked_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_tag`
+-- Структура таблицы `fx_content_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_tag` (
@@ -582,7 +585,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_tag`
+-- Дамп данных таблицы `fx_content_tag`
 --
 
 INSERT INTO `fx_content_tag` (`id`) VALUES
@@ -593,7 +596,7 @@ INSERT INTO `fx_content_tag` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_text`
+-- Структура таблицы `fx_content_text`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_text` (
@@ -603,7 +606,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_text` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=1199;
 
 --
--- Dumping data for table `fx_content_text`
+-- Дамп данных таблицы `fx_content_text`
 --
 
 INSERT INTO `fx_content_text` (`id`, `text`) VALUES
@@ -613,7 +616,7 @@ INSERT INTO `fx_content_text` (`id`, `text`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_user`
+-- Структура таблицы `fx_content_user`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_user` (
@@ -633,7 +636,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=104;
 
 --
--- Dumping data for table `fx_content_user`
+-- Дамп данных таблицы `fx_content_user`
 --
 
 INSERT INTO `fx_content_user` (`id`, `email`, `login`, `name`, `registration_code`, `avatar`, `forum_messages`, `pa_balance`, `auth_hash`, `is_admin`, `password`) VALUES
@@ -642,7 +645,7 @@ INSERT INTO `fx_content_user` (`id`, `email`, `login`, `name`, `registration_cod
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_vacancy`
+-- Структура таблицы `fx_content_vacancy`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_vacancy` (
@@ -658,7 +661,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_vacancy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fx_content_vacancy`
+-- Дамп данных таблицы `fx_content_vacancy`
 --
 
 INSERT INTO `fx_content_vacancy` (`id`, `salary_from`, `salary_to`, `requirements`, `responsibilities`, `work_conditions`, `currency`, `image`) VALUES
@@ -668,7 +671,7 @@ INSERT INTO `fx_content_vacancy` (`id`, `salary_from`, `salary_to`, `requirement
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_content_video`
+-- Структура таблицы `fx_content_video`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_content_video` (
@@ -681,7 +684,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_video` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_datatype`
+-- Структура таблицы `fx_datatype`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_datatype` (
@@ -695,7 +698,7 @@ CREATE TABLE IF NOT EXISTS `fx_datatype` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=204 AUTO_INCREMENT=15 ;
 
 --
--- Dumping data for table `fx_datatype`
+-- Дамп данных таблицы `fx_datatype`
 --
 
 INSERT INTO `fx_datatype` (`id`, `name`, `priority`, `searchable`, `not_null`, `default`) VALUES
@@ -715,7 +718,7 @@ INSERT INTO `fx_datatype` (`id`, `name`, `priority`, `searchable`, `not_null`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_field`
+-- Структура таблицы `fx_field`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_field` (
@@ -741,7 +744,7 @@ CREATE TABLE IF NOT EXISTS `fx_field` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=95 AUTO_INCREMENT=320 ;
 
 --
--- Dumping data for table `fx_field`
+-- Дамп данных таблицы `fx_field`
 --
 
 INSERT INTO `fx_field` (`id`, `component_id`, `keyword`, `name_en`, `name_ru`, `type`, `format`, `not_null`, `priority`, `searchable`, `default`, `type_of_edit`, `checked`, `form_tab`) VALUES
@@ -811,7 +814,7 @@ INSERT INTO `fx_field` (`id`, `component_id`, `keyword`, `name_en`, `name_ru`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_filetable`
+-- Структура таблицы `fx_filetable`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_filetable` (
@@ -825,7 +828,7 @@ CREATE TABLE IF NOT EXISTS `fx_filetable` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=56 AUTO_INCREMENT=633 ;
 
 --
--- Dumping data for table `fx_filetable`
+-- Дамп данных таблицы `fx_filetable`
 --
 
 INSERT INTO `fx_filetable` (`id`, `real_name`, `path`, `type`, `size`, `to_delete`) VALUES
@@ -1037,7 +1040,7 @@ INSERT INTO `fx_filetable` (`id`, `real_name`, `path`, `type`, `size`, `to_delet
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_infoblock`
+-- Структура таблицы `fx_infoblock`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_infoblock` (
@@ -1053,16 +1056,16 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock` (
   `scope` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=420 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=422 ;
 
 --
--- Dumping data for table `fx_infoblock`
+-- Дамп данных таблицы `fx_infoblock`
 --
 
 INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `checked`, `name`, `controller`, `action`, `params`, `scope`) VALUES
 (345, 0, 18, 2635, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (346, 0, 18, 2635, 1, 'Main menu', 'component_section', 'list_infoblock', 'a:2:{s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";a:1:{i:0;s:3:"385";}}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
-(347, 0, 18, 2635, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
+(347, 0, 18, 2635, 1, 'Footer nav', 'component_section', 'list_filtered', 'a:3:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2635";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (359, 345, 18, 2638, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (360, 0, 18, 2635, 1, 'Navigation / breadcrumbs', 'component_section', 'breadcrumbs', 'a:2:{s:11:"header_only";s:1:"0";s:13:"hide_on_index";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
 (361, 0, 18, 2638, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
@@ -1088,7 +1091,7 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (398, 0, 18, 2657, 1, 'News / Single entry', 'component_news', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:4:"news";}'),
 (399, 345, 18, 2635, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (400, 0, 18, 2635, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(404, 0, 18, 2640, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2640";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
+(404, 0, 18, 2640, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2640";}}s:5:"new_2";a:3:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:3:"346";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
 (406, 0, 18, 2640, 1, 'Persos in About', 'component_person', 'list_filtered', 'a:5:{s:5:"limit";s:0:"";s:10:"pagination";s:1:"0";s:7:"sorting";s:7:"created";s:11:"sorting_dir";s:3:"asc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (408, 0, 18, 2635, 1, 'Auth form', 'component_user', 'auth_form', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (409, 0, 18, 2635, 1, 'Greet', 'component_user', 'greet', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
@@ -1099,12 +1102,14 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (414, 0, 18, 2656, 1, 'Vacancy neighbours', 'component_vacancy', 'neighbours', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";}'),
 (416, 0, 18, 2639, 1, 'Project neighbours', 'component_project', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
 (418, 0, 18, 2655, 1, 'Person record', 'component_person', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
-(419, 0, 18, 2655, 1, 'Person neighbours', 'component_person', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}');
+(419, 0, 18, 2655, 1, 'Person neighbours', 'component_person', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
+(420, 0, 18, 2635, 1, 'Two columns', 'widget_grid', 'two_columns', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(421, 0, 18, 2641, 1, 'Map', 'widget_map', 'show', 'a:1:{s:3:"map";a:3:{s:7:"address";s:33:"Moscow, Russia, Kopievsky per., 3";s:3:"lat";s:17:"55.75997946875454";s:3:"lon";s:17:"37.61738583068848";}}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_infoblock_visual`
+-- Структура таблицы `fx_infoblock_visual`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
@@ -1119,16 +1124,16 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `infoblock_id` (`infoblock_id`,`layout_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=587 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=590 ;
 
 --
--- Dumping data for table `fx_infoblock_visual`
+-- Дамп данных таблицы `fx_infoblock_visual`
 --
 
 INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`, `wrapper_visual`, `template`, `template_visual`, `area`, `priority`) VALUES
 (59, 57, 1, 'layout_supernova.wrap_titled', '', 'component_page.list', '', 'content', 8),
 (417, 345, 12, '', '', 'layout_v3.two_columns', 'a:5:{s:5:"phone";s:17:"8 (800) 123 12 45";s:4:"logo";s:0:"";s:17:"two_column_header";s:29:"\n                Yes, we can!";s:17:"one_column_header";s:25:"\n                Our news";s:9:"logo_name";s:10:"Photo Team";}', '', 1),
-(418, 346, 12, '', '', 'layout_v3.main_menu', '', 'top_nav', 2),
+(418, 346, 12, '', '', 'layout_v3.main_menu', '', 'top_nav', 1),
 (419, 347, 12, '', '', 'layout_v3.footer_menu', '', 'footer_menu', 1),
 (431, 359, 12, '', '', 'layout_v3.one_column', '', '', 2),
 (432, 360, 12, '', '', 'layout_v3.breadcrumbs', '', 'breadcrumbs-area', 1),
@@ -1140,39 +1145,41 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (442, 370, 12, '', 'a:1:{s:6:"header";s:10:"Best ships";}', 'layout_v3.featured_list', 'a:1:{s:10:"four_items";s:1:"0";}', 'content_410', 2),
 (444, 372, 12, '', '', 'layout_v3.person_list', 'a:4:{s:13:"facebook_2671";s:0:"";s:7:"vk_2671";s:0:"";s:7:"li_2671";s:0:"";s:12:"twitter_2671";s:0:"";}', 'main_column', 5),
 (446, 374, 12, '', '', 'layout_v3.vacancies_list', '', 'main_column', 6),
-(448, 376, 12, '', '', 'layout_v3.vacancy_record', 'a:4:{s:21:"responsibilities_2677";s:23:"What you will be doing";s:17:"requirements_2677";s:16:"We need from you";s:21:"responsibilities_2737";s:16:"Your duties are:";s:17:"requirements_2737";s:22:"You should be able to:";}', 'main_column', 7),
-(451, 379, 12, '', '', 'layout_v3.news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"2";}', 'main_column', 8),
-(453, 381, 12, 'layout_v3.gray_block', 'a:1:{s:6:"header";s:17:"What''s happening?";}', 'layout_v3.featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";}', 'main_column', 19),
+(451, 379, 12, '', '', 'layout_v3.news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"2";}', 'main_column', 7),
+(453, 381, 12, 'layout_v3.gray_block', 'a:1:{s:6:"header";s:17:"What''s happening?";}', 'layout_v3.featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";}', 'main_column', 24),
 (454, 382, 12, '', '', 'layout_v3.full_width', '', '', 8),
-(457, 385, 12, '', '', 'layout_v3.full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:30:"/floxim_files/content/2a_2.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 14),
-(458, 386, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:17:"About the project";}', 'layout_v3.project_record', '', 'main_column', 15),
+(457, 385, 12, '', '', 'layout_v3.full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:30:"/floxim_files/content/2a_2.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 13),
+(458, 386, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:17:"About the project";}', 'layout_v3.project_record', '', 'main_column', 14),
 (460, 388, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 1),
-(461, 389, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:6:"Images";}', 'layout_v3.slider', 'a:1:{s:10:"thumbnails";s:1:"1";}', 'main_column', 16),
+(461, 389, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:6:"Images";}', 'layout_v3.slider', 'a:1:{s:10:"thumbnails";s:1:"1";}', 'main_column', 15),
 (462, 390, 12, '', '', 'layout_v3.one_column', '', '', 9),
-(463, 391, 12, '', '', 'layout_v3.banner', 'a:3:{s:18:"banner_header_2656";s:19:"<p>\n	Need job?\n</p>";s:16:"banner_text_2656";s:31:"<p>\n	Look at our vacancies\n</p>";s:17:"banner_image_2656";s:40:"/floxim_files/content/5_open_air_2_0.jpg";}', 'main_column', 10),
-(464, 392, 12, 'layout_v3.gray_block', 'a:1:{s:6:"header";s:11:"Latest news";}', 'layout_v3.featured_news_list', 'a:4:{s:13:"more_news_url";s:5:"/News";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";s:9:"more_news";s:8:"all news";}', 'main_column', 9),
-(469, 397, 12, '', '', 'layout_v3.text', 'a:3:{s:9:"blue_2701";s:1:"1";s:9:"blue_2700";s:1:"0";s:12:"hilight_2701";s:1:"1";}', 'main_column', 11),
-(470, 398, 12, '', '', 'layout_v3.news_record', '', 'main_column', 12),
+(463, 391, 12, '', '', 'layout_v3.banner', 'a:3:{s:18:"banner_header_2656";s:19:"<p>\n	Need job?\n</p>";s:16:"banner_text_2656";s:31:"<p>\n	Look at our vacancies\n</p>";s:17:"banner_image_2656";s:40:"/floxim_files/content/5_open_air_2_0.jpg";}', 'main_column', 9),
+(464, 392, 12, 'layout_v3.gray_block', 'a:1:{s:6:"header";s:11:"Latest news";}', 'layout_v3.featured_news_list', 'a:4:{s:13:"more_news_url";s:5:"/News";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";s:9:"more_news";s:8:"all news";}', 'main_column', 8),
+(469, 397, 12, '', '', 'layout_v3.text', 'a:3:{s:9:"blue_2701";s:1:"1";s:9:"blue_2700";s:1:"0";s:12:"hilight_2701";s:1:"1";}', 'main_column', 10),
+(470, 398, 12, '', '', 'layout_v3.news_record', '', 'main_column', 11),
 (471, 399, 12, '', '', 'layout_v3.index', '', '', 11),
-(472, 400, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'sidebar_410', 15),
+(472, 400, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'sidebar_410', 1),
 (476, 404, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 2),
-(478, 406, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:25:"Meet the Super Photo Team";}', 'layout_v3.featured_list', 'a:1:{s:10:"four_items";s:1:"1";}', 'main_column', 13),
+(478, 406, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:25:"Meet the Super Photo Team";}', 'layout_v3.featured_list', 'a:1:{s:10:"four_items";s:1:"1";}', 'main_column', 12),
 (573, 0, 14, '', '', 'layout_moscowpools.one_col', '', '', 1),
-(575, 408, 12, '', '', 'layout_v3.auth_form', '', 'icons_area', 1),
+(575, 408, 12, '', '', 'layout_v3.auth_form', 'a:1:{s:11:"label_email";s:30:"E-mail                        ";}', 'icons_area', 1),
 (576, 409, 12, '', '', 'component_user.greet', '', 'icons_area', 2),
-(577, 410, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:51:"We shoot everything and everywhere around the world";}', 'layout_v3.two_columns_grid', '', 'main_column', 18),
-(578, 411, 12, '', '', 'layout_v3.full_screen_menu', 'a:3:{s:11:"header_2635";s:39:"<p>\n	  Team of super photographers\n</p>";s:12:"caption_2635";s:87:"<p>\n	We come in all sizes and shapes ready to\n</p>\n<p>\n	shoot any series you like.\n</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 17),
-(579, 412, 12, '', '', 'component_page.neighbours', '', 'main_column', 20),
-(580, 413, 12, '', '', 'component_page.neighbours', '', 'main_column', 21),
-(581, 414, 12, '', '', 'component_page.neighbours', '', 'main_column', 22),
-(583, 416, 12, '', '', 'component_page.neighbours', '', 'main_column', 23),
-(585, 418, 12, '', '', 'layout_v3.person_record', '', 'main_column', 24),
-(586, 419, 12, '', '', 'component_page.neighbours', '', 'main_column', 25);
+(577, 410, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:51:"We shoot everything and everywhere around the world";}', 'layout_v3.two_columns_grid', '', 'main_column', 17),
+(578, 411, 12, '', '', 'layout_v3.full_screen_menu', 'a:3:{s:11:"header_2635";s:43:"<p>\n	  Team of super cool photographers</p>";s:12:"caption_2635";s:147:"<p>\n	We come in <strong>all sizes</strong> and shapes ready to</p><p>\n	shoot any <span style="color: rgb(255, 255, 0);">series</span> you like.</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 16),
+(579, 412, 12, '', '', 'component_page.neighbours', '', 'main_column', 18),
+(580, 413, 12, '', '', 'component_page.neighbours', '', 'main_column', 19),
+(581, 414, 12, '', '', 'component_page.neighbours', '', 'main_column', 20),
+(583, 416, 12, '', '', 'component_page.neighbours', '', 'main_column', 21),
+(585, 418, 12, '', '', 'layout_v3.person_record', '', 'main_column', 22),
+(586, 419, 12, '', '', 'component_page.neighbours', '', 'main_column', 23),
+(587, 420, 12, '', '', 'layout_v3.two_columns_grid', '', 'main_column', 25),
+(588, 376, 12, '', '', 'layout_v3.vacancy_record', '', 'main_column', 26),
+(589, 421, 12, '', '', 'widget_map.static_google_map', 'a:3:{s:9:"map_width";s:3:"940";s:10:"map_height";s:3:"500";s:8:"map_zoom";s:2:"14";}', 'main_column', 27);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_lang`
+-- Структура таблицы `fx_lang`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_lang` (
@@ -1185,7 +1192,7 @@ CREATE TABLE IF NOT EXISTS `fx_lang` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `fx_lang`
+-- Дамп данных таблицы `fx_lang`
 --
 
 INSERT INTO `fx_lang` (`id`, `en_name`, `native_name`, `lang_code`) VALUES
@@ -1195,7 +1202,7 @@ INSERT INTO `fx_lang` (`id`, `en_name`, `native_name`, `lang_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_lang_string`
+-- Структура таблицы `fx_lang_string`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_lang_string` (
@@ -1208,7 +1215,7 @@ CREATE TABLE IF NOT EXISTS `fx_lang_string` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1091 ;
 
 --
--- Dumping data for table `fx_lang_string`
+-- Дамп данных таблицы `fx_lang_string`
 --
 
 INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALUES
@@ -1716,7 +1723,7 @@ INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_layout`
+-- Структура таблицы `fx_layout`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_layout` (
@@ -1727,7 +1734,7 @@ CREATE TABLE IF NOT EXISTS `fx_layout` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=64 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `fx_layout`
+-- Дамп данных таблицы `fx_layout`
 --
 
 INSERT INTO `fx_layout` (`id`, `keyword`, `name`) VALUES
@@ -1736,7 +1743,7 @@ INSERT INTO `fx_layout` (`id`, `keyword`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_module`
+-- Структура таблицы `fx_module`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_module` (
@@ -1752,7 +1759,7 @@ CREATE TABLE IF NOT EXISTS `fx_module` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=68 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `fx_module`
+-- Дамп данных таблицы `fx_module`
 --
 
 INSERT INTO `fx_module` (`id`, `name`, `keyword`, `description`, `installed`, `inside_admin`, `checked`) VALUES
@@ -1763,7 +1770,7 @@ INSERT INTO `fx_module` (`id`, `name`, `keyword`, `description`, `installed`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_patch`
+-- Структура таблицы `fx_patch`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_patch` (
@@ -1778,7 +1785,7 @@ CREATE TABLE IF NOT EXISTS `fx_patch` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
--- Dumping data for table `fx_patch`
+-- Дамп данных таблицы `fx_patch`
 --
 
 INSERT INTO `fx_patch` (`id`, `to`, `created`, `description`, `from`, `status`, `url`) VALUES
@@ -1787,7 +1794,7 @@ INSERT INTO `fx_patch` (`id`, `to`, `created`, `description`, `from`, `status`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_session`
+-- Структура таблицы `fx_session`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_session` (
@@ -1802,10 +1809,10 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=53 ;
 
 --
--- Dumping data for table `fx_session`
+-- Дамп данных таблицы `fx_session`
 --
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
@@ -1817,12 +1824,23 @@ INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time
 (36, '8e9f953418f91d9b55ccdc11e7734d2f', 2367, 18, 1399975447, 1399975851, 2130706433, 1),
 (37, 'f90c14e106e793966efdf62915884c35', 2367, 18, 1400163999, 1400249081, 2130706433, 1),
 (38, '9e60968b51a7e17b36019e5cac3f033c', 2367, 18, 1400314140, 1400390720, 2130706433, 1),
-(39, '95a176ef751c3ad23de013973f401652', 2367, 18, 1400462721, 1400498126, 2130706433, 1);
+(39, '95a176ef751c3ad23de013973f401652', 2367, 18, 1400462721, 1400516500, 2130706433, 1),
+(41, 'dab702ce3dd4d4c0cd76c0c126715217', 2367, 18, 1400572753, 1400600074, 2130706433, 1),
+(42, 'b86543b6f9a3eb19118fc72876d27afc', 2367, 18, 1400573786, 1400650569, 2130706433, 1),
+(43, '7c245d66f7304ae8b0b067a15d36ff5a', 2367, 18, 1400668880, 1400752630, 2130706433, 1),
+(44, '17bae90bfc3f4b926728b1e1e9cf7629', 2367, 18, 1400680115, 1400745390, 2130706433, 1),
+(45, '45612ff93b8a226d7073cd9e318ee208', 2367, 18, 1400760104, 1400829986, 2130706433, 1),
+(46, 'e4a9ac83f78bfb314b6a7016a5aa4760', 2367, 18, 1400879381, 1400898129, 2130706433, 1),
+(47, '38a7e7c9033c9e2cd92a71ffdc8cb137', 2367, 18, 1400998900, 1401072936, 2130706433, 1),
+(49, '7cea502b31386d0392037092cce17244', 2367, 18, 1401210225, 1401210301, 2130706433, 1),
+(50, '01ce0278894b6eeff72d07851b5f1317', 2367, 18, 1401352638, 1401352638, 2130706433, 1),
+(51, 'b20a1a03f52f1f97243219e9e578271d', 2367, 18, 1401659867, 1401710039, 2130706433, 1),
+(52, '4581916811fc60c1888a2eaa3149b901', 2367, 18, 1403056621, 1403057176, 2130706433, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_settings`
+-- Структура таблицы `fx_settings`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_settings` (
@@ -1836,7 +1854,7 @@ CREATE TABLE IF NOT EXISTS `fx_settings` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=70 AUTO_INCREMENT=40 ;
 
 --
--- Dumping data for table `fx_settings`
+-- Дамп данных таблицы `fx_settings`
 --
 
 INSERT INTO `fx_settings` (`id`, `key`, `value`, `module`, `site_id`) VALUES
@@ -1883,7 +1901,7 @@ INSERT INTO `fx_settings` (`id`, `key`, `value`, `module`, `site_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_site`
+-- Структура таблицы `fx_site`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_site` (
@@ -1911,7 +1929,7 @@ CREATE TABLE IF NOT EXISTS `fx_site` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=292 AUTO_INCREMENT=19 ;
 
 --
--- Dumping data for table `fx_site`
+-- Дамп данных таблицы `fx_site`
 --
 
 INSERT INTO `fx_site` (`id`, `parent_id`, `name`, `domain`, `layout_id`, `color`, `mirrors`, `priority`, `checked`, `index_page_id`, `error_page_id`, `created`, `last_updated`, `robots`, `disallow_indexing`, `type`, `language`, `offline_text`, `store_id`) VALUES
@@ -1920,7 +1938,7 @@ INSERT INTO `fx_site` (`id`, `parent_id`, `name`, `domain`, `layout_id`, `color`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fx_widget`
+-- Структура таблицы `fx_widget`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_widget` (
@@ -1933,16 +1951,17 @@ CREATE TABLE IF NOT EXISTS `fx_widget` (
   `checked` tinyint(1) NOT NULL DEFAULT '1',
   `vendor` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data for table `fx_widget`
+-- Дамп данных таблицы `fx_widget`
 --
 
 INSERT INTO `fx_widget` (`id`, `name_en`, `name_ru`, `keyword`, `description_en`, `description_ru`, `checked`, `vendor`) VALUES
 (4, 'Block set', 'Набор блоков', 'blockset', NULL, '', 1, ''),
 (8, 'Grid', 'Сетка', 'grid', NULL, '', 1, ''),
-(9, 'Сustom code', '', 'custom_code', NULL, '', 1, '');
+(9, 'Сustom code', '', 'custom_code', NULL, '', 1, ''),
+(10, 'Map', '', 'map', NULL, '', 1, 'std');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
