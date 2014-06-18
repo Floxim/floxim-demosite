@@ -1343,6 +1343,9 @@
 #fx_admin_content .fx_admin_form .livesearch {
   width: 50%;
 }
+#fx_admin_content .fx_fieldset_row .fx_input {
+  width: auto !important;
+}
 .date_field .icon {
   display: none;
   width: 26px;
@@ -1392,6 +1395,28 @@
 .fx_node_panel .redactor_box {
   min-width: 285px;
   max-width: 600px;
+}
+#fx_admin_control .redactor_box ul,
+#fx_admin_control .redactor_box ul li,
+.fx_node_panel .redactor_box ul,
+.fx_node_panel .redactor_box ul li {
+  list-style-type: disc;
+}
+#fx_admin_control .redactor_box ol,
+#fx_admin_control .redactor_box ol li,
+.fx_node_panel .redactor_box ol,
+.fx_node_panel .redactor_box ol li {
+  list-style-type: decimal;
+}
+#fx_admin_control .redactor_box ul,
+#fx_admin_control .redactor_box ol,
+.fx_node_panel .redactor_box ul,
+.fx_node_panel .redactor_box ol {
+  margin-left: 20px;
+}
+#fx_admin_control .redactor_box li,
+.fx_node_panel .redactor_box li {
+  margin-bottom: 10px;
 }
 #fx_admin_control .redactor_editor,
 .fx_node_panel .redactor_editor {
@@ -1530,13 +1555,8 @@
 }
 #fx_admin_control .fx_image_field img,
 .fx_node_panel .fx_image_field img {
-  height: 50px;
-  margin-right: 10px;
-  float: left;
-}
-#fx_admin_control .fx_image_field .fx_admin_button_text,
-.fx_node_panel .fx_image_field .fx_admin_button_text {
-  margin-right: 10px;
+  max-height: 50px;
+  max-width: 100px;
 }
 #fx_admin_control .fx_form_horizontal .field_text .input_container {
   max-width: none;
@@ -1603,9 +1623,41 @@
 #fx_admin_fields .fx_image_field {
   background: #FFF;
 }
-.fx_overlay .fx_image_field img {
+.fx_image_field img {
   max-height: 100px;
   max-width: 150px;
+  margin-right: 10px;
+  float: left;
+}
+.fx_image_field .file_info {
+  margin-right: 10px;
+  float: left;
+}
+.fx_image_field .fx_admin_button_text,
+.fx_image_field .remote_file_block {
+  margin-right: 10px;
+}
+.fx_image_field .remote_file_block {
+  float: left;
+  font-size: 12px;
+}
+.fx_image_field .remote_file_block input.fx_input {
+  width: 80px !important;
+  display: none !important;
+}
+.fx_image_field .remote_file_block.active a {
+  display: none;
+}
+.fx_image_field .remote_file_block.active input.fx_input {
+  display: inline !important;
+}
+.fx_image_field .remote_file_block a {
+  cursor: pointer;
+}
+.fx_image_field .remote_file_block a,
+.fx_image_field .remote_file_block span {
+  line-height: 30px;
+  vertical-align: middle;
 }
 #fx_admin_fields .fx_image_field img {
   max-height: 34px;
@@ -1747,6 +1799,18 @@
 }
 #fx_admin_extra_panel .fx_admin_panel_body {
   overflow: auto;
+}
+.fx_map_field .fx_input.map_address_input {
+  width: 400px !important;
+  max-width: 400px !important;
+}
+.fx_map_field .map_container {
+  position: absolute;
+  z-index: 10000;
+  display: none;
+}
+.pac-container {
+  z-index: 10000 !important;
 }
 .fx_infoblock_placeholder {
   min-height: 5px;
