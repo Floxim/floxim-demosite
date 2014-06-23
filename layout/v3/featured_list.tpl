@@ -5,23 +5,19 @@
     fx:size="low,wide"
     data-four_items="{%four_items type='bool' label='Four items'}0{/%}"
     class="featured-list  {if $four_items}four-items{/if}">
-    <?$pic = $template_dir.'/img/ship.jpg';?>
     <a
         fx:each="$items"
         href="{$url}#{/$}"
         class="featured-list-item">
-        <img 
-            fx:if="$item.has_field('image')" 
-            class="own_pic"
-            src="{$image | 'width:300,height:200'}<?=$pic?>{/$}" />
-        <img 
-            fx:elseif="$item.has_field('photo')" 
-            class="own_pic"
-            src="{$photo | 'width:300,height:200'}<?=$pic?>{/$}" />
-        <img
-            fx:else
-            class="tpl_pic"
-            src="{%image_$id | 'width:300,height:200'}<?=$pic?>{/%}" />
+        {if $item.has_field('image')}
+            <img
+                class="tpl_pic"
+                src="{$item.%image | '300*200'}img/ship.jpg{/$}" />
+        {else}
+            <img
+                class="tpl_pic"
+                src="{$item.%photo | '300*200'}img/ship.jpg{/$}" />    
+        {/if}
         
         <div class="caption">
             <div class="h3">

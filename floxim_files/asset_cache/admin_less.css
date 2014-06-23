@@ -1304,6 +1304,12 @@
     margin-left: 50px;
   }
 }
+.fx_admin_console_container {
+  clear: both;
+  padding: 10px;
+  border: 1px solid #EEE;
+  margin-top: 15px;
+}
 .fx_admin_form {
   padding: 20px;
 }
@@ -2057,6 +2063,69 @@ img.fx_hilight {
 }
 .fx_hilight_outline.fx_selected {
   outline: 2px dashed #000;
+}
+.fx_help_expander {
+  display: block !important;
+  position: absolute !important;
+  width: 10px !important;
+  height: 10px !important;
+  border: 1px solid #000 !important;
+  background: #000 !important;
+  color: #FFF !important;
+  border-radius: 12px !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  padding: 5px 4px 2px 5px !important;
+  line-height: 9px !important;
+  font-family: arial !important;
+  cursor: pointer !important;
+  z-index: 9999;
+}
+.fx_help_data {
+  position: absolute;
+  z-index: 10000;
+  background: #FFF;
+  padding: 5px;
+  border-radius: 2px;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);
+}
+.fx_item_help_block {
+  font-size: 12px !important;
+  font-family: arial !important;
+  margin: 15px 0 !important;
+}
+.fx_item_help_block table {
+  background: #FFF !important;
+  border-collapse: collapse;
+}
+.fx_item_help_block td {
+  border: 1px solid #EEE !important;
+  box-sizing: border-box;
+  padding: 2px 3px !important;
+}
+.fx_item_help_block td.type_cell {
+  width: 150px !important;
+}
+.fx_item_help_block td.value_cell {
+  width: 300px !important;
+}
+.fx_item_help_block td.prop_cell {
+  width: 150px !important;
+  white-space: nowrap !important;
+}
+.fx_item_help_block tr.header {
+  font-weight: bold !important;
+}
+.fx_item_help_block a.level_expander {
+  color: #06F;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+.fx_item_help_block a.level_expander span.item_type {
+  color: #999 !important;
+  font-size: 11px !important;
+  position: relative;
+  top: -3px !important;
 }
 .fx_debug_entries {
   clear: both;
