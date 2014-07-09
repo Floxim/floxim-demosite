@@ -9,15 +9,9 @@
         fx:each="$items"
         href="{$url}#{/$}"
         class="featured-list-item">
-        {if $item.has_field('image')}
-            <img
+            <img fx:if=""
                 class="tpl_pic"
-                src="{$item.%image | '300*200'}img/ship.jpg{/$}" />
-        {else}
-            <img
-                class="tpl_pic"
-                src="{$item.%photo | '300*200'}img/ship.jpg{/$}" />    
-        {/if}
+                src="{$item.%photo | '300*200'}{$item.%image}img/ship.jpg{/$}{/$}">
         
         <div class="caption">
             <div class="h3">

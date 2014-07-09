@@ -6,7 +6,7 @@
     data-thumbnails="{%thumbnails type='bool' label='Show thumnails'}0{/%}"
     class="slider-wrapper">
     <div  class="slider">
-        <div fx:each="$items" class="slide {if $is_first}active{/$}">
+        <div fx:each="$items" class="slide {if $is_first}active{/if}">
             <img src="{$photo|'width:990px,height:360'}<?=$template_dir?>img/ship.jpg{/$}">
         </div>
         {if count($items)>1}
