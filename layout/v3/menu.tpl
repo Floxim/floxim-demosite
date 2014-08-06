@@ -33,8 +33,9 @@
     fx:name="Side menu"
     fx:of="page.list"
     fx:size="narrow,high"
-    data-unstylized="{%unstylized type='bool' label='Unstylize'}0{/%}"
-    class="side-menu {if $unstylized}unstylized{/if}">
+    {*data-unstylized="{%unstylized type='bool' label='Unstylize'}0{/%}"*}
+    class="side-menu {*{if $unstylized}unstylized{/if}*}"
+    >
     <li
         fx:each="$items"
         class="side-menu-item {if $is_active}active{/if}">
@@ -53,7 +54,7 @@
         {set $ai = $items.first()}
     {/if}
     {set $cid = fx::env('page_id')}
-    style="background-image: url('{%bg_$cid | 'max-width:1200'}{$ai.image}img/ship.jpg{/$}{/%}');"
+    style="background-image: url('{%bg_$cid | 'max-width:1200'}{$ai.image}{$ai.photo}img/ship.jpg{/$}{/$}{/%}');"
     class="full-back">
 
     <div class="caption">
@@ -63,7 +64,7 @@
             {/%}
         </div>
         <div class="text">
-            <div>{%caption_$cid type="html"}<p>This writing is on</p>{/%}</div>
+            <div>{%caption_$cid type="html"}{$ai.short_description}<p>This writing is on</p>{/$}{/%}</div>
             <a fx:if="$ai" class="go" href="{$ai.url}#content"></a>
         </div>
     </div>

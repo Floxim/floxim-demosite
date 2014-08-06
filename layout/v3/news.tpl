@@ -10,7 +10,7 @@
         <div class="month">{$month}</div>
         <div fx:each="$news" class="news-list-item">
             <a href="{$url}">{$name}</a>
-            <span class="date">{$publish_date | 'd.m.Y'}</span>
+            <span class="date">{$publish_date | 'Y-m-d'}</span>
         </div>
     </div>
 </div>
@@ -56,12 +56,13 @@
     <div
         fx:each="$items"
         class="featuared-news-list-item">
-        <a href="{$url}" fx:if="$image"><img src="{$image | 'width:300,height:200'}"></a>
+        <a href="{$url}" fx:if="$image or $_is_admin"><img class="spic" src="{$image | 'width:300,height:200'}"></a>
         <a href="{$url}" class="title">{$name}</a>
-        <div class="date">{$publish_date | 'Y.m.d'}</div>
+        <div class="date">{$publish_date | 'F d, Y'}</div>
         <div fx:if="$show_anounce" class="text">
             {$description}
         </div>
+        {*<div class="read_more"><a href="{$url editable=true}" data-name="{$name}">{$%read_more}Mooore{/$}</a></div>*}
     </div>
     <div style="clear:both;"></div>
     <a fx:if="$show_more" href="{%more_news_url label="More link"}#{/%}" class="more">{%more_news}more news{/%}</a>

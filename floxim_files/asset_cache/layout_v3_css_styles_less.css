@@ -11,6 +11,9 @@
 blockquote {
   font-style: italic;
 }
+a {
+  color: #32ccfe;
+}
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -104,15 +107,13 @@ header.fixed .main-menu .main-menu-item a {
   font-size: 13px;
   font-weight: 400;
 }
-header.fixed .main-menu .main-menu-item:hover,
-header.fixed .main-menu .main-menu-item.dropdown.active {
+header.fixed .main-menu .main-menu-item.active {
   background-color: white;
 }
-header.fixed .main-menu .main-menu-item:hover a,
-header.fixed .main-menu .main-menu-item.dropdown.active a {
+header.fixed .main-menu .main-menu-item.active a {
   color: #999;
 }
-header.fixed .main-menu .main-menu-item.dropdown.active .width-helper {
+header.fixed .main-menu .main-menu-item.active .width-helper {
   display: block;
 }
 header.fixed .main-menu .main-menu-item .width-helper {
@@ -458,7 +459,6 @@ section .featured-list {
   width: 100%;
 }
 section .featured-list:not(.four-items) .featured-list-item:nth-child(3n) {
-  float: right;
   margin-right: 0;
 }
 section .featured-list.four-items .featured-list-item {
@@ -466,7 +466,6 @@ section .featured-list.four-items .featured-list-item {
   margin-right: 1.3%;
 }
 section .featured-list.four-items .featured-list-item:nth-child(4n) {
-  float: right;
   margin-right: 0;
 }
 section .featured-list .featured-list-item {
@@ -540,7 +539,7 @@ section .featuared-news-list .featuared-news-list-item .title {
   display: block;
 }
 section .featuared-news-list .featuared-news-list-item .date {
-  font-size: 11px;
+  font-size: 15px;
   color: #999999;
   margin-bottom: 10px;
 }
@@ -757,6 +756,16 @@ section .vacancy-record p {
   margin: 0 0;
   margin-bottom: 20px;
   padding: 0;
+}
+section .vacancies-list .vacancy_salary {
+  font-size: 14px;
+  color: #666;
+  position: relative;
+  top: -10px;
+  margin-bottom: -10px;
+}
+section .vacancies-list .vacancy_salary b {
+  font-size: 16px;
 }
 section .vacancies-list .vacancies-list-item {
   padding: 30px 0;

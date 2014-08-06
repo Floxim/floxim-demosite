@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div fx:template="block_titled" fx:of="wrapper" class="left-titled-block">
-                        <h2>{%header}Header{/%}</h2>
+                        <h2>{%header}Block Header{/%}</h2>
                         <div class="content">
                             {$content}
                         </div>
@@ -121,12 +121,12 @@
             </div>
         </section>
         <section fx:template="gray_block" fx:of="wrapper" class="titled_wrapper gray">
-            <h2>{%header}Today{/%}</h2>
+            <h2>{%header}Block Header{/%}</h2>
             <div class="main-column">{$content}</div>
             <div style="clear: both;"></div>
         </section>
         <section fx:template="titled_block" fx:of="wrapper" class="titled_wrapper">
-            <h2>{%header}Today{/%}</h2>
+            <h2>{%header}Block Header{/%}</h2>
             <div class="main-column">{$content}</div>
             <div style="clear: both;"></div>
         </section>

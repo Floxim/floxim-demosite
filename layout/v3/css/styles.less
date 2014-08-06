@@ -16,6 +16,10 @@ blockquote {
     font-style:italic;
 }
 
+a {
+    color:#32ccfe;
+}
+
 .g_record() {
     width: 100%;
     .image {
@@ -144,13 +148,14 @@ header.fixed {
                 font-size: 13px;
                 font-weight: 400;
             }
-            &:hover, &.dropdown.active {
+            //&:hover, &.dropdown.active {
+            &.active {
                 background-color: white;
                 a {
                     color: #999;
                 }
             }
-            &.dropdown.active .width-helper {
+            &.active .width-helper {
                 display: block;
             }
             .width-helper {
@@ -497,7 +502,7 @@ section {
         &:not(.four-items) {
             .featured-list-item {
                 &:nth-child(3n) {
-                    float:right;
+                    ///float:right;
                     margin-right: 0;
                 }
             }
@@ -507,7 +512,7 @@ section {
                 width: 24%;
                 margin-right: 1.3%;
                 &:nth-child(4n) {
-                    float:right;
+                    //float:right;
                     margin-right: 0;
                 }
             }
@@ -574,7 +579,7 @@ section {
                 display: block;
             }
             .date {
-                font-size: 11px;
+                font-size: 15px;
                 color: #999999;
                 margin-bottom: 10px;
             }
@@ -801,6 +806,16 @@ section {
     }
 
     .vacancies-list {
+        .vacancy_salary {
+            font-size: 14px;
+            color: #666;
+            position: relative;
+            top: -10px;
+            margin-bottom:-10px;
+            b {
+                font-size:16px;
+            }
+        }
         .vacancies-list-item {
             padding: 30px 0;
             border-bottom: 1px solid #e8e8e8;
