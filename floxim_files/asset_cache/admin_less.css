@@ -447,6 +447,7 @@
   border: none;
   text-decoration: none !important;
   white-space: nowrap;
+  box-sizing: border-box;
 }
 .fx_overlay .fx_admin_button_text span {
   line-height: 24px;
@@ -461,6 +462,7 @@
 }
 .fx_overlay .fx_admin_button_text span a.fx_button_extra {
   color: #fff;
+  text-decoration: none !important;
 }
 .fx_overlay .fx_admin_button_text span a.fx_button_extra:hover {
   color: #ff0;
@@ -468,7 +470,6 @@
 .fx_overlay .fx_admin_button_cancel {
   background: #eff0f0;
   border: 2px solid #3FB7DE;
-  height: 21px;
 }
 .fx_overlay .fx_admin_button_cancel span {
   color: #3FB7DE;
@@ -1124,6 +1125,7 @@
   border: none;
   text-decoration: none !important;
   white-space: nowrap;
+  box-sizing: border-box;
   font-family: Tahoma, sans-serif;
   font-size: 14px;
   font-weight: bold;
@@ -1146,12 +1148,14 @@
 }
 .fx_overlay .fx_backend_login .fx_input_type_submit span a.fx_button_extra {
   color: #fff;
+  text-decoration: none !important;
 }
 .fx_overlay .fx_backend_login .fx_input_type_submit span a.fx_button_extra:hover {
   color: #ff0;
 }
 .fx_overlay .fx_backend_login .fx_input_type_submit a.fx_button_extra {
   color: #fff;
+  text-decoration: none !important;
 }
 .fx_overlay .fx_backend_login .fx_input_type_submit a.fx_button_extra:hover {
   color: #ff0;
@@ -1372,12 +1376,19 @@
   color: #333;
 }
 .fx_admin_form .fx_input {
+  font-family: Tahoma, sans-serif;
   display: block;
   margin: 7px 0 20px 0;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   padding: 2px;
   font-size: 14px;
+  border-radius: 0;
+}
+.fx_admin_form .fx_input,
+.fx_admin_form .fx_input:focus,
+.fx_admin_form .fx_input:active {
+  box-shadow: none;
 }
 #fx_admin_content .fx_admin_form .fx_input,
 #fx_admin_content .fx_admin_form .redactor_box,

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Авг 06 2014 г., 21:14
+-- Время создания: Авг 18 2014 г., 18:18
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `fx_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2781 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2770 ;
 
 --
 -- Дамп данных таблицы `fx_content`
@@ -1038,7 +1038,7 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock` (
   `scope` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=437 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=436 ;
 
 --
 -- Дамп данных таблицы `fx_infoblock`
@@ -1110,7 +1110,7 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `infoblock_id` (`infoblock_id`,`layout_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=605 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=604 ;
 
 --
 -- Дамп данных таблицы `fx_infoblock_visual`
@@ -1147,7 +1147,7 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (472, 400, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'sidebar_410', 1),
 (476, 404, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 2),
 (573, 0, 14, '', '', 'layout_moscowpools.one_col', '', '', 1),
-(575, 408, 12, '', '', 'layout_v3.auth_form', 'a:2:{s:11:"label_email";s:30:"E-mail                        ";s:14:"label_password";s:8:"Password";}', 'icons_area', 1),
+(575, 408, 12, '', '', 'layout_v3.auth_form', 'a:4:{s:11:"label_email";s:30:"E-mail                        ";s:14:"label_password";s:8:"Password";s:14:"label_remember";s:11:"Remember me";s:12:"label_submit";s:6:"Log in";}', 'icons_area', 1),
 (576, 409, 12, '', '', 'component_user.greet', '', 'icons_area', 2),
 (577, 410, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:51:"We shoot everything and everywhere around the world";}', 'layout_v3.two_columns_grid', '', 'main_column', 17),
 (578, 411, 12, '', '', 'layout_v3.full_screen_menu', 'a:3:{s:11:"header_2635";s:52:"<p class="">Team of</p><p class="">photographers</p>";s:12:"caption_2635";s:117:"<p class="">\n	We come in&nbsp;any&nbsp;sizes and shapes ready to</p><p class="">\n	shoot any series&nbsp;you like.</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 15),
@@ -1766,6 +1766,30 @@ INSERT INTO `fx_module` (`id`, `name`, `keyword`, `description`, `installed`, `i
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `fx_option`
+--
+
+CREATE TABLE IF NOT EXISTS `fx_option` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `keyword` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `value` text NOT NULL,
+  `autoload` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `autoload` (`autoload`),
+  KEY `keyword` (`keyword`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `fx_option`
+--
+
+INSERT INTO `fx_option` (`id`, `keyword`, `name`, `value`, `autoload`) VALUES
+(1, 'fx.version', 'Current floxim version', '0.1.1', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `fx_patch`
 --
 
@@ -1790,6 +1814,28 @@ INSERT INTO `fx_patch` (`id`, `to`, `created`, `description`, `from`, `status`, 
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `fx_patch_migration`
+--
+
+CREATE TABLE IF NOT EXISTS `fx_patch_migration` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `fx_patch_migration`
+--
+
+INSERT INTO `fx_patch_migration` (`id`, `name`, `created`) VALUES
+(1, 'm20140808_062932', '2014-08-13 04:36:44'),
+(2, 'm20140812_050811', '2014-08-13 04:36:44');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `fx_session`
 --
 
@@ -1805,15 +1851,15 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=49 ;
 
 --
 -- Дамп данных таблицы `fx_session`
 --
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
-(44, '03472915f614c1dd2d471d9d47f8f200', 2367, 0, 1406630005, 1406910680, 2130706433, 0),
-(45, 'c159f1cbc2e589c4647e92b41abfa600', 2367, 0, 1407171520, 1407343960, 2130706433, 0);
+(47, 'e6ff5a56a7adcc8fcdc559455c64eec6', 2367, 0, 1407892922, 1407906893, 2130706433, 0),
+(48, '2aa8991d0076117bcdac981291072da9', 2367, 0, 1408371462, 1408371471, 2130706433, 0);
 
 -- --------------------------------------------------------
 
