@@ -72,9 +72,16 @@ function fx_check_env() {
     return $errors;
 }
 
+function fx_fix_path($path) {
+    $path = preg_replace('~[/\\\]~', '/', realpath($path));
+    $path = rtrim($path, '/');
+    return $path;
+}
+
 function fx_check_docroot() {
-    $c_dir = preg_replace('~[/\\\]~', '/', realpath(dirname(__FILE__)));
-    return $_SERVER['DOCUMENT_ROOT'] === $c_dir;
+    $c_dir = fx_fix_path(realpath(dirname(__FILE__)));
+    $c_root = fx_fix_path($_SERVER['DOCUMENT_ROOT']);
+    return $c_dir === $c_root;
 }
 
 function fx_check_writable() {

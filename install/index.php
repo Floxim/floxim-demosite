@@ -2,14 +2,18 @@
 header('Content-Type: text/html; charset=utf-8'); 
 session_start();
 
-// installation folder
-$INSTALL_FOLDER = join( strstr(__FILE__, "/") ? "/" : "\\", array_slice( preg_split("/[\/\\\]+/", __FILE__), 0, -1 ) ).( strstr(__FILE__, "/") ? "/" : "\\" );
-// main Floxim folder
-$FLOXIM_FOLDER = fx_standardize_path_to_folder( realpath($INSTALL_FOLDER.'../') );
-// custom installation folder
-$CUSTOM_FOLDER = str_replace( rtrim($_SERVER['DOCUMENT_ROOT'], '/').'/', '', $FLOXIM_FOLDER);
+define('DOC_ROOT', fx_fix_path($_SERVER['DOCUMENT_ROOT']));
 
-define('FX_CONFIG_FILE', $_SERVER['DOCUMENT_ROOT'].'/config.php');
+// installation folder
+$INSTALL_FOLDER = DOC_ROOT;
+// main Floxim folder
+$FLOXIM_FOLDER = DOC_ROOT.'/floxim';
+// custom installation folder
+
+//$CUSTOM_FOLDER = str_replace( rtrim($_SERVER['DOCUMENT_ROOT'], '/').'/', '', $FLOXIM_FOLDER);
+$CUSTOM_FOLDER = '';
+
+define('FX_CONFIG_FILE', DOC_ROOT.'/config.php');
 
 $action = fx_post_get('action');
 
@@ -22,9 +26,9 @@ if (file_exists(FX_CONFIG_FILE) && $action != 4) {
 }
 
 // normalize path
-if ($CUSTOM_FOLDER) $CUSTOM_FOLDER = '/'.trim($CUSTOM_FOLDER, '/').'/';
+//if ($CUSTOM_FOLDER) $CUSTOM_FOLDER = '/'.trim($CUSTOM_FOLDER, '/').'/';
 
-define('FX_FILES_DIR', $_SERVER['DOCUMENT_ROOT'].'/floxim_files/');
+define('FX_FILES_DIR', DOC_ROOT.'/floxim_files/');
 define('FX_FILES_HTTP', '/floxim_files/');
 
 if (isset($_REQUEST['pwd'])) {
@@ -129,8 +133,8 @@ switch ($action) {
 
         $dir = dirname($_SERVER['PHP_SELF']);
         $test_dir = FX_FILES_DIR."testdirtestdir";
-        if (!@mkdir($test_dir)) {
-            $errors['mkdir'] = "The script has no permission to create directory.";
+        if (!mkdir($test_dir)) {
+            $errors['mkdir'] = "The script has no permission to create directory. ".$test_dir;
             fx_write_log("Error: " . $errors['mkdir']);
         }
         if (!is_writable($test_dir)) {
@@ -184,7 +188,7 @@ switch ($action) {
         }
         else {
             $result = fx_html_status_bar(array("'color': 'red', 'opacity': 1", "There are some  problems!"));
-            $result .= "<span style='font-style: italic; padding: 10pt; color: red;'>" . join(" ", $errors) . "</span><br /><br />There are some issues that make using Floxim on your hosting impossible. If you can't solve them yourself describe the problems to system administrator or to support service. I hope you can solve the problems so we can complete the installation.";
+            $result .= "<span style='font-style: italic; padding: 10pt; color: red;'>" . join("<br />", $errors) . "</span><br /><br />There are some issues that make using Floxim on your hosting impossible. If you can't solve them yourself describe the problems to system administrator or to support service. I hope you can solve the problems so we can complete the installation.";
         }
 
         echo $result;
@@ -897,4 +901,8 @@ function fx_change_htaccess($distr_dir, $custom_dir) {
     }
 }
 
-?>
+function fx_fix_path($path) {
+    $path = preg_replace('~[/\\\]~', '/', realpath($path));
+    $path = rtrim($path, '/');
+    return $path;
+}
