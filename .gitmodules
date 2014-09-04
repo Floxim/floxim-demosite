@@ -1,3 +1,3 @@
-[submodule "floxim"]
-	path = floxim
-	url = https://github.com/Floxim/floxim.git
+[submodule "vendor/floxim/floxim"]
+	path = vendor/floxim/floxim
+	url = git@github.com:Floxim/floxim.git
