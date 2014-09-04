@@ -1,24 +1,10 @@
 <?php
-if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-    $_SERVER['REQUEST_TIME_FLOAT'] = microtime(true);
-}
-define("DOCUMENT_ROOT", dirname(__FILE__)); 
+/**
+ * Register Class Auto Load
+ */
+require_once __DIR__.'/bootstrap/autoload.php';
 
-$config_res = include_once( DOCUMENT_ROOT. '/config.php');
-if (!$config_res) {
-    header("Location: /install/");
-    die();
-}
-
-require_once DOCUMENT_ROOT.'/floxim/system/fx.php';
-fx::load($config_res);
-
-fx::listen('unlink', function($e) {
-    if (fx::path()->is_inside($e->file, fx::path('thumbs'))) {
-        return;
-    }
-    $thumbs = fx_thumb::find_thumbs($e->file);
-    foreach ($thumbs as $thumb) {
-        fx::files()->rm($thumb);
-    }
-});
+/**
+ * Start Application
+ */
+require_once __DIR__.'/bootstrap/start.php';
