@@ -5,7 +5,7 @@
 if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
     $_SERVER['REQUEST_TIME_FLOAT'] = microtime(true);
 }
-define("DOCUMENT_ROOT", dirname(__FILE__));
+define("DOCUMENT_ROOT", dirname(__DIR__));
 
 $config_res = include_once( DOCUMENT_ROOT. '/config.php');
 if (!$config_res) {
