@@ -1,26 +1,14 @@
 <?php
-/**
- * Load Floxim Core
- */
-if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-    $_SERVER['REQUEST_TIME_FLOAT'] = microtime(true);
-}
-define("DOCUMENT_ROOT", dirname(__DIR__));
+$result = fx::router()->route();
 
-$config_res = include_once( DOCUMENT_ROOT. '/config.php');
-if (!$config_res) {
-    header("Location: /install/");
-    die();
+if ( $result ) {
+    $result = $result instanceof \Floxim\Floxim\System\Controller ? $result->process() : $result;
+    if (fx::env('ajax')) {
+        fx::page()->add_assets_ajax();
+    }
+    echo $result;
+    fx::env()->set('complete_ok', true);
 }
-
-/**
- * Register global short alias
- */
-class_alias('\\Floxim\\Floxim\\System\\Fx','fx');
-/**
- * Load config
- */
-fx::load($config_res);
 
 fx::listen('unlink', function($e) {
     if (fx::path()->is_inside($e->file, fx::path('thumbs'))) {
