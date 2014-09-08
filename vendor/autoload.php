@@ -17,7 +17,6 @@ spl_autoload_register(function($class_name){
     $file_name = __DIR__.DIRECTORY_SEPARATOR.$file_name;
 
     if (file_exists($file_name)) {
-        say($file_name);
         require_once $file_name;
         return true;
     }
