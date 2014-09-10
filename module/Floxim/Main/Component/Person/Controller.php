@@ -1,5 +1,7 @@
 <?php
-class fx_controller_component_person extends fx_controller_component_page {
+namespace Floxim\Main\Component\Person;
+
+class Controller extends \Floxim\Main\Component\Page\Controller {
     public function do_list_infoblock() {
         $this->_with_contacts();
         return parent::do_list_infoblock();
@@ -10,10 +12,9 @@ class fx_controller_component_person extends fx_controller_component_page {
     }
    
     protected function _with_contacts () {
-        $this->listen('query_ready', function (fx_data $query) {
+        $this->listen('query_ready', function (\Floxim\Floxim\System\Data $query) {
             $query->with('contacts');
         });
     }
     
-} 
-?>
+}

@@ -1,5 +1,9 @@
 <?php
-class fx_controller_component_publication extends fx_controller_component_page {
+namespace Floxim\Main\Component\Product;
+
+use fx;
+
+class Controller extends \Floxim\Main\Component\Page\Controller {
     
     public function do_list () {
         $this->listen('query_ready', function (fx_data $query) {

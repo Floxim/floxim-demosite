@@ -1,5 +1,7 @@
-<?
-class fx_data_content_contact extends fx_data_content {
+<?php
+namespace Floxim\Main\Component\Contact;
+
+class Finder extends \Floxim\Floxim\Component\Content\Finder {
 
     public function livesearch($term = null, $limit = null) {
         if (!isset($term)) {
@@ -28,4 +30,3 @@ class fx_data_content_contact extends fx_data_content {
     }
 
 }
-?>

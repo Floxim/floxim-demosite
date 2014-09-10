@@ -1,5 +1,7 @@
 <?php
-class fx_content_social_icon extends fx_content {    
+namespace Floxim\Main\Component\Page;
+
+class Essence extends \Floxim\Floxim\Component\Content\Essence {
     protected function _before_save() {
         parent::_before_save();
         if(preg_match('~^(https?:\/\/)?(www\.)?((?P<url>[\w\.]+))\.([a-z]{2,6}\.?)(\/[\w\-\?\=\.]*)*\/?$~', $this['url'], $match)!=0) {
@@ -11,4 +13,3 @@ class fx_content_social_icon extends fx_content {
         }
     }
 }
-?>

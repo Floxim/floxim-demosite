@@ -1,5 +1,7 @@
 <?php
-class fx_content_video extends fx_content {
+namespace Floxim\Main\Component\Video;
+
+class Essence extends \Floxim\Floxim\Component\Content\Essence {
     protected function _before_save() {
         parent::_before_save();
         if(preg_match('/<[\w\s]+/', $this['embed_html'])==0) {
