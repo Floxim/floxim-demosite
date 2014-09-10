@@ -1,5 +1,8 @@
 <?php
 
+use fx;
+
+// todo: psr0 need fix
 $record_templates = fx::controller('component_'.$component['keyword'].'.record')
                         ->get_available_templates(fx::env('layout'));
 

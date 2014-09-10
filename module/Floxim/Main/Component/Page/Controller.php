@@ -1,5 +1,9 @@
 <?php
-class fx_controller_component_page extends fx_controller_component {
+namespace Floxim\Main\Component\Page;
+
+use fx;
+
+class Controller extends \Floxim\Floxim\Controller\Component {
     public function do_neighbours() {
         $item = fx::env('page');
         
@@ -24,7 +28,7 @@ class fx_controller_component_page extends fx_controller_component {
         $group_by_parent = $this->get_param('group_by_parent');
         
         if ($group_by_parent) {
-            $c_parent = fx::content($item['parent_id']);
+            $c_parent = fx::content($item['parent_id']); // todo: psr0 need verify
             $q_prev->order('parent.priority', 'desc')->where('parent.priority', $c_parent['priority'], '<=');
             $q_next->order('parent.priority', 'asc')->where('parent.priority', $c_parent['priority'], '>=');
             $where_prev []= array('parent_id', $item['parent_id'], '!=');

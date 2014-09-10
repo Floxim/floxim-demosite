@@ -1,6 +1,8 @@
 <?php
 namespace Floxim\Main\Component\Section;
 
+use fx;
+
 class Essence extends \Floxim\Main\Component\Page\Essence {
     public function get_avail_parents_finder() {
         $f = parent::get_avail_parents_finder();

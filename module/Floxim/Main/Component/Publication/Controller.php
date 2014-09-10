@@ -1,19 +1,20 @@
 <?php
-namespace Floxim\Main\Component\Product;
+namespace Floxim\Main\Component\Publication;
 
 use fx;
+use Floxim\Floxim\System;
 
 class Controller extends \Floxim\Main\Component\Page\Controller {
     
     public function do_list () {
-        $this->listen('query_ready', function (fx_data $query) {
+        $this->listen('query_ready', function (System\Data $query) {
             $query->with('tags');
         });
         return parent::do_list();
     }
     public function do_list_by_tag() {
         $this->listen('query_ready', function($query) {
-            $ids = fx::data('content_classifier_linker')->
+            $ids = fx::data('classifier_linker')->
                     where('classifier_id', fx::env('page')->get('id'))->
                     select('content_id')->
                     get_data()->get_values('content_id');
@@ -33,7 +34,7 @@ class Controller extends \Floxim\Main\Component\Page\Controller {
             return;
         }
         return fx::data(
-            'content_page', 
+            'page',
             $infoblock->get('page_id')
         );
     }
@@ -66,14 +67,14 @@ class Controller extends \Floxim\Main\Component\Page\Controller {
             $base_url = $pub_page->get('url');
         }
         
-        $years = new fx_collection();
+        $years = new System\Collection();
         $c_full_month = isset($_GET['month']) ? $_GET['month'] : null;
         $c_year = $c_full_month ? preg_replace("~\d+\.~", '', $c_full_month) : date('Y');
         foreach ($months as $m) {
             if (!isset($years[$m['year']])) {
                 $years[$m['year']] = array(
                     'year' => $m['year'],
-                    'months' => new fx_collection(),
+                    'months' => new System\Collection(),
                     'active' => $c_year == $m['year']
                 );
             }
@@ -87,7 +88,7 @@ class Controller extends \Floxim\Main\Component\Page\Controller {
     }
     public function do_list_infoblock() {
         if ( isset($_GET['month']) ) {
-            $this->listen('query_ready', function (fx_data $query) {
+            $this->listen('query_ready', function (System\Data $query) {
                 list($month, $year) = explode(".", $_GET['month']);
                 $start = $year.'-'.$month.'-01, 00:00:00';
                 $end = $year.'-'.$month.'-'.date('t', strtotime($start)).', 23:59:59';
@@ -125,7 +126,7 @@ class Controller extends \Floxim\Main\Component\Page\Controller {
         /**
          * Retrieve pages object
          */
-        $pages=fx::data('content_page')->where('id',$pages_id)->all();
+        $pages=fx::data('page')->where('id',$pages_id)->all();
         return $pages;
     }
 }

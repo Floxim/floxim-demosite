@@ -1,5 +1,9 @@
 <?php
-class fx_controller_component_comment extends fx_controller_component
+namespace Floxim\Main\Component\Comment;
+
+use fx;
+
+class Controller extends \Floxim\Floxim\Controller\Component
 {
     
     protected function _get_target_infoblock()
@@ -44,7 +48,7 @@ class fx_controller_component_comment extends fx_controller_component
     {
         if (isset($_POST["addcomment"]) && isset($_POST["user_name"]) && !empty($_POST["user_name"]) && isset($_POST["comment_text"]) && !empty($_POST["comment_text"])) {
             
-            $comments = fx::data('content_comment')->create(array(
+            $comments = fx::data('comment')->create(array(
                 'user_name' => $_POST["user_name"],
                 'comment_text' => $_POST["comment_text"],
                 'publish_date' => date("Y-m-d H:i:s"),
@@ -71,4 +75,3 @@ class fx_controller_component_comment extends fx_controller_component
     }
     
 }
-?>

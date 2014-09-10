@@ -3,7 +3,7 @@ namespace Floxim\Main\Component\User;
 
 use fx;
 
-class Controller extends \Floxim\Floxim\Controller\Frontoffice {
+class Controller extends \Floxim\Floxim\Controller\Component {
     public function do_auth_form() {
         $user = fx::user();
         
@@ -80,7 +80,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
             $session = fx::data('session')->get_by_key($_POST['session_key']);
             if ($session) {
                 $session->set_cookie();
-                $user = fx::data('content_user', $session['user_id']);
+                $user = fx::data('user', $session['user_id']);
                 return "Hello, ".$user['name'].'!<br /> '.fx::env('host').' is glad to see you!';
             }
         }
@@ -98,7 +98,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
     }
     
     public function do_recover_form() {
-        $form = new fx_form();
+        $form = new \Floxim\Floxim\Helper\Form\Form();
         $form->add_fields(array(
             'email' => array(
                 'label' => 'E-mail',
@@ -111,7 +111,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
             )
         ));
         if ($form->is_sent() && !$form->has_errors()) {
-            $user = fx::data('content_user')->get_by_login($form->email);
+            $user = fx::data('user')->get_by_login($form->email);
             if (!$user) {
                 $form->add_error(fx::lang('User not found'), 'email');
             } else {

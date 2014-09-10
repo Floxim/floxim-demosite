@@ -1,5 +1,6 @@
-<?
-class fx_data_content_comment extends fx_data_content {
+<?php
+namespace Floxim\Main\Component\Comment;
+
+class Finder extends \Floxim\Floxim\Component\Content\Finder {
     
 }
-?>

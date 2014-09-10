@@ -1,5 +1,9 @@
 <?php
-class fx_content_comment extends fx_content {
+namespace Floxim\Main\Component\Comment;
+
+use fx;
+
+class Essence extends \Floxim\Floxim\Component\Content\Essence {
     
     protected function _get_page () {
         if (!isset($this['parent_id'])) {
@@ -30,4 +34,3 @@ class fx_content_comment extends fx_content {
         $page->save(); 
     }
 }
-?>

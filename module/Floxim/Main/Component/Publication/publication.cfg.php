@@ -1,4 +1,6 @@
 <?php
+
+use fx;
 return array(
     'actions' => array(
         '*list*' => array(

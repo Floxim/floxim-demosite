@@ -1,5 +1,7 @@
 <?php
 
+use fx;
+
 $source_ibs = fx::data('infoblock')
     ->get_content_infoblocks('section')
     ->find('site_id', fx::env('site')->get('id'))
@@ -38,7 +40,7 @@ return array(
                         'conditions' => array(
                             'controller' => array(
                                 fx::data('component', 'page')->get_all_variants()->get_values(function($ch) {
-                                    return 'component_'.$ch['keyword'];
+                                    return 'component_'.$ch['keyword']; //todo: psr0 verify
                                 }),
                                 'IN'
                             ),

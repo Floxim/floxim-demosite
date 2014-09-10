@@ -1,5 +1,9 @@
 <?php
-class fx_content_classifier_linker extends fx_content {
+namespace Floxim\Main\Component\ClassifierLinker;
+
+use fx;
+
+class Essence extends \Floxim\Floxim\Component\Content\Essence {
     
     protected function _after_insert() {
         parent::_after_insert();

@@ -1,5 +1,10 @@
 <?php
-class fx_controller_component_section extends fx_controller_component_page {
+namespace Floxim\Main\Component\Section;
+
+use fx;
+use Floxim\Floxim\System;
+
+class Controller extends \Floxim\Main\Component\Page\Controller {
 
    public function do_list_infoblock() {
         $c_page_id  = fx::env('page')->get('id');
@@ -112,7 +117,7 @@ class fx_controller_component_section extends fx_controller_component_page {
         $essence_page = fx::data('page',$page_id);
         $essence_page['active'] = true;
         if ($this->get_param('header_only')) {
-            $pages = new fx_collection(array($essence_page));
+            $pages = new System\Collection(array($essence_page));
         } else {
             $pages = $essence_page->get_path();
         }
@@ -128,7 +133,7 @@ class fx_controller_component_section extends fx_controller_component_page {
         /**
          * Retrieve pages object
          */
-        $pages=fx::data('content_section')->where('site_id',fx::env('site_id'))->all();
+        $pages=fx::data('section')->where('site_id',fx::env('site_id'))->all();
         $additional_parent_ids=array_diff($pages->get_values('parent_id'),$pages->get_values('id'));
         $additional_parent_ids=array_unique($additional_parent_ids);
         $pages_add=fx::data('content')->where('id',$additional_parent_ids)->all();
