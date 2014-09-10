@@ -27,7 +27,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 
-RewriteRule ^(.+)$ /floxim/index.php?REQUEST_URI=$1 [L,QSA]
+RewriteRule ^(.+)$ /index.php?REQUEST_URI=$1 [L,QSA]
 RewriteRule .* - [E=HTTP_IF_MODIFIED_SINCE:%{HTTP:If-Modified-Since}]
 RewriteRule .* - [E=HTTP_IF_NONE_MATCH:%{HTTP:If-None-Match}]
 </ifModule>
