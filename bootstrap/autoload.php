@@ -1,8 +1,9 @@
 <?php
 /**
- * Register PSR-0 Auto Loader
+ * Register Composer Auto Loader
  */
 require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/psr0.php';
 
 /**
  * Register Floxim Auto Loader
