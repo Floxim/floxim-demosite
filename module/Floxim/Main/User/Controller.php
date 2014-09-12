@@ -1,9 +1,9 @@
 <?php
-namespace Floxim\Main\Component\User;
+namespace Floxim\Main\User;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
-class Controller extends \Floxim\Floxim\Controller\Component {
+class Controller extends \Floxim\Floxim\Controller\sComponent {
     public function do_auth_form() {
         $user = fx::user();
         

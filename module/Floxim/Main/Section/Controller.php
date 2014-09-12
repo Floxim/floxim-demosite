@@ -1,10 +1,10 @@
 <?php
-namespace Floxim\Main\Component\Section;
+namespace Floxim\Main\Section;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 use Floxim\Floxim\System;
 
-class Controller extends \Floxim\Main\Component\Page\Controller {
+class Controller extends \Floxim\Main\Page\Controller {
 
    public function do_list_infoblock() {
         $c_page_id  = fx::env('page')->get('id');

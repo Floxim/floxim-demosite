@@ -1,7 +1,7 @@
 <?php
-namespace Floxim\Main\Component\Comment;
+namespace Floxim\Main\Comment;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
 class Controller extends \Floxim\Floxim\Controller\Component
 {

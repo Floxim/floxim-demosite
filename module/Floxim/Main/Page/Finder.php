@@ -1,8 +1,8 @@
 <?php
-namespace Floxim\Main\Component\Page;
+namespace Floxim\Main\Page;
 
 use Floxim\Floxim\Component;
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
 class Finder extends Component\Content\Finder {
     

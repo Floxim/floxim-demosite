@@ -1,9 +1,9 @@
 <?php
-namespace Floxim\Main\Component\Vacancy;
+namespace Floxim\Main\Vacancy;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
-class Essence extends \Floxim\Main\Component\Page\Essence {
+class Essence extends \Floxim\Main\Page\Essence {
     public function get_form_fields() {
         $fields = fx::collection(parent::get_form_fields());
         $fields->apply(function($f) {

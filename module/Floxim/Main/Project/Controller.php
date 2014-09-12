@@ -1,6 +1,6 @@
 <?php
-namespace Floxim\Main\Component\Project;
+namespace Floxim\Main\Project;
 
-class Controller extends \Floxim\Main\Component\Page\Controller {
+class Controller extends \Floxim\Main\Page\Controller {
 
 }

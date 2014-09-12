@@ -1,10 +1,10 @@
 <?php
-namespace Floxim\Main\Component\Publication;
+namespace Floxim\Main\Publication;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 use Floxim\Floxim\System;
 
-class Controller extends \Floxim\Main\Component\Page\Controller {
+class Controller extends \Floxim\Main\Page\Controller {
     
     public function do_list () {
         $this->listen('query_ready', function (System\Data $query) {

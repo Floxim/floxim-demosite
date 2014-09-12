@@ -1,6 +1,6 @@
 <?php
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
 $source_ibs = fx::data('infoblock')
     ->get_content_infoblocks('section')

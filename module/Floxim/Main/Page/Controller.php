@@ -1,7 +1,7 @@
 <?php
-namespace Floxim\Main\Component\Page;
+namespace Floxim\Main\Page;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
 class Controller extends \Floxim\Floxim\Controller\Component {
     public function do_neighbours() {

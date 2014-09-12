@@ -1,7 +1,7 @@
 <?php
-namespace Floxim\Main\Component\ClassifierLinker;
+namespace Floxim\Main\ClassifierLinker;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
 class Essence extends \Floxim\Floxim\Component\Content\Essence {
     

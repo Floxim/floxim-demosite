@@ -1,5 +1,6 @@
 <?php
-namespace Floxim\Main\Section;
+
+namespace Floxim\Main\Project;
 
 class Finder extends \Floxim\Main\Page\Finder {
     

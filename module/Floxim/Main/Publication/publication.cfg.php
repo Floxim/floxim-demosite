@@ -1,6 +1,7 @@
 <?php
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
+
 return array(
     'actions' => array(
         '*list*' => array(

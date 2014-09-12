@@ -1,7 +1,7 @@
 <?php
 namespace Floxim\Main\Component\Person;
 
-class Controller extends \Floxim\Main\Component\Page\Controller {
+class Controller extends \Floxim\Main\Page\Controller {
     public function do_list_infoblock() {
         $this->_with_contacts();
         return parent::do_list_infoblock();

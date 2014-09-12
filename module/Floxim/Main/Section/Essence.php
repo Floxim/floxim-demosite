@@ -1,9 +1,9 @@
 <?php
-namespace Floxim\Main\Component\Section;
+namespace Floxim\Main\Section;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
-class Essence extends \Floxim\Main\Component\Page\Essence {
+class Essence extends \Floxim\Main\Page\Essence {
     public function get_avail_parents_finder() {
         $f = parent::get_avail_parents_finder();
         $our_infoblock = fx::data('infoblock', $this['infoblock_id']);

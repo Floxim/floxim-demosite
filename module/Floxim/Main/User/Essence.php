@@ -1,7 +1,7 @@
 <?php
-namespace Floxim\Main\Component\User;
+namespace Floxim\Main\User;
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
 class Essence extends \Floxim\Floxim\Component\Content\Essence {
 

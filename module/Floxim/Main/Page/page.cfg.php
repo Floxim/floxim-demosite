@@ -1,6 +1,6 @@
 <?php
 
-use fx;
+use Floxim\Floxim\System\Fx as fx;
 
 $record_templates = fx::controller($component['keyword'].':record')
                         ->get_available_templates(fx::env('layout'));
