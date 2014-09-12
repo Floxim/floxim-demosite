@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.0.10
 -- http://www.phpmyadmin.net
 --
--- Хост: 127.0.0.1
--- Время создания: Авг 18 2014 г., 18:18
--- Версия сервера: 5.5.25
--- Версия PHP: 5.3.13
+-- Хост: 127.0.0.1:3306
+-- Время создания: Сен 12 2014 г., 12:48
+-- Версия сервера: 5.5.38-log
+-- Версия PHP: 5.4.29
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- База данных: `fx_loc`
+-- База данных: `fxpsr_loc`
 --
 
 -- --------------------------------------------------------
@@ -1046,51 +1046,51 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock` (
 
 INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `checked`, `name`, `controller`, `action`, `params`, `scope`) VALUES
 (345, 0, 18, 2635, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
-(346, 0, 18, 2635, 1, 'Main menu', 'component_section', 'list_infoblock', 'a:2:{s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";a:1:{i:0;s:3:"385";}}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
-(347, 0, 18, 2635, 1, 'Footer nav', 'component_section', 'list_filtered', 'a:3:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2635";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
+(346, 0, 18, 2635, 1, 'Main menu', 'section', 'list_infoblock', 'a:2:{s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";a:1:{i:0;s:3:"385";}}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
+(347, 0, 18, 2635, 1, 'Footer nav', 'section', 'list_filtered', 'a:3:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2635";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (359, 345, 18, 2638, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(360, 0, 18, 2635, 1, 'Navigation / breadcrumbs', 'component_section', 'breadcrumbs', 'a:2:{s:11:"header_only";s:1:"0";s:13:"hide_on_index";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
-(361, 0, 18, 2638, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(362, 0, 18, 2638, 1, 'Navigation / ', 'component_section', 'list_selected', 'a:1:{s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(364, 0, 18, 2638, 1, 'Products', 'component_product', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"section";}'),
-(367, 0, 18, 2638, 1, 'Product / Single entry', 'component_product', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"product";}'),
-(369, 0, 18, 2635, 1, 'Product / ', 'component_product', 'list_selected', 'a:2:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(370, 0, 18, 2635, 1, 'Product / ', 'component_product', 'list_selected', 'a:2:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(372, 0, 18, 2655, 1, 'Persons', 'component_person', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
-(374, 0, 18, 2656, 1, 'Vacancies', 'component_vacancy', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(376, 0, 18, 2656, 1, 'Vacancy / Single entry', 'component_vacancy', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";}'),
-(379, 0, 18, 2657, 1, 'News', 'component_news', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(381, 0, 18, 2635, 1, 'Featured news', 'component_news', 'list_selected', 'a:3:{s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(360, 0, 18, 2635, 1, 'Navigation / breadcrumbs', 'section', 'breadcrumbs', 'a:2:{s:11:"header_only";s:1:"0";s:13:"hide_on_index";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
+(361, 0, 18, 2638, 1, 'Navigation / ', 'section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(362, 0, 18, 2638, 1, 'Navigation / ', 'section', 'list_selected', 'a:1:{s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(364, 0, 18, 2638, 1, 'Products', 'product', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"section";}'),
+(367, 0, 18, 2638, 1, 'Product / Single entry', 'product', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"product";}'),
+(369, 0, 18, 2635, 1, 'Product / ', 'product', 'list_selected', 'a:2:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(370, 0, 18, 2635, 1, 'Product / ', 'product', 'list_selected', 'a:2:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(372, 0, 18, 2655, 1, 'Persons', 'person', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(374, 0, 18, 2656, 1, 'Vacancies', 'vacancy', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(376, 0, 18, 2656, 1, 'Vacancy / Single entry', 'vacancy', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";}'),
+(379, 0, 18, 2657, 1, 'News', 'news', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(381, 0, 18, 2635, 1, 'Featured news', 'news', 'list_selected', 'a:3:{s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (382, 345, 18, 2639, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
-(385, 0, 18, 2639, 1, 'Projects', 'component_project', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:13:"mount_page_id";}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
-(386, 0, 18, 2639, 1, 'Project / Single entry', 'component_project', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
-(388, 0, 18, 2638, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
-(389, 0, 18, 2639, 1, 'Project gallery', 'component_photo', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
+(385, 0, 18, 2639, 1, 'Projects', 'project', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:13:"mount_page_id";}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
+(386, 0, 18, 2639, 1, 'Project / Single entry', 'project', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
+(388, 0, 18, 2638, 1, 'Navigation / ', 'section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
+(389, 0, 18, 2639, 1, 'Project gallery', 'photo', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
 (390, 345, 18, 2640, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(391, 0, 18, 2640, 1, 'Navigation / ', 'component_section', 'list_selected', 'a:1:{s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(392, 0, 18, 2640, 1, 'Last news', 'component_news', 'list_filtered', 'a:5:{s:5:"limit";s:1:"4";s:10:"pagination";s:1:"0";s:7:"sorting";s:7:"created";s:11:"sorting_dir";s:3:"asc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(397, 0, 18, 2641, 1, 'Contacts text', 'component_text', 'list_infoblock', 'a:2:{s:5:"limit";s:0:"";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(398, 0, 18, 2657, 1, 'News / Single entry', 'component_news', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:4:"news";}'),
+(391, 0, 18, 2640, 1, 'Navigation / ', 'section', 'list_selected', 'a:1:{s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(392, 0, 18, 2640, 1, 'Last news', 'news', 'list_filtered', 'a:5:{s:5:"limit";s:1:"4";s:10:"pagination";s:1:"0";s:7:"sorting";s:7:"created";s:11:"sorting_dir";s:3:"asc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(397, 0, 18, 2641, 1, 'Contacts text', 'text', 'list_infoblock', 'a:2:{s:5:"limit";s:0:"";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(398, 0, 18, 2657, 1, 'News / Single entry', 'news', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:4:"news";}'),
 (399, 345, 18, 2635, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(400, 0, 18, 2635, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}s:5:"new_2";a:3:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:3:"346";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
-(404, 0, 18, 2640, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2640";}}s:5:"new_2";a:3:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:3:"346";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
-(408, 0, 18, 2635, 1, 'Auth form', 'component_user', 'auth_form', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
-(409, 0, 18, 2635, 1, 'Greet', 'component_user', 'greet', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
+(400, 0, 18, 2635, 1, 'Navigation / ', 'section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}s:5:"new_2";a:3:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:3:"346";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(404, 0, 18, 2640, 1, 'Navigation / ', 'section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2640";}}s:5:"new_2";a:3:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:3:"346";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
+(408, 0, 18, 2635, 1, 'Auth form', 'user', 'auth_form', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
+(409, 0, 18, 2635, 1, 'Greet', 'user', 'greet', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (410, 0, 18, 2635, 1, 'Two columns', 'widget_grid', 'two_columns', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(411, 0, 18, 2635, 1, 'Featured pages', 'component_page', 'list_selected', 'a:3:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(412, 0, 18, 2638, 1, 'Product neighbours', 'component_product', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"1";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"product";}'),
-(413, 0, 18, 2657, 1, 'News neighbours', 'component_news', 'neighbours', 'a:2:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:4:"news";}'),
-(414, 0, 18, 2656, 1, 'Vacancy neighbours', 'component_vacancy', 'neighbours', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";}'),
-(416, 0, 18, 2639, 1, 'Project neighbours', 'component_project', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
-(418, 0, 18, 2655, 1, 'Person record', 'component_person', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
-(419, 0, 18, 2655, 1, 'Person neighbours', 'component_person', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
+(411, 0, 18, 2635, 1, 'Featured pages', 'page', 'list_selected', 'a:3:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(412, 0, 18, 2638, 1, 'Product neighbours', 'product', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"1";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"product";}'),
+(413, 0, 18, 2657, 1, 'News neighbours', 'news', 'neighbours', 'a:2:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:4:"news";}'),
+(414, 0, 18, 2656, 1, 'Vacancy neighbours', 'vacancy', 'neighbours', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";}'),
+(416, 0, 18, 2639, 1, 'Project neighbours', 'project', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
+(418, 0, 18, 2655, 1, 'Person record', 'person', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
+(419, 0, 18, 2655, 1, 'Person neighbours', 'person', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
 (422, 0, 18, 2641, 1, 'Map', 'widget_map', 'show', 'a:1:{s:3:"map";a:3:{s:7:"address";s:76:"Большой Саввинский переулок, 12 строение 18";s:3:"lat";s:18:"55.732346350157044";s:3:"lon";s:17:"37.56402175659173";}}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (423, 345, 18, 2638, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
-(426, 0, 18, 2773, 1, 'News test', 'component_news', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
-(427, 0, 18, 2773, 1, 'Menu test', 'component_section', 'list_infoblock', 'a:2:{s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";a:1:{i:0;s:3:"426";}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
-(429, 0, 18, 2773, 1, 'Sections by filter', 'component_section', 'list_filtered', 'a:3:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:2:{i:0;s:4:"2635";i:1;s:4:"2773";}}}s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";b:0;}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
-(431, 0, 18, 2635, 1, 'Text', 'component_text', 'list_infoblock', 'a:1:{s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
-(435, 0, 18, 2640, 1, 'Person by filter', 'component_person', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:4:"desc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}');
+(426, 0, 18, 2773, 1, 'News test', 'news', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(427, 0, 18, 2773, 1, 'Menu test', 'section', 'list_infoblock', 'a:2:{s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";a:1:{i:0;s:3:"426";}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(429, 0, 18, 2773, 1, 'Sections by filter', 'section', 'list_filtered', 'a:3:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:2:{i:0;s:4:"2635";i:1;s:4:"2773";}}}s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";b:0;}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(431, 0, 18, 2635, 1, 'Text', 'text', 'list_infoblock', 'a:1:{s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(435, 0, 18, 2640, 1, 'Person by filter', 'person', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:4:"desc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}');
 
 -- --------------------------------------------------------
 
@@ -1117,54 +1117,53 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
 --
 
 INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`, `wrapper_visual`, `template`, `template_visual`, `area`, `priority`) VALUES
-(59, 57, 1, 'layout_supernova.wrap_titled', '', 'component_page.list', '', 'content', 8),
-(417, 345, 12, '', '', 'layout_v3.two_columns', 'a:5:{s:5:"phone";s:17:"8 (800) 123 12 45";s:4:"logo";s:0:"";s:17:"two_column_header";s:29:"\n                Yes, we can!";s:17:"one_column_header";s:25:"\n                Our news";s:9:"logo_name";s:10:"Photo Team";}', '', 1),
-(418, 346, 12, '', '', 'layout_v3.main_menu', '', 'top_nav', 1),
-(419, 347, 12, '', '', 'layout_v3.footer_menu', '', 'footer_menu', 1),
-(431, 359, 12, '', '', 'layout_v3.one_column', '', '', 2),
-(432, 360, 12, '', '', 'layout_v3.breadcrumbs', '', 'breadcrumbs-area', 1),
-(433, 361, 12, '', '', 'layout_v3.featured_list', 'a:7:{s:5:"image";s:38:"/floxim_files/content/HansIsland_0.png";s:10:"image_2652";s:35:"/floxim_files/content/5_ski_4_0.JPG";s:10:"four_items";s:1:"1";s:8:"image_id";s:32:"/floxim_files/content/7394_0.jpg";s:10:"image_2654";s:40:"/floxim_files/content/5_people_cover.jpg";s:10:"image_2658";s:38:"/floxim_files/content/5_nature_5_0.jpg";s:10:"image_2744";s:40:"/floxim_files/content/6_events_cover.jpg";}', 'main_column', 2),
-(434, 362, 12, '', '', 'layout_v3.banner', 'a:3:{s:18:"banner_header_2652";s:37:"<p class="">\n	 Special conditions</p>";s:16:"banner_text_2652";s:34:"<p class="">\n	For sport series</p>";s:17:"banner_image_2652";s:34:"/floxim_files/content/5_swim_0.jpg";}', 'main_column', 1),
-(436, 364, 12, '', '', 'layout_v3.featured_list', 'a:1:{s:10:"four_items";s:1:"0";}', 'main_column', 3),
-(439, 367, 12, '', '', 'layout_v3.product_record', '', 'main_column', 4),
-(441, 369, 12, '', '', 'layout_v3.banner', 'a:6:{s:18:"banner_header_2660";s:28:"<p>\n	  Greate ship\n</p>\n<br>";s:16:"banner_text_2660";s:43:"<p>\n	It''s really <strong>cool</strong>\n</p>";s:7:"go_2660";s:2:"Go";s:17:"banner_image_2740";s:32:"/floxim_files/content/3b_6_0.jpg";s:16:"banner_text_2740";s:21:"Better than ever\n<br>";s:18:"banner_header_2740";s:24:"<p class="">Portrait</p>";}', 'content_410', 1),
-(442, 370, 12, '', 'a:1:{s:6:"header";s:10:"Best ships";}', 'layout_v3.featured_list', 'a:2:{s:10:"four_items";s:1:"0";s:10:"photo_2743";s:0:"";}', 'content_410', 2),
-(444, 372, 12, '', '', 'layout_v3.person_list', 'a:4:{s:13:"facebook_2671";s:0:"";s:7:"vk_2671";s:0:"";s:7:"li_2671";s:0:"";s:12:"twitter_2671";s:0:"";}', 'main_column', 5),
-(446, 374, 12, '', '', 'layout_v3.vacancies_list', 'a:3:{s:14:"more_info_2677";s:27:"More info about the vacancy";s:14:"more_info_2771";s:22:"more info for supermen";s:14:"more_info_2791";s:9:"More info";}', 'main_column', 6),
-(451, 379, 12, '', '', 'layout_v3.news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"2";}', 'main_column', 7),
-(453, 381, 12, 'layout_v3.gray_block', 'a:1:{s:6:"header";s:16:"What''s happening";}', 'layout_v3.featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"1";}', 'main_column', 16),
-(454, 382, 12, '', '', 'layout_v3.full_width', '', '', 8),
-(457, 385, 12, '', '', 'layout_v3.full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:30:"/floxim_files/content/2a_2.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 12),
-(458, 386, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:17:"About the project";}', 'layout_v3.project_record', '', 'main_column', 13),
-(460, 388, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 1),
-(461, 389, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:6:"Images";}', 'layout_v3.slider', 'a:1:{s:10:"thumbnails";s:1:"1";}', 'main_column', 14),
-(462, 390, 12, '', '', 'layout_v3.one_column', '', '', 9),
-(463, 391, 12, '', '', 'layout_v3.banner', 'a:3:{s:18:"banner_header_2656";s:27:"<p class="">\n	Need job?</p>";s:16:"banner_text_2656";s:39:"<p class="">\n	Look at our vacancies</p>";s:17:"banner_image_2656";s:40:"/floxim_files/content/5_open_air_2_0.jpg";}', 'main_column', 9),
-(464, 392, 12, 'layout_v3.gray_block', 'a:1:{s:6:"header";s:11:"Latest news";}', 'layout_v3.featured_news_list', 'a:4:{s:13:"more_news_url";s:5:"/News";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";s:9:"more_news";s:8:"all news";}', 'main_column', 8),
-(469, 397, 12, '', '', 'layout_v3.text', 'a:3:{s:9:"blue_2701";s:1:"1";s:9:"blue_2700";s:1:"0";s:12:"hilight_2701";s:1:"1";}', 'main_column', 10),
-(470, 398, 12, '', '', 'layout_v3.news_record', '', 'main_column', 11),
-(471, 399, 12, '', '', 'layout_v3.index', '', '', 11),
-(472, 400, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'sidebar_410', 1),
-(476, 404, 12, '', '', 'layout_v3.side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 2),
-(573, 0, 14, '', '', 'layout_moscowpools.one_col', '', '', 1),
-(575, 408, 12, '', '', 'layout_v3.auth_form', 'a:4:{s:11:"label_email";s:30:"E-mail                        ";s:14:"label_password";s:8:"Password";s:14:"label_remember";s:11:"Remember me";s:12:"label_submit";s:6:"Log in";}', 'icons_area', 1),
-(576, 409, 12, '', '', 'component_user.greet', '', 'icons_area', 2),
-(577, 410, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:51:"We shoot everything and everywhere around the world";}', 'layout_v3.two_columns_grid', '', 'main_column', 17),
-(578, 411, 12, '', '', 'layout_v3.full_screen_menu', 'a:3:{s:11:"header_2635";s:52:"<p class="">Team of</p><p class="">photographers</p>";s:12:"caption_2635";s:117:"<p class="">\n	We come in&nbsp;any&nbsp;sizes and shapes ready to</p><p class="">\n	shoot any series&nbsp;you like.</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 15),
-(579, 412, 12, '', '', 'component_page.neighbours', '', 'main_column', 18),
-(580, 413, 12, '', '', 'component_page.neighbours', '', 'main_column', 19),
-(581, 414, 12, '', '', 'component_page.neighbours', '', 'main_column', 28),
-(583, 416, 12, '', '', 'component_page.neighbours', '', 'main_column', 20),
-(585, 418, 12, '', '', 'layout_v3.person_record', '', 'main_column', 21),
-(586, 419, 12, '', '', 'component_page.neighbours', '', 'main_column', 22),
-(588, 376, 12, '', '', 'layout_v3.vacancy_record', '', 'main_column', 23),
-(590, 422, 12, '', '', 'widget_map.static_google_map', 'a:3:{s:9:"map_width";s:3:"940";s:10:"map_height";s:3:"340";s:8:"map_zoom";s:2:"14";}', 'main_column', 24),
-(591, 423, 12, '', '', 'layout_v3.one_column', '', '', 12),
-(594, 426, 12, '', '', 'layout_v3.featured_news_list', 'a:5:{s:12:"show_anounce";s:1:"1";s:18:"read_more_#new_id#";s:4:"More";s:14:"read_more_2778";s:4:"More";s:14:"read_more_2782";s:11:"Reed Mooore";s:14:"read_more_2783";s:16:"Read more please";}', 'main_column', 25),
-(595, 427, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:9:"Infoblock";}', 'component_section.listing_deep', '', 'main_column', 26),
-(597, 429, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:8:"Filtered";}', 'component_section.listing_deep', '', 'main_column', 27),
-(599, 431, 12, '', '', 'component_text.list', '', 'sidebar_430', 1),
-(603, 435, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:19:"Meet the super team";}', 'layout_v3.featured_list', 'a:1:{s:10:"four_items";s:1:"1";}', 'main_column', 30);
+(59, 57, 1, 'theme.floxim.supernova:wrap_titled', '', 'page:list', '', 'content', 8),
+(417, 345, 12, '', '', 'theme.floxim.phototeam:two_columns', 'a:5:{s:5:"phone";s:17:"8 (800) 123 12 45";s:4:"logo";s:0:"";s:17:"two_column_header";s:29:"\n                Yes, we can!";s:17:"one_column_header";s:25:"\n                Our news";s:9:"logo_name";s:10:"Photo Team";}', '', 1),
+(418, 346, 12, '', '', 'theme.floxim.phototeam:main_menu', '', 'top_nav', 1),
+(419, 347, 12, '', '', 'theme.floxim.phototeam:footer_menu', '', 'footer_menu', 1),
+(431, 359, 12, '', '', 'theme.floxim.phototeam:one_column', '', '', 2),
+(432, 360, 12, '', '', 'theme.floxim.phototeam:breadcrumbs', '', 'breadcrumbs-area', 1),
+(433, 361, 12, '', '', 'theme.floxim.phototeam:featured_list', 'a:7:{s:5:"image";s:38:"/floxim_files/content/HansIsland_0.png";s:10:"image_2652";s:35:"/floxim_files/content/5_ski_4_0.JPG";s:10:"four_items";s:1:"1";s:8:"image_id";s:32:"/floxim_files/content/7394_0.jpg";s:10:"image_2654";s:40:"/floxim_files/content/5_people_cover.jpg";s:10:"image_2658";s:38:"/floxim_files/content/5_nature_5_0.jpg";s:10:"image_2744";s:40:"/floxim_files/content/6_events_cover.jpg";}', 'main_column', 2),
+(434, 362, 12, '', '', 'theme.floxim.phototeam:banner', 'a:3:{s:18:"banner_header_2652";s:37:"<p class="">\n	 Special conditions</p>";s:16:"banner_text_2652";s:34:"<p class="">\n	For sport series</p>";s:17:"banner_image_2652";s:34:"/floxim_files/content/5_swim_0.jpg";}', 'main_column', 1),
+(436, 364, 12, '', '', 'theme.floxim.phototeam:featured_list', 'a:1:{s:10:"four_items";s:1:"0";}', 'main_column', 3),
+(439, 367, 12, '', '', 'theme.floxim.phototeam:product_record', '', 'main_column', 4),
+(441, 369, 12, '', '', 'theme.floxim.phototeam:banner', 'a:6:{s:18:"banner_header_2660";s:28:"<p>\n	  Greate ship\n</p>\n<br>";s:16:"banner_text_2660";s:43:"<p>\n	It''s really <strong>cool</strong>\n</p>";s:7:"go_2660";s:2:"Go";s:17:"banner_image_2740";s:32:"/floxim_files/content/3b_6_0.jpg";s:16:"banner_text_2740";s:21:"Better than ever\n<br>";s:18:"banner_header_2740";s:24:"<p class="">Portrait</p>";}', 'content_410', 1),
+(442, 370, 12, '', 'a:1:{s:6:"header";s:10:"Best ships";}', 'theme.floxim.phototeam:featured_list', 'a:2:{s:10:"four_items";s:1:"0";s:10:"photo_2743";s:0:"";}', 'content_410', 2),
+(444, 372, 12, '', '', 'theme.floxim.phototeam:person_list', 'a:4:{s:13:"facebook_2671";s:0:"";s:7:"vk_2671";s:0:"";s:7:"li_2671";s:0:"";s:12:"twitter_2671";s:0:"";}', 'main_column', 5),
+(446, 374, 12, '', '', 'theme.floxim.phototeam:vacancies_list', 'a:3:{s:14:"more_info_2677";s:27:"More info about the vacancy";s:14:"more_info_2771";s:22:"more info for supermen";s:14:"more_info_2791";s:9:"More info";}', 'main_column', 6),
+(451, 379, 12, '', '', 'theme.floxim.phototeam:news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"2";}', 'main_column', 7),
+(453, 381, 12, 'theme.floxim.phototeam:gray_block', 'a:1:{s:6:"header";s:16:"What''s happening";}', 'theme.floxim.phototeam:featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"1";}', 'main_column', 16),
+(454, 382, 12, '', '', 'theme.floxim.phototeam:full_width', '', '', 8),
+(457, 385, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:30:"/floxim_files/content/2a_2.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 12),
+(458, 386, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:17:"About the project";}', 'theme.floxim.phototeam:project_record', '', 'main_column', 13),
+(460, 388, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 1),
+(461, 389, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:6:"Images";}', 'theme.floxim.phototeam:slider', 'a:1:{s:10:"thumbnails";s:1:"1";}', 'main_column', 14),
+(462, 390, 12, '', '', 'theme.floxim.phototeam:one_column', '', '', 9),
+(463, 391, 12, '', '', 'theme.floxim.phototeam:banner', 'a:3:{s:18:"banner_header_2656";s:27:"<p class="">\n	Need job?</p>";s:16:"banner_text_2656";s:39:"<p class="">\n	Look at our vacancies</p>";s:17:"banner_image_2656";s:40:"/floxim_files/content/5_open_air_2_0.jpg";}', 'main_column', 9),
+(464, 392, 12, 'theme.floxim.phototeam:gray_block', 'a:1:{s:6:"header";s:11:"Latest news";}', 'theme.floxim.phototeam:featured_news_list', 'a:4:{s:13:"more_news_url";s:5:"/News";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";s:9:"more_news";s:8:"all news";}', 'main_column', 8),
+(469, 397, 12, '', '', 'theme.floxim.phototeam:text', 'a:3:{s:9:"blue_2701";s:1:"1";s:9:"blue_2700";s:1:"0";s:12:"hilight_2701";s:1:"1";}', 'main_column', 10),
+(470, 398, 12, '', '', 'theme.floxim.phototeam:news_record', '', 'main_column', 11),
+(471, 399, 12, '', '', 'theme.floxim.phototeam:index', '', '', 11),
+(472, 400, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'sidebar_410', 1),
+(476, 404, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 2),
+(575, 408, 12, '', '', 'theme.floxim.phototeam:auth_form', 'a:4:{s:11:"label_email";s:30:"E-mail                        ";s:14:"label_password";s:8:"Password";s:14:"label_remember";s:11:"Remember me";s:12:"label_submit";s:6:"Log in";}', 'icons_area', 1),
+(576, 409, 12, '', '', 'user:greet', '', 'icons_area', 2),
+(577, 410, 12, 'theme.floxim.phototeam:titled_block', 'a:1:{s:6:"header";s:51:"We shoot everything and everywhere around the world";}', 'theme.floxim.phototeam:two_columns_grid', '', 'main_column', 17),
+(578, 411, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', 'a:3:{s:11:"header_2635";s:52:"<p class="">Team of</p><p class="">photographers</p>";s:12:"caption_2635";s:117:"<p class="">\n	We come in&nbsp;any&nbsp;sizes and shapes ready to</p><p class="">\n	shoot any series&nbsp;you like.</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 15),
+(579, 412, 12, '', '', 'page:neighbours', '', 'main_column', 18),
+(580, 413, 12, '', '', 'page:neighbours', '', 'main_column', 19),
+(581, 414, 12, '', '', 'page:neighbours', '', 'main_column', 28),
+(583, 416, 12, '', '', 'page:neighbours', '', 'main_column', 20),
+(585, 418, 12, '', '', 'theme.floxim.phototeam:person_record', '', 'main_column', 21),
+(586, 419, 12, '', '', 'page:neighbours', '', 'main_column', 22),
+(588, 376, 12, '', '', 'theme.floxim.phototeam:vacancy_record', '', 'main_column', 23),
+(590, 422, 12, '', '', 'widget_map:static_google_map', 'a:3:{s:9:"map_width";s:3:"940";s:10:"map_height";s:3:"340";s:8:"map_zoom";s:2:"14";}', 'main_column', 24),
+(591, 423, 12, '', '', 'theme.floxim.phototeam:one_column', '', '', 12),
+(594, 426, 12, '', '', 'theme.floxim.phototeam:featured_news_list', 'a:5:{s:12:"show_anounce";s:1:"1";s:18:"read_more_#new_id#";s:4:"More";s:14:"read_more_2778";s:4:"More";s:14:"read_more_2782";s:11:"Reed Mooore";s:14:"read_more_2783";s:16:"Read more please";}', 'main_column', 25),
+(595, 427, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:9:"Infoblock";}', 'section:listing_deep', '', 'main_column', 26),
+(597, 429, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:8:"Filtered";}', 'section:listing_deep', '', 'main_column', 27),
+(599, 431, 12, '', '', 'text:list', '', 'sidebar_430', 1),
+(603, 435, 12, 'theme.floxim.phototeam:titled_block', 'a:1:{s:6:"header";s:19:"Meet the super team";}', 'theme.floxim.phototeam:featured_list', 'a:1:{s:10:"four_items";s:1:"1";}', 'main_column', 30);
 
 -- --------------------------------------------------------
 
@@ -1851,15 +1850,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=49 ;
-
---
--- Дамп данных таблицы `fx_session`
---
-
-INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
-(47, 'e6ff5a56a7adcc8fcdc559455c64eec6', 2367, 0, 1407892922, 1407906893, 2130706433, 0),
-(48, '2aa8991d0076117bcdac981291072da9', 2367, 0, 1408371462, 1408371471, 2130706433, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
