@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Component\Contact;
+namespace Floxim\Main\Contact;
 
 class Finder extends \Floxim\Floxim\Component\Content\Finder {
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Floxim\Main\WidgetGrid;
 
 class Controller extends \Floxim\Floxim\Controller\Widget {

@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Text;
+namespace Floxim\Main\Photo;
 
 class Controller extends \Floxim\Floxim\Controller\Component {
     

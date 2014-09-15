@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Component\Comment;
+namespace Floxim\Main\Comment;
 
 class Finder extends \Floxim\Floxim\Component\Content\Finder {
     

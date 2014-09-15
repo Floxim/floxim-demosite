@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\ClassifierLinker;
+namespace Floxim\Main\Photo;
 
 class Finder extends \Floxim\Floxim\Component\Content\Finder {
     
