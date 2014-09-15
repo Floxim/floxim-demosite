@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Component\Product;
+namespace Floxim\Main\Product;
 
 class Controller extends \Floxim\Main\Page\Controller {
     
