@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Component\SocialIcon;
+namespace Floxim\Main\SocialIcon;
 
 class Essence extends \Floxim\Floxim\Component\Content\Essence {
     protected function _before_save() {

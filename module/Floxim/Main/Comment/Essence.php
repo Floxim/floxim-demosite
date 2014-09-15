@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Component\Comment;
+namespace Floxim\Main\Comment;
 
 use Floxim\Floxim\System\Fx as fx;
 

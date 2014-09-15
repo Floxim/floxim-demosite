@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Component\News;
+namespace Floxim\Main\News;
 
 class Controller extends \Floxim\Main\Publication\Controller {
     

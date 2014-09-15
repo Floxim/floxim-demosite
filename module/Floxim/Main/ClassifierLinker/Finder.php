@@ -1,6 +1,7 @@
 <?php
-namespace Floxim\Main\Comment;
+namespace Floxim\Main\ClassifierLinker;
 
 class Finder extends \Floxim\Floxim\Component\Content\Finder {
     
+
 }

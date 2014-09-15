@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Component\Person;
+namespace Floxim\Main\Person;
 
 class Controller extends \Floxim\Main\Page\Controller {
     public function do_list_infoblock() {

@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\Component\Video;
+namespace Floxim\Main\Video;
 
 class Essence extends \Floxim\Floxim\Component\Content\Essence {
     protected function _before_save() {
