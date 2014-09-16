@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Авг 18 2014 г., 18:18
+-- Время создания: Сен 16 2014 г., 16:28
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- База данных: `fx_loc`
+-- База данных: `phototeam_loc`
 --
 
 -- --------------------------------------------------------
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `fx_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2770 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2775 ;
 
 --
 -- Дамп данных таблицы `fx_content`
@@ -103,11 +103,11 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2635, 216, 1, '2014-01-28 11:39:50', '2014-01-28 07:39:50', 2367, 'page', 0, 18, NULL, '', 0),
 (2636, 217, 1, '2014-01-28 11:39:50', '2014-04-15 08:42:07', 2367, 'page', 0, 18, 2635, '2635.', 1),
 (2638, 3, 1, '2014-01-28 12:04:17', '2014-07-18 15:21:56', 2367, 'section', 346, 18, 2635, '2635.', 1),
-(2639, 2, 1, '2014-01-28 12:04:33', '2014-07-18 15:21:56', 2367, 'section', 346, 18, 2635, '2635.', 1),
-(2640, 1, 1, '2014-01-28 12:07:04', '2014-07-14 01:56:36', 2367, 'section', 346, 18, 2635, '2635.', 1),
+(2639, 2, 1, '2014-01-28 12:04:33', '2014-09-15 13:47:04', 2367, 'section', 346, 18, 2635, '2635.', 1),
+(2640, 1, 1, '2014-01-28 12:07:04', '2014-09-15 13:47:04', 2367, 'section', 346, 18, 2635, '2635.', 1),
 (2641, 2, 1, '2014-01-28 12:07:17', '2014-07-18 21:45:40', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
 (2652, 4, 1, '2014-01-30 13:34:21', '2014-07-14 13:23:53', 2367, 'section', 346, 18, 2638, '2635.2638.', 2),
-(2654, 2, 1, '2014-01-30 13:34:34', '2014-07-21 16:37:11', 2367, 'section', 346, 18, 2638, '2635.2638.', 2),
+(2654, 3, 1, '2014-01-30 13:34:34', '2014-08-25 06:42:57', 2367, 'section', 346, 18, 2638, '2635.2638.', 2),
 (2655, 1, 1, '2014-01-30 13:38:14', '2014-07-18 21:43:19', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
 (2656, 4, 1, '2014-01-30 13:38:26', '2014-07-18 21:42:56', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
 (2657, 3, 1, '2014-01-30 13:38:46', '2014-07-18 21:45:40', 2367, 'section', 346, 18, 2640, '2635.2640.', 2),
@@ -116,16 +116,16 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2660, 230, 1, '2014-01-30 14:38:47', '2014-04-16 15:55:11', 2367, 'product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2661, 231, 1, '2014-01-30 14:40:14', '2014-04-16 15:55:11', 2367, 'product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2662, 232, 1, '2014-01-30 14:42:35', '2014-04-16 15:55:11', 2367, 'product', 364, 18, 2652, '2635.2638.2652.', 3),
-(2668, 2, 1, '2014-01-30 15:08:08', '2014-08-05 14:08:15', 2367, 'select_linker', 370, 18, 2635, '2635.', 1),
+(2668, 1, 1, '2014-01-30 15:08:08', '2014-09-01 17:00:49', 2367, 'select_linker', 370, 18, 2635, '2635.', 1),
 (2671, 1, 1, '2014-02-13 15:14:27', '2014-07-29 11:19:38', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2673, 6, 1, '2014-01-30 15:19:09', '2014-07-30 17:58:28', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2675, 5, 1, '2014-01-30 15:19:48', '2014-07-30 17:58:28', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
-(2677, 15, 1, '2014-01-30 15:33:49', '2014-07-24 20:18:00', 2367, 'vacancy', 374, 18, 2656, '2635.2640.2656.', 3),
+(2677, 17, 1, '2014-01-30 15:33:49', '2014-09-02 15:18:28', 2367, 'vacancy', 374, 18, 2656, '2635.2640.2656.', 3),
 (2678, 237, 1, '2014-01-30 15:37:21', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
 (2679, 238, 1, '2014-01-30 15:38:00', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
 (2680, 239, 1, '2014-01-30 15:39:49', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
 (2681, 240, 1, '2014-01-30 15:40:08', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
-(2684, 1, 1, '2014-01-30 15:41:45', '2014-07-18 16:31:17', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
+(2684, 3, 1, '2014-01-30 15:41:45', '2014-08-27 11:46:58', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
 (2688, 4, 1, '2014-01-30 16:20:08', '2014-07-14 21:51:59', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2690, 2, 1, '2014-01-30 16:25:46', '2014-07-14 21:51:17', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2692, 1, 1, '2014-01-31 18:14:59', '2014-05-20 08:26:14', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
@@ -146,11 +146,11 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2741, 267, 1, '2014-03-11 21:50:58', '2014-04-15 08:42:09', 2367, 'product', 364, 18, 2654, '2635.2638.2654.', 3),
 (2742, 268, 1, '2014-03-11 21:56:32', '2014-04-15 08:42:09', 2367, 'product', 364, 18, 2658, '2635.2638.2658.', 3),
 (2743, 269, 1, '2014-03-11 21:58:20', '2014-04-15 08:42:09', 2367, 'product', 364, 18, 2658, '2635.2638.2658.', 3),
-(2744, 3, 1, '2014-03-11 21:59:51', '2014-07-21 16:37:11', 2367, 'section', 346, 18, 2638, '2635.2638.', 2),
+(2744, 2, 1, '2014-03-11 21:59:51', '2014-08-25 06:42:57', 2367, 'section', 346, 18, 2638, '2635.2638.', 2),
 (2745, 2, 1, '2014-03-11 22:01:34', '2014-07-10 13:02:43', 2367, 'product', 364, 18, 2744, '2635.2638.2744.', 3),
 (2746, 1, 1, '2014-03-11 22:02:45', '2014-07-10 13:02:43', 2367, 'product', 364, 18, 2744, '2635.2638.2744.', 3),
 (2747, 3, 1, '2014-03-12 05:01:05', '2014-07-14 00:54:41', 2367, 'select_linker', 370, 18, 2635, '2635.', 1),
-(2748, 1, 1, '2014-03-12 05:01:05', '2014-08-05 14:08:15', 2367, 'select_linker', 370, 18, 2635, '2635.', 1),
+(2748, 2, 1, '2014-03-12 05:01:05', '2014-09-01 17:00:49', 2367, 'select_linker', 370, 18, 2635, '2635.', 1),
 (2749, 0, 1, '2014-03-12 05:02:10', '2014-04-15 08:42:07', 2367, 'select_linker', 369, 18, 2635, '2635.', 1),
 (2750, 2, 1, '2014-03-14 14:09:54', '2014-05-20 08:26:14', 2367, 'photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2751, 3, 1, '2014-03-14 18:24:30', '2014-07-14 21:51:59', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
@@ -161,11 +161,11 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2756, 279, 1, '2014-03-14 18:31:52', '2014-04-15 08:42:09', 2367, 'photo', 389, 18, 2690, '2635.2639.2690.', 3),
 (2757, 1, 1, '2014-03-14 18:34:09', '2014-07-14 21:51:17', 2367, 'project', 385, 18, 2639, '2635.2639.', 2),
 (2762, 280, 1, '2014-05-04 13:43:11', '2014-05-04 09:43:11', 2367, 'mail_template', 0, 18, 0, '.', 1),
-(2764, 0, 1, '2014-05-04 15:40:55', '2014-07-18 16:31:17', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
+(2764, 1, 1, '2014-05-04 15:40:55', '2014-08-27 11:46:58', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
 (2765, 0, 1, '2014-05-05 00:44:29', '2014-05-04 20:44:29', 2367, 'select_linker', 411, 18, 2635, '2635.', 1),
 (2767, 2, 1, '2014-05-06 11:26:33', '2014-05-06 07:26:33', 2367, 'text', 397, 18, 2641, '2635.2640.2641.', 3),
 (2768, 2, 1, '2014-07-18 12:28:52', '2014-07-18 16:28:52', 2367, 'select_linker', 381, 18, 2635, '2635.', 1),
-(2769, 3, 1, '2014-07-18 12:31:17', '2014-07-18 16:31:17', 2367, 'select_linker', 381, 18, 2635, '2635.', 1);
+(2769, 0, 1, '2014-07-18 12:31:17', '2014-08-27 11:46:58', 2367, 'select_linker', 381, 18, 2635, '2635.', 1);
 
 -- --------------------------------------------------------
 
@@ -339,7 +339,7 @@ INSERT INTO `fx_content_page` (`id`, `url`, `name`, `title`, `comments_counter`,
 (2660, '/Football-photo-report', 'Football photo report', '', 0, '<p>\r\n	Our photographers have been shooting Champion League matches since 2008, the finals of UEFA Euro 2008 and 2012. They are now getting ready for World Cup 2014 in Brazil.</p><p>\r\n	If you want the drama of football match captured by professionals, hire us. We’ve got all the skills, experience, and equipment needed to shot high-quality photo set for you.</p>', NULL),
 (2661, '/Skiing', 'Skiing', '', 0, '<p>\n	Ken’s speaking:\n</p>\n<blockquote>\n	I love to shoot winter sports, especially skiing competitions. It’s dynamic, it’s graphic because skis and ski poles give the picture a great rhythm.\n</blockquote>\n<blockquote>\n	The crowd of skiers looks fantastic on the snow. And scenery is always beautiful. I love winter forest – perhaps that’s my Russian roots talking.\n</blockquote>\n<p>\n	Ken’s been shooting ski competitions around the world for several years. If you need a winter sports series he is your guy.\n</p>', NULL),
 (2662, '/Swimming', 'Swimming', '', 0, '<p>\n	After all the time she spent in pools and seas, our photographer Leila is basically half-human half-dolphin. She knows all the details about shooting in water, and even has a couple of inventions of her own for underwater shooting.\n</p>\n<p>\n	Leila’s speaking:\n</p>\n<blockquote>\n	I love how water changes the light, shapes, and textures of things. It can be very expressive. I’m currently getting ready for European Aquatic Championship. A great photo report’s waiting to be made!\n</blockquote>', NULL),
-(2671, '/Ken-Cold', 'Ken The Cold', '', 0, '<p>\r\n	Ken is romantics’ ideal – serene, sensitive, and a bit shy.</p><p>\r\n	When led into the wild, he blends into the nature to capture it beautifully.</p>', NULL),
+(2671, '/Ken-Cold', 'Ken The Cold', '', 0, 'Ken is romantics’ ideal – serene, sensitive, and a bit shy.<br>\r\n	When led into the wild, he blends into the nature to capture it beautifully.<br>', NULL),
 (2673, '/Leila-Stoparsson', 'Leila Stoparsson', '', 0, '<p>\r\n	Leila is the best at shooting interiors.</p><p>\r\n	Her photographs always give you the sense of the place.</p>', NULL),
 (2675, '/Nika-Lightman', 'Nika Lightman', '', 0, '<p>\r\n	Nika Lightman has a gift to shoot portraits.</p><p class="">\r\n	We all have pictures of ourselves made by Nika.</p><p>\r\n	Accurate yet flattering!</p>', NULL),
 (2677, '/Maker-up', 'Maker up', '', 0, NULL, NULL),
@@ -357,12 +357,12 @@ INSERT INTO `fx_content_page` (`id`, `url`, `name`, `title`, `comments_counter`,
 (2739, '/Athletics', 'Athletics', '', 0, '<p>\n	Athletics was the first competitions our team’s shot. Since our first series in 2007, we’ve become faster and stronger. Ken’s become bolder.\n</p>\n<p>\n	We are so good at shooting athletics partly because competitive running, jumping, and throwing things is something that happens in our studio daily.\n</p>\n<p>\n	We are fascinated with the sight of passion and human endeavor you see at the stadium during competitions. Sometimes, it’s pure heroism from the athletes. We always do our best to do them justice with our photo series.\n</p>', NULL),
 (2740, '/Portrait', 'Portrait', '', 0, '<p>\n	Nika, our portraitist, is super good at catching person’s mood and character.\n</p>\n<p>\n	She’s inventive in studio photo shoot but is open to client’s suggestions.\n</p>', NULL),
 (2741, '/Passport-photos', 'Passport photos', '', 0, '<p>\n	You know those passport pictures that are more suited for “Wanted” posters? None of that if you come to our studio.\n</p>\n<p>\n	We do all the necessary formats. We then can do all the necessary editing really quickly. You’ll look respectable and reliable individual – promise!\n</p>', NULL),
-(2742, '/Cities', 'Cities', '', 0, '<p>\n	Ken is a poet of city jungles. He loves city dynamics and lights and noises. He also loves to travel and will be excited to go and shoot the city you want. High-quality pictures and unique view guaranteed.\n</p>\n<p>\n	We are also happy to take orders from city administrations to make a booklet with local sights. Tourists will rush to your city and spend their money around all those attractions.\n</p>', NULL),
+(2742, '/Cities', 'Cities', '', 0, '<p class="">\n	Ken is a poet of city jungles. He loves city dynamics and lights and noises. He also loves to travel and will be excited to go and shoot the city you want. High-quality pictures and unique view guaranteed.</p><p>\n	We are also happy to take orders from city administrations to make a booklet with local sights. Tourists will rush to your city and spend their money around all those attractions.</p>', NULL),
 (2743, '/Nature', 'Nature', '', 0, '<p>\n	Ken’s favorite book is Emerson’s Naturalistic Photography. Inspired by the book he later developed his own system of aesthetics that reflect nature in a beautiful and unique way.\n</p>\n<p>\n	Ken is armed with all necessary gear and is not afraid of using it. He is very patient – a must-have for a naturalistic artist – and can spend hour in the woods or on the beach waiting for the perfect sunset.\n</p>', NULL),
 (2744, '/Events', 'Events', '', 0, NULL, NULL),
 (2745, '/Birthday-parties', 'Birthday parties', '', 0, '<p>\n	We are ready to shoot the most exotic and extreme birthday parties. We have all the gear to shoot in the swimming pool or on the dance floor. Yes, you can put down your phone for once and enjoy celebrating.\n</p>\n<p>\n	By the way, our team came up with a great device. It includes wide-angle lens and some really technical stuff, like a stick, to make a massive selfie of you and all your party guests. Imagine the joy of tagging them all later on Instagram!\n</p>', NULL),
 (2746, '/Corporate-events', 'Corporate events', '', 0, '<p>\n	We have a long experience in shooting corporate sessions, conferences, parties, and awards ceremonies. Your business rivals will be envious of how great your corporate events look.\n</p>\n<p>\n	With our digital team ready to work around the clock, all images are published on a password protected website within 48 hours.\n</p>', NULL),
-(2751, '/Kupala-Night', 'Kupala Night', '', 0, '<p>\n	The fest has pagan roots. According to an ancient pagan belief, on the eve of Ivan Kupala is the only time of the year when ferns bloom. Prosperity, luck and power would befall whoever finds a fern flower. On that night village folks would roam through the forests in search of magical herbs and especially the elusive fern flower.\n</p>\n<p>\n	Traditionally, unmarried women would be the first to enter the forest. They are followed by young men. In 2010, they were also followed by Ken who made fantastic photo series.\n</p>', NULL),
+(2751, '/Kupala-Night', 'Kupala Night', '', 0, 'The fest has pagan roots. According to an ancient pagan belief, on the eve of Ivan Kupala is the only time of the year when ferns bloom. Prosperity, luck and power would befall whoever finds a fern flower. On that night village folks would roam through the forests in search of magical herbs and especially the elusive fern flower.\r\n<br>\r\n\r\n	Traditionally, unmarried women would be the first to enter the forest. They are followed by young men. In 2010, they were also followed by Ken who made fantastic photo series.\r\n<br>', NULL),
 (2757, '/Bull-Easter', 'Bull Easter', '', 0, '<p>\n	Pascua Toro is celebrated during Holy Saturday.</p><p>\n	This holiday is famous for colorful running of the bulls through the streets of the town.</p><p class="">\n	In 2011, our Ken took a huge risk and ran along with bulls. Fortunately, no bulls were harmed.</p>', NULL);
 
 -- --------------------------------------------------------
@@ -386,7 +386,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_person` (
 --
 
 INSERT INTO `fx_content_person` (`id`, `full_name`, `department`, `photo`, `short_description`, `birthday`) VALUES
-(2671, 'Ken Cold', '', '/floxim_files/content/person/photo/3b_3_0.jpg', 'romantics’ ideal', '1946-01-09 00:00:00'),
+(2671, 'Ken Cold', 'Photo Production Group', '/floxim_files/content/person/photo/3b_3_0.jpg', 'romantics’ ideal', '1946-01-09 00:00:00'),
 (2673, 'Leila Stoparsson', '', '/floxim_files/content/person/photo/3a_2_0.JPG', 'the sense of the place', '1962-02-28 00:00:00'),
 (2675, 'Nika Lightman', '', '/floxim_files/content/person/photo/2b_0.JPG', 'cool portraits', '1986-02-13 00:00:00'),
 (2735, 'Sonya Zoomer', 'Client support', '/floxim_files/content/person/photo/3g_2_0.JPG', '“she sits motionless, like a spider”', '1975-11-13 00:00:00');
@@ -444,7 +444,7 @@ INSERT INTO `fx_content_product` (`id`, `short_description`, `image`, `price`) V
 (2739, '<p>\r\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">“Faster - Higher – Stronger” – our shooting motto.</span>\r\n</p>', '/floxim_files/content/product/image/5_athlet_2_0.JPG', 2100),
 (2740, '<p>\r\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">We shoot portraits with love to subject. Welcome, beautiful client!</span>\r\n</p>', '/floxim_files/content/product/image/3a_1_0.JPG', 800),
 (2741, '<p>\r\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">High-quality representation of you for docs and visas.</span>\r\n</p>', '/floxim_files/content/product/image/5_portrait_passport_5_0.JPG', 1000),
-(2742, '<p>\r\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">We all are in love with street photography. That’s handy if you need an urban </span><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">photo series.</span>\r\n</p>', '/floxim_files/content/product/image/5_city_4_0.jpg', 900),
+(2742, '<p>\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">We all are in love with street photography. That’s handy if you need an urban </span><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">photo series.</span></p>', '/floxim_files/content/product/image/5_city_4_0.jpg', 900),
 (2743, '<p>\n	 Our photographers teamed up with major naturalistic magazines.\n</p>\n<p>\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">We are so ready to start a new expedition.</span>\n</p>\n<p>\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;"></span>\n</p>', '/floxim_files/content/product/image/5_nature_2_0.JPG', 1600),
 (2745, '<p>\r\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">We’ll do our best to abstain from drinks and capture you and your friends in </span><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">the gorgeous way.</span>\r\n</p>', '/floxim_files/content/product/image/5_birthday_9_0.jpg', 200),
 (2746, '<p>\r\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">Among our clients are the biggest companies in the country. Most of them </span><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">keep re-booking our photographers year after year.</span>\r\n</p>', '/floxim_files/content/product/image/1_2_0.JPG', 2900);
@@ -471,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_project` (
 INSERT INTO `fx_content_project` (`id`, `image`, `client`, `short_description`, `date`) VALUES
 (2688, '/floxim_files/content/project/image/6_Carnival_of_miners_7_0.jpg', '', 'The carnival of Potosi in Bolivia is the traditional feast of miners who live and work in one of the highest mines in the world.', '2014-01-09 00:00:00'),
 (2690, '/floxim_files/content/project/image/6_cockfights_3_0.JPG', '', 'A cockfight is a blood sport between two gamecocks, held in a ring called a cockpit.', '2014-01-16 00:00:00'),
-(2751, '/floxim_files/content/project/image/6_kupala_7_0.jpg', '', 'Kupala Night, also known as Ivan Kupala Day (Feast of St. John the Baptist) is celebrated in Ukraine, Belarus and Russia currently on the night of 6/7 July in the Gregorian calendar.', '0000-00-00 00:00:00'),
+(2751, '/floxim_files/content/project/image/6_kupala_7_0.jpg', '', 'Kupala Night, also known as Ivan Kupala Day (Feast of St. John the Baptist) is celebrated in Ukraine, Belarus and Russia currently on the night of 6/7 July in the Gregorian calendar.', '2010-07-06 00:00:00'),
 (2757, '/floxim_files/content/project/image/6_pascua_toro_3_0.jpg', '', 'Pascua Toro (Bull Easter) is the traditional holiday of the inhabitants of the Peruvian town of Ayacucho.', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -493,7 +493,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_publication` (
 --
 
 INSERT INTO `fx_content_publication` (`id`, `publish_date`, `image`, `text`) VALUES
-(2678, '2014-04-24 00:00:00', '/floxim_files/content/news/image/2a_0.jpg', '<p>\n	We say goodbye to our old studio.\n</p>\n<p>\n	The new one is almost ready for us to move in.\n</p>\n<p>\n	It’s bigger, lighter, and there is a small garden to throw a studio-warming party.\n</p>'),
+(2678, '2014-08-13 00:00:00', '/floxim_files/content/news/image/2a_0.jpg', '<p>\n	We say goodbye to our old studio.\n</p>\n<p>\n	The new one is almost ready for us to move in.\n</p>\n<p>\n	It’s bigger, lighter, and there is a small garden to throw a studio-warming party.\n</p>'),
 (2679, '2013-01-12 15:37:34', '/floxim_files/content/news/image/5_city_6_0.jpg', '<p>\r\n	   Guys didn’t win this time but we’ll be back next year.\r\n</p>\r\n<p>\r\n	   For now, have Nika and her crazy hair having fun in Russia.\r\n</p>'),
 (2680, '2014-02-21 15:19:29', '/floxim_files/content/news/image/2v_10_0.jpg', '<p>\n	We are back from Sheregesh, a small village in Syberia.\n</p>\n<p>\n	The place is perfect for free ride and Russian snow is the fluffiest.\n</p>'),
 (2681, '2014-08-07 15:39:50', '/floxim_files/content/news/image/5_athlet_5_0.jpg', '<p>\n	We made a photo report about Moscow Athletics Championship.\n</p>\n<p>\n	In other news - Nika lost her voice while cheering for a cute runner.\n</p>');
@@ -1038,7 +1038,7 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock` (
   `scope` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=436 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=440 ;
 
 --
 -- Дамп данных таблицы `fx_infoblock`
@@ -1053,17 +1053,17 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (361, 0, 18, 2638, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (362, 0, 18, 2638, 1, 'Navigation / ', 'component_section', 'list_selected', 'a:1:{s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (364, 0, 18, 2638, 1, 'Products', 'component_product', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"section";}'),
-(367, 0, 18, 2638, 1, 'Product / Single entry', 'component_product', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"product";}'),
+(367, 0, 18, 2638, 1, 'Product / Single entry', 'component_product', 'record', 'a:0:{}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"product";s:10:"visibility";s:3:"all";}'),
 (369, 0, 18, 2635, 1, 'Product / ', 'component_product', 'list_selected', 'a:2:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (370, 0, 18, 2635, 1, 'Product / ', 'component_product', 'list_selected', 'a:2:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (372, 0, 18, 2655, 1, 'Persons', 'component_person', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (374, 0, 18, 2656, 1, 'Vacancies', 'component_vacancy', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
-(376, 0, 18, 2656, 1, 'Vacancy / Single entry', 'component_vacancy', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";}'),
+(376, 0, 18, 2656, 1, 'Vacancy / Single entry', 'component_vacancy', 'record', 'a:0:{}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";s:10:"visibility";s:3:"all";}'),
 (379, 0, 18, 2657, 1, 'News', 'component_news', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (381, 0, 18, 2635, 1, 'Featured news', 'component_news', 'list_selected', 'a:3:{s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (382, 345, 18, 2639, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (385, 0, 18, 2639, 1, 'Projects', 'component_project', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:13:"mount_page_id";}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
-(386, 0, 18, 2639, 1, 'Project / Single entry', 'component_project', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
+(386, 0, 18, 2639, 1, 'Project / Single entry', 'component_project', 'record', 'a:0:{}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";s:10:"visibility";s:3:"all";}'),
 (388, 0, 18, 2638, 1, 'Navigation / ', 'component_section', 'list_filtered', 'a:2:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}}s:7:"submenu";s:4:"none";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
 (389, 0, 18, 2639, 1, 'Project gallery', 'component_photo', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
 (390, 345, 18, 2640, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
@@ -1082,7 +1082,7 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (413, 0, 18, 2657, 1, 'News neighbours', 'component_news', 'neighbours', 'a:2:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:4:"news";}'),
 (414, 0, 18, 2656, 1, 'Vacancy neighbours', 'component_vacancy', 'neighbours', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"vacancy";}'),
 (416, 0, 18, 2639, 1, 'Project neighbours', 'component_project', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
-(418, 0, 18, 2655, 1, 'Person record', 'component_person', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
+(418, 0, 18, 2655, 1, 'Person record', 'component_person', 'record', 'a:0:{}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";s:10:"visibility";s:3:"all";}'),
 (419, 0, 18, 2655, 1, 'Person neighbours', 'component_person', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
 (422, 0, 18, 2641, 1, 'Map', 'widget_map', 'show', 'a:1:{s:3:"map";a:3:{s:7:"address";s:76:"Большой Саввинский переулок, 12 строение 18";s:3:"lat";s:18:"55.732346350157044";s:3:"lon";s:17:"37.56402175659173";}}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (423, 345, 18, 2638, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
@@ -1090,7 +1090,8 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (427, 0, 18, 2773, 1, 'Menu test', 'component_section', 'list_infoblock', 'a:2:{s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";a:1:{i:0;s:3:"426";}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (429, 0, 18, 2773, 1, 'Sections by filter', 'component_section', 'list_filtered', 'a:3:{s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:2:{i:0;s:4:"2635";i:1;s:4:"2773";}}}s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";b:0;}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (431, 0, 18, 2635, 1, 'Text', 'component_text', 'list_infoblock', 'a:1:{s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
-(435, 0, 18, 2640, 1, 'Person by filter', 'component_person', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:4:"desc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}');
+(436, 0, 18, 2773, 1, 'Clients', 'component_person', 'list_infoblock', 'a:5:{s:5:"limit";b:0;s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";s:16:"create_record_ib";s:1:"0";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(439, 0, 18, 2640, 1, 'Person by filter', 'component_person', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:4:"desc";s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2655";}}}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}');
 
 -- --------------------------------------------------------
 
@@ -1110,7 +1111,7 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `infoblock_id` (`infoblock_id`,`layout_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=604 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=608 ;
 
 --
 -- Дамп данных таблицы `fx_infoblock_visual`
@@ -1128,10 +1129,10 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (436, 364, 12, '', '', 'layout_v3.featured_list', 'a:1:{s:10:"four_items";s:1:"0";}', 'main_column', 3),
 (439, 367, 12, '', '', 'layout_v3.product_record', '', 'main_column', 4),
 (441, 369, 12, '', '', 'layout_v3.banner', 'a:6:{s:18:"banner_header_2660";s:28:"<p>\n	  Greate ship\n</p>\n<br>";s:16:"banner_text_2660";s:43:"<p>\n	It''s really <strong>cool</strong>\n</p>";s:7:"go_2660";s:2:"Go";s:17:"banner_image_2740";s:32:"/floxim_files/content/3b_6_0.jpg";s:16:"banner_text_2740";s:21:"Better than ever\n<br>";s:18:"banner_header_2740";s:24:"<p class="">Portrait</p>";}', 'content_410', 1),
-(442, 370, 12, '', 'a:1:{s:6:"header";s:10:"Best ships";}', 'layout_v3.featured_list', 'a:2:{s:10:"four_items";s:1:"0";s:10:"photo_2743";s:0:"";}', 'content_410', 2),
+(442, 370, 12, '', 'a:1:{s:6:"header";s:10:"Best ships";}', 'layout_v3.featured_list', 'a:2:{s:10:"four_items";s:1:"0";s:10:"photo_2743";s:38:"/floxim_files/content/5_open_air_7.JPG";}', 'content_410', 2),
 (444, 372, 12, '', '', 'layout_v3.person_list', 'a:4:{s:13:"facebook_2671";s:0:"";s:7:"vk_2671";s:0:"";s:7:"li_2671";s:0:"";s:12:"twitter_2671";s:0:"";}', 'main_column', 5),
 (446, 374, 12, '', '', 'layout_v3.vacancies_list', 'a:3:{s:14:"more_info_2677";s:27:"More info about the vacancy";s:14:"more_info_2771";s:22:"more info for supermen";s:14:"more_info_2791";s:9:"More info";}', 'main_column', 6),
-(451, 379, 12, '', '', 'layout_v3.news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"2";}', 'main_column', 7),
+(451, 379, 12, '', '', 'layout_v3.news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"1";}', 'main_column', 7),
 (453, 381, 12, 'layout_v3.gray_block', 'a:1:{s:6:"header";s:16:"What''s happening";}', 'layout_v3.featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"1";}', 'main_column', 16),
 (454, 382, 12, '', '', 'layout_v3.full_width', '', '', 8),
 (457, 385, 12, '', '', 'layout_v3.full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:30:"/floxim_files/content/2a_2.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 12),
@@ -1157,14 +1158,15 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (583, 416, 12, '', '', 'component_page.neighbours', '', 'main_column', 20),
 (585, 418, 12, '', '', 'layout_v3.person_record', '', 'main_column', 21),
 (586, 419, 12, '', '', 'component_page.neighbours', '', 'main_column', 22),
-(588, 376, 12, '', '', 'layout_v3.vacancy_record', '', 'main_column', 23),
+(588, 376, 12, '', '', 'layout_v3.vacancy_record', 'a:1:{s:21:"title_work_conditions";s:17:"Work Conditions!";}', 'main_column', 23),
 (590, 422, 12, '', '', 'widget_map.static_google_map', 'a:3:{s:9:"map_width";s:3:"940";s:10:"map_height";s:3:"340";s:8:"map_zoom";s:2:"14";}', 'main_column', 24),
 (591, 423, 12, '', '', 'layout_v3.one_column', '', '', 12),
 (594, 426, 12, '', '', 'layout_v3.featured_news_list', 'a:5:{s:12:"show_anounce";s:1:"1";s:18:"read_more_#new_id#";s:4:"More";s:14:"read_more_2778";s:4:"More";s:14:"read_more_2782";s:11:"Reed Mooore";s:14:"read_more_2783";s:16:"Read more please";}', 'main_column', 25),
 (595, 427, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:9:"Infoblock";}', 'component_section.listing_deep', '', 'main_column', 26),
 (597, 429, 12, 'layout_v3.block_titled', 'a:1:{s:6:"header";s:8:"Filtered";}', 'component_section.listing_deep', '', 'main_column', 27),
 (599, 431, 12, '', '', 'component_text.list', '', 'sidebar_430', 1),
-(603, 435, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:19:"Meet the super team";}', 'layout_v3.featured_list', 'a:1:{s:10:"four_items";s:1:"1";}', 'main_column', 30);
+(604, 436, 12, '', '', 'layout_v3.person_tiles', '', 'main_column', 31),
+(607, 439, 12, 'layout_v3.titled_block', 'a:1:{s:6:"header";s:19:"Meet the super team";}', 'layout_v3.person_tiles', '', 'main_column', 32);
 
 -- --------------------------------------------------------
 
@@ -1202,7 +1204,7 @@ CREATE TABLE IF NOT EXISTS `fx_lang_string` (
   `lang_en` text,
   `lang_ru` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1097 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1100 ;
 
 --
 -- Дамп данных таблицы `fx_lang_string`
@@ -1714,7 +1716,10 @@ INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALU
 (1093, 'system', 'Area', 'Area', NULL),
 (1094, 'system', '%d items', '%d items', NULL),
 (1095, 'component_section', 'Add subsection', 'Add subsection', NULL),
-(1096, 'system', 'Wrapper', 'Wrapper', NULL);
+(1096, 'system', 'Wrapper', 'Wrapper', NULL),
+(1097, 'system', 'The content contains some descendants', 'The content contains some descendants', NULL),
+(1098, 'system', 'items. These items are removed.', 'items. These items are removed.', NULL),
+(1099, 'system', 'Delete Vacancy', 'Delete Vacancy', NULL);
 
 -- --------------------------------------------------------
 
@@ -1851,15 +1856,14 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=53 ;
 
 --
 -- Дамп данных таблицы `fx_session`
 --
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
-(47, 'e6ff5a56a7adcc8fcdc559455c64eec6', 2367, 0, 1407892922, 1407906893, 2130706433, 0),
-(48, '2aa8991d0076117bcdac981291072da9', 2367, 0, 1408371462, 1408371471, 2130706433, 0);
+(52, 'a54a3f416906539a3f049652afeef61c', 2367, 0, 1410788772, 1410870156, 2130706433, 0);
 
 -- --------------------------------------------------------
 
