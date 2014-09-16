@@ -31,6 +31,9 @@ $(function(){
             }
             clearTimeout(menu_timeout);
             var show_closure = function() {
+                if (!$item  || $item.length === 0) {
+                    return;
+                }
                 $('nav .main-menu .main-menu-item.active').removeClass('active');
                 $item.addClass('active');
                 var $sub = $('ul.sub-menu', $item).first();
@@ -184,7 +187,7 @@ $(function(){
 window.keyScroll = {
     active: true,
     _speed: 300,
-    _distance: 550,
+    _distance: 150,
     speed: function(speed) {
         this._speed = speed;
         return this;
@@ -229,6 +232,6 @@ window.keyScroll = {
         return;
     }
 };
-//window.keyScroll.init();
+window.keyScroll.init();
 
 });

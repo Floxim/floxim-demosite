@@ -1,0 +1,31 @@
+.std_person_list .person {
+  margin-bottom: 20px;
+  clear: both;
+}
+.std_person_list .person:after {
+  content: '.';
+  visibility: hidden;
+  display: block;
+  clear: both;
+  height: 0;
+}
+.std_person_list .photo {
+  float: left;
+  width: 150px;
+  text-align: right;
+}
+.std_person_list .info {
+  margin-left: 170px;
+}
+.std_person_list .info h2,
+.std_person_list .info h2 a {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.std_person_list .info h2,
+.std_person_list .info>div {
+  margin-bottom: 5px;
+}
+.std_person_list .info .short_description {
+  font-style: italic;
+}

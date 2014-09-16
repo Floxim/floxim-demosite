@@ -20,6 +20,25 @@ a {
     color:#32ccfe;
 }
 
+@hd_width: 1263px;
+
+html.hd_screencast {
+    body {
+        width:@hd_width;
+        float:right;
+        border-left:1px solid #EEE;
+    }
+    #fx_admin_panel, #fx_admin_control {
+        max-width: @hd_width;
+        left: auto;
+    }
+
+    section .featured-list .featured-list-item img {
+        //width:308px;
+        //height:205px;
+    }
+}
+
 .g_record() {
     width: 100%;
     .image {

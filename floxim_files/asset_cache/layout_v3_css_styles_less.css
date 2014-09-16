@@ -14,6 +14,16 @@ blockquote {
 a {
   color: #32ccfe;
 }
+html.hd_screencast body {
+  width: 1263px;
+  float: right;
+  border-left: 1px solid #EEE;
+}
+html.hd_screencast #fx_admin_panel,
+html.hd_screencast #fx_admin_control {
+  max-width: 1263px;
+  left: auto;
+}
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;

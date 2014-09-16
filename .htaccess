@@ -15,7 +15,7 @@ Options +FollowSymLinks
 
 <IfModule mod_php5.c>
 php_flag magic_quotes_gpc Off
-php_flag display_errors Off
+php_flag display_errors On
 php_value error_reporting 255
 php_value arg_separator.output "&amp;"
 php_value mbstring.internal_encoding UTF-8

@@ -1,0 +1,67 @@
+.fx_debug_entries {
+  clear: both;
+  padding-top: 15px;
+}
+.fx_debug_entry,
+.fx_overlay .fx_debug_entry {
+  margin: 10px 0;
+  padding: 3px;
+  border: 1px solid #EEF;
+  background: #FFF;
+  color: #000;
+  clear: both;
+}
+.fx_debug_entry pre.fx_debug_one_line,
+.fx_overlay .fx_debug_entry pre.fx_debug_one_line {
+  margin: 0;
+}
+.fx_debug_entry,
+.fx_debug_entry *,
+.fx_overlay .fx_debug_entry,
+.fx_overlay .fx_debug_entry * {
+  font: 12px 'Courier New';
+}
+.fx_debug_entry .fx_debug_bad,
+.fx_overlay .fx_debug_entry .fx_debug_bad {
+  font-weight: bold;
+  background: #FCC;
+}
+.fx_debug_entry .fx_debug_line span,
+.fx_overlay .fx_debug_entry .fx_debug_line span {
+  white-space: pre;
+}
+.fx_debug_entry .fx_debug_collapse,
+.fx_overlay .fx_debug_entry .fx_debug_collapse {
+  padding-left: 40px;
+  display: none;
+}
+.fx_debug_entry .fx_debug_collapser span,
+.fx_debug_entry a,
+.fx_overlay .fx_debug_entry .fx_debug_collapser span,
+.fx_overlay .fx_debug_entry a {
+  cursor: pointer;
+  color: #33F;
+}
+.fx_debug_entry i.ln,
+.fx_overlay .fx_debug_entry i.ln {
+  color: #666;
+  font-size: 10px;
+  font-style: normal;
+  position: relative;
+  top: -6px;
+}
+.fx_debug_entry .pn .protected,
+.fx_overlay .fx_debug_entry .pn .protected {
+  color: #090;
+}
+.fx_debug_entry .fx_debug_title,
+.fx_overlay .fx_debug_entry .fx_debug_title {
+  background: #EEE;
+  color: #555;
+  font: 10px verdana;
+}
+.fx_debug_entry .fx_debug_separator,
+.fx_overlay .fx_debug_entry .fx_debug_separator {
+  border-top: 1px dotted #CCC;
+  margin: 5px 0;
+}
