@@ -98,7 +98,7 @@ class Controller extends \Floxim\Floxim\Controller\Component {
     }
     
     public function do_recover_form() {
-        $form = new \Floxim\Floxim\Helper\Form\Form();
+        $form = new \Floxim\Form\Form();
         $form->add_fields(array(
             'email' => array(
                 'label' => 'E-mail',

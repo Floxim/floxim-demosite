@@ -45,11 +45,11 @@
                             <div class="width-helper">
                                 {$infoblock.render()}
                                 <div class="form auth_form" fx:template="auth_form" fx:of="user.auth_form">
-                                    {apply helper_form.form with $form}
+                                    {apply form.form:form with $form}
                                         <div class="input-group {$name}" fx:each="$fields">
-                                            {apply helper_form.label  /}
-                                            {apply helper_form.input /}
-                                            {apply helper_form.errors /}
+                                            {apply form.form:label  /}
+                                            {apply form.form:input /}
+                                            {apply form.form:errors /}
                                         </div>
                                     {/apply}
                                 </div>

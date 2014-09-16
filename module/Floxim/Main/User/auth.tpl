@@ -1,9 +1,9 @@
 <div class="fx_auth_form" fx:template="auth_form" fx:of="user.auth_form">
-    {apply helper_form.form with $form /}
+    {apply form.form:form with $form /}
 </div>
 
 <div class="fx_recover_form" fx:template="recover_form" fx:of="user.recover_form">
-    {apply helper_form.form with $form /}
+    {apply form.form:form with $form /}
 </div>
 
 <div fx:template="greet" fx:of="user.greet" class="fx_user_greet">

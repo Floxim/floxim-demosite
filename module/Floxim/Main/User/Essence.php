@@ -80,7 +80,7 @@ class Essence extends \Floxim\Floxim\Component\Content\Essence {
     }
     
     public function get_auth_form() {
-        $form = new \Floxim\Floxim\Helper\Form\Form(array('id' => 'auth_form'));
+        $form = new \Floxim\Form\Form(array('id' => 'auth_form'));
         $form->add_fields(array(
             'email' => array(
                 'label' => 'E-mail',
