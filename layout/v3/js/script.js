@@ -232,6 +232,6 @@ window.keyScroll = {
         return;
     }
 };
-window.keyScroll.init();
+//window.keyScroll.init();
 
 });

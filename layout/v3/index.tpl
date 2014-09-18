@@ -63,7 +63,7 @@
         <section fx:if="!$index && !$full_width">
             <div class="holder">
                     <div
-                        fx:area="breadcrumbs-area"
+                        fx:area="pre_content"
                         fx:size="wide,low"
                         class="breadcrumbs-area">
                     </div>
