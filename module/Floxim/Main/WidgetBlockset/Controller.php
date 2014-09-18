@@ -1,5 +1,9 @@
 <?php
-class fx_controller_widget_blockset extends fx_controller_widget {
+namespace Floxim\Main\WidgetBlockset;
+
+use Floxim\Floxim\System\Fx as fx;
+
+class Controller extends \Floxim\Floxim\Controller\Widget {
     
     protected function _get_fake_ib() {
         static $fake_counter = 0;

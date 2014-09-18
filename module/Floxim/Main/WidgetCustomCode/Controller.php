@@ -1,5 +1,7 @@
 <?php
-class fx_controller_widget_custom_code extends fx_controller_widget {
+namespace Floxim\Main\WidgetCustomCode;
+
+class Controller extends \Floxim\Floxim\Controller\Widget {
     /* 
     //uncomment this to create widget action logic
     public function do_show() {
