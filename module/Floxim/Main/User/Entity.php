@@ -3,7 +3,7 @@ namespace Floxim\Main\User;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Essence extends \Floxim\Floxim\Component\Content\Essence {
+class Entity extends \Floxim\Floxim\Component\Content\Entity {
 
     static public function load() {
         $session = fx::data('session')->load();

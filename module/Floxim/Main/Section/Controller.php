@@ -114,12 +114,12 @@ class Controller extends \Floxim\Main\Page\Controller {
         if ( !($page_id = $this->get_param('page_id'))) {
             $page_id = fx::env('page_id');
         }
-        $essence_page = fx::data('page',$page_id);
-        $essence_page['active'] = true;
+        $entity_page = fx::data('page',$page_id);
+        $entity_page['active'] = true;
         if ($this->get_param('header_only')) {
-            $pages = new System\Collection(array($essence_page));
+            $pages = new System\Collection(array($entity_page));
         } else {
-            $pages = $essence_page->get_path();
+            $pages = $entity_page->get_path();
         }
         return array('items' => $pages);
     }

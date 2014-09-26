@@ -3,7 +3,7 @@ namespace Floxim\Main\ClassifierLinker;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Essence extends \Floxim\Floxim\Component\Content\Essence {
+class Entity extends \Floxim\Floxim\Component\Content\Entity {
     
     protected function _after_insert() {
         parent::_after_insert();

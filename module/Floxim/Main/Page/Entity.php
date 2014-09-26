@@ -3,7 +3,7 @@ namespace Floxim\Main\Page;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Essence extends \Floxim\Floxim\Component\Content\Essence {
+class Entity extends \Floxim\Floxim\Component\Content\Entity {
     protected $parent_ids = null;
     protected $path = null;
     /**

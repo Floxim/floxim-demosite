@@ -5,7 +5,7 @@ namespace Floxim\Form\Field;
 use Floxim\Floxim\Template;
 use Floxim\Floxim\System\Fx as fx;
 
-class Field implements \ArrayAccess, Template\Essence {
+class Field implements \ArrayAccess, Template\Entity {
 
     protected $params = array();
 
@@ -131,9 +131,9 @@ class Field implements \ArrayAccess, Template\Essence {
     public function offsetGet($offset) {
 
         if (preg_match("~^%~", $offset)) {
-            $essence = $this['_essence'];
-            if ($essence) {
-                return $essence[$offset];
+            $entity = $this['_entity'];
+            if ($entity) {
+                return $entity[$offset];
             }
             $real_offset = preg_replace("~^%~", '', $offset);
             $template = fx::env('current_template');
@@ -207,7 +207,7 @@ class Field implements \ArrayAccess, Template\Essence {
                 );
             }
             $v['is_last'] = $is_last;
-        } elseif ($v instanceof Closure) {
+        } elseif ($v instanceof \Closure) {
             $v = array(
                 'type' => 'callback',
                 'callback' => $v
@@ -222,17 +222,17 @@ class Field implements \ArrayAccess, Template\Essence {
     }
 
     public function add_template_record_meta($html, $collection, $index, $is_subroot) {
-        $essence = $this['_essence'];
-        if ($essence) {
-            return $essence->add_template_record_meta($html, $collection, $index, $is_subroot);
+        $entity = $this['_entity'];
+        if ($entity) {
+            return $entity->add_template_record_meta($html, $collection, $index, $is_subroot);
         }
         return $html;
     }
 
     public function get_field_meta($field_keyword) {
-        $essence = $this['_essence'];
-        if ($essence) {
-            $meta = $essence->get_field_meta($field_keyword);
+        $entity = $this['_entity'];
+        if ($entity) {
+            $meta = $entity->get_field_meta($field_keyword);
             return $meta;
         }
         if (preg_match("~^%~", $field_keyword)) {

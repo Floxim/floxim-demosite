@@ -3,7 +3,7 @@ namespace Floxim\Main\Vacancy;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Essence extends \Floxim\Main\Page\Essence {
+class Entity extends \Floxim\Main\Page\Entity {
     public function get_form_fields() {
         $fields = fx::collection(parent::get_form_fields());
         $fields->apply(function($f) {

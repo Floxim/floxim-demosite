@@ -3,7 +3,7 @@ namespace Floxim\Main\Section;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Essence extends \Floxim\Main\Page\Essence {
+class Entity extends \Floxim\Main\Page\Entity {
     public function get_avail_parents_finder() {
         $f = parent::get_avail_parents_finder();
         $our_infoblock = fx::data('infoblock', $this['infoblock_id']);

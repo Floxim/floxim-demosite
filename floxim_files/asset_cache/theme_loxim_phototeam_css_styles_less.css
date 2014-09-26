@@ -194,22 +194,22 @@ header.fixed .icons .icon.active .width-helper {
   display: block;
 }
 header.fixed .icons .icon.search a.block_toggler {
-  background-image: url(/layout/v3/css/../img/icon_search.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/icon_search.png);
 }
 header.fixed .icons .icon.search.active a.block_toggler {
-  background-image: url(/layout/v3/css/../img/icon_search_active.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/icon_search_active.png);
 }
 header.fixed .icons .icon.component_user_auth_form a.block_toggler {
-  background-image: url(/layout/v3/css/../img/icon_login_off.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/icon_login_off.png);
 }
 header.fixed .icons .icon.component_user_auth_form.active  a.block_toggler {
-  background-image: url(/layout/v3/css/../img/icon_login_active.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/icon_login_active.png);
 }
 header.fixed .icons .icon.component_user_greet a.block_toggler {
-  background-image: url(/layout/v3/css/../img/icon_login_on.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/icon_login_on.png);
 }
 header.fixed .icons .icon.component_user_greet.active a.block_toggler {
-  background-image: url(/layout/v3/css/../img/icon_login_active.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/icon_login_active.png);
 }
 header.fixed .icons .icon .width-helper {
   position: absolute;
@@ -393,7 +393,7 @@ section .caption .text .go {
   font-weight: 700;
   color: white;
   text-decoration: none;
-  background-image: url(/layout/v3/css/../img/metro-arrow.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/metro-arrow.png);
   background-repeat: no-repeat;
   background-position: 95% center;
   height: 35px;
@@ -554,7 +554,7 @@ section .featuared-news-list .more {
   text-decoration: none;
   float: left;
   padding-right: 45px;
-  background-image: url(/layout/v3/css/../img/metro-arrow_small.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/metro-arrow_small.png);
   background-repeat: no-repeat;
   background-position-x: 100%;
   background-position-y: 14px;
@@ -629,7 +629,7 @@ section .person-list .person-list-item .social-icons .social-icon a {
   display: block;
   width: 100%;
   height: 100%;
-  background: url(/layout/v3/css/../img/like_icons.png);
+  background: url(/theme/Floxim/phototeam/css/../img/like_icons.png);
 }
 section .person-list .person-list-item .social-icons .social-icon.vk a {
   background-position: -30px;
@@ -805,7 +805,7 @@ section .vacancies-list .vacancies-list-item .more {
   margin-top: 20px;
   font-weight: 300;
   padding-right: 30px;
-  background-image: url(/layout/v3/css/../img/metro-arrow_small.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/metro-arrow_small.png);
   background-repeat: no-repeat;
   background-position-x: 100%;
   background-position-y: 4px;
@@ -831,14 +831,14 @@ section .slider .arrow {
   cursor: pointer;
   width: 24px;
   height: 40px;
-  background-image: url(/layout/v3/css/../img/left-arrow.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/left-arrow.png);
   background-repeat: no-repeat;
   background-position: center center;
   margin-left: 20px;
   opacity: 0.6;
 }
 section .slider .arrow.right {
-  background-image: url(/layout/v3/css/../img/right-arrow.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/right-arrow.png);
   left: auto;
   right: 0;
   margin-right: 20px;
@@ -1044,7 +1044,7 @@ section .full-back {
   width: 100%;
   padding: 40px 0;
   padding-top: 80px;
-  background-image: url(/layout/v3/css/../img/HansIsland.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/HansIsland.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -1150,7 +1150,7 @@ footer .footer-social-area .social-icons-list .social-icons-list-item {
 footer .footer-social-area .social-icons-list .social-icons-list-item a {
   height: 35px;
   width: 35px;
-  background-image: url(/layout/v3/css/../img/soc_icons.png);
+  background-image: url(/theme/Floxim/phototeam/css/../img/soc_icons.png);
   background-repeat: no-repeat;
   display: block;
   margin-right: 10px;
@@ -1261,7 +1261,7 @@ footer .footer-social-area .social-icons-list .social-icons-list-item.gp a {
     height: 40px;
     text-align: center;
     cursor: pointer;
-    background-image: url('/layout/v3/css/../img/icon_menu.gif');
+    background-image: url('/theme/Floxim/phototeam/css/../img/icon_menu.gif');
     background-size: 100%;
     background-position: 10%;
   }
