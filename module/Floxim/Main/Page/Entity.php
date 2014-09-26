@@ -120,12 +120,6 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
             foreach ($nested_ibs as $ib) {
                 $ib->delete();
             }
-            /*
-            fx::data('infoblock')->where('page_id', $this['id'])->all()->apply(function($n) {
-                $n->delete();
-            });
-             * 
-             */
         }
     }
     
