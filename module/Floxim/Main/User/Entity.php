@@ -9,7 +9,7 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         $session = fx::data('session')->load();
         $user = null;
         if ($session && $session['user_id']) {
-            $session->set_cookie();
+            $session->setCookie();
             $user = fx::data('user', $session['user_id']);
         }
         
@@ -17,12 +17,12 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
             $user = fx::data('user')->create();
         }
         
-        fx::env()->set_user($user);
+        fx::env()->setUser($user);
         return $user;
     }
 
     public function login($login, $password, $remember = true) {
-        $user = fx::data('user')->get_by_login($login); 
+        $user = fx::data('user')->getByLogin($login); 
         if (!$user || !$user['password'] || crypt($password, $user['password'])!==$user['password']) {
             return false;
         }
@@ -32,11 +32,11 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         foreach ($user->get() as $f => $v) {
             $this->data[$f] = $v;
         }
-        $this->create_session($remember);
+        $this->createSession($remember);
         return true;
     }
     
-    public function get_logout_url() {
+    public function getLogoutUrl() {
         return '/~ajax/user._logout/';
     }
 
@@ -45,26 +45,26 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         fx::data('session')->stop();
     }
     
-    public function is_admin() {
+    public function isAdmin() {
         return (bool) $this['is_admin'];
     }
 
-    public function create_session($remember = 0) {
+    public function createSession($remember = 0) {
         $session = fx::data('session')->start(array(
             'user_id' => $this['id'],
             // admins have one cross-site session
-            'site_id' => $this->is_admin() ? null : fx::env('site_id'),
+            'site_id' => $this->isAdmin() ? null : fx::env('site_id'),
             'remember' => $remember
         ));
         return $session;
     }
 
     
-    protected function _before_save () {
-        if ($this->is_modified('password')) {
+    protected function beforeSave () {
+        if ($this->isModified('password')) {
             $this['password'] = crypt($this['password'],  uniqid(mt_rand(), true));
         }
-        if ($this->is_modified('email')) {
+        if ($this->isModified('email')) {
             $existing = fx::data('user')
                             ->where('email', $this['email'])
                             ->where('id', $this['id'], '!=')
@@ -75,13 +75,13 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         }
     }
     
-    public function is_guest() {
+    public function isGuest() {
         return !$this['id'];
     }
     
-    public function get_auth_form() {
+    public function getAuthForm() {
         $form = new \Floxim\Form\Form(array('id' => 'auth_form'));
-        $form->add_fields(array(
+        $form->addFields(array(
             'email' => array(
                 'label' => 'E-mail',
                 'validators' => 'email -l'
@@ -102,7 +102,7 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         return $form;
     }
     
-    public function generate_password() {
+    public function generatePassword() {
         $letters = '1234567890abcdefghijklmnopqrstuvwxyz';
         $specials = '!#$%&*@~';
         $res = '';

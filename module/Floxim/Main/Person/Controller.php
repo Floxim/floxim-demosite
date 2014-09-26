@@ -2,16 +2,16 @@
 namespace Floxim\Main\Person;
 
 class Controller extends \Floxim\Main\Page\Controller {
-    public function do_list_infoblock() {
-        $this->_with_contacts();
-        return parent::do_list_infoblock();
+    public function doListInfoblock() {
+        $this->withContacts();
+        return parent::doListInfoblock();
     }
-    public function do_record() {
-        $this->_with_contacts();
-        return parent::do_record();
+    public function doRecord() {
+        $this->withContacts();
+        return parent::doRecord();
     }
    
-    protected function _with_contacts () {
+    protected function withContacts () {
         $this->listen('query_ready', function (\Floxim\Floxim\System\Data $query) {
             $query->with('contacts');
         });

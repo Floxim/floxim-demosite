@@ -5,7 +5,7 @@ use Floxim\Floxim\System\Fx as fx;
 
 class Entity extends \Floxim\Floxim\Component\Content\Entity {
     
-    protected function _get_page () {
+    protected function getPage () {
         if (!isset($this['parent_id'])) {
             return;  
         } 
@@ -13,9 +13,9 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         return fx::data('page', $this['parent_id']);
     }
     
-    protected function _after_insert() {
-        parent::_after_insert();
-        $page = $this->_get_page();
+    protected function afterInsert() {
+        parent::afterInsert();
+        $page = $this->getPage();
         if (!$page) {
             return;
         }
@@ -23,9 +23,9 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         $page->save(); 
     }
     
-    protected function _after_delete() {
-        parent::_after_delete();
-        $page = $this->_get_page();
+    protected function afterDelete() {
+        parent::afterDelete();
+        $page = $this->getPage();
         
         if (!$page) {
             return;

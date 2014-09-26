@@ -4,28 +4,28 @@ namespace Floxim\Main\Page;
 use Floxim\Floxim\System\Fx as fx;
 
 class Controller extends \Floxim\Floxim\Controller\Component {
-    public function do_neighbours() {
+    public function doNeighbours() {
         $item = fx::env('page');
         
-        $q = $this->get_finder()->order(null)->limit(1)->where('site_id', fx::env('site_id'));
+        $q = $this->getFinder()->order(null)->limit(1)->where('site_id', fx::env('site_id'));
         
         $q_next = clone $q;
         $q_prev = clone $q;
         
-        if ($this->get_param('sorting') === 'auto') {
+        if ($this->getParam('sorting') === 'auto') {
             $item_ib_params = fx::data('infoblock', $item['infoblock_id'])->get('params');
             $ib_sorting = $item_ib_params['sorting'];
-            $this->set_param('sorting', $ib_sorting == 'manual' ? 'priority' : $ib_sorting);
-            $this->set_param('sorting_dir', $item_ib_params['sorting_dir']);
+            $this->setParam('sorting', $ib_sorting == 'manual' ? 'priority' : $ib_sorting);
+            $this->setParam('sorting_dir', $item_ib_params['sorting_dir']);
         }
         
-        $sort_field = $this->get_param('sorting', 'priority');
-        $dir = strtolower($this->get_param('sorting_dir', 'asc'));
+        $sort_field = $this->getParam('sorting', 'priority');
+        $dir = strtolower($this->getParam('sorting_dir', 'asc'));
         
         $where_prev = array(array($sort_field, $item[$sort_field], $dir == 'asc' ? '<' : '>'));
         $where_next = array(array($sort_field, $item[$sort_field], $dir == 'asc' ? '>' : '<'));
         
-        $group_by_parent = $this->get_param('group_by_parent');
+        $group_by_parent = $this->getParam('group_by_parent');
         
         if ($group_by_parent) {
             $c_parent = fx::content($item['parent_id']); // todo: psr0 need verify

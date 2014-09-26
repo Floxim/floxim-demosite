@@ -3,7 +3,7 @@
 use Floxim\Floxim\System\Fx as fx;
 
 $record_templates = fx::controller($component['keyword'].':record')
-                        ->get_available_templates(fx::env('layout'));
+                        ->getAvailableTemplates(fx::env('layout'));
 
 $page_config = array(
     'actions' => array(
@@ -60,11 +60,11 @@ $page_config = array(
                     return;
                 }
                 $rec_ib = fx::data('infoblock')->create();
-                $content_type = $ctr->get_content_type();
+                $content_type = $ctr->getContentType();
                 $rec_ib->set(
                     array(
                         'site_id' => $list_ib['site_id'],
-                        'controller' => $ctr->get_controller_name(true),
+                        'controller' => $ctr->getControllerName(true),
                         'action' => 'record',
                         'name' => $content_type.' record',
                         'page_id' => $list_ib['page_id'],
@@ -79,7 +79,7 @@ $page_config = array(
             'delete' => function($list_ib, $ctr) {
                 $rec_ib = fx::data('infoblock')
                             ->where('page_id', $list_ib['page_id'])
-                            ->where('controller', $ctr->get_controller_name(true))
+                            ->where('controller', $ctr->getControllerName(true))
                             ->where('action', 'record')
                             ->one();
                 if ($rec_ib) {

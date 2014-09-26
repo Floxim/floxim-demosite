@@ -2,8 +2,8 @@
 namespace Floxim\Main\Video;
 
 class Entity extends \Floxim\Floxim\Component\Content\Entity {
-    protected function _before_save() {
-        parent::_before_save();
+    protected function beforeSave() {
+        parent::beforeSave();
         if(preg_match('/<[\w\s]+/', $this['embed_html'])==0) {
             if (preg_match('/((youtube.com\/watch\?v=(?P<url>\w+))|(youtu.be\/(?P<url1>\w+))){1}/', $this['embed_html'], $matches)!=0) {
                 $url = '';

@@ -6,45 +6,45 @@ use Floxim\Floxim\System;
 
 class Controller extends \Floxim\Main\Page\Controller {
 
-   public function do_list_infoblock() {
+   public function doListInfoblock() {
         $c_page_id  = fx::env('page')->get('id');
-        $path = fx::env('page')->get_parent_ids();
+        $path = fx::env('page')->getParentIds();
         $path []= $c_page_id;
-        $submenu_type = $this->get_param('submenu');
+        $submenu_type = $this->getParam('submenu');
         switch ($submenu_type) {
             case 'none':
                 break;
             case 'active':
-                $this->set_param('parent_id', $path);
+                $this->setParam('parent_id', $path);
                 break;
             case 'all': default:
-                $this->set_param('parent_id', false);
+                $this->setParam('parent_id', false);
                 break;
         }
         if ($submenu_type !== 'none') {
             $this->on_items_ready(function($items, $ctr) {
                 foreach ($items as $item) {
-                    $ctr->accept_content(array(
+                    $ctr->acceptContent(array(
                         'title' => fx::alang('Add subsection','component_section'),
                         'parent_id' => $item['id']
                     ), $item);
                 }
             });
         }
-        $res = parent::do_list_infoblock();
+        $res = parent::doListInfoblock();
         return $res;
     }
     
-    public function do_list() {
+    public function doList() {
         $this->on_items_ready(function($items, $ctr) {
-            $extra_ibs =  $ctr->get_param('extra_infoblocks', array());
+            $extra_ibs =  $ctr->getParam('extra_infoblocks', array());
             if (is_array($extra_ibs) && count($extra_ibs) > 0) {
                 foreach ($extra_ibs as $extra_ib_id) {
                     $extra_ib = fx::data('infoblock', $extra_ib_id);
                     if ($extra_ib) {
                         $extra_q = $extra_ib
-                                    ->init_controller()
-                                    ->get_finder()
+                                    ->initController()
+                                    ->getFinder()
                                     ->where('infoblock_id', $extra_ib_id);
                         $extra_items = $extra_q->all();
                         $items->concat($extra_items);
@@ -52,53 +52,53 @@ class Controller extends \Floxim\Main\Page\Controller {
                 }
             }
             $items->unique();
-            $extra_roots = $ctr->get_param('extra_root_ids');
+            $extra_roots = $ctr->getParam('extra_root_ids');
             if (!$extra_roots) {
                 $extra_roots = array();
             }
             if (count($items) > 0) {
                 fx::data('page')
-                    ->make_tree($items, 'submenu', $extra_roots)
-                    ->add_filter('parent_id', $items->first()->get('parent_id'));
+                    ->makeTree($items, 'submenu', $extra_roots)
+                    ->addFilter('parent_id', $items->first()->get('parent_id'));
             }
         });
-        return parent::do_list();
+        return parent::doList();
     }
     
-    protected function _add_submenu_items($items) {
-        $submenu_type = $this->get_param('submenu');
+    protected function addSubmenuItems($items) {
+        $submenu_type = $this->getParam('submenu');
         if ($submenu_type === 'none') {
             return;
         }
-        $finder = fx::content($this->get_component()->get('keyword'));
+        $finder = fx::content($this->getComponent()->get('keyword'));
         switch ($submenu_type) {
             case 'all':
-                $finder->descendants_of($items);
+                $finder->descendantsOf($items);
                 break;
             case 'active':
-                $path = fx::env('page')->get_path();
-                $finder->where('parent_id', $path->get_values('id'));
+                $path = fx::env('page')->getPath();
+                $finder->where('parent_id', $path->getValues('id'));
                 break;
         }
         $items->concat($finder->all());
     }
 
-    public function do_list_selected () {
+    public function doListSelected () {
         $this->on_items_ready(function($items, $ctr) {
-            $ctr->set_param('extra_root_ids', $items->get_values('id'));
+            $ctr->setParam('extra_root_ids', $items->getValues('id'));
         });
         $this->on_items_ready(array($this, '_add_submenu_items'));
-        return parent::do_list_selected();
+        return parent::doListSelected();
     }
     
-    public function do_list_filtered() {
+    public function doListFiltered() {
         $this->on_items_ready(array($this, '_add_submenu_items'));
-        return parent::do_list_filtered();
+        return parent::doListFiltered();
     }
 
-    public function do_list_submenu() {
-        $source = $this->get_param('source_infoblock_id');
-        $path = fx::env('page')->get_path();
+    public function doListSubmenu() {
+        $source = $this->getParam('source_infoblock_id');
+        $path = fx::env('page')->getPath();
         if (count($path) < 2) {
             return;
         }
@@ -107,19 +107,19 @@ class Controller extends \Floxim\Main\Page\Controller {
                 $q->where('parent_id', $path[1]->get('id'))->where('infoblock_id', $source);
             });
         }
-        return $this->do_list();
+        return $this->doList();
     }
     
-    public function do_breadcrumbs() {
-        if ( !($page_id = $this->get_param('page_id'))) {
+    public function doBreadcrumbs() {
+        if ( !($page_id = $this->getParam('page_id'))) {
             $page_id = fx::env('page_id');
         }
         $entity_page = fx::data('page',$page_id);
         $entity_page['active'] = true;
-        if ($this->get_param('header_only')) {
+        if ($this->getParam('header_only')) {
             $pages = new System\Collection(array($entity_page));
         } else {
-            $pages = $entity_page->get_path();
+            $pages = $entity_page->getPath();
         }
         return array('items' => $pages);
     }
@@ -129,12 +129,12 @@ class Controller extends \Floxim\Main\Page\Controller {
      *
      * @return fx_collection
      */
-    protected function _get_allow_parent_pages() {
+    protected function getAllowParentPages() {
         /**
          * Retrieve pages object
          */
         $pages=fx::data('section')->where('site_id',fx::env('site_id'))->all();
-        $additional_parent_ids=array_diff($pages->get_values('parent_id'),$pages->get_values('id'));
+        $additional_parent_ids=array_diff($pages->getValues('parent_id'),$pages->getValues('id'));
         $additional_parent_ids=array_unique($additional_parent_ids);
         $pages_add=fx::data('content')->where('id',$additional_parent_ids)->all();
 

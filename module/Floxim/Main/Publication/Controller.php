@@ -6,27 +6,27 @@ use Floxim\Floxim\System;
 
 class Controller extends \Floxim\Main\Page\Controller {
     
-    public function do_list () {
+    public function doList () {
         $this->listen('query_ready', function (System\Data $query) {
             $query->with('tags');
         });
-        return parent::do_list();
+        return parent::doList();
     }
-    public function do_list_by_tag() {
+    public function doListByTag() {
         $this->listen('query_ready', function($query) {
             $ids = fx::data('classifier_linker')->
                     where('classifier_id', fx::env('page')->get('id'))->
                     select('content_id')->
-                    get_data()->get_values('content_id');
+                    getData()->getValues('content_id');
             $query->where('id', $ids);
         });
-        return $this->do_list();
+        return $this->doList();
     }
 
-    protected function _get_publication_page() {
-        $infoblock_id=$this->get_param('source_infoblock_id');
+    protected function getPublicationPage() {
+        $infoblock_id=$this->getParam('source_infoblock_id');
         if (!$infoblock_id) {
-            $infoblock = fx::data('infoblock')->get_content_infoblocks($this->get_content_type())->first();
+            $infoblock = fx::data('infoblock')->getContentInfoblocks($this->getContentType())->first();
         } else {
             $infoblock = fx::data('infoblock', $infoblock_id);
         }
@@ -38,11 +38,11 @@ class Controller extends \Floxim\Main\Page\Controller {
             $infoblock->get('page_id')
         );
     }
-    public function settings_calendar() {
+    public function settingsCalendar() {
         $ib_values=fx::data('infoblock')->
                     where('site_id', fx::env('site')->get('id'))->
-                    get_content_infoblocks($this->get_content_type())
-                    ->get_values('name', 'id');
+                    getContentInfoblocks($this->getContentType())
+                    ->getValues('name', 'id');
         $fields ['source_infoblock_id']= array(
             'type' => 'select',
             'values' => $ib_values,
@@ -52,17 +52,17 @@ class Controller extends \Floxim\Main\Page\Controller {
         );
         return $fields;
     }
-    public function do_calendar() {
-        $months = $this->get_finder()->
+    public function doCalendar() {
+        $months = $this->getFinder()->
             select('DATE_FORMAT(`publish_date`, "%m") as month')->
             select('DATE_FORMAT(`publish_date`, "%Y") as year')->
             select('COUNT(DISTINCT({{content}}.id)) as `count`')->
             where('site_id', fx::env('site')->get('id'))->
             order('publish_date', 'DESC')->
             group('month')->group('year')->
-            get_data();
+            getData();
         $base_url = '';
-        $pub_page = $this->_get_publication_page();
+        $pub_page = $this->getPublicationPage();
         if ($pub_page) {
             $base_url = $pub_page->get('url');
         }
@@ -86,7 +86,7 @@ class Controller extends \Floxim\Main\Page\Controller {
         }
         return array('items' => $years);
     }
-    public function do_list_infoblock() {
+    public function doListInfoblock() {
         if ( isset($_GET['month']) ) {
             $this->listen('query_ready', function (System\Data $query) {
                 list($month, $year) = explode(".", $_GET['month']);
@@ -96,7 +96,7 @@ class Controller extends \Floxim\Main\Page\Controller {
                 $query->where('publish_date', $end, '<=');
             });
         }
-        $res = parent::do_list_infoblock();
+        $res = parent::doListInfoblock();
         return $res;
     }
 
@@ -105,15 +105,15 @@ class Controller extends \Floxim\Main\Page\Controller {
      *
      * @return fx_collection
      */
-    protected function _get_allow_parent_pages() {
+    protected function getAllowParentPages() {
         // TODO: method get_content_infoblocks not use site_id filter
-        $infoblocks=fx::data('infoblock')->get_content_infoblocks($this->get_content_type());
+        $infoblocks=fx::data('infoblock')->getContentInfoblocks($this->getContentType());
 
         $pages_id=array();
         foreach($infoblocks as $infoblock) {
             if (isset($infoblock['params']['parent_type']) and $infoblock['params']['parent_type']=='current_page_id') {
                 // Retrieve all pages
-                $pages_id=array_merge($pages_id,$infoblock->get_pages());
+                $pages_id=array_merge($pages_id,$infoblock->getPages());
             } else {
                 // Retrieve self page
                 $pages_id[]=$infoblock['page_id'];

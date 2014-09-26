@@ -19,33 +19,33 @@ class Captcha extends Field {
 
         parent::__construct($params);
         // todo: psr0 need fix path
-        $url = fx::path()->to_http(dirname(realpath(__FILE__)));
-        $url .= '/captcha.php?fx_field_name='.urlencode($this->get_id());
+        $url = fx::path()->toHttp(dirname(realpath(__FILE__)));
+        $url .= '/captcha.php?fx_field_name='.urlencode($this->getId());
         $url .= '&rand='.rand(0, 1000000);
         $this['captcha_url'] = $url;
 
-        if (!$this->was_valid()) {
+        if (!$this->wasValid()) {
             $this['required'] = true;
-            $this->add_validator('captcha');
+            $this->addValidator('captcha');
         }
         $field = $this;
-        $this->get_form()->on_finish(function($f) use ($field) {
-            $field->was_valid(false);
+        $this->getForm()->on_finish(function($f) use ($field) {
+            $field->wasValid(false);
         });
     }
 
-    public function validate_captcha() {
-        if ($this->was_valid()) {
+    public function validateCaptcha() {
+        if ($this->wasValid()) {
             return;
         }
-        if ($_SESSION['captcha_code_'.$this->get_id()] != $this->get_value()) {
+        if ($_SESSION['captcha_code_'.$this->getId()] != $this->getValue()) {
             return 'Invalid code';
         }
-        $this->was_valid(true);
+        $this->wasValid(true);
     }
 
-    public function was_valid($set = null) {
-        $prop = 'captcha_was_valid_'.$this->get_id();
+    public function wasValid($set = null) {
+        $prop = 'captcha_was_valid_'.$this->getId();
         if ($set === null) {
             $was = isset($_SESSION[$prop]) && $_SESSION[$prop] + $this['valid_for'] > time();
             if ($was) {

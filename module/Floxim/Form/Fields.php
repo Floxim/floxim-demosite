@@ -14,36 +14,36 @@ class Fields extends System\Collection {
         $this->data[$offset] = $value;
     }
 
-    public function set_value($field, $value) {
+    public function setValue($field, $value) {
         if (isset($this[$field])) {
-            $this[$field]->set_value($value);
+            $this[$field]->setValue($value);
         }
     }
 
-    public function add_field($params) {
+    public function addField($params) {
         $field = Field\Field::create($params + array('owner' => $this));
         $this[$field['name']] = $field;
         return $field;
     }
 
-    public function get_field($name) {
+    public function getField($name) {
         return $this[$name];
     }
 
-    public function get_value($field_name) {
-        $f = $this->get_field($field_name);
-        return $f ? $f->get_value() : null;
+    public function getValue($field_name) {
+        $f = $this->getField($field_name);
+        return $f ? $f->getValue() : null;
     }
 
-    public function get_values() {
+    public function getValues() {
         $values = fx::collection();
         foreach ($this->data as $name => $field) {
-            $values[$name] = $field->get_value();
+            $values[$name] = $field->getValue();
         }
         return $values;
     }
 
-    public function get_errors() {
+    public function getErrors() {
         $errors = fx::collection();
         foreach ($this->data as $f) {
             $f_errors = $f['errors'];

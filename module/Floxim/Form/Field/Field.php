@@ -43,25 +43,25 @@ class Field implements \ArrayAccess, Template\Entity {
             $this[$k] = $v;
         }
         if (!isset($this['value'])) {
-            $this->set_value(null);
+            $this->setValue(null);
         }
     }
 
-    public function set_value($value) {
+    public function setValue($value) {
         $this->params['value'] = $value;
     }
 
-    public function get_value() {
+    public function getValue() {
         return $this->params['value'];
     }
 
-    public function is_empty() {
-        return !$this->get_value();
+    public function isEmpty() {
+        return !$this->getValue();
     }
 
     protected $errors = null;
 
-    public function add_error($message) {
+    public function addError($message) {
         if (!isset($this->params['errors'])) {
             $this->params['errors'] = fx::collection();
             $this->params['has_errors'] = true;
@@ -78,14 +78,14 @@ class Field implements \ArrayAccess, Template\Entity {
                         $res = call_user_func($validator['callback'], $this);
                         if (is_string($res) || $res === false) {
                             $is_valid = false;
-                            $this->add_error($res);
+                            $this->addError($res);
                         }
                         break;
                     case 'regexp':
-                        $res = preg_match($validator['regexp'], $this->get_value());
+                        $res = preg_match($validator['regexp'], $this->getValue());
                         if (!$res) {
                             $is_valid = false;
-                            $this->add_error( isset($validator['error']) ? $validator['error'] : 'Wrong value format');
+                            $this->addError( isset($validator['error']) ? $validator['error'] : 'Wrong value format');
                         }
                         break;
                 }
@@ -97,26 +97,26 @@ class Field implements \ArrayAccess, Template\Entity {
         return $is_valid;
     }
 
-    public function validate_email() {
-        $v = $this->get_value();
-        if (!fx::util()->validate_email($v)) {
+    public function validateEmail() {
+        $v = $this->getValue();
+        if (!fx::util()->validateEmail($v)) {
             return "Please enter valid e-mail adress!";
         }
     }
 
-    public function validate_filled() {
-        if ($this->is_empty()) {
+    public function validateFilled() {
+        if ($this->isEmpty()) {
             return 'This field is required';
         }
     }
 
-    public function get_form() {
+    public function getForm() {
         return $this->owner->form;
     }
 
-    public function get_id() {
-        $form = $this->get_form();
-        return $form->get_id().'_'.$this['name'];
+    public function getId() {
+        $form = $this->getForm();
+        return $form->getId().'_'.$this['name'];
     }
 
     /* ArrayAccess methods */
@@ -161,7 +161,7 @@ class Field implements \ArrayAccess, Template\Entity {
 
     public function offsetSet($offset, $value) {
         if ($offset === 'value') {
-            $this->set_value($value);
+            $this->setValue($value);
             return;
         }
         if ($offset === 'validators') {
@@ -169,17 +169,17 @@ class Field implements \ArrayAccess, Template\Entity {
                 $value = array($value);
             }
             foreach ($value as $v) {
-                $this->add_validator($v);
+                $this->addValidator($v);
             }
             return;
         }
         $this->params[$offset] = $value;
         if ($offset === 'required' && $value) {
-            $this->add_validator('filled -l');
+            $this->addValidator('filled -l');
         }
     }
 
-    public function add_validator($v) {
+    public function addValidator($v) {
         if (!isset($this->params['validators'])) {
             $this->params['validators'] = fx::collection();
         }
@@ -197,7 +197,7 @@ class Field implements \ArrayAccess, Template\Entity {
                 );
             } elseif (method_exists($this, 'validate_'.$v)) {
                 // prevent double-adding of the same validator by shortcode
-                if ($this->params['validators']->find_one('code', $v)) {
+                if ($this->params['validators']->findOne('code', $v)) {
                     return;
                 }
                 $v = array(
@@ -221,18 +221,18 @@ class Field implements \ArrayAccess, Template\Entity {
         unset($this->params[$offset]);
     }
 
-    public function add_template_record_meta($html, $collection, $index, $is_subroot) {
+    public function addTemplateRecordMeta($html, $collection, $index, $is_subroot) {
         $entity = $this['_entity'];
         if ($entity) {
-            return $entity->add_template_record_meta($html, $collection, $index, $is_subroot);
+            return $entity->addTemplateRecordMeta($html, $collection, $index, $is_subroot);
         }
         return $html;
     }
 
-    public function get_field_meta($field_keyword) {
+    public function getFieldMeta($field_keyword) {
         $entity = $this['_entity'];
         if ($entity) {
-            $meta = $entity->get_field_meta($field_keyword);
+            $meta = $entity->getFieldMeta($field_keyword);
             return $meta;
         }
         if (preg_match("~^%~", $field_keyword)) {

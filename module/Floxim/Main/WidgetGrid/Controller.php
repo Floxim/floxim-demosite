@@ -9,14 +9,14 @@ class Controller extends \Floxim\Floxim\Controller\Widget {
         if (isset($res['areas'])) {
             foreach ($res['areas'] as $i => &$area) {
                 if (!isset($area['id'])) {
-                    $area['id'] = (isset($area['keyword']) ? $area['keyword'] : $i).'_'.$this->get_param('infoblock_id');
+                    $area['id'] = (isset($area['keyword']) ? $area['keyword'] : $i).'_'.$this->getParam('infoblock_id');
                 }
             }
         }
         return $res;
     }
     
-    public function do_two_columns() {
+    public function doTwoColumns() {
         return array(
             'areas' => array(
                 array('name' => 'Sidebar', 'keyword' => 'sidebar'),

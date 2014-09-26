@@ -10,7 +10,7 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
      * Get the id of the page-parents
      * @return array
      */
-    public function get_parent_ids() {
+    public function getParentIds() {
         if (!is_null($this->parent_ids)) {
             return $this->parent_ids;
         }
@@ -36,11 +36,11 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         return $ids;
     }
     
-    public function get_path() {
+    public function getPath() {
         if ($this->path) {
             return $this->path;
         }
-        $path_ids = $this->get_parent_ids();
+        $path_ids = $this->getParentIds();
         $path_ids []= $this['id'];
         $this->path = fx::data('page')->where('id', $path_ids)->all();
         return $this->path;
@@ -48,11 +48,11 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
     
     protected $_active;
     
-    public function _get_is_active() {
-        return $this->is_active();
+    public function getIsActive() {
+        return $this->isActive();
     }
 
-    public function is_active () {
+    public function isActive () {
         if ($this->_active) {
             return $this->_active;
         }
@@ -60,24 +60,24 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         if (!$c_page_id) {
             return false;
         }
-        $path = fx::env('page')->get_parent_ids();
+        $path = fx::env('page')->getParentIds();
         $path []= $c_page_id;
 
         return $this->_active = in_array($this['id'], $path);
     }
     
-    public function is_current() {
+    public function isCurrent() {
         return $this['id'] == fx::env('page_id');
     }
     
-    public function _get_is_current() {
-        return $this->is_current();
+    public function getIsCurrent() {
+        return $this->isCurrent();
     }
     
-    protected function _before_save() {
-        parent::_before_save();
+    protected function beforeSave() {
+        parent::beforeSave();
         if (empty($this['url']) && !empty($this['name'])) {
-            $url = fx::util()->str_to_latin($this['name']);
+            $url = fx::util()->strToLatin($this['name']);
             $url  = preg_replace("~[^a-z0-9_-]+~i", '-', $url);
             $url = trim($url, '-');
             $url = preg_replace("~\-+~", '-', $url);
@@ -105,18 +105,18 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         }
     }
     
-    protected function _after_insert() {
-        parent::_after_insert();
+    protected function afterInsert() {
+        parent::afterInsert();
         if (empty($this['url'])) {
             $this['url'] = '/page-'.$this['id'].'.html';
             $this->save();
         }
     }
     
-    protected function _after_delete() {
-        parent::_after_delete();
+    protected function afterDelete() {
+        parent::afterDelete();
         if (!$this->_skip_cascade_delete_children) {
-            $nested_ibs = $this->get_nested_infoblocks(true);
+            $nested_ibs = $this->getNestedInfoblocks(true);
             foreach ($nested_ibs as $ib) {
                 $ib->delete();
             }
@@ -129,12 +129,12 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         }
     }
     
-    public function delete_children() {
-        $nested_ibs = $this->get_nested_infoblocks(false);
+    public function deleteChildren() {
+        $nested_ibs = $this->getNestedInfoblocks(false);
         foreach ($nested_ibs as $ib) {
             $ib->delete();
         }
-        parent::delete_children();
+        parent::deleteChildren();
     }
     
     /**
@@ -142,11 +142,11 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
      * @param bool $with_own include page's own infoblocks
      * @return fx_collection Found infoblocks
      */
-    public function get_nested_infoblocks($with_own = true) {
-        $q = fx::data('page')->descendants_of($this, $with_own);
+    public function getNestedInfoblocks($with_own = true) {
+        $q = fx::data('page')->descendantsOf($this, $with_own);
         $q->join('{{infoblock}}', '{{infoblock}}.page_id = {{content}}.id');
         $q->select('{{infoblock}}.id');
-        $ids = $q->get_data()->get_values('id');
+        $ids = $q->getData()->getValues('id');
         if (count($ids) === 0) {
             return fx::collection();
         }
@@ -154,7 +154,7 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         return $infoblocks;
     }
     
-    public function _get_external_host() {
+    public function getExternalHost() {
         $url = $this['url'];
         if (!preg_match('~^https?~', $url)) {
             return '';
@@ -164,21 +164,21 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
     }
     
     
-    public function get_page_infoblocks() {
+    public function getPageInfoblocks() {
         // cache page ibs
         if (!isset($this->data['page_infoblocks'])) {
-            $this->data['page_infoblocks'] = fx::data('infoblock')->get_for_page($this);
+            $this->data['page_infoblocks'] = fx::data('infoblock')->getForPage($this);
         }
         return $this->data['page_infoblocks'];
     }
     
     
-    public function get_layout_infoblock() {
+    public function getLayoutInfoblock() {
         if (isset($this->data['layout_infoblock'])) {
             return $this->data['layout_infoblock'];
         }
-        $layout_ibs = $this->get_page_infoblocks()->find(function($ib) {
-            return $ib->is_layout();
+        $layout_ibs = $this->getPageInfoblocks()->find(function($ib) {
+            return $ib->isLayout();
         });
         if (count($layout_ibs) == 0) {
             // force root layout infoblock
@@ -198,7 +198,7 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
                 $lay_ib->save();
             }
         } else {
-            $layout_ibs = fx::data('infoblock')->sort_infoblocks($layout_ibs);
+            $layout_ibs = fx::data('infoblock')->sortInfoblocks($layout_ibs);
             $lay_ib = $layout_ibs->first();
         }
         $this->data['layout_infoblock'] = $lay_ib;

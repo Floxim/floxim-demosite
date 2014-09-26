@@ -6,20 +6,20 @@ use Floxim\Floxim\System\Fx as fx;
 
 class Finder extends Component\Content\Finder {
     
-    public function get_by_id($id) {
+    public function getById($id) {
         if (!is_numeric($id)) {
-            return $this->get_by_url($id);
+            return $this->getByUrl($id);
         }
-        return parent::get_by_id($id);
+        return parent::getById($id);
     }
     
-    public function get_tree($children_key = 'children') {
+    public function getTree($children_key = 'children') {
         $data = $this->all();
-        $tree = $this->make_tree($data, $children_key);
+        $tree = $this->makeTree($data, $children_key);
         return $tree;
     }
 
-    public function get_by_url($url, $site_id = null) {
+    public function getByUrl($url, $site_id = null) {
         $url_variants = array($url);
         if ($site_id === null){
             $site_id = fx::env('site')->get('id');
@@ -42,7 +42,7 @@ class Finder extends Component\Content\Finder {
         return $page;
     }
     
-    public function make_tree($data, $children_key = 'children', $extra_root_ids = array()) {
+    public function makeTree($data, $children_key = 'children', $extra_root_ids = array()) {
         $index_by_parent = array();
         
         foreach ($data as $item) {
@@ -53,7 +53,7 @@ class Finder extends Component\Content\Finder {
             if (!isset($index_by_parent[$pid])) {
                 $index_by_parent[$pid] = fx::collection();
                 $index_by_parent[$pid]->is_sortable = $data->is_sortable;
-                $index_by_parent[$pid]->add_filter('parent_id', $pid);
+                $index_by_parent[$pid]->addFilter('parent_id', $pid);
             }
             $index_by_parent[$pid] []= $item;
         }
@@ -61,9 +61,9 @@ class Finder extends Component\Content\Finder {
         foreach ($data as $item) {
             if (isset($index_by_parent[$item['id']])) {
                 $item[$children_key] = $index_by_parent[$item['id']];
-                $data->find_remove(
+                $data->findRemove(
                     'id',
-                    $index_by_parent[$item['id']]->get_values('id')
+                    $index_by_parent[$item['id']]->getValues('id')
                 );
             } else {
                 $item[$children_key] = null;

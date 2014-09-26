@@ -5,7 +5,7 @@ use Floxim\Floxim\System\Fx as fx;
 
 class Controller extends \Floxim\Floxim\Controller\Widget {
     
-    protected function _get_fake_ib() {
+    protected function getFakeIb() {
         static $fake_counter = 0;
         $fake_ib = fx::data('infoblock')->create();
         $fake_ib['id'] = 'fake-'.$fake_counter++;
@@ -13,22 +13,22 @@ class Controller extends \Floxim\Floxim\Controller\Widget {
         return $fake_ib;
     }
     
-    public function do_show() {
+    public function doShow() {
         $area_name = 'blockset_'.$this->input['infoblock_id'];
-        $blocks = fx::page()->get_area_infoblocks($area_name);
-        if ($this->get_param('is_fake')) {
+        $blocks = fx::page()->getAreaInfoblocks($area_name);
+        if ($this->getParam('is_fake')) {
             foreach (range(1,3)as $n) {
-                $blocks[]= $this->_get_fake_ib();
+                $blocks[]= $this->getFakeIb();
             }
         } else {
-            if ($this->get_param('add_new_infoblock')) {
-                $blocks[]= $this->_get_fake_ib();
+            if ($this->getParam('add_new_infoblock')) {
+                $blocks[]= $this->getFakeIb();
             }
         }
-        $res = parent::do_show();
+        $res = parent::doShow();
         $res += array('items' => $blocks, 'area' => $area_name);
         
-        if (count($blocks) == 0 && !fx::is_admin()) {
+        if (count($blocks) == 0 && !fx::isAdmin()) {
             $this->_meta['disabled'] = true;
         }
         return $res;

@@ -149,13 +149,13 @@ function font()
 		return 'fonts/' . $ar[$i];
 	}
 }
-function make_seed()
+function makeSeed()
 {
    list($usec, $sec) = explode(' ', microtime());
    return (float) $sec + ((float) $usec * 100000);
 }
 
-function dss_rand()
+function dssRand()
    {
       return 'Z';
        global $db, $board_config, $dss_seeded;

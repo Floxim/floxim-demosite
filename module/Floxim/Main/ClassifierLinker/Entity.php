@@ -5,8 +5,8 @@ use Floxim\Floxim\System\Fx as fx;
 
 class Entity extends \Floxim\Floxim\Component\Content\Entity {
     
-    protected function _after_insert() {
-        parent::_after_insert();
+    protected function afterInsert() {
+        parent::afterInsert();
         $classifier = $this['classifier'];
         if (!$classifier) {
             return;
@@ -15,8 +15,8 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         $classifier->save();
     }
     
-    protected function _after_delete() {
-        parent::_after_delete();
+    protected function afterDelete() {
+        parent::afterDelete();
         if (! ($classifier = $this['classifier']) ) {
             return;
         }

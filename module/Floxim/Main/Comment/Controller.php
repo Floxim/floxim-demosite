@@ -6,7 +6,7 @@ use Floxim\Floxim\System\Fx as fx;
 class Controller extends \Floxim\Floxim\Controller\Component
 {
     
-    protected function _get_target_infoblock()
+    protected function getTargetInfoblock()
     {
         $target_ibs = fx::data('infoblock')->where('controller', 'component_comment')->where('action', 'listing')->all();
         $field      = array(
@@ -24,13 +24,13 @@ class Controller extends \Floxim\Floxim\Controller\Component
         }
         return $field;
     }
-    public function get_finder()
+    public function getFinder()
     {
-        $finder = parent::get_finder();
+        $finder = parent::getFinder();
         
-        if (!fx::is_admin()) {
-            if ($own_comments = $this->_get_own_comments()) {
-                $finder->where_or(array(
+        if (!fx::isAdmin()) {
+            if ($own_comments = $this->getOwnComments()) {
+                $finder->whereOr(array(
                     'is_moderated',
                     1
                 ), array(
@@ -44,7 +44,7 @@ class Controller extends \Floxim\Floxim\Controller\Component
         return $finder;
     }
     
-    public function do_add()
+    public function doAdd()
     {
         if (isset($_POST["addcomment"]) && isset($_POST["user_name"]) && !empty($_POST["user_name"]) && isset($_POST["comment_text"]) && !empty($_POST["comment_text"])) {
             
@@ -52,8 +52,8 @@ class Controller extends \Floxim\Floxim\Controller\Component
                 'user_name' => $_POST["user_name"],
                 'comment_text' => $_POST["comment_text"],
                 'publish_date' => date("Y-m-d H:i:s"),
-                'parent_id' => $this->_get_parent_id(),
-                'infoblock_id' => $this->get_param('target_infoblock_id')
+                'parent_id' => $this->getParentId(),
+                'infoblock_id' => $this->getParam('target_infoblock_id')
             ));
             $comments->save();
             if (!isset($_COOKIE["own_comments"])) {
@@ -65,7 +65,7 @@ class Controller extends \Floxim\Floxim\Controller\Component
         }
     }
     
-    protected function _get_own_comments()
+    protected function getOwnComments()
     {
         if (isset($_COOKIE["own_comments"])) {
             return explode(',', $_COOKIE["own_comments"]);

@@ -16,24 +16,24 @@ class Form implements \ArrayAccess {
         $fields->form = $this;
         $params['fields'] = $fields;
         $this->params = $params;
-        $this->add_field(array('name' => 'default_submit', 'type' => 'submit', 'label' => 'Submit'));
+        $this->addField(array('name' => 'default_submit', 'type' => 'submit', 'label' => 'Submit'));
     }
     
-    public function add_fields($fields) {
+    public function addFields($fields) {
         foreach ($fields as $name => $props) {
             $props['name'] = $name;
-            $this->add_field($props);
+            $this->addField($props);
         }
     }
     
     /**
      * @todo we need $_POST + $_FILES merge here
      */
-    protected function _get_input() {
+    protected function getInput() {
         return strtolower($this['method']) == 'post' ? $_POST : $_GET;
     }
     
-    public function get_id() {
+    public function getId() {
         if (!isset($this['id'])) {
             $this['id'] = md5(join(",",$this->params['fields']->keys()));
         }
@@ -67,12 +67,12 @@ class Form implements \ArrayAccess {
     }
     
     protected $is_sent = null;
-    public function is_sent() {
+    public function isSent() {
         if (is_null($this->is_sent)) {
-            $input = $this->_get_input();
-            $this->is_sent = isset($input[$this->get_id().'_sent']);
+            $input = $this->getInput();
+            $this->is_sent = isset($input[$this->getId().'_sent']);
             if ($this->is_sent) {
-                $this->load_values();
+                $this->loadValues();
                 $this->validate();
                 $this->trigger('sent');
             }
@@ -84,21 +84,21 @@ class Form implements \ArrayAccess {
         return $this->params['fields']->validate();
     }
     
-    public function load_values($source = null) {
+    public function loadValues($source = null) {
         if (is_null($source)) {
-            $source = $this->_get_input();
+            $source = $this->getInput();
         }
         foreach ($this->params['fields'] as $name => $field) {
-            $field->set_value( isset($source[$name]) ? $source[$name] : null);
+            $field->setValue( isset($source[$name]) ? $source[$name] : null);
         }
     }
     
-    public function set_value ($field, $value) {
-        $this->params['fields']->set_value($field, $value);
+    public function setValue ($field, $value) {
+        $this->params['fields']->setValue($field, $value);
     }
     
-    public function get_value ($field = null) {
-        return $this->params['fields']->get_value($field);
+    public function getValue ($field = null) {
+        return $this->params['fields']->getValue($field);
     }
     
     /**
@@ -106,21 +106,21 @@ class Form implements \ArrayAccess {
      * @param type $name
      */
     public function __get($name) {
-        return $this->get_value($name);
+        return $this->getValue($name);
     }
     
-    public function get_values() {
-        return $this->params['fields']->get_values();
+    public function getValues() {
+        return $this->params['fields']->getValues();
     }
      
-    public function add_field($params) {
+    public function addField($params) {
         if ($params['type'] == 'submit') {
-            $this->params['fields']->find_remove('name', 'default_submit');
+            $this->params['fields']->findRemove('name', 'default_submit');
         }
-        return $this->params['fields']->add_field($params);
+        return $this->params['fields']->addField($params);
     }
     
-    public function add_message($message, $after_finish = false) {
+    public function addMessage($message, $after_finish = false) {
         if (!isset($this['messages'])) {
             $this['messages'] = fx::collection();
         }
@@ -130,25 +130,25 @@ class Form implements \ArrayAccess {
     public function finish($message = null) {
         $this['is_finished'] = true;
         if ($message) {
-            $this->add_message($message, true);
+            $this->addMessage($message, true);
         }
         $this->trigger('finish');
     }
     
-    public function has_errors() {
-        return count($this->get_errors()) > 0;
+    public function hasErrors() {
+        return count($this->getErrors()) > 0;
     }
     
-    public function get_errors() {
+    public function getErrors() {
         $errors = isset($this['errors']) ? $this['errors'] : fx::collection();
-        $errors->concat($this->params['fields']->get_errors());
+        $errors->concat($this->params['fields']->getErrors());
         return $errors;
     }
     
-    public function add_error($error, $field_name = false) {
-        $field = $field_name ? $this->get_field($field_name) : false;
+    public function addError($error, $field_name = false) {
+        $field = $field_name ? $this->getField($field_name) : false;
         if ($field) {
-            $field->add_error($error);
+            $field->addError($error);
             return;
         }
         if (!isset($this->params['errors'])) {
@@ -157,8 +157,8 @@ class Form implements \ArrayAccess {
         $this->params['errors'][]= array('error' => $error);
     }
     
-    public function get_field($name) {
-        return $this->params['fields']->get_field($name);
+    public function getField($name) {
+        return $this->params['fields']->getField($name);
     }
     
     public function get($offset = null) {
@@ -176,7 +176,7 @@ class Form implements \ArrayAccess {
     
     public function offsetGet($offset) {
         if ($offset === 'is_sent') {
-            return $this->is_sent();
+            return $this->isSent();
         }
         return array_key_exists($offset, $this->params) ? $this->params[$offset] : null;
     }

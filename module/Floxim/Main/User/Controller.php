@@ -4,30 +4,30 @@ namespace Floxim\Main\User;
 use Floxim\Floxim\System\Fx as fx;
 
 class Controller extends \Floxim\Floxim\Controller\Component {
-    public function do_auth_form() {
+    public function doAuthForm() {
         $user = fx::user();
         
-        if (!$user->is_guest()) {
-            if (!fx::is_admin()) {
+        if (!$user->isGuest()) {
+            if (!fx::isAdmin()) {
                 return false;
             }
             $this->_meta['hidden'] = true;
         }
         
-        $form = $user->get_auth_form();
+        $form = $user->getAuthForm();
         
-        if ($form->is_sent() && !$form->has_errors()) {
-            $vals = $form->get_values();
+        if ($form->isSent() && !$form->hasErrors()) {
+            $vals = $form->getValues();
             if (!$user->login($vals['email'], $vals['password'], $vals['remember'])) {
-                $form->add_error('User not found or password is wrong', 'email');
+                $form->addError('User not found or password is wrong', 'email');
             } else {
                 $location = $_SERVER['REQUEST_URI'];
                 if ($location  === '/floxim/') {
                     $location = '/';
                 }
                 // send admin to cross-auth page
-                if ($user->is_admin()) {
-                    fx::input()->set_cookie('fx_target_location', $location);
+                if ($user->isAdmin()) {
+                    fx::input()->setCookie('fx_target_location', $location);
                     fx::http()->redirect('/~ajax/user._crossite_auth_form');
                 }
                 fx::http()->redirect($location);
@@ -42,14 +42,14 @@ class Controller extends \Floxim\Floxim\Controller\Component {
     /**
      * Show form to authorize user on all sites
      */
-    public function do__crossite_auth_form() {
-        if (!fx::user()->is_admin()) {
+    public function do_CrossiteAuthForm() {
+        if (!fx::user()->isAdmin()) {
             fx::http()->redirect('/');
         }
         $sites = fx::data('site')->all();
         $hosts = array();
         foreach ($sites as $site) {
-            foreach ($site->get_all_hosts() as $host) {
+            foreach ($site->getAllHosts() as $host) {
                 if ($host === fx::env('host')) {
                     continue;
                 }
@@ -57,7 +57,7 @@ class Controller extends \Floxim\Floxim\Controller\Component {
             }
         }
         fx::env('ajax', false);
-        $target_location = fx::input()->fetch_cookie('fx_target_location');
+        $target_location = fx::input()->fetchCookie('fx_target_location');
         if (!$target_location) {
             $target_location = '/';
         }
@@ -73,53 +73,53 @@ class Controller extends \Floxim\Floxim\Controller\Component {
         );
     }
     
-    public function do__crossite_auth() {
+    public function do_CrossiteAuth() {
         if (isset($_POST['email']) && isset($_POST['password'])) {
             fx::user()->login($_POST['email'], $_POST['password']);
         } elseif (isset($_POST['session_key'])) {
-            $session = fx::data('session')->get_by_key($_POST['session_key']);
+            $session = fx::data('session')->getByKey($_POST['session_key']);
             if ($session) {
-                $session->set_cookie();
+                $session->setCookie();
                 $user = fx::data('user', $session['user_id']);
                 return "Hello, ".$user['name'].'!<br /> '.fx::env('host').' is glad to see you!';
             }
         }
     }
     
-    public function do_greet() {
+    public function doGreet() {
         $user = fx::user();
-        if ($user->is_guest()) {
+        if ($user->isGuest()) {
             return false;
         }
         return array(
             'user' => $user,
-            'logout_url' => $user->get_logout_url()
+            'logout_url' => $user->getLogoutUrl()
         );
     }
     
-    public function do_recover_form() {
+    public function doRecoverForm() {
         $form = new \Floxim\Form\Form();
-        $form->add_fields(array(
+        $form->addFields(array(
             'email' => array(
                 'label' => 'E-mail',
                 'validators' => 'email -l',
-                'value' => $this->get_param('email')
+                'value' => $this->getParam('email')
             ),
             'submit' => array(
                 'type' => 'submit',
                 'label' => 'Send me new password'
             )
         ));
-        if ($form->is_sent() && !$form->has_errors()) {
-            $user = fx::data('user')->get_by_login($form->email);
+        if ($form->isSent() && !$form->hasErrors()) {
+            $user = fx::data('user')->getByLogin($form->email);
             if (!$user) {
-                $form->add_error(fx::lang('User not found'), 'email');
+                $form->addError(fx::lang('User not found'), 'email');
             } else {
-                $password = $user->generate_password();
+                $password = $user->generatePassword();
                 $user['password'] = $password;
                 $user->save();
                 fx::data('session')->where('user_id', $user['id'])->delete();
-                $form->add_message('New password is sent to '.$form->email);
+                $form->addMessage('New password is sent to '.$form->email);
                 fx::mail()
                     ->to($form->email)
                     ->data('user', $user)
@@ -132,10 +132,10 @@ class Controller extends \Floxim\Floxim\Controller\Component {
         return array('form' => $form);
     }
     
-    public function do__logout() {
+    public function do_Logout() {
         $user = fx::user();
         $user->logout();
-        $back_url = $this->get_param('back_url', '/');
+        $back_url = $this->getParam('back_url', '/');
         fx::http()->redirect($back_url);
     }
 }

@@ -8,7 +8,7 @@ return array(
             'icon' => 'Com',
             'icon_extra' => 'add',
             'settings' => array(
-                'target_infoblock_id' => $this->_get_target_infoblock(),
+                'target_infoblock_id' => $this->getTargetInfoblock(),
             ),
         ),
     )

@@ -14,12 +14,12 @@ return array(
             'name' => $component['name'].fx::alang(' by tag'),
             'icon_extra' => 'tag',
             'check_context' => function($page) {
-                return $page->is_instanceof('tag');
+                return $page->isInstanceof('tag');
             }
         ),
         '*calendar' => array(
             'icon_extra' => 'cal',
-            'icon' => self::_get_abbr($component['name']),
+            'icon' => self::getAbbr($component['name']),
         ),
         'calendar*' => array(
             'icon' => 'Pub',

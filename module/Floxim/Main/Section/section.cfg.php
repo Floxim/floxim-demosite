@@ -3,9 +3,9 @@
 use Floxim\Floxim\System\Fx as fx;
 
 $source_ibs = fx::data('infoblock')
-    ->get_content_infoblocks('section')
+    ->getContentInfoblocks('section')
     ->find('site_id', fx::env('site')->get('id'))
-    ->get_values('name', 'id');
+    ->getValues('name', 'id');
 return array(
     'actions' => array(
         '*list*' => array(
@@ -39,13 +39,13 @@ return array(
                         'content_type' => 'infoblock',
                         'conditions' => array(
                             'controller' => array(
-                                fx::data('component', 'page')->get_all_variants()->get_values(function($ch) {
+                                fx::data('component', 'page')->getAllVariants()->getValues(function($ch) {
                                     return 'component_'.$ch['keyword']; //todo: psr0 verify
                                 }),
                                 'IN'
                             ),
                             'id' => array(
-                                $this->get_param('infoblock_id'),
+                                $this->getParam('infoblock_id'),
                                 '!='
                             ),
                             'site_id' => fx::env('site_id'),
@@ -66,7 +66,7 @@ return array(
                 ),
             ),
             'check_context' => function() {
-                return count(fx::env('page')->get_parent_ids()) > 0;
+                return count(fx::env('page')->getParentIds()) > 0;
             }
         ),
         'list_infoblock' => array(
