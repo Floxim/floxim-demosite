@@ -40,7 +40,7 @@
                         fx:area-render="manual" fx:size="narrow,low">
                         <li 
                             fx:each="$area_infoblocks as $infoblock" 
-                            class="icon {$controller}_{$action} {if $infoblock.is_hidden()}fx_infoblock_hidden{/if}">
+                            class="icon {$controller}_{$action} {if $infoblock.isHidden()}fx_infoblock_hidden{/if}">
                             <a class="block_toggler"></a>
                             <div class="width-helper">
                                 {$infoblock.render()}

@@ -49,7 +49,7 @@
     fx:name="Full screen menu" 
     fx:of="page.list"
     fx:size="wide,high"
-    {set $ai = $items.find_one('is_active', true)}
+    {set $ai = $items.findOne('is_active', true)}
     {if !$ai}
         {set $ai = $items.first()}
     {/if}
