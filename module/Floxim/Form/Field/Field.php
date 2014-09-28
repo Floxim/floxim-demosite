@@ -195,7 +195,7 @@ class Field implements \ArrayAccess, Template\Entity {
                     'type' => 'regexp',
                     'regexp' => $v
                 );
-            } elseif (method_exists($this, 'validate_'.$v)) {
+            } elseif (method_exists($this, 'validate'.fx::util()->underscoreToCamel($v))) {
                 // prevent double-adding of the same validator by shortcode
                 if ($this->params['validators']->findOne('code', $v)) {
                     return;
@@ -203,7 +203,7 @@ class Field implements \ArrayAccess, Template\Entity {
                 $v = array(
                     'type' => 'callback',
                     'code' => $v,
-                    'callback' => array($this, 'validate_'.$v)
+                    'callback' => array($this, 'validate'.fx::util()->underscoreToCamel($v))
                 );
             }
             $v['is_last'] = $is_last;

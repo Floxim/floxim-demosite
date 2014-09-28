@@ -42,7 +42,7 @@ class Controller extends \Floxim\Floxim\Controller\Component {
     /**
      * Show form to authorize user on all sites
      */
-    public function do_CrossiteAuthForm() {
+    public function doCrossiteAuthForm() {
         if (!fx::user()->isAdmin()) {
             fx::http()->redirect('/');
         }
@@ -73,7 +73,7 @@ class Controller extends \Floxim\Floxim\Controller\Component {
         );
     }
     
-    public function do_CrossiteAuth() {
+    public function doCrossiteAuth() {
         if (isset($_POST['email']) && isset($_POST['password'])) {
             fx::user()->login($_POST['email'], $_POST['password']);
         } elseif (isset($_POST['session_key'])) {
@@ -132,7 +132,7 @@ class Controller extends \Floxim\Floxim\Controller\Component {
         return array('form' => $form);
     }
     
-    public function do_Logout() {
+    public function doLogout() {
         $user = fx::user();
         $user->logout();
         $back_url = $this->getParam('back_url', '/');
