@@ -7,8 +7,10 @@ class Controller extends \Floxim\Floxim\Controller\Component {
     public function doAuthForm() {
         $user = fx::user();
         
+        
         if (!$user->isGuest()) {
             if (!fx::isAdmin()) {
+                fx::debug('nadm', $user);
                 return false;
             }
             $this->_meta['hidden'] = true;
@@ -28,7 +30,7 @@ class Controller extends \Floxim\Floxim\Controller\Component {
                 // send admin to cross-auth page
                 if ($user->isAdmin()) {
                     fx::input()->setCookie('fx_target_location', $location);
-                    fx::http()->redirect('/~ajax/user._crossite_auth_form');
+                    fx::http()->redirect('/~ajax/user:crossite_auth_form');
                 }
                 fx::http()->redirect($location);
             }
@@ -61,13 +63,12 @@ class Controller extends \Floxim\Floxim\Controller\Component {
         if (!$target_location) {
             $target_location = '/';
         }
-        fx::log('chosts', $hosts);
         if (count($hosts) === 0) {
             fx::http()->redirect($target_location);
         }
         return array(
             'hosts' => $hosts,
-            'auth_url' => '/~ajax/user._crossite_auth',
+            'auth_url' => '/~ajax/user:crossite_auth',
             'target_location' => $target_location,
             'session_key' => fx::data('session')->load()->get('session_key')
         );

@@ -37,7 +37,7 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
     }
     
     public function getLogoutUrl() {
-        return '/~ajax/user._logout/';
+        return '/~ajax/user:logout/';
     }
 
 

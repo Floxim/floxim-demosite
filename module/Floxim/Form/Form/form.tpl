@@ -14,7 +14,7 @@
             form_default.less
         {/css}
     {/if}
-    <input type="hidden" name="{$.get_id()}_sent" value="1" />
+    <input type="hidden" name="{$.getId()}_sent" value="1" />
     {$_.content}
         {apply messages /}
         {apply errors /}
