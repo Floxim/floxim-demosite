@@ -1,6 +1,6 @@
 <div 
     fx:template="entity_classifier" 
-    fx:of="list" 
+    fx:of="classifier:list"
     fx:name="Classifier" 
     class="classifiers">
     <span class="tags_label">{%tags_label}Tags:{/%} </span>

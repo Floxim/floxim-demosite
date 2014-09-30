@@ -1,4 +1,4 @@
-<div fx:template="list" class="award_list">
+<div fx:template="list" class="award_list" fx:of="award:list">
     {css}listing.css{/css}
     <div fx:item class="award">
        <div class="year">{$year}2000{/$}</div>

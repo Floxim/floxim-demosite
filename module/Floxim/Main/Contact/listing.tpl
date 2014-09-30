@@ -1,6 +1,6 @@
 <div 
     fx:template="entity_contact" 
-    fx:of="list" 
+    fx:of="contact:list"
     fx:name="Contacts" 
     class="contact">
         {%tags_label}Contacts:{/%} 

@@ -1,7 +1,7 @@
 <div 
     class="img-list" 
     fx:template="listing_slider" 
-    fx:of="component_photo.list">
+    fx:of="photo:list">
 	
     {js}
 	FX_JQUERY_PATH

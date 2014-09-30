@@ -1,6 +1,6 @@
 <div
     fx:template="listing_deep" 
-    fx:of="component_section.list"
+    fx:of="section:list"
     fx:name="Deep menu"
     class="deep_menu">
         {css}deep.css{/css}

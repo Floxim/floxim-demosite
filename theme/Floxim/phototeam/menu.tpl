@@ -2,7 +2,7 @@
         fx:template="main_menu"
         fx:name="Main menu"
         fx:size="low,wide"
-        fx:of="section.list">
+        fx:of="section:list">
     <div class="menu-icon"></div>
     <ul class="main-menu">
         <div class="close"></div>
@@ -31,7 +31,7 @@
 <ul
     fx:template="side_menu"
     fx:name="Side menu"
-    fx:of="page.list"
+    fx:of="page:list"
     fx:size="narrow,high"
     {*data-unstylized="{%unstylized type='bool' label='Unstylize'}0{/%}"*}
     class="side-menu {*{if $unstylized}unstylized{/if}*}"
@@ -47,7 +47,7 @@
 <div
     fx:template="full_screen_menu"
     fx:name="Full screen menu" 
-    fx:of="page.list"
+    fx:of="page:list"
     fx:size="wide,high"
     {set $ai = $items.findOne('is_active', true)}
     {if !$ai}

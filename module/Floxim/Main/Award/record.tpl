@@ -1,4 +1,4 @@
-<div fx:template="record" class="award_record_wrap">
+<div fx:template="record" class="award_record_wrap" fx:of="award:record">
 	{css}listing.css{/css}
 	<div fx:item class="award_record">
 		<div class="left_block">

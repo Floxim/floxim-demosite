@@ -1,7 +1,7 @@
 <div
     fx:template="news_list"
     fx:name="News List"
-    fx:of="publication.list"
+    fx:of="publication:list"
     fx:size="high,wide"
     class="news-list">
     <div
@@ -18,7 +18,7 @@
 <div 
     fx:template="news_mixed" 
     fx:name="News list mixed" 
-    fx:of="publication.list"
+    fx:of="publication:list"
     data-fx_count_featured="{%count_featured type='int' label='Count featured'}2{/%}">
     {if $count_featured > 0}
         {apply featured_news_list with $items->slice(0,$count_featured) as $items /}
@@ -29,7 +29,7 @@
 <div
     fx:template="news_record"
     fx:name="News Record"
-    fx:of="news.record"
+    fx:of="news:record"
     fx:with="$item"
     class="news-record">
     <div class="image">
@@ -48,7 +48,7 @@
 <div
     fx:template="featured_news_list"
     fx:name="Featured News List"
-    fx:of="publication.list"
+    fx:of="publication:list"
     fx:size="low,wide"
     class="featuared-news-list"
     data-show_more="{%show_more label='show more link?' type='bool'}"

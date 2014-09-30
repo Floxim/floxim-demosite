@@ -1,7 +1,7 @@
 <div 
     class="news_record" 
     fx:template="default_record" 
-    fx:of="news.record" 
+    fx:of="news:record"
     fx:name="Default news record">
     <div class="news" fx:with="$item">
         <div class="date">

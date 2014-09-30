@@ -1,7 +1,7 @@
 <div
     fx:template="person_list"
     fx:name="Person List"
-    fx:of="person.list"
+    fx:of="person:list"
     fx:size="high,wide"
     class="person-list">
     <div
@@ -31,7 +31,7 @@
 <div
     fx:template="person_record"
     fx:name="Person Record"
-    fx:of="person.record"
+    fx:of="person:record"
     fx:with="$item"
     class="person-record">
     <div class="image">

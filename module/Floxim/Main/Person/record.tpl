@@ -1,4 +1,4 @@
-<div fx:template="record" class="person_record">
+<div fx:template="record" class="person_record" fx:of="person:record">
     <div fx:item class="person">
         <h2><a href="{$url}">{$full_name}Unnamed article{/$}</a></h2>
         

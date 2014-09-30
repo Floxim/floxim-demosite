@@ -1,4 +1,4 @@
-<div fx:template="list" class="faq_list">
+<div fx:template="list" class="faq_list" fx:of="faq:list">
     {css}listing.css{/css}
     <div fx:item class="faq">
     	<a href="{$url}"><h3>{$question}</h3></a>

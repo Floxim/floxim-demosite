@@ -1,7 +1,7 @@
 <div
     fx:template="text"
     fx:name="Text hilightable"
-    fx:of="text.list"
+    fx:of="text:list"
     fx:size="high,wide"
     class="hilight-text">
     <div

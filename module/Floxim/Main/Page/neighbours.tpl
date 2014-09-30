@@ -1,4 +1,4 @@
-<div class="fx_neighbours" fx:template="neighbours" fx:of="page.neighbours">
+<div class="fx_neighbours" fx:template="neighbours" fx:of="page:neighbours">
     {css}
         neighbours.less as neighbours
     {/css}

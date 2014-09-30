@@ -1,4 +1,4 @@
-<div fx:template="list" class="comment_list">
+<div fx:template="list" class="comment_list" fx:of="comment:list">
     {css}all.css{/css}
     <div fx:item class="comment">
         <span fx:if="!$is_moderated" 

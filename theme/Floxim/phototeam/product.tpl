@@ -1,7 +1,7 @@
 <div
         fx:template="product_record"
         fx:name="Product Record"
-        fx:of="product.record"
+        fx:of="product:record"
         fx:omit="true">
     <div
         fx:with="$item"

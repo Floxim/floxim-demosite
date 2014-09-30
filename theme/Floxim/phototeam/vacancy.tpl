@@ -1,7 +1,7 @@
 <div
     fx:template="vacancies_list"
     fx:name="Vacancies List"
-    fx:of="vacancy.list"
+    fx:of="vacancy:list"
     fx:size="high,wide"
     fx:add="true"
     class="vacancies-list">
@@ -37,7 +37,7 @@
 <div
     fx:template="vacancy_record"
     fx:name="Vacancy Record"
-    fx:of="vacancy.record"
+    fx:of="vacancy:record"
     fx:with="$item" 
     class="vacancy-record">
         <div fx:if="$image || $_is_admin" class="vacancy_image">

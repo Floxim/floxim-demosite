@@ -1,7 +1,7 @@
 <div
     fx:template="slider"
     fx:name="Simple slider"
-    fx:of="photo.list"
+    fx:of="photo:list"
     fx:size="high,wide"
     data-thumbnails="{%thumbnails type='bool' label='Show thumnails'}0{/%}"
     class="slider-wrapper">

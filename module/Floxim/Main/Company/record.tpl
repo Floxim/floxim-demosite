@@ -1,4 +1,4 @@
-<div fx:template="record" class="company_item_record_wrap">
+<div fx:template="record" fx:of="company:record" class="company_item_record_wrap">
 	{css}listing.css{/css}
 	<div fx:item class="company_item_record">
 	  <div class="image">

@@ -1,12 +1,12 @@
-<div class="fx_auth_form" fx:template="auth_form" fx:of="user.auth_form">
+<div class="fx_auth_form" fx:template="auth_form" fx:of="user:auth_form">
     {apply form.form:form with $form /}
 </div>
 
-<div class="fx_recover_form" fx:template="recover_form" fx:of="user.recover_form">
+<div class="fx_recover_form" fx:template="recover_form" fx:of="user:recover_form">
     {apply form.form:form with $form /}
 </div>
 
-<div fx:template="greet" fx:of="user.greet" class="fx_user_greet">
+<div fx:template="greet" fx:of="user:greet" class="fx_user_greet">
     {%hello}Hello, {/%} 
     <a class="fx_profile_link" href="{$profile_url}" fx:omit="!$profile_url">{$user.name}</a>
     <a class="fx_logout_link" href="{$logout_url}">{%logout}Log out{/%}</a>
@@ -15,7 +15,7 @@
 <div 
     class="crossite_auth_form" 
     fx:template="crossite_auth_form" 
-    fx:of="user._crossite_auth_form"
+    fx:of="user:_crossite_auth_form"
     data-target_location="{$target_location}">
         <script type="text/javascript" src="<?= FX_JQUERY_PATH_HTTP ?>"></script>
         <script type="text/javascript" src="<?= $template_dir ?>crossite_auth.js"></script>

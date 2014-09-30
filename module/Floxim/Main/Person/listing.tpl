@@ -1,4 +1,4 @@
-<div fx:template="list" class="std_person_list" fx:name="Default person list">
+<div fx:template="list" class="std_person_list" fx:name="Default person list" fx:of="person:list">
     {css}person.less{/css}
     <div fx:item class="person">
         <div class="photo" fx:if="$photo">

@@ -1,4 +1,4 @@
-<div fx:template="list" fx:name="Default news list" class="news_list">
+<div fx:template="list" fx:name="Default news list" fx:of="news:list" class="news_list">
     <div fx:item class="news">
         <h2><a href="{$url}">{$name}Unnamed article{/$}</a></h2>
         <div class="date">

@@ -1,7 +1,7 @@
 <div
     fx:template="banner"
     fx:name="Simple banner"
-    fx:of="page.list"
+    fx:of="page:list"
     fx:size="high,wide">
     <div
         fx:item

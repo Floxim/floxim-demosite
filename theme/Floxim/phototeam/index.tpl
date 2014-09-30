@@ -44,7 +44,7 @@
                             <a class="block_toggler"></a>
                             <div class="width-helper">
                                 {$infoblock.render()}
-                                <div class="form auth_form" fx:template="auth_form" fx:of="user.auth_form">
+                                <div class="form auth_form" fx:template="auth_form" fx:of="user:auth_form">
                                     {apply form.form:form with $form}
                                         <div class="input-group {$name}" fx:each="$fields">
                                             {apply form.form:label  /}
@@ -69,7 +69,7 @@
                     </div>
             </div>
         </section>
-        <section fx:template="two_columns_grid" fx:of="widget_grid.two_columns" fx:with-each="$areas" class="two-column">
+        <section fx:template="two_columns_grid" fx:of="widget_grid:two_columns" fx:with-each="$areas" class="two-column">
             <div fx:item="$keyword == 'sidebar'" class="left-column" fx:area="$id" fx:area-name="$name">
 
             </div>
@@ -95,7 +95,7 @@
                     <div
                         fx:template="full_width_banner"
                         fx:name="Full width banner"
-                        fx:of="page.list"
+                        fx:of="page:list"
                         fx:size="high,wide"
                         style="background-image: url({$image});"
                         class="full-back">
@@ -140,7 +140,7 @@
                         <ul
                             fx:template="footer_menu"
                             fx:name="Footer menu"
-                            fx:of="section.list"
+                            fx:of="section:list"
                             class="footer-menu">
                             <li fx:each="$items" class="footer-menu-item"><a href="{$url}">{$name}</a></li>
                             <div style="clear:both;"></div>
@@ -154,7 +154,7 @@
                         <ul
                             fx:template="social_icons"
                             fx:name="Footer social icons"
-                            fx:of="social_icon.list"
+                            fx:of="social_icon:list"
                             class="social-icons-list">
                             <h3 class="follow">Follow us</h3>
                             <li fx:each="$items" class="social-icons-list-item {$soc_type}"><a href="{$url}"></a></li>

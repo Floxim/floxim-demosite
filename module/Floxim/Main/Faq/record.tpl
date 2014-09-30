@@ -1,4 +1,4 @@
-<div fx:template="record" class="faq_record_wrap">
+<div fx:template="record" class="faq_record_wrap" fx:of="faq:record">
     {css}listing.css{/css}
     <div fx:item class="faq_record">
         <h2>{$question}</h2>

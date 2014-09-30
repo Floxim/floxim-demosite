@@ -1,4 +1,4 @@
-<div class="person_tiles" fx:template="person_tiles" fx:of="person.list" fx:name="Person tiles" fx:add="true">
+<div class="person_tiles" fx:template="person_tiles" fx:of="person:list" fx:name="Person tiles" fx:add="true">
     {css}css/person-tiles.less{/css}
     <div class="person" fx:item>
         <div class="pic"><img src="{$photo | '130*130'}" /></div>

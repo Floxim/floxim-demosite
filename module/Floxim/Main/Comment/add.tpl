@@ -1,4 +1,4 @@
-<div fx:template="add" fx:of="add" class="comment_add">
+<div fx:template="add" fx:of="comment:add" class="comment_add">
     {css}add.css{/css}
     <form method="post" action="">
     	<label for="user_name">
