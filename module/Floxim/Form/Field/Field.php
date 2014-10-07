@@ -125,7 +125,7 @@ class Field implements \ArrayAccess, Template\Entity {
         if (preg_match("~^%~", $offset)) {
             return true;
         }
-        return array_key_exists($offset, $this->params) || method_exists($this, 'get_'.$offset);
+        return array_key_exists($offset, $this->params) || method_exists($this, 'get'.fx::util()->underscoreToCamel($offset));
     }
 
     public function offsetGet($offset) {
@@ -145,8 +145,9 @@ class Field implements \ArrayAccess, Template\Entity {
             }
             $offset = $real_offset;
         }
-        if (method_exists($this, 'get_'.$offset)) {
-            return call_user_func(array($this, 'get_'.$offset));
+        $getter = 'get'.fx::util()->underscoreToCamel($offset);
+        if (method_exists($this, $getter)) {
+            return call_user_func(array($this, $getter));
         }
         if (array_key_exists($offset, $this->params)) {
             return $this->params[$offset];

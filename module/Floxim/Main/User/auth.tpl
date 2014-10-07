@@ -15,7 +15,7 @@
 <div 
     class="crossite_auth_form" 
     fx:template="crossite_auth_form" 
-    fx:of="user:_crossite_auth_form"
+    fx:of="user:crossite_auth_form"
     data-target_location="{$target_location}">
         <script type="text/javascript" src="<?= FX_JQUERY_PATH_HTTP ?>"></script>
         <script type="text/javascript" src="<?= $template_dir ?>crossite_auth.js"></script>
