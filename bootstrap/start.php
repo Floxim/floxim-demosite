@@ -10,7 +10,7 @@ if ( $result ) {
         fx::page()->addAssetsAjax();
     }
     echo $result;
-    fx::env()->set('complete_ok', true);
+    fx::complete();
 }
 
 fx::listen('unlink', function($e) {

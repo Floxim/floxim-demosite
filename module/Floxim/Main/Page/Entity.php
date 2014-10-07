@@ -48,7 +48,7 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
     
     protected $_active;
     
-    public function getIsActive() {
+    public function _getIsActive() {
         return $this->isActive();
     }
 
@@ -70,7 +70,7 @@ class Entity extends \Floxim\Floxim\Component\Content\Entity {
         return $this['id'] == fx::env('page_id');
     }
     
-    public function getIsCurrent() {
+    public function _getIsCurrent() {
         return $this->isCurrent();
     }
     

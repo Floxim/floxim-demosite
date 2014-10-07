@@ -1,10 +1,5 @@
 <?php
 /**
- * Debug stuff usefule while we are moving to PSR and nothing works fine
- */
-require_once 'debug.php';
-
-/**
  * Load Floxim Core
  */
 if (!isset($_SERVER['REQUEST_TIME_FLOAT'])) {
