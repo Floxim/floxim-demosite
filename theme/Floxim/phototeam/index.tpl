@@ -69,7 +69,7 @@
                     </div>
             </div>
         </section>
-        <section fx:template="two_columns_grid" fx:of="widget_grid:two_columns" fx:with-each="$areas" class="two-column">
+        <section fx:template="two_columns_grid" fx:of="grid:two_columns" fx:with-each="$areas" class="two-column">
             <div fx:item="$keyword == 'sidebar'" class="left-column" fx:area="$id" fx:area-name="$name">
 
             </div>

@@ -18,9 +18,9 @@
     {$_.content}
         {apply messages /}
         {apply errors /}
-        {$fields.find('type', 'submit', '!=') || .row /}
+        {$fields.find('type', 'submit', '!=') || :row /}
         <div class="fx_submit_row">
-            {$fields.find('type', 'submit') || .input_block /}
+            {$fields.find('type', 'submit') || :input_block /}
         </div>
     {/$}
 </form>

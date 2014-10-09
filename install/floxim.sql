@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 16 2014 г., 19:47
+-- Время создания: Окт 09 2014 г., 15:46
 -- Версия сервера: 5.5.38-log
 -- Версия PHP: 5.4.29
 
@@ -622,7 +622,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_user` (
 --
 
 INSERT INTO `fx_content_user` (`id`, `email`, `login`, `name`, `registration_code`, `avatar`, `forum_messages`, `pa_balance`, `auth_hash`, `is_admin`, `password`) VALUES
-(2367, 'admin@phototeam.loc', '', 'Admin', NULL, NULL, 0, 0, '', 1, '79MBytqDoKTCA');
+(2367, 'dubr.cola@gmail.com', '', 'Admin', NULL, NULL, 0, 0, '', 1, '93gzgbsGyazD.');
 
 -- --------------------------------------------------------
 
@@ -1076,7 +1076,7 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (404, 0, 18, 2640, 1, 'Navigation / ', 'section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2640";}}s:5:"new_2";a:3:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:3:"346";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
 (408, 0, 18, 2635, 1, 'Auth form', 'user', 'auth_form', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (409, 0, 18, 2635, 1, 'Greet', 'user', 'greet', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
-(410, 0, 18, 2635, 1, 'Two columns', 'widget_grid', 'two_columns', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
+(410, 0, 18, 2635, 1, 'Two columns', 'grid', 'two_columns', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (411, 0, 18, 2635, 1, 'Featured pages', 'page', 'list_selected', 'a:3:{s:7:"sorting";s:6:"manual";s:11:"sorting_dir";s:3:"asc";s:11:"parent_type";s:15:"current_page_id";}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (412, 0, 18, 2638, 1, 'Product neighbours', 'product', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"1";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"product";}'),
 (413, 0, 18, 2657, 1, 'News neighbours', 'news', 'neighbours', 'a:2:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:4:"news";}'),
@@ -1733,7 +1733,7 @@ CREATE TABLE IF NOT EXISTS `fx_layout` (
 --
 
 INSERT INTO `fx_layout` (`id`, `keyword`, `name`) VALUES
-(12, 'v3', 'v3');
+(12, 'floxim.phototeam', 'Photo Team');
 
 -- --------------------------------------------------------
 
@@ -1850,14 +1850,14 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `fx_session`
 --
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
-(1, '05bca591513a79cd997c3669b71f20ea', 2367, 0, 1410882066, 1410882087, 2130706433, 1);
+(7, '1c563474e8ceca6ec50736fdcd5729f4', 2367, 0, 1412781228, 1412854194, 2130706433, 0);
 
 -- --------------------------------------------------------
 
@@ -1886,7 +1886,7 @@ INSERT INTO `fx_settings` (`id`, `key`, `value`, `module`, `site_id`) VALUES
 (4, 'next_patch', '1.0.0', 'system', 0),
 (5, 'user_email_field', 'email', 'system', 0),
 (6, 'spam_from_name', 'Admin', 'system', 0),
-(7, 'spam_from_email', 'admin@fx.loc', 'system', 0),
+(7, 'spam_from_email', 'dubr.cola@gmail.com', 'system', 0),
 (8, 'secret_key', '387768baa556f6f94ee29cb0e3e2a662', 'system', 0),
 (9, 'authtype', '3', 'auth', 0),
 (10, 'pm_allow', '1', 'auth', 0),
@@ -1955,7 +1955,7 @@ CREATE TABLE IF NOT EXISTS `fx_site` (
 --
 
 INSERT INTO `fx_site` (`id`, `parent_id`, `name`, `domain`, `layout_id`, `color`, `mirrors`, `priority`, `checked`, `index_page_id`, `error_page_id`, `created`, `last_updated`, `robots`, `disallow_indexing`, `type`, `language`, `offline_text`, `store_id`) VALUES
-(18, 0, 'The Photo Team', 'phototeam.loc', 12, 0, '', 4, 1, 2635, 2636, '2014-01-28 11:39:50', '2014-04-15 11:28:24', '', 0, 'useful', 'en', '', '');
+(18, 0, 'The Photo Team', 'psr.loc', 12, 0, '', 4, 1, 2635, 2636, '2014-01-28 11:39:50', '2014-10-07 14:26:47', '', 0, 'useful', 'en', '', '');
 
 -- --------------------------------------------------------
 

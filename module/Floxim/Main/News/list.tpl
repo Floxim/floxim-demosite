@@ -10,13 +10,13 @@
         </div>
         
         <div class="anounce">{$description}</div>
-        {call id="component_classifier.entity_classifier"}{$items select="$tags" /}{/call}
+        {call id="classifier:entity_classifier"}{$items select="$tags" /}{/call}
         <div fx:if="$comments_counter" class="comments_counter">Comments: {$comments_counter}0{/$}</div>
     </div>
-    {$pagination | component_content.pagination}
+    {$pagination | content:pagination}
 </div>
 
-<div fx:template="news_tiles" fx:of="news.list" fx:name="News tiles" class="news_tiles_list">
+<div fx:template="news_tiles" fx:of="news:list" fx:name="News tiles" class="news_tiles_list">
     <div class="material_tiles">
         <div class="material" fx:item>
             <div class="title">

@@ -6,7 +6,7 @@
     <div
         fx:item
         class="banner">
-        <img src="{%banner_image_$id|'crop:middle,width:1160,min-height:350'}<?=$template_dir?>img/ship.jpg{/%}">
+        <img src="{$%banner_image|'crop:middle,width:1160,min-height:350'}img/ship.jpg{/%}">
         <div class="caption">
             <div class="h2">
                 {%banner_header_$id type="html"}<p>{$name /}</p>{/%}
