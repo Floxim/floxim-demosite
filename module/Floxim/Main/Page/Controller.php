@@ -3,7 +3,7 @@ namespace Floxim\Main\Page;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Controller extends \Floxim\Floxim\Controller\Component {
+class Controller extends \Floxim\Main\Content\Controller {
     public function doNeighbours() {
         $item = fx::env('page');
         

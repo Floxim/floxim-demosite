@@ -3,7 +3,7 @@ namespace Floxim\Main\User;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Finder extends \Floxim\Floxim\Component\Content\Finder {
+class Finder extends \Floxim\Main\Content\Finder {
     public function getById($id) {
         if (!is_numeric($id)) {
             return $this->getByLogin($id);

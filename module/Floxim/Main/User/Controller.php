@@ -3,7 +3,7 @@ namespace Floxim\Main\User;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Controller extends \Floxim\Floxim\Controller\Component {
+class Controller extends \Floxim\Main\Content\Controller {
     public function doAuthForm() {
         $user = fx::user();
         

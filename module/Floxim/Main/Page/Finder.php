@@ -4,7 +4,7 @@ namespace Floxim\Main\Page;
 use Floxim\Floxim\Component;
 use Floxim\Floxim\System\Fx as fx;
 
-class Finder extends Component\Content\Finder {
+class Finder extends \Floxim\Main\Content\Finder {
     
     public function getById($id) {
         if (!is_numeric($id)) {

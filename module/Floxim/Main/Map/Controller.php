@@ -1,6 +1,6 @@
 <?php
 
-namespace Floxim\Main\WidgetMap;
+namespace Floxim\Main\Map;
 
 class Controller extends \Floxim\Floxim\Controller\Widget {
 

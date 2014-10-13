@@ -1,6 +1,6 @@
 <?php
 namespace Floxim\Main\Linker;
 
-class Finder extends \Floxim\Floxim\Component\Content\Finder {
+class Finder extends \Floxim\Main\Content\Finder {
     
 }

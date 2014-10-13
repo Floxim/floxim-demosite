@@ -1,5 +1,5 @@
 <?php
-namespace Floxim\Main\WidgetCustomCode;
+namespace Floxim\Main\CustomCode;
 
 class Controller extends \Floxim\Floxim\Controller\Widget {
     /* 

@@ -1,6 +1,6 @@
 <?php
-namespace Floxim\Main\ClassifierLinker;
+namespace Floxim\Main\Video;
 
 class Controller extends \Floxim\Main\Content\Controller {
-    
+
 }

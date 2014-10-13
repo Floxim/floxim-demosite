@@ -1,7 +1,7 @@
 <?php
 namespace Floxim\Main\Video;
 
-class Entity extends \Floxim\Floxim\Component\Content\Entity {
+class Entity extends \Floxim\Main\Content\Entity {
     protected function beforeSave() {
         parent::beforeSave();
         if(preg_match('/<[\w\s]+/', $this['embed_html'])==0) {

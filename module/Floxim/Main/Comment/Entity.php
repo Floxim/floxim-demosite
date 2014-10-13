@@ -3,7 +3,7 @@ namespace Floxim\Main\Comment;
 
 use Floxim\Floxim\System\Fx as fx;
 
-class Entity extends \Floxim\Floxim\Component\Content\Entity {
+class Entity extends \Floxim\Main\Content\Entity {
     
     protected function getPage () {
         if (!isset($this['parent_id'])) {

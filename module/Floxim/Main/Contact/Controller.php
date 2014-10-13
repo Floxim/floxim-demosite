@@ -1,6 +1,6 @@
 <?php
-namespace Floxim\Main\ClassifierLinker;
+namespace Floxim\Main\Contact;
 
 class Controller extends \Floxim\Main\Content\Controller {
-    
+
 }

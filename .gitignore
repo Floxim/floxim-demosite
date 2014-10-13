@@ -185,5 +185,6 @@ pip-log.txt
 /floxim_files/fx_admin*
 /floxim_files/log/*
 /floxim_files/cache/*
+/floxim_files/asset_cache/*
 /config.php
 /config.php
