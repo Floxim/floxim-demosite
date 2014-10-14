@@ -9,7 +9,8 @@ class Controller extends \Floxim\Floxim\Controller\Widget {
         if (isset($res['areas'])) {
             foreach ($res['areas'] as $i => &$area) {
                 if (!isset($area['id'])) {
-                    $area['id'] = (isset($area['keyword']) ? $area['keyword'] : $i).'_'.$this->getParam('infoblock_id');
+                    //$area['id'] = (isset($area['keyword']) ? $area['keyword'] : $i).'_'.$this->getParam('infoblock_id');
+                    $area['id'] = 'grid_'.(isset($area['keyword']) ? $area['keyword'] : $i).'_'.$this->getParam('infoblock_id');
                 }
             }
         }

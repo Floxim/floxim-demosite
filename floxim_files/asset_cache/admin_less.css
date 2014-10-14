@@ -1319,6 +1319,26 @@
 .fx_overlay #fx_admin_page_modes a.fx_admin_page_modes_active {
   color: #fff !important;
 }
+.fx_overlay .fx_buttons_dropdown {
+  position: absolute;
+  display: none;
+}
+.fx_overlay .fx_buttons_dropdown.fx_buttons_dropdown_active {
+  display: inline-block;
+  padding: 5px;
+  background: #FFF;
+  -webkit-box-shadow: 0px 5px 12px rgba(50,50,50,0.56);
+  -moz-box-shadow: 0px 5px 12px rgba(50,50,50,0.56);
+  box-shadow: 0px 5px 12px rgba(50,50,50,0.56);
+}
+.fx_overlay .fx_buttons_dropdown.fx_buttons_dropdown_active .fx_admin_button_text {
+  margin: 0;
+  margin-bottom: 5px;
+}
+.fx_overlay .fx_buttons_dropdown.fx_buttons_dropdown_active .fx_admin_button_text:last-child {
+  margin-bottom: 0;
+  padding: 0;
+}
 .fx_admin_html body {
   margin: 34px 0 0;
   padding: 0;

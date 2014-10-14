@@ -129,7 +129,7 @@ class Controller extends \Floxim\Main\Page\Controller {
      *
      * @return fx_collection
      */
-    protected function getAllowParentPages() {
+    protected function getAllowedParents() {
         /**
          * Retrieve pages object
          */

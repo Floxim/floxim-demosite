@@ -105,10 +105,10 @@ class Controller extends \Floxim\Main\Page\Controller {
      *
      * @return fx_collection
      */
-    protected function getAllowParentPages() {
-        // TODO: method get_content_infoblocks not use site_id filter
-        $infoblocks=fx::data('infoblock')->getContentInfoblocks($this->getContentType());
-
+    protected function getAllowedParents() {
+        $infoblocks = fx::data('infoblock')
+                        ->where('site_id', fx::env('site_id'))
+                        ->getContentInfoblocks($this->getContentType());
         $pages_id=array();
         foreach($infoblocks as $infoblock) {
             if (isset($infoblock['params']['parent_type']) and $infoblock['params']['parent_type']=='current_page_id') {

@@ -12,7 +12,7 @@ class Controller extends \Floxim\Main\Content\Controller {
         $q_next = clone $q;
         $q_prev = clone $q;
         
-        if ($this->getParam('sorting') === 'auto') {
+        if ($this->getParam('sorting') === 'auto' && $item['infoblock_id']) {
             $item_ib_params = fx::data('infoblock', $item['infoblock_id'])->get('params');
             $ib_sorting = $item_ib_params['sorting'];
             $this->setParam('sorting', $ib_sorting == 'manual' ? 'priority' : $ib_sorting);
