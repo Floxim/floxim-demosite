@@ -116,7 +116,7 @@ switch ($action) {
 
         $dir = dirname($_SERVER['PHP_SELF']);
         $test_dir = FX_FILES_DIR . "testdirtestdir";
-        if (!mkdir($test_dir)) {
+        if (!@mkdir($test_dir)) {
             $errors['mkdir'] = "The script has no permission to create directory. ".$test_dir;
             fx_write_log("Error: " . $errors['mkdir']);
         }
@@ -141,8 +141,7 @@ switch ($action) {
             if (!empty($notices)) {
                 fx_write_log("Parameters checking complete.");
             }
-            $result = fx_html_status_bar(array("'color': 'green', 'opacity': 1", "Everything is working fine!"), array("'color': '#444', 'opacity': 1", "you can start now"), false);
-            $result .= "Your hosting suits " . ( empty($notices) ? " perfectly" : "" ) ."  for  Floxim. Specify database connection parameters. If you don't know them ask your system asministrator or support service. If you are using common hosting you may find the parameters in an email you got after registrating on hosting provider's site.";
+            $result = "Your hosting suits " . ( empty($notices) ? " perfectly" : "" ) ."  for  Floxim. Specify database connection parameters. If you don't know them ask your system asministrator or support service. If you are using common hosting you may find the parameters in an email you got after registrating on hosting provider's site.";
             
         	if ( !empty($notices) ) {
 				$result .= "<br /><br />To ensure correct work of the system, you should consider these:<br /><div style='margin: 7px 0; font-style: italic; color: orange;'>" . join("<br />", $notices) . "</div>";
@@ -156,7 +155,7 @@ switch ($action) {
 					<span class='item'>Host</span><br />
 					<input type='text' name='host' id='host' value='" . (fx_post_get('host') ? fx_post_get('host') : $default_mysql_host) . "' />
 				</div>
-						<div class='cell'>
+				<div class='cell'>
 					<span class='item'>Database name</span><br />
 					<input type='text' name='dbname' id='dbname' value='" . fx_post_get('dbname') . "' />
 				</div>
@@ -168,10 +167,40 @@ switch ($action) {
 					<span class='item'>Password</span><br />
 					<input type='password' name='pass' id='pass' value='" . fx_post_get('pass') . "' />
 				</div>
+				<span id='db_status'></span>
+				<script type='text/javascript'>
+					$('.db').find('input').focusout(function(e){
+						var params = {};
+						$('input').each(function(){
+							params[$(this).attr('name')] = $(this).val();
+						});
+						// overwrite
+						params['action'] = 3;
+						$.ajax({
+							type: 'post',
+							dataType: 'json',
+							url: '/install/',
+							data: $.param(params),
+							success: responseDbSuccess,
+							error: responseDbError
+						});
+					});
+					function responseDbSuccess (resp) {
+						if (resp.status == 'success') {
+							$('#db_status').html('&#10003;').css('color', 'green');
+						}
+						else {
+							$('#db_status').html('&times;').css('color', 'red');
+						}
+					}
+					function responseDbError (resp) {
+						$('#db_status').html('&times;').css('color', 'red');
+					}
+				</script>
             </div>
             <br style='clear: both;' />
             <br />
-            Please provide desired access settings:<br />
+            Please provide desired access settings to the back-office:<br />
             <br />
             <div id='settings'>
 				<div class='email_form'>
@@ -180,20 +209,19 @@ switch ($action) {
 					<span id='email_valid' class='valid'></span>
 				</div>
 				<div class='pwd_create'>
-					Enter user's password to access the administration system:<br />
+					Enter user's password to access the back-office:<br />
 					<input type='password' name='pwd' id='pwd_field' value='" . fx_post_get('pwd') . "' />
-					<a href='#' id='pwd_gen' class='selected_tab'>generate password</a>
 					<div>
 						<input type='checkbox' name='show_pwd' value='1' id='show_pwd' onclick='document.getElementById(\"pwd_field\").type = (this.checked ? \"text\" : \"password\");' />
 						<label for='show_pwd'>Show password</label>
+						<a href='#' id='pwd_gen'>generate password</a>
 					</div>
 				</div>
 			</div>";
             $result .= fx_html_form(2, 'Install Floxim', $opt_html);
         }
         else {
-            $result = fx_html_status_bar(array("'color': 'red', 'opacity': 1", "There are some  problems!"), false, false);
-            $result .= "<span style='font-style: italic; color: red;'><ul><li>" . join("</li><li>", $errors) . "</li></ul></span><br /><br />There are some issues that make using Floxim on your hosting impossible. If you can't solve them yourself describe the problems to system administrator or to support service. I hope you can solve the problems so we can complete the installation.";
+            $result = "<span style='font-style: italic; color: red;'><ul><li>" . join("</li><li>", $errors) . "</li></ul></span><br /><br />There are some issues that make using Floxim on your hosting impossible. If you can't solve them yourself describe the problems to system administrator or to support service. I hope you can solve the problems so we can complete the installation.";
             $result .= fx_html_form(1, 'Try again');
         }
         echo $result;
@@ -245,8 +273,7 @@ switch ($action) {
 				if (fx_repeat_tables()) {
 					$errors['db_already_installed'] = "There are Floxim tables in the indicated database.";
 					fx_write_log("Error: " . $errors['db_already_installed']);
-					$result = fx_html_status_bar(array("'color': 'green', 'opacity': 1", "Everything is working fine!"), array("'color': 'red', 'opacity': 1", "There are some  problems!"), false);
-					$result .= "<span style='font-style: italic; padding: 10pt; color: red;'>" . join("<br />", $errors) . "</span><br /><br />Indicated database already has the tables that installer is about to create. Do you want to delete them and continue installing?";
+					$result = "<span style='font-style: italic; padding: 10pt; color: red;'>" . join("<br />", $errors) . "</span><br /><br />Indicated database already has the tables that installer is about to create. Do you want to delete them and continue installing?";
 					$result .= fx_html_form(2, 'Delete and install', "<input type='hidden' id='deltables' name='deltables' value='1' />");
 					echo $result;
 					break;
@@ -260,14 +287,11 @@ switch ($action) {
         }
         
         if (!empty($errors)) {
-			$result = fx_html_status_bar(array("'color': 'green', 'opacity': 1", "Everything is working fine!"), array("'color': 'red', 'opacity': 1", "There are some  problems!"), false);
-			$result .= "<span style='font-style: italic; color: red;'><ul><li>" . join("</li><li>", $errors) . "</li></ul></span><br /><br />There are some issues that make using Floxim on your hosting impossible. If you can't solve them yourself describe the problems to system administrator or to support service. I hope you can solve the problems so we can complete the installation.";
+			$result = "<span style='font-style: italic; color: red;'><ul><li>" . join("</li><li>", $errors) . "</li></ul></span><br /><br />There are some issues that make using Floxim on your hosting impossible. If you can't solve them yourself describe the problems to system administrator or to support service. I hope you can solve the problems so we can complete the installation.";
 			$result .= fx_html_form(1, 'Go back');
 			echo $result;
 			break;
 		}
-        
-        echo fx_html_status_bar(array("'color': 'green', 'opacity': 1", "Everything is working fine!"), array("'color': 'green', 'opacity': 1", "All's going great!"), array("'color': '#444', 'opacity': 1", "Installing..."));
         
         echo "Installing may take from a few seconds up to several minutes depending on your server's capacity.<br />";
         echo "<ul>";
@@ -292,18 +316,26 @@ switch ($action) {
         // send email
         fx_mail_to_user($_SERVER['HTTP_HOST']);
         
-        echo "<br />Hurray! Floxim installed, you can start working. Here are:<br />".
-          "<ul>" .
-          "<li>site address: <a href='http://" . $_SERVER['HTTP_HOST'] . "' target='_blank'>http://" . $_SERVER['HTTP_HOST'] . "</a></li>".
-          "<li>Login for the <a href='http://" . $_SERVER['HTTP_HOST'] . "/floxim/'>back office</a>: <strong>" . fx_post_get('email') . "</strong></li>".
-          "<li>Password: the one you've entered " . ( fx_post_get('email') ? "(and it's also in an email we've sent to <a href='mailto:" . fx_post_get('email') . "'>" . fx_post_get('email') . "</a>)" : "" ) . "</li>" .
-          "</ul>" .
-          "<br />" .
-          "<em style='color: red;'>Make sure you've deleted install folder from server!</em>";
-        
-        #header("Location: /");
+        // login
+?>
+		<script type="text/javascript">
+			$form = $('<form action="/floxim/" method="post">'+
+			   '<input type="hidden" name="auth_form_sent" value="1" />'+
+			   '<input type="hidden" name="email" value="<?php echo fx_post_get('email'); ?>" />'+
+			   '<input type="hidden" name="password" value="<?php echo fx_post_get('pwd'); ?>" />'+
+			   '</form>');
+			$('body').append($form);
+			$form.submit();
+		</script>
+<?php
+    break;
+    case 3:
+		// check db connection
+		$response_arr = array('status' => (fx_connect_db() ? 'success' : 'error'));
+		die( json_encode($response_arr) );
     break;
 }
+// show footer
 fx_html_end();
 
 function fx_html_beg() {
@@ -319,24 +351,9 @@ function fx_html_beg() {
 </head>
 <body>
     <div class='main'>       
-		<div class='top'>Floxim installer</div>
-		<div class='status_bar'>
-			<div class='pair'>
-				<span id='item0'>Checking the hosting</span><br />
-				<span id='status0'>You may start now</span>
-			</div>
-			<div id='arrow0'>&rarr;</div>
-			<div class='pair'>
-				<span id='item1'>Database and access</span><br />
-				<span id='status1' >is not executed </span>
-			</div>
-			<div id='arrow1'>&rarr;</div>
-			<div class='pair'>
-				<span id='item2' >Floxim installing</span><br />
-				<span id='status2'>Checking everything first</span>
-			</div>
-			<div style='clear:both;'></div>
-		</div>
+		<div class='title'>Floxim installer</div>
+		<div class='logo'><img src='logo.png' alt='Floxim installer'></div>
+		<br class='clear' />
 		<div id='content'>
 HEREDOC;
 }
@@ -414,17 +431,6 @@ function fx_html_end() {
 </body>         
 </html>
 HEREDOC;
-}
-
-function fx_html_status_bar($array0 = array(), $array1 = array(), $array2 = array()) {
-    $html = "<script>";
-    for ($i = 0; $i < 3; $i++) {
-		$html .=  (!empty(${"array" . $i}) && ${"array" . $i}[0] ? "$('#item" . $i . ", #status" . $i . "').css({" . ${"array" . $i}[0] . "});" : "")
-			. (!empty(${"array" . $i}) && ${"array" . $i}[1] ? "$('#status" . $i . "').html('" . ${"array" . $i}[1] . "');" : "");
-	}
-    $html .= "</script>";
-    
-    return $html;
 }
 
 function fx_html_form($action, $button, $opt = '') {
@@ -676,17 +682,17 @@ function fx_get_config($MYSQL_HOST, $MYSQL_USER, $MYSQL_PASSWORD, $MYSQL_DB_NAME
 ?>
 $config = array(
     'dev' =>  array(
-        'db.name' => '<?= $MYSQL_DB_NAME; ?>',
-        'db.host' => '<?= $MYSQL_HOST; ?>',
-        'db.user' => '<?= $MYSQL_USER; ?>',
-        'db.password' => '<?= $MYSQL_PASSWORD; ?>',
+        'db.name' => '<?php echo $MYSQL_DB_NAME; ?>',
+        'db.host' => '<?php echo $MYSQL_HOST; ?>',
+        'db.user' => '<?php echo $MYSQL_USER; ?>',
+        'db.password' => '<?php echo $MYSQL_PASSWORD; ?>',
         'dev.on' => true,
         'templates.ttl' => 0
     )
 );
 return $config['dev'];
-<?
-    return '<?' . PHP_EOL . PHP_EOL . ob_get_clean();
+<?php
+    return '<?php' . PHP_EOL . PHP_EOL . ob_get_clean();
 }
 
 function fx_write_config() {
