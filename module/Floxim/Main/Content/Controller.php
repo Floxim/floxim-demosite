@@ -328,6 +328,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         $f = $this->getFinder();
         $this->trigger('query_ready', $f);
         $items = $f->all();
+        
         if (count($items) === 0) {
             $this->_meta['hidden'] = true;
         }
@@ -497,7 +498,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
             $linkers = $this->getSelectedLinkers();
             $content_ids = $linkers->getValues('linked_id');
         }
-
+       
         $this->listen('query_ready', function($q) use ($content_ids) {
             $q->where('id', $content_ids);
         });
@@ -525,7 +526,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
             $this->listen('items_ready', function($c, $ctr) use ($content_ids) {
                 if ($ctr->getParam('sorting') === 'manual') {
                     $c->sort(function($a, $b) use ($content_ids) {
-                        $a_priority = arraySearch($a['id'], $content_ids);
+                        $a_priority = array_search($a['id'], $content_ids);
                         $b_priority = array_search($b['id'], $content_ids);
                         return $a_priority - $b_priority;
                     });
@@ -535,9 +536,8 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         if (!isset($this->_meta['fields'])) {
             $this->_meta['fields'] = array();
         }
-
         $res = $this->doList();
-
+        
         // if we are admin and not viewing the block in preview mode,
         // let's add livesearch field loaded with the selected values
         if (!$is_overriden && fx::isAdmin()) {
