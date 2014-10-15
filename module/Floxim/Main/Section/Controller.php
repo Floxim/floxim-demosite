@@ -22,7 +22,7 @@ class Controller extends \Floxim\Main\Page\Controller {
                 break;
         }
         if ($submenu_type !== 'none') {
-            $this->on_items_ready(function($items, $ctr) {
+            $this->onItemsReady(function($items, $ctr) {
                 foreach ($items as $item) {
                     $ctr->acceptContent(array(
                         'title' => fx::alang('Add subsection','component_section'),
@@ -36,7 +36,7 @@ class Controller extends \Floxim\Main\Page\Controller {
     }
     
     public function doList() {
-        $this->on_items_ready(function($items, $ctr) {
+        $this->onItemsReady(function($items, $ctr) {
             $extra_ibs =  $ctr->getParam('extra_infoblocks', array());
             if (is_array($extra_ibs) && count($extra_ibs) > 0) {
                 foreach ($extra_ibs as $extra_ib_id) {
@@ -84,15 +84,15 @@ class Controller extends \Floxim\Main\Page\Controller {
     }
 
     public function doListSelected () {
-        $this->on_items_ready(function($items, $ctr) {
+        $this->onItemsReady(function($items, $ctr) {
             $ctr->setParam('extra_root_ids', $items->getValues('id'));
         });
-        $this->on_items_ready(array($this, '_add_submenu_items'));
+        $this->onItemsReady(array($this, 'addSubmenuItems'));
         return parent::doListSelected();
     }
     
     public function doListFiltered() {
-        $this->on_items_ready(array($this, '_add_submenu_items'));
+        $this->onItemsReady(array($this, 'addSubmenuItems'));
         return parent::doListFiltered();
     }
 

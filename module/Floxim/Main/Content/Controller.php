@@ -798,9 +798,12 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         return $finder;
     }
 
+    /*
     public function getSignature() {
-        return 'component_'.$this->getContentType().".".$this->action;;
+        return 'component_'.$this->getContentType().".".$this->action;
     }
+     * 
+     */
 
     protected function getControllerVariants() {
         //$vars = parent::_get_controller_variants();

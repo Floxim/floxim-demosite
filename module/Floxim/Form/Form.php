@@ -43,8 +43,10 @@ class Form implements \ArrayAccess {
     protected $_listeners = array();
     
     public function __call($name, $args) {
-        if (preg_match("~^on_~", $name) && count($args) == 1) {
-            $this->on(preg_replace("~^on_~", '', $name), $args[0]);
+        if (preg_match("~^on[A-Z]~", $name) && count($args) == 1) {
+            $event_name = preg_replace("~^on~", '', $name);
+            $event_name = fx::util()->camelToUnderscore($event_name);
+            $this->on($event_name, $args[0]);
             return $this;
         }
     }

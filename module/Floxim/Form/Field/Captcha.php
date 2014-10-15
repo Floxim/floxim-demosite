@@ -29,7 +29,7 @@ class Captcha extends Field {
             $this->addValidator('captcha');
         }
         $field = $this;
-        $this->getForm()->on_finish(function($f) use ($field) {
+        $this->getForm()->onFinish(function($f) use ($field) {
             $field->wasValid(false);
         });
     }
