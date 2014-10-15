@@ -2246,6 +2246,12 @@
   box-sizing: border-box !important;
   outline: 1px dotted #000;
 }
+td.fx_hidden_placeholded.fx_infoblock.fx_infoblock,
+td.fx_hidden_placeholded.fx_infoblock.fx_area,
+td.fx_hidden_placeholded.fx_area.fx_infoblock,
+td.fx_hidden_placeholded.fx_area.fx_area {
+  display: table-cell !important;
+}
 .fx_editable_empty:after,
 .fx_var_editable:empty:after {
   content: attr(fx_placeholder);

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 09 2014 г., 15:46
+-- Время создания: Окт 15 2014 г., 14:19
 -- Версия сервера: 5.5.38-log
 -- Версия PHP: 5.4.29
 
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `fx_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2770 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2773 ;
 
 --
 -- Дамп данных таблицы `fx_content`
@@ -117,9 +117,9 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2661, 231, 1, '2014-01-30 14:40:14', '2014-04-16 15:55:11', 2367, 'product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2662, 232, 1, '2014-01-30 14:42:35', '2014-04-16 15:55:11', 2367, 'product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2668, 2, 1, '2014-01-30 15:08:08', '2014-09-12 13:26:11', 2367, 'linker', 370, 18, 2635, '2635.', 1),
-(2671, 1, 1, '2014-02-13 15:14:27', '2014-07-29 11:19:38', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
-(2673, 6, 1, '2014-01-30 15:19:09', '2014-07-30 17:58:28', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
-(2675, 5, 1, '2014-01-30 15:19:48', '2014-07-30 17:58:28', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
+(2671, 2, 1, '2014-02-13 15:14:27', '2014-10-15 07:30:50', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
+(2673, 3, 1, '2014-01-30 15:19:09', '2014-10-15 07:30:50', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
+(2675, 1, 1, '2014-01-30 15:19:48', '2014-10-15 07:30:50', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2677, 15, 1, '2014-01-30 15:33:49', '2014-07-24 20:18:00', 2367, 'vacancy', 374, 18, 2656, '2635.2640.2656.', 3),
 (2678, 237, 1, '2014-01-30 15:37:21', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
 (2679, 238, 1, '2014-01-30 15:38:00', '2014-06-02 11:10:29', 2367, 'news', 379, 18, 2657, '2635.2640.2657.', 3),
@@ -139,7 +139,7 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2732, 261, 1, '2014-03-08 07:08:29', '2014-06-02 11:10:29', 2367, 'classifier_linker', 0, 18, 2679, '2635.2640.2657.', 4),
 (2733, 262, 1, '2014-03-11 15:59:01', '2014-03-11 11:59:01', 2367, 'tag', 0, 18, NULL, '', 0),
 (2734, 262, 1, '2014-03-11 15:59:01', '2014-06-02 11:10:29', 2367, 'classifier_linker', 0, 18, 2681, '2635.2640.2657.', 4),
-(2735, 7, 1, '2014-03-11 16:15:11', '2014-07-30 17:58:28', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
+(2735, 4, 1, '2014-03-11 16:15:11', '2014-10-15 07:30:50', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2737, 1, 1, '2014-03-11 17:08:49', '2014-07-14 15:02:43', 2367, 'vacancy', 374, 18, 2656, '2635.2640.2656.', 3),
 (2739, 265, 1, '2014-03-11 21:44:50', '2014-04-16 15:55:11', 2367, 'product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2740, 266, 1, '2014-03-11 21:49:15', '2014-04-15 08:42:09', 2367, 'product', 364, 18, 2654, '2635.2638.2654.', 3),
@@ -165,7 +165,8 @@ INSERT INTO `fx_content` (`id`, `priority`, `checked`, `created`, `last_updated`
 (2765, 0, 1, '2014-05-05 00:44:29', '2014-09-12 13:26:11', 2367, 'linker', 411, 18, 2635, '2635.', 1),
 (2767, 2, 1, '2014-05-06 11:26:33', '2014-05-06 07:26:33', 2367, 'text', 397, 18, 2641, '2635.2640.2641.', 3),
 (2768, 2, 1, '2014-07-18 12:28:52', '2014-09-12 13:26:11', 2367, 'linker', 381, 18, 2635, '2635.', 1),
-(2769, 3, 1, '2014-07-18 12:31:17', '2014-09-12 13:26:11', 2367, 'linker', 381, 18, 2635, '2635.', 1);
+(2769, 3, 1, '2014-07-18 12:31:17', '2014-09-12 13:26:11', 2367, 'linker', 381, 18, 2635, '2635.', 1),
+(2770, 5, 1, '2014-10-15 03:31:11', '2014-10-15 07:31:11', 2367, 'person', 372, 18, 2655, '2635.2640.2655.', 3);
 
 -- --------------------------------------------------------
 
@@ -392,7 +393,8 @@ INSERT INTO `fx_content_page` (`id`, `url`, `name`, `title`, `comments_counter`,
 (2745, '/Birthday-parties', 'Birthday parties', '', 0, '<p>\n	We are ready to shoot the most exotic and extreme birthday parties. We have all the gear to shoot in the swimming pool or on the dance floor. Yes, you can put down your phone for once and enjoy celebrating.\n</p>\n<p>\n	By the way, our team came up with a great device. It includes wide-angle lens and some really technical stuff, like a stick, to make a massive selfie of you and all your party guests. Imagine the joy of tagging them all later on Instagram!\n</p>', NULL),
 (2746, '/Corporate-events', 'Corporate events', '', 0, '<p>\n	We have a long experience in shooting corporate sessions, conferences, parties, and awards ceremonies. Your business rivals will be envious of how great your corporate events look.\n</p>\n<p>\n	With our digital team ready to work around the clock, all images are published on a password protected website within 48 hours.\n</p>', NULL),
 (2751, '/Kupala-Night', 'Kupala Night', '', 0, '<p>\n	The fest has pagan roots. According to an ancient pagan belief, on the eve of Ivan Kupala is the only time of the year when ferns bloom. Prosperity, luck and power would befall whoever finds a fern flower. On that night village folks would roam through the forests in search of magical herbs and especially the elusive fern flower.\n</p>\n<p>\n	Traditionally, unmarried women would be the first to enter the forest. They are followed by young men. In 2010, they were also followed by Ken who made fantastic photo series.\n</p>', NULL),
-(2757, '/Bull-Easter', 'Bull Easter', '', 0, '<p>\n	Pascua Toro is celebrated during Holy Saturday.</p><p>\n	This holiday is famous for colorful running of the bulls through the streets of the town.</p><p class="">\n	In 2011, our Ken took a huge risk and ran along with bulls. Fortunately, no bulls were harmed.</p>', NULL);
+(2757, '/Bull-Easter', 'Bull Easter', '', 0, '<p>\n	Pascua Toro is celebrated during Holy Saturday.</p><p>\n	This holiday is famous for colorful running of the bulls through the streets of the town.</p><p class="">\n	In 2011, our Ken took a huge risk and ran along with bulls. Fortunately, no bulls were harmed.</p>', NULL),
+(2770, '/page-2770.html', '', NULL, 0, '<p class="">Cool man</p>', NULL);
 
 -- --------------------------------------------------------
 
@@ -418,7 +420,8 @@ INSERT INTO `fx_content_person` (`id`, `full_name`, `department`, `photo`, `shor
 (2671, 'Ken Cold', '', '/floxim_files/content/person/photo/3b_3_0.jpg', 'romantics’ ideal', '1946-01-09 00:00:00'),
 (2673, 'Leila Stoparsson', '', '/floxim_files/content/person/photo/3a_2_0.JPG', 'the sense of the place', '1962-02-28 00:00:00'),
 (2675, 'Nika Lightman', '', '/floxim_files/content/person/photo/2b_0.JPG', 'cool portraits', '1986-02-13 00:00:00'),
-(2735, 'Sonya Zoomer', 'Client support', '/floxim_files/content/person/photo/3g_2_0.JPG', '“she sits motionless, like a spider”', '1975-11-13 00:00:00');
+(2735, 'Sonya Zoomer', 'Client support', '/floxim_files/content/person/photo/3g_2_0.JPG', '“she sits motionless, like a spider”', '1975-11-13 00:00:00'),
+(2770, 'Olo. Person​', NULL, '/floxim_files/content/person/photo/logotype.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -522,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_publication` (
 --
 
 INSERT INTO `fx_content_publication` (`id`, `publish_date`, `image`, `text`) VALUES
-(2678, '2014-04-24 00:00:00', '/floxim_files/content/news/image/2a_0.jpg', '<p>\n	We say goodbye to our old studio.\n</p>\n<p>\n	The new one is almost ready for us to move in.\n</p>\n<p>\n	It’s bigger, lighter, and there is a small garden to throw a studio-warming party.\n</p>'),
+(2678, '2014-04-17 00:00:00', '/floxim_files/content/news/image/2a_0.jpg', '<p>\n	We say goodbye to our old studio.\n</p>\n<p>\n	The new one is almost ready for us to move in.\n</p>\n<p>\n	It’s bigger, lighter, and there is a small garden to throw a studio-warming party.\n</p>'),
 (2679, '2013-01-12 15:37:34', '/floxim_files/content/news/image/5_city_6_0.jpg', '<p>\r\n	   Guys didn’t win this time but we’ll be back next year.\r\n</p>\r\n<p>\r\n	   For now, have Nika and her crazy hair having fun in Russia.\r\n</p>'),
 (2680, '2014-02-21 15:19:29', '/floxim_files/content/news/image/2v_10_0.jpg', '<p>\n	We are back from Sheregesh, a small village in Syberia.\n</p>\n<p>\n	The place is perfect for free ride and Russian snow is the fluffiest.\n</p>'),
 (2681, '2014-08-07 15:39:50', '/floxim_files/content/news/image/5_athlet_5_0.jpg', '<p>\n	We made a photo report about Moscow Athletics Championship.\n</p>\n<p>\n	In other news - Nika lost her voice while cheering for a cute runner.\n</p>');
@@ -622,7 +625,7 @@ CREATE TABLE IF NOT EXISTS `fx_content_user` (
 --
 
 INSERT INTO `fx_content_user` (`id`, `email`, `login`, `name`, `registration_code`, `avatar`, `forum_messages`, `pa_balance`, `auth_hash`, `is_admin`, `password`) VALUES
-(2367, 'dubr.cola@gmail.com', '', 'Admin', NULL, NULL, 0, 0, '', 1, '93gzgbsGyazD.');
+(2367, 'dubr.cola@gmail.com', '', 'Admin', NULL, NULL, 0, 0, '', 1, '12IbR.gJ8wcpc');
 
 -- --------------------------------------------------------
 
@@ -1127,8 +1130,8 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (434, 362, 12, '', '', 'theme.floxim.phototeam:banner', 'a:3:{s:18:"banner_header_2652";s:37:"<p class="">\n	 Special conditions</p>";s:16:"banner_text_2652";s:34:"<p class="">\n	For sport series</p>";s:17:"banner_image_2652";s:34:"/floxim_files/content/5_swim_0.jpg";}', 'main_column', 1),
 (436, 364, 12, '', '', 'theme.floxim.phototeam:featured_list', 'a:1:{s:10:"four_items";s:1:"0";}', 'main_column', 3),
 (439, 367, 12, '', '', 'theme.floxim.phototeam:product_record', '', 'main_column', 4),
-(441, 369, 12, '', '', 'theme.floxim.phototeam:banner', 'a:6:{s:18:"banner_header_2660";s:28:"<p>\n	  Greate ship\n</p>\n<br>";s:16:"banner_text_2660";s:43:"<p>\n	It''s really <strong>cool</strong>\n</p>";s:7:"go_2660";s:2:"Go";s:17:"banner_image_2740";s:32:"/floxim_files/content/3b_6_0.jpg";s:16:"banner_text_2740";s:21:"Better than ever\n<br>";s:18:"banner_header_2740";s:24:"<p class="">Portrait</p>";}', 'content_410', 1),
-(442, 370, 12, '', 'a:1:{s:6:"header";s:10:"Best ships";}', 'theme.floxim.phototeam:featured_list', 'a:2:{s:10:"four_items";s:1:"0";s:10:"photo_2743";s:0:"";}', 'content_410', 2),
+(441, 369, 12, '', '', 'theme.floxim.phototeam:banner', 'a:6:{s:18:"banner_header_2660";s:28:"<p>\n	  Greate ship\n</p>\n<br>";s:16:"banner_text_2660";s:43:"<p>\n	It''s really <strong>cool</strong>\n</p>";s:7:"go_2660";s:2:"Go";s:17:"banner_image_2740";s:32:"/floxim_files/content/3b_6_0.jpg";s:16:"banner_text_2740";s:21:"Better than ever\n<br>";s:18:"banner_header_2740";s:24:"<p class="">Portrait</p>";}', 'grid_content_410', 1),
+(442, 370, 12, '', 'a:1:{s:6:"header";s:10:"Best ships";}', 'theme.floxim.phototeam:featured_list', 'a:2:{s:10:"four_items";s:1:"0";s:10:"photo_2743";s:0:"";}', 'grid_content_410', 2),
 (444, 372, 12, '', '', 'theme.floxim.phototeam:person_list', 'a:4:{s:13:"facebook_2671";s:0:"";s:7:"vk_2671";s:0:"";s:7:"li_2671";s:0:"";s:12:"twitter_2671";s:0:"";}', 'main_column', 5),
 (446, 374, 12, '', '', 'theme.floxim.phototeam:vacancies_list', 'a:3:{s:14:"more_info_2677";s:27:"More info about the vacancy";s:14:"more_info_2771";s:22:"more info for supermen";s:14:"more_info_2791";s:9:"More info";}', 'main_column', 6),
 (451, 379, 12, '', '', 'theme.floxim.phototeam:news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"2";}', 'main_column', 7),
@@ -1144,12 +1147,12 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (469, 397, 12, '', '', 'theme.floxim.phototeam:text', 'a:3:{s:9:"blue_2701";s:1:"1";s:9:"blue_2700";s:1:"0";s:12:"hilight_2701";s:1:"1";}', 'main_column', 10),
 (470, 398, 12, '', '', 'theme.floxim.phototeam:news_record', '', 'main_column', 11),
 (471, 399, 12, '', '', 'theme.floxim.phototeam:index', '', '', 11),
-(472, 400, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'sidebar_410', 1),
+(472, 400, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'grid_sidebar_410', 1),
 (476, 404, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 2),
 (575, 408, 12, '', '', 'theme.floxim.phototeam:auth_form', 'a:4:{s:11:"label_email";s:30:"E-mail                        ";s:14:"label_password";s:8:"Password";s:14:"label_remember";s:11:"Remember me";s:12:"label_submit";s:6:"Log in";}', 'icons_area', 1),
 (576, 409, 12, '', '', 'user:greet', '', 'icons_area', 2),
 (577, 410, 12, 'theme.floxim.phototeam:titled_block', 'a:1:{s:6:"header";s:51:"We shoot everything and everywhere around the world";}', 'theme.floxim.phototeam:two_columns_grid', '', 'main_column', 17),
-(578, 411, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', 'a:3:{s:11:"header_2635";s:52:"<p class="">Team of</p><p class="">photographers</p>";s:12:"caption_2635";s:117:"<p class="">\n	We come in&nbsp;any&nbsp;sizes and shapes ready to</p><p class="">\n	shoot any series&nbsp;you like.</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 15),
+(578, 411, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', 'a:3:{s:11:"header_2635";s:58:"<p class="">Team of ololo</p><p class="">photographers</p>";s:12:"caption_2635";s:117:"<p class="">\n	We come in&nbsp;any&nbsp;sizes and shapes ready to</p><p class="">\n	shoot any series&nbsp;you like.</p>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 15),
 (579, 412, 12, '', '', 'page:neighbours', '', 'main_column', 18),
 (580, 413, 12, '', '', 'page:neighbours', '', 'main_column', 19),
 (581, 414, 12, '', '', 'page:neighbours', '', 'main_column', 28),
@@ -1850,14 +1853,16 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `fx_session`
 --
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
-(7, '1c563474e8ceca6ec50736fdcd5729f4', 2367, 0, 1412781228, 1412854194, 2130706433, 0);
+(7, '1c563474e8ceca6ec50736fdcd5729f4', 2367, 0, 1412781228, 1412854194, 2130706433, 0),
+(8, '844fafe15c6f51a156b8f5221b3f9e43', 2367, 0, 1413185644, 1413297296, 2130706433, 0),
+(9, 'a2023b6c3c735a95d77ecff98304748b', 2367, 0, 1413358169, 1413368358, 2130706433, 0);
 
 -- --------------------------------------------------------
 
