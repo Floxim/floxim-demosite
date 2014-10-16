@@ -40,14 +40,16 @@ class Controller extends \Floxim\Main\Page\Controller {
             $extra_ibs =  $ctr->getParam('extra_infoblocks', array());
             if (is_array($extra_ibs) && count($extra_ibs) > 0) {
                 foreach ($extra_ibs as $extra_ib_id) {
-                    $extra_ib = fx::data('infoblock', $extra_ib_id);
-                    if ($extra_ib) {
-                        $extra_q = $extra_ib
-                                    ->initController()
-                                    ->getFinder()
-                                    ->where('infoblock_id', $extra_ib_id);
-                        $extra_items = $extra_q->all();
-                        $items->concat($extra_items);
+                    if (is_numeric($extra_ib_id)) {
+                        $extra_ib = fx::data('infoblock', $extra_ib_id);
+                        if ($extra_ib) {
+                            $extra_q = $extra_ib
+                                ->initController()
+                                ->getFinder()
+                                ->where('infoblock_id', $extra_ib_id);
+                            $extra_items = $extra_q->all();
+                            $items->concat($extra_items);
+                        }
                     }
                 }
             }

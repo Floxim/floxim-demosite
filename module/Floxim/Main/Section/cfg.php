@@ -40,7 +40,7 @@ return array(
                         'conditions' => array(
                             'controller' => array(
                                 fx::data('component', 'page')->getAllVariants()->getValues(function($ch) {
-                                    return 'component_'.$ch['keyword']; //todo: psr0 verify
+                                    return $ch['keyword'];
                                 }),
                                 'IN'
                             ),
