@@ -1,3 +1,3 @@
-{template id="default" of="widget_custom_code:show"}
+{template id="default" of="custom_code:show"}
     {$code /}
 {/template}

@@ -1,4 +1,4 @@
-<div class="static_google_map" fx:template="static_google_map" fx:of="widget_map:show">
+<div class="static_google_map" fx:template="static_google_map" fx:of="map:show">
     <div class="title"><p>{$map.address}</p></div>
     {* google gives map image larger than 640*640 only with double scale *}
     <div class="map"
