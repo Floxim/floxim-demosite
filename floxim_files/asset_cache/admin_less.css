@@ -72,7 +72,7 @@
   z-index: 2677;
 }
 .fx_overlay #fx_admin_panel_logo {
-  background: url('/vendor/Floxim/Floxim/admin/style/images/images.png');
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/images.png');
   width: 24px;
   height: 17px;
   position: absolute;
@@ -82,7 +82,7 @@
 .fx_overlay #fx_admin_panel_logo .fx_preloader {
   width: 24px;
   height: 17px;
-  background-image: url('/vendor/Floxim/Floxim/admin/style/images/loader-arrow.gif');
+  background-image: url('/vendor/Floxim/Floxim/Admin/style/images/loader-arrow.gif');
   visibility: hidden;
 }
 .fx_overlay #fx_admin_main_menu {
@@ -138,7 +138,7 @@
   top: 30px;
   width: 9px;
   height: 5px;
-  background: url('/vendor/Floxim/Floxim/admin/style/images/images.png') no-repeat -24px 0;
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/images.png') no-repeat -24px 0;
 }
 .fx_overlay #fx_admin_page_modes .fx_admin_page_modes_line {
   position: absolute;
@@ -166,7 +166,7 @@
   width: 10px;
   height: 7px;
   display: inline-block;
-  background: url('/vendor/Floxim/Floxim/admin/style/images/images.png') -218px 0;
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/images.png') -218px 0;
   margin: 0 10px 0 0;
 }
 .fx_overlay .fx_admin_main_menu_item .fx_admin_more_menu_after_container {
@@ -186,7 +186,7 @@
   line-height: 30px;
 }
 .fx_overlay .fx_admin_more_menu_after_active {
-  background: url('/vendor/Floxim/Floxim/admin/style/images/images.png') -218px -8px;
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/images.png') -218px -8px;
 }
 .fx_overlay #fx_admin_more_menu div > span,
 .fx_overlay #fx_admin_more_menu span.fx_admin_more_menu_button {
@@ -406,7 +406,7 @@
 }
 .fx_overlay #fx_admin_submenu a.fx_admin_submenu_backlink,
 .fx_overlay #fx_admin_submenu a.fx_admin_submenu_backlink:hover {
-  background: #69ad00 url('/vendor/Floxim/Floxim/admin/style/images/images.png') no-repeat -228px 0;
+  background: #69ad00 url('/vendor/Floxim/Floxim/Admin/style/images/images.png') no-repeat -228px 0;
   width: 15px;
   height: 18px;
   border: none;
@@ -432,7 +432,7 @@
   color: #000;
 }
 .fx_overlay .fx_admin_button {
-  background: url('/vendor/Floxim/Floxim/admin/style/images/images.png') no-repeat;
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/images.png') no-repeat;
   float: left;
   cursor: pointer;
   margin: 0 14px 0 0;
@@ -440,7 +440,7 @@
 .fx_overlay .fx_admin_button_text {
   height: 25px;
   line-height: 24px;
-  background: #3fb7de url('/vendor/Floxim/Floxim/admin/style/images/button_bg.gif') repeat-x 100% 0;
+  background: #3fb7de url('/vendor/Floxim/Floxim/Admin/style/images/button_bg.gif') repeat-x 100% 0;
   float: left;
   cursor: pointer;
   margin: 0 20px 0 0;
@@ -637,7 +637,7 @@
   left: 50%;
   width: 8px;
   height: 5px;
-  background: url('/vendor/Floxim/Floxim/admin/style/images/images.png') no-repeat -25px -9px;
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/images.png') no-repeat -25px -9px;
   margin-left: -4px;
   bottom: 0;
   visibility: hidden;
@@ -649,7 +649,7 @@
 .fx_overlay .fx_ajax_loader {
   width: 128px;
   height: 15px;
-  background: url('/vendor/Floxim/Floxim/admin/style/images/loader.gif');
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/loader.gif');
 }
 .fx_overlay .fx_list_table {
   width: 100%;
@@ -869,7 +869,7 @@
   display: none;
 }
 .fx_overlay .fx_tree_expander span {
-  background: url('/vendor/Floxim/Floxim/admin/style/images/images.png') no-repeat -287px -1px;
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/images.png') no-repeat -287px -1px;
   width: 12px;
   height: 12px;
   display: inline-block;
@@ -1118,7 +1118,7 @@
 .fx_overlay .fx_backend_login .fx_input_type_submit {
   height: 25px;
   line-height: 24px;
-  background: #3fb7de url('/vendor/Floxim/Floxim/admin/style/images/button_bg.gif') repeat-x 100% 0;
+  background: #3fb7de url('/vendor/Floxim/Floxim/Admin/style/images/button_bg.gif') repeat-x 100% 0;
   float: left;
   cursor: pointer;
   margin: 0 20px 0 0;
@@ -1426,7 +1426,7 @@
   top: 0;
   right: 0;
   cursor: pointer;
-  background-image: url("/vendor/Floxim/Floxim/admin/style/images/calendar_blue.gif");
+  background-image: url("/vendor/Floxim/Floxim/Admin/style/images/calendar_blue.gif");
 }
 .fx_admin_form #colorpickerHolder2 input {
   border: 0 !important;
@@ -1769,7 +1769,7 @@
   width: 24px;
   height: 24px;
   float: left;
-  background: url('/vendor/Floxim/Floxim/admin/style/images/images.png') no-repeat -370px -2px;
+  background: url('/vendor/Floxim/Floxim/Admin/style/images/images.png') no-repeat -370px -2px;
   margin-right: 5px;
 }
 .fx_image_field .fx_file_controls a.fx_paste_link {
@@ -1933,7 +1933,7 @@
 }
 .fx_popup .fx_popup_arrow {
   display: block;
-  background: url("/vendor/Floxim/Floxim/admin/style/images/popup_arrow.png") no-repeat 0 0;
+  background: url("/vendor/Floxim/Floxim/Admin/style/images/popup_arrow.png") no-repeat 0 0;
   width: 13px;
   height: 8px;
   position: absolute;

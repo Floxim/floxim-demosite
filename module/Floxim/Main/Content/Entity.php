@@ -155,8 +155,9 @@ class Entity extends System\Entity implements Template\Entity {
             if ($field['type_of_edit'] == Field\Entity::EDIT_NONE) {
                 continue;
             }
-            if (method_exists($this, 'get_form_field_'.$field['keyword'])) {
-                $jsf = call_user_func(array($this, 'get_form_field_'.$field['keyword']), $field);
+            $field_method = 'getFormField'.fx::util()->underscoreToCamel($field['keyword'], true);
+            if (method_exists($this, $field_method)) {
+                $jsf = call_user_func(array($this, $field_method), $field);
             } else {
                 $jsf = $field->getJsField($this);
             }
@@ -192,7 +193,7 @@ class Entity extends System\Entity implements Template\Entity {
                 if ($page['id'] == $c_id) {
                     continue;
                 }
-                $values []= array($page['id'], strRepeat('- ', $level_num*2).$page['name']);
+                $values []= array($page['id'], str_repeat('- ', $level_num*2).$page['name']);
                 if ($page['nested']) {
                     $get_values($page['nested'], $level_num+1);
                 }
