@@ -2,13 +2,7 @@ DirectoryIndex index.php
 
 AddDefaultCharset utf-8
 
-ErrorDocument 404 /floxim/require/e404.php
-
-AddEncoding gzip .jsgz
-AddType "application/javascript" .jsgz 
-
-AddEncoding gzip .cssgz
-AddType "text/css" .cssgz 
+AddEncoding gzip .gz
 
 Options -Indexes
 Options +FollowSymLinks
@@ -23,6 +17,10 @@ php_value mbstring.internal_encoding UTF-8
 
 <ifModule mod_rewrite.c>
 RewriteEngine On
+
+RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
+RewriteRule \.js\.gz$ - [T=text/javascript,E=no-gzip:1]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
