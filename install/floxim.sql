@@ -1965,6 +1965,23 @@ INSERT INTO `fx_site` (`id`, `parent_id`, `name`, `domain`, `layout_id`, `color`
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `fx_url_alias`
+--
+
+CREATE TABLE IF NOT EXISTS `fx_url_alias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) DEFAULT NULL,
+  `page_id` int(11) NOT NULL DEFAULT '0',
+  `is_current` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_original` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `url` (`url`),
+  KEY `page_id` (`page_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `fx_widget`
 --
 

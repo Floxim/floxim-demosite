@@ -88,11 +88,13 @@ class Entity extends \Floxim\Main\Content\Entity {
                 !empty($this['url']) && 
                 !preg_match("~^https?://~", $this['url'])
             ) {
+			
             $url = $this['url'];
             if (!preg_match("~^/~", $url)) {
                 $url = '/'.$url;
             }
             $index = 1;
+            // check already used page url
             while ( fx::data('page')->
                     where('url', $url)->
                     where('site_id', $this['site_id'])->
@@ -102,6 +104,12 @@ class Entity extends \Floxim\Main\Content\Entity {
                 $url = preg_replace("~\-".($index-1)."$~", '', $url).'-'.$index;
             }
             $this['url'] = $url;
+
+			$alias = fx::data('urlAlias')->getOriginalByPageId($this['id']);
+			// create new urlAlias if it is not set for the current page
+			if (empty($alias) && $this['id']) {
+				fx::data('urlAlias')->addAlias($this->modified_data['url'], $this['id'], 1, 1);
+			}
         }
     }
     
@@ -111,10 +119,40 @@ class Entity extends \Floxim\Main\Content\Entity {
             $this['url'] = '/page-'.$this['id'].'.html';
             $this->save();
         }
+        if (!empty($this['url'])) {
+			// create new urlAlias if it is not set
+			fx::data('urlAlias')->addAlias($this['url'], $this['id'], 1, 1);
+		}
+    }
+    
+    protected function afterUpdate() {
+        parent::afterUpdate();
+        
+        // urlAlias update
+        if (in_array('url', $this->modified)) {
+			$modified_alias = fx::data('urlAlias')->getCurrentByPageId($this['id']);
+			if (
+					!empty($modified_alias) &&
+					!empty($this['url']) &&
+					$modified_alias['url'] == $this->modified_data['url']
+				) {
+				// reset current alias
+				$modified_alias->resetCurrent();
+				// create new alias
+				fx::data('urlAlias')->addAlias($this['url'], $this['id'], 1);
+			}
+        }
     }
     
     protected function afterDelete() {
         parent::afterDelete();
+        
+        $killer = function($cv) {
+            $cv->delete();
+        };
+        // drop all urlAlias
+        fx::data('urlAlias')->where('page_id', $this['id'])->all()->apply($killer);
+        
         if (!$this->_skip_cascade_delete_children) {
             $nested_ibs = $this->getNestedInfoblocks(true);
             foreach ($nested_ibs as $ib) {
