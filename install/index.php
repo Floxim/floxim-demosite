@@ -581,6 +581,7 @@ function fx_get_cattables() {
         'fx_session', 
         'fx_settings', 
         'fx_site', 
+        'fx_url_alias', 
         'fx_widget'
       );
     return $cattables;
