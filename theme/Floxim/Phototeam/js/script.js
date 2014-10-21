@@ -1,9 +1,16 @@
 $(function(){
-    var ratio = 0.364;
-    $(document).ready(resizeBanner);
-    $(window).resize(resizeBanner);
+    
+    $(document).ready(recountSizes);
+    $(window).resize(recountSizes);
+    
+    if (window.$fxj) {
+        $fxj('html').on('fx_infoblock_loaded', recountSizes);
+    }
 
-    function resizeBanner() {
+    function recountSizes() {
+        var ratio = 0.364;
+        var full_height = $(window).height();
+        $('.full-back').height(full_height-120);
         $.each($('.banner, .slider'), function(i, item) {
             var $item = $(item);
             var width = $item.width();
@@ -155,13 +162,6 @@ $(function(){
     $('html').on('click', '.icon > a', function (e) {
         toggleIconPane($(this).parent());
     });
-    function full_back(){
-            var height = $(window).height();
-            $('.full-back').height(height-120);
-    }
-    $(document).ready(full_back);
-    $(window).resize(full_back);
-    $("html").on("fx_infoblock_loaded", full_back);
 
     function WidthChange(mq) {
         $('html').off('.res');
