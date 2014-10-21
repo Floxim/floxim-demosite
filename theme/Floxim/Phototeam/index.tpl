@@ -41,7 +41,7 @@
                         <li 
                             fx:each="$area_infoblocks as $infoblock" 
                             class="icon {$controller}_{$action} {if $infoblock.isHidden()}fx_infoblock_hidden{/if}">
-                            <a class="block_toggler"></a>
+                            <a class="block_toggler" style="background-image:url('{$%icon}');"></a>
                             <div class="width-helper">
                                 {$infoblock.render()}
                                 <div class="form auth_form" fx:template="auth_form" fx:of="user:auth_form">
