@@ -103,6 +103,12 @@ class Entity extends \Floxim\Main\Content\Entity {
                 $index++;
                 $url = preg_replace("~\-".($index-1)."$~", '', $url).'-'.$index;
             }
+            // check existed urlAlias (in aliases history)
+            while ($existed_alias_data = fx::data('urlAlias')->getByUrl($url)) {
+                $index++;
+                $url = preg_replace("~\-".($index-1)."$~", '', $url).'-'.$index;
+            }
+            
             $this['url'] = $url;
 
 			$alias = fx::data('urlAlias')->getOriginalByPageId($this['id']);
@@ -152,7 +158,7 @@ class Entity extends \Floxim\Main\Content\Entity {
         };
         // drop all urlAlias
         fx::data('urlAlias')->where('page_id', $this['id'])->all()->apply($killer);
-        
+        // @TODO: save for history
         if (!$this->_skip_cascade_delete_children) {
             $nested_ibs = $this->getNestedInfoblocks(true);
             foreach ($nested_ibs as $ib) {
