@@ -24,31 +24,22 @@ class Finder extends \Floxim\Main\Content\Finder {
         if ($site_id === null) {
             $site_id = fx::env('site')->get('id');
         }
-        // get current urlAlias
-        $alias = fx::data('urlAlias')->getByUrl($url);
-        if (!empty($alias) && $alias->isCurrent()) {
-            // get page by alias url
-            $page = fx::data('page')->
-                where('id', $alias['page_id'])->
-                one();
-        }
-        else {
-            $url_with_no_params = preg_replace("~\?.+$~", '', $url);
+        
+        $url_with_no_params = preg_replace("~\?.+$~", '', $url);
 
-            $url_variants []=
-                preg_match("~/$~", $url_with_no_params) ?
-                preg_replace("~/$~", '', $url_with_no_params) :
-                $url_with_no_params . '/';
+        $url_variants []=
+            preg_match("~/$~", $url_with_no_params) ?
+            preg_replace("~/$~", '', $url_with_no_params) :
+            $url_with_no_params . '/';
 
-            if ($url_with_no_params != $url) {
-                $url_variants []= $url_with_no_params;
-            }
-            // get page by page url
-            $page = fx::data('page')->
-                where('url', $url_variants)->
-                where('site_id', $site_id)->
-                one();
+        if ($url_with_no_params != $url) {
+            $url_variants []= $url_with_no_params;
         }
+        // get page by page url
+        $page = fx::data('page')->
+            where('url', $url_variants)->
+            where('site_id', $site_id)->
+            one();
         return $page;
     }
     
