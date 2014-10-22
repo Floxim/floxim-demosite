@@ -88,7 +88,7 @@ class Entity extends \Floxim\Main\Content\Entity {
                 !empty($this['url']) && 
                 !preg_match("~^https?://~", $this['url'])
             ) {
-			
+
             $url = $this['url'];
             if (!preg_match("~^/~", $url)) {
                 $url = '/'.$url;
@@ -111,11 +111,18 @@ class Entity extends \Floxim\Main\Content\Entity {
             
             $this['url'] = $url;
 
-			$alias = fx::data('urlAlias')->getOriginalByPageId($this['id']);
-			// create new urlAlias if it is not set for the current page
-			if (empty($alias) && $this['id']) {
-				fx::data('urlAlias')->addAlias($this->modified_data['url'], $this['id'], 1, 1);
-			}
+            $alias = fx::data('urlAlias')->getOriginalByPageId($this['id']);
+            // create new urlAlias if it is not set for the current page
+            if (empty($alias) && $this['id']) {
+                fx::data('urlAlias')->create(
+                    array(
+                        'page_id' => $this['id'],
+                        'url' => $this->modified_data['url'],
+                        'is_current' => true,
+                        'is_original' => true
+                    )
+                )->save();
+            }
         }
     }
     
@@ -126,9 +133,16 @@ class Entity extends \Floxim\Main\Content\Entity {
             $this->save();
         }
         if (!empty($this['url'])) {
-			// create new urlAlias if it is not set
-			fx::data('urlAlias')->addAlias($this['url'], $this['id'], 1, 1);
-		}
+            // create new urlAlias if it is not set
+            fx::data('urlAlias')->create(
+                array(
+                    'page_id' => $this['id'],
+                    'url' => $this['url'],
+                    'is_current' => true,
+                    'is_original' => true
+                )
+            )->save();
+        }
     }
     
     protected function afterUpdate() {
@@ -136,17 +150,23 @@ class Entity extends \Floxim\Main\Content\Entity {
         
         // urlAlias update
         if (in_array('url', $this->modified)) {
-			$modified_alias = fx::data('urlAlias')->getCurrentByPageId($this['id']);
-			if (
-					!empty($modified_alias) &&
-					!empty($this['url']) &&
-					$modified_alias['url'] == $this->modified_data['url']
-				) {
-				// reset current alias
-				$modified_alias->resetCurrent();
-				// create new alias
-				fx::data('urlAlias')->addAlias($this['url'], $this['id'], 1);
-			}
+            $modified_alias = fx::data('urlAlias')->getCurrentByPageId($this['id']);
+            if (
+                    !empty($modified_alias) &&
+                    !empty($this['url']) &&
+                    $modified_alias['url'] == $this->modified_data['url']
+                ) {
+                // reset current alias
+                $modified_alias->resetCurrent();
+                // create new alias
+                fx::data('urlAlias')->create(
+                    array(
+                        'page_id' => $this['id'],
+                        'url' => $this['url'],
+                        'is_current' => true
+                    )
+                )->save();
+            }
         }
     }
     
