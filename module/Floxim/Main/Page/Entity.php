@@ -95,34 +95,18 @@ class Entity extends \Floxim\Main\Content\Entity {
             }
             $index = 1;
             // check already used page url
-            while ( fx::data('page')->
-                    where('url', $url)->
-                    where('site_id', $this['site_id'])->
-                    where('id', $this['id'], '!=')->
-                    one()) {
-                $index++;
-                $url = preg_replace("~\-".($index-1)."$~", '', $url).'-'.$index;
-            }
-            // check existed urlAlias (in aliases history)
-            while ($existed_alias_data = fx::data('urlAlias')->getByUrl($url)) {
-                $index++;
-                $url = preg_replace("~\-".($index-1)."$~", '', $url).'-'.$index;
+            while ( $page = fx::data('page')->getByUrl($url) ) {
+                if ($page['id'] != $this['id']) {
+                    $index++;
+                    $url = preg_replace("~\-".($index-1)."$~", '', $url).'-'.$index;
+                }
+                else {
+                    // update the same urlAlias of the same page, see afterUpdate()
+                    break;
+                }
             }
             
             $this['url'] = $url;
-
-            $alias = fx::data('urlAlias')->getOriginalByPageId($this['id']);
-            // create new urlAlias if it is not set for the current page
-            if (empty($alias) && $this['id']) {
-                fx::data('urlAlias')->create(
-                    array(
-                        'page_id' => $this['id'],
-                        'url' => $this->modified_data['url'],
-                        'is_current' => true,
-                        'is_original' => true
-                    )
-                )->save();
-            }
         }
     }
     
@@ -136,6 +120,7 @@ class Entity extends \Floxim\Main\Content\Entity {
             // create new urlAlias if it is not set
             fx::data('urlAlias')->create(
                 array(
+                    'site_id' => $this['site_id'],
                     'page_id' => $this['id'],
                     'url' => $this['url'],
                     'is_current' => true,
@@ -158,14 +143,29 @@ class Entity extends \Floxim\Main\Content\Entity {
                 ) {
                 // reset current alias
                 $modified_alias->resetCurrent();
-                // create new alias
-                fx::data('urlAlias')->create(
-                    array(
-                        'page_id' => $this['id'],
-                        'url' => $this['url'],
-                        'is_current' => true
-                    )
-                )->save();
+                // check urlAlias history
+                if ($modified_alias['page_id'] == $this['id']) {
+                    // get already exist old alias
+                    $existed_alias = fx::data('urlAlias')->
+                    where('url', $this['url'])->
+                    where('page_id', $this['id'])->
+                    one();
+                    // the same alias already exist, refresh
+                    if ($existed_alias) {
+                        $existed_alias->set('is_current', 1)->save();
+                    }
+                }
+                if ( !(isset($existed_alias) && $existed_alias) ) {
+                    // create new alias
+                    fx::data('urlAlias')->create(
+                        array(
+                            'site_id' => $this['site_id'],
+                            'page_id' => $this['id'],
+                            'url' => $this['url'],
+                            'is_current' => true
+                        )
+                    )->save();
+                }
             }
         }
     }
@@ -177,7 +177,10 @@ class Entity extends \Floxim\Main\Content\Entity {
             $cv->delete();
         };
         // drop all urlAlias
-        fx::data('urlAlias')->where('page_id', $this['id'])->all()->apply($killer);
+        fx::data('urlAlias')->
+            where('page_id', $this['id'])->
+            all()->
+            apply($killer);
         // @TODO: save for history
         if (!$this->_skip_cascade_delete_children) {
             $nested_ibs = $this->getNestedInfoblocks(true);

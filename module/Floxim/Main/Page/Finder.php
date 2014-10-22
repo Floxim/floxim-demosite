@@ -18,7 +18,14 @@ class Finder extends \Floxim\Main\Content\Finder {
         $tree = $this->makeTree($data, $children_key);
         return $tree;
     }
-
+    
+    /**
+     * get page (urlAlias) by url string
+     * 
+     * @param string url string
+     * 
+     * @return object page
+     */
     public function getByUrl($url, $site_id = null) {
         $url_variants = array($url);
         if ($site_id === null) {
@@ -35,11 +42,16 @@ class Finder extends \Floxim\Main\Content\Finder {
         if ($url_with_no_params != $url) {
             $url_variants []= $url_with_no_params;
         }
-        // get page by page url
-        $page = fx::data('page')->
+        // get alias by url
+        $alias = fx::data('urlAlias')->
             where('url', $url_variants)->
             where('site_id', $site_id)->
             one();
+        if (!$alias) {
+            return null;    
+        }
+        // get page by id
+        $page = $this->getById($alias['page_id']);
         return $page;
     }
     
