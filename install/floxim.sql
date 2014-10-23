@@ -1993,7 +1993,7 @@ INSERT INTO `fx_url_alias` (`id`, `url`, `site_id`, `page_id`, `is_original`) VA
 (12, '/contest', 18, 2731, 1),
 (13, '/Corporate-events', 18, 2746, 1),
 (14, '/Delivery-person', 18, 2737, 1),
-(15, '/Events', 18, 2744, 0, 1),
+(15, '/Events', 18, 2744, 1),
 (16, '/Football-photo-report', 18, 2660, 1),
 (17, '/Free-ride-proof-pics', 18, 2680, 1),
 (18, '/Ken-Cold', 18, 2671, 1),
