@@ -123,7 +123,6 @@ class Entity extends \Floxim\Main\Content\Entity {
                     'site_id' => $this['site_id'],
                     'page_id' => $this['id'],
                     'url' => $this['url'],
-                    'is_current' => true,
                     'is_original' => true
                 )
             )->save();
@@ -135,25 +134,22 @@ class Entity extends \Floxim\Main\Content\Entity {
         
         // urlAlias update
         if (in_array('url', $this->modified)) {
-            $modified_alias = fx::data('urlAlias')->getCurrentByPageId($this['id']);
+            // prev alias
+            $modified_alias = fx::data('urlAlias')->
+                where('url', $this->modified_data['url'])->
+                where('page_id', $this['id'])->
+                one();
             if (
                     !empty($modified_alias) &&
-                    !empty($this['url']) &&
-                    $modified_alias['url'] == $this->modified_data['url']
+                    $this['url']
                 ) {
-                // reset current alias
-                $modified_alias->resetCurrent();
                 // check urlAlias history
                 if ($modified_alias['page_id'] == $this['id']) {
                     // get already exist old alias
                     $existed_alias = fx::data('urlAlias')->
-                    where('url', $this['url'])->
-                    where('page_id', $this['id'])->
-                    one();
-                    // the same alias already exist, refresh
-                    if ($existed_alias) {
-                        $existed_alias->set('is_current', 1)->save();
-                    }
+                        where('url', $this['url'])->
+                        where('page_id', $this['id'])->
+                        one();
                 }
                 if ( !(isset($existed_alias) && $existed_alias) ) {
                     // create new alias
@@ -161,8 +157,7 @@ class Entity extends \Floxim\Main\Content\Entity {
                         array(
                             'site_id' => $this['site_id'],
                             'page_id' => $this['id'],
-                            'url' => $this['url'],
-                            'is_current' => true
+                            'url' => $this['url']
                         )
                     )->save();
                 }
