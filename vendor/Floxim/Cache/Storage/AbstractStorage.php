@@ -2,6 +2,8 @@
 
 namespace Floxim\Cache\Storage;
 
+use ReflectionObject;
+
 /**
  * Abstract cache storage
  *
@@ -26,20 +28,36 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @var string
      */
-    protected $keyPrefix = '';
+    public $keyPrefix = '';
     /**
      * Used serializer before save data
      *
      * @var bool
      */
-    protected $useSerializer = true;
+    public $useSerializer = true;
+
+    /**
+     * Constructor
+     *
+     * @param array $params
+     */
+    public function __construct($params = array()) {
+        if ($params) {
+            $reflect = new ReflectionObject($this);
+            foreach ($params as $name => $value) {
+                if ($reflect->hasProperty($name) and $property = $reflect->getProperty($name) and $property->isPublic()) {
+                    $this->$name = $value;
+                }
+            }
+        }
+    }
+
 
     /**
      * Init storage
      *
-     * @param $params
      */
-    public function init($params) {
+    public function init() {
 
     }
 
@@ -70,11 +88,11 @@ abstract class AbstractStorage implements \ArrayAccess {
      */
     public function buildKey($key) {
         if (is_string($key)) {
-            $key = md5($key);
+            $key = md5($this->keyPrefix . $key);
         } else {
-            $key = md5(json_encode($key));
+            $key = md5($this->keyPrefix . json_encode($key));
         }
-        return $this->keyPrefix . $key;
+        return $key;
     }
 
     /**

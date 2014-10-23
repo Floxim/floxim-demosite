@@ -66,11 +66,9 @@ class Manager {
         }
 
         if (class_exists($class)) {
-            $storage = new $class();
-            $storage->init($params);
-            if (isset($params['prefix'])) {
-                $storage->setKeyPrefix($params['prefix']);
-            } elseif ($this->getKeyPrefix()) {
+            $storage = new $class($params);
+            $storage->init();
+            if (!$storage->getKeyPrefix() and $this->getKeyPrefix()) {
                 $storage->setKeyPrefix($this->getKeyPrefix());
             }
             return $storage;
