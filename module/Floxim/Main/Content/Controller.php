@@ -23,6 +23,10 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         $sources = array();
         $sources [] = fx::path('module', fx::getComponentPath('content') . '/cfg.php');
         $com = $this->getComponent();
+        if (!$com instanceof \Floxim\Floxim\Component\Component\Entity) {
+            fx::log('wrong com', $this, debug_backtrace());
+            return array();
+        }
         $chain = $com->getChain();
         foreach ($chain as $com) {
             $com_file = fx::path('module', fx::getComponentPath($com['keyword']) . '/cfg.php');
@@ -736,17 +740,10 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
      */
     public function getContentType() {
         if (!$this->_content_type) {
-            $path = array_reverse(explode("\\", get_class($this)));
-            $this->_content_type = fx::util()->camelToUnderscore($path[1]);
+            $com_name = fx::getComponentNameByClass(get_class($this));
+            $this->_content_type = $com_name;
         }
         return $this->_content_type;
-    }
-
-    /**
-     * @param string $content_type
-     */
-    public function setContentType($content_type) {
-        $this->_content_type = $content_type;
     }
 
     /**
