@@ -173,14 +173,19 @@ abstract class AbstractStorage implements \ArrayAccess {
      * @param          $time
      * @param callable $callback
      * @param array    $tags
+     * @param bool     $use_cache
      *
      * @return mixed
      */
-    public function remember($key, $time, \Closure $callback, $tags = array()) {
-        if (false !== ($value = $this->get($key))) {
-            return $value;
+    public function remember($key, $time, \Closure $callback, $tags = array(), $use_cache = true) {
+        if ($use_cache) {
+            if (false !== ($value = $this->get($key))) {
+                return $value;
+            }
+            $this->set($key, $value = $callback(), $time, $tags);
+        } else {
+            $value = $callback();
         }
-        $this->set($key, $value = $callback(), $time, $tags);
         return $value;
     }
 
