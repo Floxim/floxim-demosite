@@ -5,21 +5,25 @@ use Floxim\Floxim\Component\Field;
 use Floxim\Floxim\System;
 use Floxim\Floxim\System\Fx as fx;
 
-class Controller extends \Floxim\Floxim\Controller\Frontoffice {
+class Controller extends \Floxim\Floxim\Controller\Frontoffice
+{
 
-    protected function countParentId() {
+    protected function countParentId()
+    {
         if (preg_match("~^listInfoblock~", fx::util()->underscoreToCamel($this->action, false))) {
             $this->setParam('parent_id', $this->getParentId());
         }
     }
 
-    public function process() {
+    public function process()
+    {
         $this->listen('before_action_run', array($this, 'countParentId'));
         $result = parent::process();
         return $result;
     }
 
-    protected function getConfigSources() {
+    protected function getConfigSources()
+    {
         $sources = array();
         $sources [] = fx::path('module', fx::getComponentPath('content') . '/cfg.php');
         $com = $this->getComponent();
@@ -37,15 +41,17 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         return $sources;
     }
 
-    public function getControllerName($with_type = false){
+    public function getControllerName($with_type = false)
+    {
         $name = $this->_content_type;
         if ($with_type) {
-            $name = 'component_'.$name;
+            $name = 'component_' . $name;
         }
         return $name;
     }
 
-    public function saveSelectedLinkers($ids) {
+    public function saveSelectedLinkers($ids)
+    {
         if (!is_array($ids)) {
             return;
         }
@@ -71,7 +77,8 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                 $parent_id = $ib['page_id'];
             }
             foreach ($ids as $id) {
-                $linker = fx::data('linker')->create();                $linker['parent_id'] = $parent_id;
+                $linker = fx::data('linker')->create();
+                $linker['parent_id'] = $parent_id;
                 $linker['infoblock_id'] = $ib['id'];
                 $linker['linked_id'] = $id;
                 $linker['priority'] = ++$last_priority;
@@ -80,10 +87,11 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         }
     }
 
-    public function dropSelectedLinkers() {
-        $linkers = fx::data('linker')                ->where('infoblock_id', $this->getParam('infoblock_id'))
+    public function dropSelectedLinkers()
+    {
+        $linkers = fx::data('linker')->where('infoblock_id', $this->getParam('infoblock_id'))
             ->all();
-        $linkers->apply(function($i){
+        $linkers->apply(function ($i) {
             $i->delete();
         });
     }
@@ -91,8 +99,9 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
     /*
      * @return fx_collection
      */
-    protected function getSelectedLinkers () {
-        $q = fx::data('linker')            ->where('infoblock_id', $this->getParam('infoblock_id'))
+    protected function getSelectedLinkers()
+    {
+        $q = fx::data('linker')->where('infoblock_id', $this->getParam('infoblock_id'))
             ->order('priority');
         if ($this->getParam('parent_type') == 'current_page_id') {
             $q->where('parent_id', fx::env('page_id'));
@@ -100,79 +109,82 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         return $q->all();
     }
 
-    protected function getSelectedValues() {
+    protected function getSelectedValues()
+    {
         $res = $this->getSelectedLinkers()->column('linked_id');
         return $res;
     }
 
-    public function getSelectedField($with_values = true) {
-        $field = array (
-            'name' => 'selected',
-            'label' => fx::alang('Selected','controller_component'),
-            'type' => 'livesearch',
-            'is_multiple' => true,
+    public function getSelectedField($with_values = true)
+    {
+        $field = array(
+            'name'         => 'selected',
+            'label'        => fx::alang('Selected', 'controller_component'),
+            'type'         => 'livesearch',
+            'is_multiple'  => true,
             'ajax_preload' => true,
-            'params' => array(
+            'params'       => array(
                 'content_type' => $this->_content_type
             ),
-            'stored' => false
+            'stored'       => false
         );
         if ($with_values) {
-            $field['value'] =  $this->getSelectedValues()->getData();
+            $field['value'] = $this->getSelectedValues()->getData();
         }
         return $field;
     }
 
-    public function getConditionsField() {
+    public function getConditionsField()
+    {
         $res_field = array(
-            'name' => 'conditions',
-            'label' => fx::alang('Conditions','controller_component'),
-            'type' => 'set',
-            'is_cond_set' => true,
-            'tpl' => array(
+            'name'          => 'conditions',
+            'label'         => fx::alang('Conditions', 'controller_component'),
+            'type'          => 'set',
+            'is_cond_set'   => true,
+            'tpl'           => array(
                 array(
-                    'id' => 'name',
+                    'id'   => 'name',
                     'name' => 'name',
                     'type' => 'select'
                 ),
             ),
-            'operators_map' => array (
-                'string' => array(
-                    'contains' => 'contains',
-                    '=' => '=',
+            'operators_map' => array(
+                'string'    => array(
+                    'contains'     => 'contains',
+                    '='            => '=',
                     'not_contains' => 'not contains',
-                    '!=' => '!='
+                    '!='           => '!='
                 ),
-                'int' => array(
-                    '=' => '=',
-                    '>' => '>',
-                    '<' => '<',
+                'int'       => array(
+                    '='  => '=',
+                    '>'  => '>',
+                    '<'  => '<',
                     '>=' => '>=',
                     '<=' => '<=',
                     '!=' => '!=',
                 ),
-                'datetime' => array(
-                    '=' => '=',
-                    '>' => '>',
-                    '<' => '<',
-                    '>=' => '>=',
-                    '<=' => '<=',
-                    '!=' => '!=',
-                    'next' => 'next',
-                    'last' => 'last',
+                'datetime'  => array(
+                    '='         => '=',
+                    '>'         => '>',
+                    '<'         => '<',
+                    '>='        => '>=',
+                    '<='        => '<=',
+                    '!='        => '!=',
+                    'next'      => 'next',
+                    'last'      => 'last',
                     'in_future' => 'in future',
-                    'in_past' => 'in past'
+                    'in_past'   => 'in past'
                 ),
                 'multilink' => array(
-                    '=' => '=',
+                    '='  => '=',
                     '!=' => '!=',
                 ),
-                'link' => array(
-                    '=' => '=',
+                'link'      => array(
+                    '='  => '=',
                     '!=' => '!=',
                 ),
             ),
-            'labels' => array(
+            'labels'        => array(
                 'Field',
                 'Operator',
                 'Value'
@@ -186,44 +198,45 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         foreach ($searchable_fields as $field) {
             $res = array(
                 'description' => $field['name'],
-                'type' => Field\Entity::getTypeById($field['type'])
+                'type'        => Field\Entity::getTypeById($field['type'])
             );
             if ($field['type'] == Field\Entity::FIELD_LINK) {
                 $res['content_type'] = $field->getTargetName();
             }
             if ($field['type'] == Field\Entity::FIELD_MULTILINK) {
                 $relation = $field->getRelation();
-                $res['content_type'] = $relation[0] == System\Data::MANY_MANY ? $relation[4] : $relation[1] ;
+                $res['content_type'] = $relation[0] == System\Data::MANY_MANY ? $relation[4] : $relation[1];
             }
             // Add allow values for select parent page
             if ($field['keyword'] == 'parent_id') {
                 $pages = $this->getAllowParentPages();
-                $values = $pages->getValues(array('id','name'));
+                $values = $pages->getValues(array('id', 'name'));
                 $res['values'] = $values;
             }
             $res_field['tpl'][0]['values'][$field['keyword']] = $res;
         }
         $ib_field_params = array(
-            'description' => 'Infoblock',
-            'type' => 'link',
+            'description'  => 'Infoblock',
+            'type'         => 'link',
             'content_type' => 'infoblock',
-            'conditions' => array(
+            'conditions'   => array(
                 'controller' => array(
                     $com->getAllVariants()->getValues('keyword'),
                     'IN'
                 ),
-                'site_id' => fx::env('site_id'),
-                'action' => array( array('list_infoblock', 'list_selected'), 'IN')
+                'site_id'    => fx::env('site_id'),
+                'action'     => array(array('list_infoblock', 'list_selected'), 'IN')
             )
         );
-        if ( ($cib_id = $this->getParam('infoblock_id'))) {
+        if (($cib_id = $this->getParam('infoblock_id'))) {
             $ib_field_params['conditions']['id'] = array($cib_id, '!=');
         }
         $res_field['tpl'][0]['values']['infoblock_id'] = $ib_field_params;
         return $res_field;
     }
 
-    public function getTargetConfigFields() {
+    public function getTargetConfigFields()
+    {
 
         /*
          * Below is the code that produces valid InfoBlock for fields-references
@@ -254,28 +267,28 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
 
             $ib_values = array();
             foreach ($com_infoblocks as $ib) {
-                $ib_values []= array($ib['id'], $ib['name']);
+                $ib_values [] = array($ib['id'], $ib['name']);
             }
             if (count($ib_values) === 0) {
                 continue;
             }
             $c_ib_field = array(
-                'name' => 'field_'.$lf['id'].'_infoblock'
+                'name' => 'field_' . $lf['id'] . '_infoblock'
             );
             if (count($ib_values) === 1) {
                 $c_ib_field += array(
-                    'type' => 'hidden',
+                    'type'  => 'hidden',
                     'value' => $ib_values[0][0]
                 );
             } else {
                 $c_ib_field += array(
-                    'type' => 'select',
+                    'type'   => 'select',
                     'values' => $ib_values,
-                    'label' => fx::alang('Infoblock for the field', 'controller_component')
-                        .' "'.$lf['description'].'"'
+                    'label'  => fx::alang('Infoblock for the field', 'controller_component')
+                        . ' "' . $lf['description'] . '"'
                 );
             }
-            $fields[$c_ib_field['name']]= $c_ib_field;
+            $fields[$c_ib_field['name']] = $c_ib_field;
         }
         return $fields;
     }
@@ -284,7 +297,8 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
      * Get option to bind lost content (having no infoblock_id) to the newly created infoblock
      * @return array
      */
-    public function getLostContentField() {
+    public function getLostContentField()
+    {
         // infoblock already exists
         if ($this->getParam('infoblock_id')) {
             return array();
@@ -299,13 +313,14 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         }
         return array(
             'bind_lost_content' => array(
-                'type' => 'checkbox',
-                'label' => 'Bind lost content ('.count($lost).')'
+                'type'  => 'checkbox',
+                'label' => 'Bind lost content (' . count($lost) . ')'
             )
         );
     }
 
-    public function bindLostContent($ib, $params) {
+    public function bindLostContent($ib, $params)
+    {
         if (!isset($params['params']['bind_lost_content']) || !$params['params']['bind_lost_content']) {
             return;
         }
@@ -323,49 +338,53 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         }
     }
 
-    public function doRecord() {
+    public function doRecord()
+    {
         $page = fx::env('page');
         return array('item' => $page);
     }
 
-    public function doList() {
+    public function doList()
+    {
         $f = $this->getFinder();
         $this->trigger('query_ready', $f);
         $items = $f->all();
-        
+
         if (count($items) === 0) {
             $this->_meta['hidden'] = true;
         }
         $this->trigger('items_ready', $items);
         $res = array('items' => $items);
-        if ( ($pagination = $this->getPagination()) ) {
+        if (($pagination = $this->getPagination())) {
             $res ['pagination'] = $pagination;
         }
         return $res;
     }
 
-    protected function getFakeItems($count = 3) {
+    protected function getFakeItems($count = 3)
+    {
         $finder = $this->getFinder();
         $items = fx::collection();
-        foreach (range(1,$count) as $n) {
-            $items []= $finder->fake();
+        foreach (range(1, $count) as $n) {
+            $items [] = $finder->fake();
         }
         return $items;
     }
 
 
-    public function doListInfoblock() {
+    public function doListInfoblock()
+    {
         // "fake mode" - preview of newly created infoblock
         if ($this->getParam('is_fake')) {
             return array('items' => $this->getFakeItems(3));
         }
-        $this->listen('query_ready', function($q, $ctr) {
+        $this->listen('query_ready', function ($q, $ctr) {
             $parent_id = $ctr->getParam('parent_id');
-            if ( $parent_id && !$ctr->getParam('skip_parent_filter')) {
+            if ($parent_id && !$ctr->getParam('skip_parent_filter')) {
                 $q->where('parent_id', $parent_id);
             }
             $infoblock_id = $ctr->getParam('infoblock_id');
-            if ( $infoblock_id && !$ctr->getParam('skip_infoblock_filter')) {
+            if ($infoblock_id && !$ctr->getParam('skip_infoblock_filter')) {
                 $q->where('infoblock_id', $infoblock_id);
             }
         });
@@ -373,58 +392,62 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         if (fx::isAdmin()) {
             $infoblock = fx::data('infoblock', $this->getParam('infoblock_id'));
             $component = $this->getComponent();
-            $adder_title = fx::alang('Add').' '.$component['item_name'];//.' &rarr; '.$ib_name;
+            $adder_title = fx::alang('Add') . ' ' . $component['item_name'];//.' &rarr; '.$ib_name;
 
             $this->acceptContent(array(
-                                     'title' => $adder_title,
-                                     'parent_id' => $this->getParentId(),
-                                     'type' => $component['keyword'],
-                                     'infoblock_id' => $this->getParam('infoblock_id')
-                                 ));
+                'title'        => $adder_title,
+                'parent_id'    => $this->getParentId(),
+                'type'         => $component['keyword'],
+                'infoblock_id' => $this->getParam('infoblock_id')
+            ));
 
             if (count($res['items']) == 0) {
-                $this->_meta['hidden_placeholder'] = 'Infoblock "'.$infoblock['name'].'" is empty. '.
-                    'You can add '.$component['item_name'].' here';
+                $this->_meta['hidden_placeholder'] = 'Infoblock "' . $infoblock['name'] . '" is empty. ' .
+                    'You can add ' . $component['item_name'] . ' here';
             }
         }
         return $res;
     }
 
-    public function acceptContent($params,$entity = null) {
+    public function acceptContent($params, $entity = null)
+    {
         $params = array_merge(
             array(
                 'infoblock_id' => $this->getParam('infoblock_id'),
-                'type' => $this->getContentType()
+                'type'         => $this->getContentType()
             ), $params
         );
         if (!is_null($entity)) {
-            $meta = isset($entity['_meta'])?  $entity['_meta'] : array();
+            $meta = isset($entity['_meta']) ? $entity['_meta'] : array();
             if (!isset($meta['accept_content'])) {
                 $meta['accept_content'] = array();
             }
-            $meta['accept_content'][]= $params;
+            $meta['accept_content'][] = $params;
             $entity['_meta'] = $meta;
             return;
         }
         if (!isset($this->_meta['accept_content'])) {
             $this->_meta['accept_content'] = array();
         }
-        $this->_meta['accept_content'] []= $params;
+        $this->_meta['accept_content'] [] = $params;
     }
 
-    protected function getPaginationUrlTemplate() {
+    protected function getPaginationUrlTemplate()
+    {
         $url = $_SERVER['REQUEST_URI'];
         $url = preg_replace("~[\?\&]page=\d+~", '', $url);
-        return $url.'##'.(preg_match("~\?~", $url) ? '&' : '?').'page=%d##';
+        return $url . '##' . (preg_match("~\?~", $url) ? '&' : '?') . 'page=%d##';
     }
 
-    protected function getCurrentPageNumber() {
+    protected function getCurrentPageNumber()
+    {
         return isset($_GET['page']) ? $_GET['page'] : 1;
     }
 
-    protected function getPagination() {
+    protected function getPagination()
+    {
 
-        if (!$this->getParam('pagination')){
+        if (!$this->getParam('pagination')) {
             return null;
         }
         $total_rows = $this->getFinder()->getFoundRows();
@@ -446,54 +469,57 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         $url_tpl = str_replace("##", '', $url_tpl);
         $c_page = $this->getCurrentPageNumber();
         foreach (range(1, $total_pages) as $page_num) {
-            $links[$page_num]= array(
+            $links[$page_num] = array(
                 'active' => $page_num == $c_page,
-                'page' => $page_num,
-                'url' =>
+                'page'   => $page_num,
+                'url'    =>
                     $page_num == 1 ?
                         $base_url :
                         sprintf($url_tpl, $page_num)
             );
         }
         $res = array(
-            'links' => fx::collection($links),
-            'total_pages' => $total_pages,
-            'total_items' => $total_rows,
+            'links'        => fx::collection($links),
+            'total_pages'  => $total_pages,
+            'total_items'  => $total_rows,
             'current_page' => $c_page
         );
         if ($c_page != 1) {
-            $res['prev'] = $links[$c_page-1]['url'];
+            $res['prev'] = $links[$c_page - 1]['url'];
         }
         if ($c_page != $total_pages) {
-            $res['next'] = $links[$c_page+1]['url'];
+            $res['next'] = $links[$c_page + 1]['url'];
         }
         return $res;
     }
 
-    protected function getParentId() {
+    protected function getParentId()
+    {
         $ib = fx::data('infoblock', $this->getParam('infoblock_id'));
         $parent_id = null;
-        switch($this->getParam('parent_type')) {
+        switch ($this->getParam('parent_type')) {
             case 'mount_page_id':
                 $parent_id = $ib['page_id'];
                 if ($parent_id === 0) {
                     $parent_id = fx::env('site')->get('index_page_id');
                 }
                 break;
-            case 'current_page_id': default:
-            $parent_id = fx::env('page')->get('id');
-            break;
+            case 'current_page_id':
+            default:
+                $parent_id = fx::env('page')->get('id');
+                break;
         }
         return $parent_id;
     }
 
-    public function doListSelected() {
+    public function doListSelected()
+    {
         $is_overriden = $this->getParam('is_overriden');
         $linkers = null;
         // preview
-        if ( $is_overriden) {
+        if ($is_overriden) {
             $content_ids = array();
-            $selected_val  = $this->getParam('selected');
+            $selected_val = $this->getParam('selected');
             if (is_array($selected_val)) {
                 $content_ids = $selected_val;
             }
@@ -502,14 +528,14 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
             $linkers = $this->getSelectedLinkers();
             $content_ids = $linkers->getValues('linked_id');
         }
-       
-        $this->listen('query_ready', function($q) use ($content_ids) {
+
+        $this->listen('query_ready', function ($q) use ($content_ids) {
             $q->where('id', $content_ids);
         });
         if ($linkers) {
-            $this->listen('items_ready', function($c, $ctr) use ($linkers) {
+            $this->listen('items_ready', function ($c, $ctr) use ($linkers) {
                 if ($ctr->getParam('sorting') === 'manual') {
-                    $c->sort(function($a, $b) use ($linkers) {
+                    $c->sort(function ($a, $b) use ($linkers) {
                         $a_l = $linkers->findOne('linked_id', $a['id']);
                         $b_l = $linkers->findOne('linked_id', $b['id']);
                         if (!$a_l || !$b_l) {
@@ -523,13 +549,13 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                 }
                 $c->linker_map = array();
                 foreach ($c as $cc) {
-                    $c->linker_map []= $linkers->findOne('linked_id', $cc['id']);
+                    $c->linker_map [] = $linkers->findOne('linked_id', $cc['id']);
                 }
             });
         } else {
-            $this->listen('items_ready', function($c, $ctr) use ($content_ids) {
+            $this->listen('items_ready', function ($c, $ctr) use ($content_ids) {
                 if ($ctr->getParam('sorting') === 'manual') {
-                    $c->sort(function($a, $b) use ($content_ids) {
+                    $c->sort(function ($a, $b) use ($content_ids) {
                         $a_priority = array_search($a['id'], $content_ids);
                         $b_priority = array_search($b['id'], $content_ids);
                         return $a_priority - $b_priority;
@@ -541,7 +567,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
             $this->_meta['fields'] = array();
         }
         $res = $this->doList();
-        
+
         // if we are admin and not viewing the block in preview mode,
         // let's add livesearch field loaded with the selected values
         if (!$is_overriden && fx::isAdmin()) {
@@ -551,34 +577,35 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
             // because some items can be added from inherited controllers (e.g. menu with subsections)
             $selected_items = $res['items']->find('id', $content_ids);
             foreach ($selected_items as $selected_item) {
-                $selected_field['value'][]= array(
+                $selected_field['value'][] = array(
                     'name' => $selected_item['name'],
-                    'id' => $selected_item['id']
+                    'id'   => $selected_item['id']
                 );
             }
             $selected_field['var_type'] = 'ib_param';
             unset($selected_field['ajax_preload']);
-            $this->_meta['fields'][]= $selected_field;
+            $this->_meta['fields'][] = $selected_field;
         }
         if (count($res['items']) === 0 && fx::isAdmin()) {
             $component = $this->getComponent();
             $ib = fx::data('infoblock', $this->getParam('infoblock_id'));
-            $this->_meta['hidden_placeholder'] = 'Infoblock "'.$ib['name'].'" is empty. '.
-                'Select '.$component['item_name'].' to show here';
+            $this->_meta['hidden_placeholder'] = 'Infoblock "' . $ib['name'] . '" is empty. ' .
+                'Select ' . $component['item_name'] . ' to show here';
         }
         return $res;
     }
 
-    public function doListFiltered() {
-        $this->listen('query_ready', function($q, $ctr) {
+    public function doListFiltered()
+    {
+        $this->listen('query_ready', function ($q, $ctr) {
             $component = $ctr->getComponent();
             $fields = $component->allFields();
             $conditions = fx::collection($ctr->getParam('conditions'));
             if (!$conditions->findOne('name', 'site_id')) {
-                $conditions[]= array(
-                    'name' => 'site_id',
+                $conditions[] = array(
+                    'name'     => 'site_id',
                     'operator' => '=',
-                    'value' => array(fx::env('site')->get('id'))
+                    'value'    => array(fx::env('site')->get('id'))
                 );
             }
             $target_parent_id = null;
@@ -601,10 +628,11 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                 $field = $fields->findOne('keyword', $condition['name']);
                 $error = false;
                 switch ($condition['operator']) {
-                    case 'contains': case 'not_contains':
-                    $condition['value'] = '%'.$condition['value'].'%';
-                    $condition['operator'] = ($condition['operator']== 'not_contains' ? 'NOT ' : '').'LIKE';
-                    break;
+                    case 'contains':
+                    case 'not_contains':
+                        $condition['value'] = '%' . $condition['value'] . '%';
+                        $condition['operator'] = ($condition['operator'] == 'not_contains' ? 'NOT ' : '') . 'LIKE';
+                        break;
                     case 'next':
                         if (isset($condition['value']) && !empty($condition['value'])) {
                             $q->where(
@@ -612,7 +640,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                                 '> NOW()',
                                 'RAW'
                             );
-                            $condition['value'] = '< NOW() + INTERVAL '.$condition['value'].' '.$condition['interval'];
+                            $condition['value'] = '< NOW() + INTERVAL ' . $condition['value'] . ' ' . $condition['interval'];
                             $condition['operator'] = 'RAW';
                         } else {
                             $error = true;
@@ -625,7 +653,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                                 '< NOW()',
                                 'RAW'
                             );
-                            $condition['value'] = '> NOW() - INTERVAL '.$condition['value'].' '.$condition['interval'];
+                            $condition['value'] = '> NOW() - INTERVAL ' . $condition['value'] . ' ' . $condition['interval'];
                             $condition['operator'] = 'RAW';
                         } else {
                             $error = true;
@@ -640,13 +668,13 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                         $condition['operator'] = 'RAW';
                         break;
                 }
-                if ($field['type'] == Field\Entity::FIELD_LINK){
+                if ($field['type'] == Field\Entity::FIELD_LINK) {
                     if (!isset($condition['value'])) {
                         $error = true;
                     } else {
                         $ids = array();
                         foreach ($condition['value'] as $v) {
-                            $ids[]= $v;
+                            $ids[] = $v;
                         }
                         $condition['value'] = $ids;
                         if ($condition['operator'] === '!=') {
@@ -663,10 +691,10 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                         $error = true;
                     } else {
                         foreach ($condition['value'] as $v) {
-                            $ids[]= $v;
+                            $ids[] = $v;
                         }
                         $relation = $field->getRelation();
-                        if ($relation[0] === System\Data::MANY_MANY){
+                        if ($relation[0] === System\Data::MANY_MANY) {
                             $content_ids = fx::data($relation[1])->
                             where($relation[5], $ids)->
                             select('content_id')->
@@ -696,7 +724,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                     }
                     $target_ib = $target_ib->first();
                     if ($target_ib['action'] == 'list_selected') {
-                        $linkers = fx::data('linker')                                    ->where('infoblock_id', $target_ib['id'])
+                        $linkers = fx::data('linker')->where('infoblock_id', $target_ib['id'])
                             ->all();
                         $content_ids = $linkers->getValues('linked_id');
                         $condition['name'] = 'id';
@@ -713,13 +741,13 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
                 }
             }
             if ($target_parent_id && $target_infoblock_id) {
-                $adder_title = fx::alang('Add').' '.$component['item_name'];
+                $adder_title = fx::alang('Add') . ' ' . $component['item_name'];
                 $ctr->acceptContent(array(
-                                        'title' => $adder_title,
-                                        'parent_id' => $target_parent_id,
-                                        'type' => $component['keyword'],
-                                        'infoblock_id' => $target_infoblock_id
-                                    ));
+                    'title'        => $adder_title,
+                    'parent_id'    => $target_parent_id,
+                    'type'         => $component['keyword'],
+                    'infoblock_id' => $target_infoblock_id
+                ));
             }
         });
 
@@ -738,7 +766,8 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
     /**
      * @return string
      */
-    public function getContentType() {
+    public function getContentType()
+    {
         if (!$this->_content_type) {
             $com_name = fx::getComponentNameByClass(get_class($this));
             $this->_content_type = $com_name;
@@ -750,16 +779,19 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
      * Returns the component at the value of the property _content_type
      * @return fx_data_component
      */
-    public function getComponent() {
+    public function getComponent()
+    {
         return fx::data('component', $this->getContentType());
     }
 
 
     protected $_finder = null;
+
     /**
      * @return \Floxim\Floxim\System\Data data finder
      */
-    public function getFinder() {
+    public function getFinder()
+    {
         if (!is_null($this->_finder)) {
             return $this->_finder;
         }
@@ -767,20 +799,20 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
         $show_pagination = $this->getParam('pagination');
         $c_page = $this->getCurrentPageNumber();
         $limit = $this->getParam('limit');
-        if ( $show_pagination && $limit) {
+        if ($show_pagination && $limit) {
             $finder->calcFoundRows();
         }
-        if ( $limit ) {
+        if ($limit) {
             if ($show_pagination && $c_page != 1) {
                 $finder->limit(
-                    $limit*($c_page-1),
+                    $limit * ($c_page - 1),
                     $limit
                 );
             } else {
                 $finder->limit($limit);
             }
         }
-        if ( ($sorting = $this->getParam('sorting'))) {
+        if (($sorting = $this->getParam('sorting'))) {
             $dir = $this->getParam('sorting_dir');
             if ($sorting === 'manual') {
                 $sorting = 'priority';
@@ -802,25 +834,27 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
      * 
      */
 
-    protected function getControllerVariants() {
+    protected function getControllerVariants()
+    {
         //$vars = parent::_get_controller_variants();
         $vars = array();
         $com = $this->getComponent();
         $chain = $com->getChain();
         $chain = array_reverse($chain);
         foreach ($chain as $chain_item) {
-            $vars []= $chain_item['keyword'];
+            $vars [] = $chain_item['keyword'];
         }
         $vars = array_unique($vars);
         return $vars;
     }
 
-    public function getActions() {
+    public function getActions()
+    {
         $actions = parent::getActions();
         $com = $this->getComponent();
         foreach ($actions as $action => &$info) {
             if (!isset($info['name'])) {
-                $info['name'] = $com['name'].' / '.$action;
+                $info['name'] = $com['name'] . ' / ' . $action;
             }
         }
         return $actions;
@@ -832,7 +866,8 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice {
      *
      * @return fx_collection
      */
-    protected function getAllowParentPages() {
+    protected function getAllowParentPages()
+    {
         return fx::collection();
     }
 }

@@ -9,7 +9,8 @@ use ReflectionObject;
  *
  * @package Floxim\Cache\Storage
  */
-abstract class AbstractStorage implements \ArrayAccess {
+abstract class AbstractStorage implements \ArrayAccess
+{
     /**
      * Flush all data
      */
@@ -41,7 +42,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @param array $params
      */
-    public function __construct($params = array()) {
+    public function __construct($params = array())
+    {
         if ($params) {
             $reflect = new ReflectionObject($this);
             foreach ($params as $name => $value) {
@@ -57,7 +59,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      * Init storage
      *
      */
-    public function init() {
+    public function init()
+    {
 
     }
 
@@ -66,7 +69,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @param $prefix
      */
-    public function setKeyPrefix($prefix) {
+    public function setKeyPrefix($prefix)
+    {
         $this->keyPrefix = $prefix;
     }
 
@@ -75,7 +79,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @return string
      */
-    public function getKeyPrefix() {
+    public function getKeyPrefix()
+    {
         return $this->keyPrefix;
     }
 
@@ -86,7 +91,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @return string
      */
-    public function buildKey($key) {
+    public function buildKey($key)
+    {
         if (is_string($key)) {
             $key = md5($this->keyPrefix . $key);
         } else {
@@ -102,7 +108,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @return mixed
      */
-    public function get($key) {
+    public function get($key)
+    {
         $key = $this->buildKey($key);
         $value = $this->getValue($key);
         if ($value === false || !$this->useSerializer) {
@@ -118,7 +125,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @return bool
      */
-    public function exists($key) {
+    public function exists($key)
+    {
         $key = $this->buildKey($key);
         $value = $this->getValue($key);
         return $value !== false;
@@ -129,12 +137,13 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @param       $key
      * @param       $value
-     * @param int   $time Expiration time in seconds
+     * @param int $time Expiration time in seconds
      * @param array $tags Tags list
      *
      * @return mixed
      */
-    public function set($key, $value, $time = 0, $tags = array()) {
+    public function set($key, $value, $time = 0, $tags = array())
+    {
         if ($this->useSerializer) {
             $value = serialize($value);
         }
@@ -149,7 +158,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @return mixed
      */
-    public function delete($key) {
+    public function delete($key)
+    {
         $key = $this->buildKey($key);
         return $this->deleteValue($key);
     }
@@ -157,12 +167,13 @@ abstract class AbstractStorage implements \ArrayAccess {
     /**
      * Clear data in cache
      *
-     * @param int   $type self::FLUSH_TYPE_ALL | self::FLUSH_TYPE_ONLY_OLD | self::FLUSH_TYPE_TAGS
+     * @param int $type self::FLUSH_TYPE_ALL | self::FLUSH_TYPE_ONLY_OLD | self::FLUSH_TYPE_TAGS
      * @param array $tags
      *
      * @return mixed
      */
-    public function flush($type = self::FLUSH_TYPE_ALL, $tags = array()) {
+    public function flush($type = self::FLUSH_TYPE_ALL, $tags = array())
+    {
         return $this->flushValues($type, $tags);
     }
 
@@ -172,12 +183,13 @@ abstract class AbstractStorage implements \ArrayAccess {
      * @param          $key
      * @param          $time
      * @param callable $callback
-     * @param array    $tags
-     * @param bool     $use_cache
+     * @param array $tags
+     * @param bool $use_cache
      *
      * @return mixed
      */
-    public function remember($key, $time, \Closure $callback, $tags = array(), $use_cache = true) {
+    public function remember($key, $time, \Closure $callback, $tags = array(), $use_cache = true)
+    {
         if ($use_cache) {
             if (false !== ($value = $this->get($key))) {
                 return $value;
@@ -196,7 +208,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @return bool
      */
-    public function offsetExists($key) {
+    public function offsetExists($key)
+    {
         return $this->exists($key);
     }
 
@@ -207,7 +220,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @return mixed
      */
-    public function offsetGet($key) {
+    public function offsetGet($key)
+    {
         return $this->get($key);
     }
 
@@ -217,7 +231,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      * @param mixed $key
      * @param mixed $value
      */
-    public function offsetSet($key, $value) {
+    public function offsetSet($key, $value)
+    {
         $this->set($key, $value);
     }
 
@@ -226,7 +241,8 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @param mixed $key
      */
-    public function offsetUnset($key) {
+    public function offsetUnset($key)
+    {
         $this->delete($key);
     }
 
@@ -244,7 +260,7 @@ abstract class AbstractStorage implements \ArrayAccess {
      *
      * @param       $key
      * @param       $value
-     * @param int   $time
+     * @param int $time
      * @param array $tags
      *
      * @return mixed
@@ -263,7 +279,7 @@ abstract class AbstractStorage implements \ArrayAccess {
     /**
      * Clear values in cache
      *
-     * @param int   $type
+     * @param int $type
      * @param array $tags
      *
      * @return mixed

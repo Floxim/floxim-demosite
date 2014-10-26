@@ -2,6 +2,7 @@
 
 namespace Floxim\Form\Field;
 
-class Radio extends Options {
+class Radio extends Options
+{
 
 }

@@ -7,7 +7,8 @@ namespace Floxim\Cache;
  *
  * @package Floxim\Cache
  */
-class Manager {
+class Manager
+{
     /**
      * Storage repository
      *
@@ -25,12 +26,13 @@ class Manager {
      * Get storage use repository
      *
      * @param string $name
-     * @param array  $params
+     * @param array $params
      *
      * @return Storage\AbstractStorage|null
      * @throws \Exception
      */
-    public function getStorage($name, $params = array()) {
+    public function getStorage($name, $params = array())
+    {
         /**
          * Check repository
          */
@@ -56,11 +58,12 @@ class Manager {
      * Create storage
      *
      * @param string $class
-     * @param array  $params
+     * @param array $params
      *
      * @return Storage\AbstractStorage|null
      */
-    public function createStorage($class, $params = array()) {
+    public function createStorage($class, $params = array())
+    {
         if (!$class) {
             return null;
         }
@@ -81,7 +84,8 @@ class Manager {
      *
      * @param string $prefix
      */
-    public function setKeyPrefix($prefix) {
+    public function setKeyPrefix($prefix)
+    {
         $this->keyPrefix = $prefix;
     }
 
@@ -90,7 +94,8 @@ class Manager {
      *
      * @return string
      */
-    public function getKeyPrefix() {
+    public function getKeyPrefix()
+    {
         return $this->keyPrefix;
     }
 }

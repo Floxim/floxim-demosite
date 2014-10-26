@@ -8,7 +8,8 @@ namespace Floxim\Cache\Storage;
  *
  * @package Floxim\Cache\Storage
  */
-class File extends AbstractStorage {
+class File extends AbstractStorage
+{
 
     /**
      * @var string the directory to store cache files. You may use path alias here.
@@ -44,7 +45,8 @@ class File extends AbstractStorage {
     /**
      * Initializes this component by ensuring the existence of the cache path.
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         if (!is_dir($this->cachePath)) {
             @mkdir($this->cachePath, $this->dirMode, true);
@@ -63,7 +65,8 @@ class File extends AbstractStorage {
      *
      * @return boolean true if a value exists in cache, false if the value is not in the cache or expired.
      */
-    public function exists($key) {
+    public function exists($key)
+    {
         $cacheFile = $this->getCacheFile($this->buildKey($key));
 
         return @filemtime($cacheFile) > time();
@@ -77,7 +80,8 @@ class File extends AbstractStorage {
      *
      * @return string|boolean the value stored in cache, false if the value is not in the cache or expired.
      */
-    protected function getValue($key) {
+    protected function getValue($key)
+    {
         $cacheFile = $this->getCacheFile($key);
         if (@filemtime($cacheFile) > time()) {
             return @file_get_contents($cacheFile);
@@ -90,14 +94,15 @@ class File extends AbstractStorage {
      * Stores a value identified by a key in cache.
      * This is the implementation of the method declared in the parent class.
      *
-     * @param string  $key the key identifying the value to be cached
-     * @param string  $value the value to be cached
+     * @param string $key the key identifying the value to be cached
+     * @param string $value the value to be cached
      * @param integer $duration the number of seconds in which the cached value will expire. 0 means never expire.
-     * @param array   $tags tags
+     * @param array $tags tags
      *
      * @return boolean true if the value is successfully stored into cache, false otherwise
      */
-    protected function setValue($key, $value, $duration = 0, $tags = array()) {
+    protected function setValue($key, $value, $duration = 0, $tags = array())
+    {
         $cacheFile = $this->getCacheFile($key);
         if ($this->directoryLevel > 0) {
             @mkdir(dirname($cacheFile), $this->dirMode, true);
@@ -124,7 +129,8 @@ class File extends AbstractStorage {
      *
      * @return boolean if no error happens during deletion
      */
-    protected function deleteValue($key) {
+    protected function deleteValue($key)
+    {
         $cacheFile = $this->getCacheFile($key);
 
         return @unlink($cacheFile);
@@ -137,7 +143,8 @@ class File extends AbstractStorage {
      *
      * @return string the cache file path
      */
-    protected function getCacheFile($key) {
+    protected function getCacheFile($key)
+    {
         if ($this->directoryLevel > 0) {
             $base = $this->cachePath;
             for ($i = 0; $i < $this->directoryLevel; ++$i) {
@@ -156,12 +163,13 @@ class File extends AbstractStorage {
      * Deletes all values from cache.
      * This is the implementation of the method declared in the parent class.
      *
-     * @param int   $type
+     * @param int $type
      * @param array $tags
      *
      * @return bool|mixed
      */
-    protected function flushValues($type = self::FLUSH_TYPE_ALL, $tags = array()) {
+    protected function flushValues($type = self::FLUSH_TYPE_ALL, $tags = array())
+    {
         $this->gcRecursive($this->cachePath, $type == self::FLUSH_TYPE_ONLY_OLD);
         return true;
     }
@@ -169,11 +177,12 @@ class File extends AbstractStorage {
     /**
      * Recursively removing expired cache files under a directory.
      *
-     * @param string  $path the directory under which expired cache files are removed.
+     * @param string $path the directory under which expired cache files are removed.
      * @param boolean $expiredOnly whether to only remove expired cache files. If false, all files
      * under `$path` will be removed.
      */
-    protected function gcRecursive($path, $expiredOnly) {
+    protected function gcRecursive($path, $expiredOnly)
+    {
         if (($handle = opendir($path)) !== false) {
             while (($file = readdir($handle)) !== false) {
                 if ($file[0] === '.') {

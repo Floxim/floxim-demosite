@@ -2,6 +2,7 @@
 
 namespace Floxim\Main\MailTemplate;
 
-class Entity extends \Floxim\Main\MessageTemplate\Entity {
-    
+class Entity extends \Floxim\Main\MessageTemplate\Entity
+{
+
 }

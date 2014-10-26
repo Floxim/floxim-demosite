@@ -6,15 +6,17 @@ use Floxim\Floxim\Component\Field;
 use Floxim\Floxim\Component\Lang;
 use Floxim\Floxim\System\Fx as fx;
 
-class Finder extends System\Data {
+class Finder extends System\Data
+{
 
-    public function relations() {
+    public function relations()
+    {
         $relations = array();
         $fields = fx::data('component', $this->component_id)->
         allFields()->
         find('type', array(Field\Entity::FIELD_LINK, Field\Entity::FIELD_MULTILINK));
         foreach ($fields as $f) {
-            if ( !($relation = $f->getRelation()) ) {
+            if (!($relation = $f->getRelation())) {
                 continue;
             }
             switch ($f['type']) {
@@ -29,15 +31,17 @@ class Finder extends System\Data {
         return $relations;
     }
 
-    protected function getDefaultRelationFinder($rel) {
+    protected function getDefaultRelationFinder($rel)
+    {
         $finder = parent::getDefaultRelationFinder($rel);
-        if ( ! $finder instanceof Lang\Finder ) {
+        if (!$finder instanceof Lang\Finder) {
             $finder->order('priority');
         }
         return $finder;
     }
 
-    public function getData() {
+    public function getData()
+    {
         $data = parent::getData();
         $types_by_id = $data->getValues('type', 'id');
         unset($types_by_id['']);
@@ -53,7 +57,7 @@ class Finder extends System\Data {
                 if (!isset($types[$type])) {
                     $types[$type] = array();
                 }
-                $types[$type] []= $id;
+                $types[$type] [] = $id;
             }
         }
         foreach ($types as $type => $ids) {
@@ -66,14 +70,14 @@ class Finder extends System\Data {
                 if ($table == $base_table) {
                     break;
                 }
-                $missed_tables []= $table;
+                $missed_tables [] = $table;
             }
             $base_missed_table = array_shift($missed_tables);
-            $q = "SELECT * FROM `{{".$base_missed_table."}}` \n";
+            $q = "SELECT * FROM `{{" . $base_missed_table . "}}` \n";
             foreach ($missed_tables as $mt) {
-                $q .= " INNER JOIN `{{".$mt.'}}` ON `{{'.$mt.'}}`.id = `{{'.$base_missed_table."}}`.id\n";
+                $q .= " INNER JOIN `{{" . $mt . '}}` ON `{{' . $mt . '}}`.id = `{{' . $base_missed_table . "}}`.id\n";
             }
-            $q .= "WHERE `{{".$base_missed_table."}}`.id IN (".join(", ", $ids).")";
+            $q .= "WHERE `{{" . $base_missed_table . "}}`.id IN (" . join(", ", $ids) . ")";
             $extensions = fx::db()->getIndexedResults($q);
 
             foreach ($data as $data_index => $data_item) {
@@ -88,14 +92,15 @@ class Finder extends System\Data {
 
     protected static $_com_tables_cache = array();
 
-    public function getTables() {
+    public function getTables()
+    {
         if (isset(self::$_com_tables_cache[$this->component_id])) {
             return self::$_com_tables_cache[$this->component_id];
         }
         $chain = fx::data('component', $this->component_id)->getChain();
         $tables = array();
         foreach ($chain as $comp) {
-            $tables []= $comp->getContentTable();
+            $tables [] = $comp->getContentTable();
         }
         self::$_com_tables_cache[$this->component_id] = $tables;
         return $tables;
@@ -103,36 +108,40 @@ class Finder extends System\Data {
 
     protected $component_id = null;
 
-    public function __construct($table = null) {
+    public function __construct($table = null)
+    {
         parent::__construct($table);
 
         $this->setComponent(fx::getComponentNameByClass(get_class($this))); // full component name, ex 'floxim.main.user'
     }
 
-    public function setComponent($component_id_or_code) {
+    public function setComponent($component_id_or_code)
+    {
         // todo: psr0 need remove after rename tables
-        $component_id_or_code = str_replace('floxim.main.','',$component_id_or_code);
+        $component_id_or_code = str_replace('floxim.main.', '', $component_id_or_code);
 
         $component = fx::data('component', $component_id_or_code);
         if (!$component) {
-            die("Component not found: ".$component_id_or_code);
+            die("Component not found: " . $component_id_or_code);
         }
         $this->component_id = $component['id'];
         $this->table = $component->getContentTable();
         return $this;
     }
 
-    public function getComponent() {
+    public function getComponent()
+    {
         return fx::data('component', $this->component_id);
     }
 
-    public function contentExists() {
+    public function contentExists()
+    {
         static $content_by_type = null;
         if (is_null($content_by_type)) {
             $res = fx::db()->getResults(
                 'select `type`, count(*) as cnt '
                 . 'from {{content}} '
-                . 'where site_id = "'.fx::env('site_id').'" '
+                . 'where site_id = "' . fx::env('site_id') . '" '
                 . 'group by `type`'
             );
             $content_by_type = fx::collection($res)->getValues('cnt', 'type');
@@ -145,7 +154,8 @@ class Finder extends System\Data {
      * @param array $data Initial params
      * @return fx_content New content entity (not saved yet, without ID)
      */
-    public function create($data = array()) {
+    public function create($data = array())
+    {
         $obj = parent::create($data);
 
         $component = fx::data('component', $this->component_id);
@@ -172,7 +182,8 @@ class Finder extends System\Data {
         return $obj;
     }
 
-    public function nextPriority () {
+    public function nextPriority()
+    {
         return fx::db()->getVar(
             "SELECT MAX(`priority`)+1 FROM `{{content}}`"
         );
@@ -180,7 +191,8 @@ class Finder extends System\Data {
 
     protected static $content_classes = array();
 
-    public function getClassName($data = null) {
+    public function getClassName($data = null)
+    {
         if ($data && isset($data['type'])) {
             if (isset(Finder::$content_classes[$data['type']])) {
                 return Finder::$content_classes[$data['type']];
@@ -192,19 +204,20 @@ class Finder extends System\Data {
             $c_type = $component['keyword'];
         }
         if (!$component) {
-            throw new Exception("No component: ".$c_type);
+            throw new Exception("No component: " . $c_type);
         }
         $chain = array_reverse($component->getChain());
 
         $exists = false;
 
-        while(!$exists && count($chain) > 0) {
+        while (!$exists && count($chain) > 0) {
             $c_level = array_shift($chain);
             $class_namespace = fx::getComponentNamespace($c_level['keyword']);
             $class_name = $class_namespace . '\\Entity';
             try {
                 $exists = class_exists($class_name);
-            } catch (\Exception $e) {}
+            } catch (\Exception $e) {
+            }
         }
         Finder::$content_classes[$data['type']] = $class_name;
         return $class_name;
@@ -215,7 +228,8 @@ class Finder extends System\Data {
      * @param array $data
      * @return fx_content
      */
-    public function entity($data = array()) {
+    public function entity($data = array())
+    {
         $classname = $this->getClassName($data);
         if (isset($data['type'])) {
             $component_id = fx::data('component', $data['type'])->get('id');
@@ -224,29 +238,31 @@ class Finder extends System\Data {
         }
 
         $obj = new $classname(array(
-                                  'data' => $data,
-                                  'component_id' => $component_id
-                              ));
+            'data'         => $data,
+            'component_id' => $component_id
+        ));
         return $obj;
     }
 
-    public function update($data, $where = array()) {
+    public function update($data, $where = array())
+    {
         $wh = array();
         foreach ($where as $k => $v) {
-            $wh[] = "`".fx::db()->escape($k)."` = '".fx::db()->escape($v)."' ";
+            $wh[] = "`" . fx::db()->escape($k) . "` = '" . fx::db()->escape($v) . "' ";
         }
 
         $update = $this->setStatement($data);
         foreach ($update as $table => $props) {
-            $q = 'UPDATE `{{'.$table.'}}` SET '.$this->compileSetStatement($props); //join(', ', $props);
+            $q = 'UPDATE `{{' . $table . '}}` SET ' . $this->compileSetStatement($props); //join(', ', $props);
             if ($wh) {
-                $q .= " WHERE ".join(' AND ', $wh);
+                $q .= " WHERE " . join(' AND ', $wh);
             }
             fx::db()->query($q);
         }
     }
 
-    public function delete($cond_field = null, $cond_val = null) {
+    public function delete($cond_field = null, $cond_val = null)
+    {
         if (func_num_args() === 0) {
             parent::delete();
         }
@@ -255,14 +271,14 @@ class Finder extends System\Data {
         }
         $tables = $this->getTables();
 
-        $q = 'DELETE {{'.join("}}, {{", $tables).'}} ';
-        $q .= 'FROM {{'.join("}} INNER JOIN {{", $tables).'}} ';
+        $q = 'DELETE {{' . join("}}, {{", $tables) . '}} ';
+        $q .= 'FROM {{' . join("}} INNER JOIN {{", $tables) . '}} ';
         $q .= ' WHERE ';
         $base_table = array_shift($tables);
         foreach ($tables as $t) {
-            $q .= ' {{'.$t.'}}.id = {{'.$base_table.'}}.id AND ';
+            $q .= ' {{' . $t . '}}.id = {{' . $base_table . '}}.id AND ';
         }
-        $q .= ' {{'.$base_table.'}}.id = "'.fx::db()->escape($cond_val).'"';
+        $q .= ' {{' . $base_table . '}}.id = "' . fx::db()->escape($cond_val) . '"';
         fx::db()->query($q);
     }
 
@@ -274,16 +290,18 @@ class Finder extends System\Data {
      * joined pairs (with no SET keyword)
      * e.g. "`id` = 1, `name` = 'My super name'"
      */
-    protected function  compileSetStatement($props) {
+    protected function  compileSetStatement($props)
+    {
         $res = array();
-        foreach ($props as $p => $v){
-            $res []= $p.' = '.$v;
+        foreach ($props as $p => $v) {
+            $res [] = $p . ' = ' . $v;
         }
         return join(", ", $res);
     }
 
-    public function insert($data) {
-        if (!isset($data['type'])){
+    public function insert($data)
+    {
+        if (!isset($data['type'])) {
             throw  new Exception('Can not save entity with no type specified');
         }
         $set = $this->setStatement($data);
@@ -292,14 +310,14 @@ class Finder extends System\Data {
 
         $base_table = array_shift($tables);
         $root_set = $set[$base_table];
-        $q = "INSERT INTO `{{".$base_table."}}` ";
+        $q = "INSERT INTO `{{" . $base_table . "}}` ";
         if (!isset($data['priority'])) {
-            $q .= ' ( `priority`, '.join(", ", array_keys($root_set)).') ';
+            $q .= ' ( `priority`, ' . join(", ", array_keys($root_set)) . ') ';
             $q .= ' SELECT MAX(`priority`)+1, ';
             $q .= join(", ", $root_set);
-            $q .= ' FROM {{'.$base_table.'}}';
+            $q .= ' FROM {{' . $base_table . '}}';
         } else {
-            $q .= "SET ".$this->compileSetStatement($root_set);
+            $q .= "SET " . $this->compileSetStatement($root_set);
         }
 
         $tables_inserted = array();
@@ -308,7 +326,7 @@ class Finder extends System\Data {
         $id = fx::db()->insertId();
         if ($q_done) {
             // remember, whatever table has inserted
-            $tables_inserted []= $base_table;
+            $tables_inserted [] = $base_table;
         } else {
             return false;
         }
@@ -317,17 +335,17 @@ class Finder extends System\Data {
 
             $table_set = isset($set[$table]) ? $set[$table] : array();
 
-            $table_set['`id`'] = "'".$id."'";
-            $q = "INSERT INTO `{{".$table."}}` SET ".$this->compileSetStatement($table_set);
+            $table_set['`id`'] = "'" . $id . "'";
+            $q = "INSERT INTO `{{" . $table . "}}` SET " . $this->compileSetStatement($table_set);
 
             $q_done = fx::db()->query($q);
             if ($q_done) {
                 // remember, whatever table has inserted
-                $tables_inserted []= $table;
+                $tables_inserted [] = $table;
             } else {
                 // could not be deleted from all previous tables
                 foreach ($tables_inserted as $tbl) {
-                    fx::db()->query("DELETE FROM {{".$tbl."}} WHERE id  = '".$id."'");
+                    fx::db()->query("DELETE FROM {{" . $tbl . "}} WHERE id  = '" . $id . "'");
                 }
                 // and return false
                 return false;
@@ -336,7 +354,8 @@ class Finder extends System\Data {
         return $id;
     }
 
-    protected function setStatement($data) {
+    protected function setStatement($data)
+    {
         $res = array();
         $chain = fx::data('component', $this->component_id)->getChain();
         foreach ($chain as $level_component) {
@@ -371,8 +390,8 @@ class Finder extends System\Data {
                 //if (isset($data[$field_keyword]) ) {
                 if (array_key_exists($field_keyword, $data)) {
                     $field_val = $data[$field_keyword];
-                    $sql_val = is_null($field_val) ? 'NULL' : "'".fx::db()->escape($field_val)."'";
-                    $table_res['`'.fx::db()->escape($field_keyword).'`'] = $sql_val;
+                    $sql_val = is_null($field_val) ? 'NULL' : "'" . fx::db()->escape($field_val) . "'";
+                    $table_res['`' . fx::db()->escape($field_keyword) . '`'] = $sql_val;
                 }
             }
             if (count($table_res) > 0) {
@@ -382,14 +401,16 @@ class Finder extends System\Data {
         return $res;
     }
 
-    public function fake($props = array()) {
+    public function fake($props = array())
+    {
         $content = $this->create();
         $content->fake();
         $content->set($props);
         return $content;
     }
 
-    public function createAdderPlaceholder($collection = null) {
+    public function createAdderPlaceholder($collection = null)
+    {
         $params = array();
         foreach ($this->where as $cond) {
             // original field
@@ -416,12 +437,13 @@ class Finder extends System\Data {
         $placeholder->isAdderPlaceholder(true);
         // guess item's position here
         if ($collection) {
-            $collection[]= $placeholder;
+            $collection[] = $placeholder;
         }
         return $placeholder;
     }
 
-    protected function livesearchApplyTerms($terms) {
+    protected function livesearchApplyTerms($terms)
+    {
         $table = $this->getColTable('name');
         if ($table) {
             parent::livesearchApplyTerms($terms);
@@ -436,19 +458,21 @@ class Finder extends System\Data {
             if (!$name_field) {
                 continue;
             }
-            $table = '{{'.$com->getContentTable().'}}';
-            $this->join($table, $table.'.id = {{content}}.id', 'left');
+            $table = '{{' . $com->getContentTable() . '}}';
+            $this->join($table, $table . '.id = {{content}}.id', 'left');
             $cond = array(
                 array(),
                 false,
                 'OR'
             );
             foreach ($terms as $term) {
-                $cond[0][]= array(
-                    $table.'.name', '%'.$term.'%', 'like'
+                $cond[0][] = array(
+                    $table . '.name',
+                    '%' . $term . '%',
+                    'like'
                 );
             }
-            $name_conds []= $cond;
+            $name_conds [] = $cond;
         }
         call_user_func_array(array($this, 'where_or'), $name_conds);
     }
@@ -459,9 +483,10 @@ class Finder extends System\Data {
      * @param boolean $add_parents - include parents to subtree
      * @return fx_data_content
      */
-    public function descendantsOf($parent_ids, $include_parents = false) {
+    public function descendantsOf($parent_ids, $include_parents = false)
+    {
         if ($parent_ids instanceof System\Collection) {
-            $non_content = $parent_ids->find(function($i) {
+            $non_content = $parent_ids->find(function ($i) {
                 return !($i instanceof Entity);
             });
             if (count($non_content) == 0) {
@@ -480,10 +505,10 @@ class Finder extends System\Data {
         }
         $conds = array();
         foreach ($parents as $p) {
-            $conds []= array('materialized_path', $p['materialized_path'].$p['id'].'.%', 'like');
+            $conds [] = array('materialized_path', $p['materialized_path'] . $p['id'] . '.%', 'like');
         }
         if ($include_parents) {
-            $conds []= array('id', $parent_ids, 'IN');
+            $conds [] = array('id', $parent_ids, 'IN');
         }
         $this->where($conds, null, 'OR');
         return $this;

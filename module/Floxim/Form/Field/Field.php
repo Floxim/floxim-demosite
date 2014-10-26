@@ -5,15 +5,17 @@ namespace Floxim\Form\Field;
 use Floxim\Floxim\Template;
 use Floxim\Floxim\System\Fx as fx;
 
-class Field implements \ArrayAccess, Template\Entity {
+class Field implements \ArrayAccess, Template\Entity
+{
 
     protected $params = array();
 
-    public static function create($params) {
+    public static function create($params)
+    {
         if (!isset($params['type'])) {
             $params['type'] = 'text';
         }
-        $classname = 'Floxim\\Floxim\\Helper\\Form\\Field\\'.ucfirst($params['type']);
+        $classname = 'Floxim\\Floxim\\Helper\\Form\\Field\\' . ucfirst($params['type']);
         try {
             if (!class_exists($classname)) {
                 throw new \Exception();
@@ -26,7 +28,8 @@ class Field implements \ArrayAccess, Template\Entity {
         return $field;
     }
 
-    public function get($offset = null) {
+    public function get($offset = null)
+    {
         if (is_null($offset)) {
             return $this->params;
         }
@@ -34,7 +37,8 @@ class Field implements \ArrayAccess, Template\Entity {
     }
 
 
-    public function __construct($params = array()) {
+    public function __construct($params = array())
+    {
         if (isset($params['owner'])) {
             $this->owner = $params['owner'];
             unset($params['owner']);
@@ -47,29 +51,34 @@ class Field implements \ArrayAccess, Template\Entity {
         }
     }
 
-    public function setValue($value) {
+    public function setValue($value)
+    {
         $this->params['value'] = $value;
     }
 
-    public function getValue() {
+    public function getValue()
+    {
         return $this->params['value'];
     }
 
-    public function isEmpty() {
+    public function isEmpty()
+    {
         return !$this->getValue();
     }
 
     protected $errors = null;
 
-    public function addError($message) {
+    public function addError($message)
+    {
         if (!isset($this->params['errors'])) {
             $this->params['errors'] = fx::collection();
             $this->params['has_errors'] = true;
         }
-        $this->params['errors'][]= $message;
+        $this->params['errors'][] = $message;
     }
 
-    public function validate() {
+    public function validate()
+    {
         $is_valid = true;
         if ($this['validators']) {
             foreach ($this['validators'] as $validator) {
@@ -85,7 +94,7 @@ class Field implements \ArrayAccess, Template\Entity {
                         $res = preg_match($validator['regexp'], $this->getValue());
                         if (!$res) {
                             $is_valid = false;
-                            $this->addError( isset($validator['error']) ? $validator['error'] : 'Wrong value format');
+                            $this->addError(isset($validator['error']) ? $validator['error'] : 'Wrong value format');
                         }
                         break;
                 }
@@ -97,38 +106,45 @@ class Field implements \ArrayAccess, Template\Entity {
         return $is_valid;
     }
 
-    public function validateEmail() {
+    public function validateEmail()
+    {
         $v = $this->getValue();
         if (!fx::util()->validateEmail($v)) {
             return "Please enter valid e-mail adress!";
         }
     }
 
-    public function validateFilled() {
+    public function validateFilled()
+    {
         if ($this->isEmpty()) {
             return 'This field is required';
         }
     }
 
-    public function getForm() {
+    public function getForm()
+    {
         return $this->owner->form;
     }
 
-    public function getId() {
+    public function getId()
+    {
         $form = $this->getForm();
-        return $form->getId().'_'.$this['name'];
+        return $form->getId() . '_' . $this['name'];
     }
 
     /* ArrayAccess methods */
 
-    public function offsetExists($offset) {
+    public function offsetExists($offset)
+    {
         if (preg_match("~^%~", $offset)) {
             return true;
         }
-        return array_key_exists($offset, $this->params) || method_exists($this, 'get'.fx::util()->underscoreToCamel($offset));
+        return array_key_exists($offset, $this->params) || method_exists($this,
+            'get' . fx::util()->underscoreToCamel($offset));
     }
 
-    public function offsetGet($offset) {
+    public function offsetGet($offset)
+    {
 
         if (preg_match("~^%~", $offset)) {
             $entity = $this['_entity'];
@@ -138,14 +154,14 @@ class Field implements \ArrayAccess, Template\Entity {
             $real_offset = preg_replace("~^%~", '', $offset);
             $template = fx::env('current_template');
             if ($template && $template instanceof Template\Template) {
-                $template_value = $template->v($real_offset."_".$this['name']);
-                if ($template_value){
+                $template_value = $template->v($real_offset . "_" . $this['name']);
+                if ($template_value) {
                     return $template_value;
                 }
             }
             $offset = $real_offset;
         }
-        $getter = 'get'.fx::util()->underscoreToCamel($offset);
+        $getter = 'get' . fx::util()->underscoreToCamel($offset);
         if (method_exists($this, $getter)) {
             return call_user_func(array($this, $getter));
         }
@@ -155,12 +171,14 @@ class Field implements \ArrayAccess, Template\Entity {
 
     }
 
-    public function set($offset, $value) {
+    public function set($offset, $value)
+    {
         $this->offsetSet($offset, $value);
         return $this;
     }
 
-    public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value)
+    {
         if ($offset === 'value') {
             $this->setValue($value);
             return;
@@ -180,7 +198,8 @@ class Field implements \ArrayAccess, Template\Entity {
         }
     }
 
-    public function addValidator($v) {
+    public function addValidator($v)
+    {
         if (!isset($this->params['validators'])) {
             $this->params['validators'] = fx::collection();
         }
@@ -193,36 +212,38 @@ class Field implements \ArrayAccess, Template\Entity {
             $v = trim($v);
             if (preg_match("/^~.+~$/", $v)) {
                 $v = array(
-                    'type' => 'regexp',
+                    'type'   => 'regexp',
                     'regexp' => $v
                 );
-            } elseif (method_exists($this, 'validate'.fx::util()->underscoreToCamel($v))) {
+            } elseif (method_exists($this, 'validate' . fx::util()->underscoreToCamel($v))) {
                 // prevent double-adding of the same validator by shortcode
                 if ($this->params['validators']->findOne('code', $v)) {
                     return;
                 }
                 $v = array(
-                    'type' => 'callback',
-                    'code' => $v,
-                    'callback' => array($this, 'validate'.fx::util()->underscoreToCamel($v))
+                    'type'     => 'callback',
+                    'code'     => $v,
+                    'callback' => array($this, 'validate' . fx::util()->underscoreToCamel($v))
                 );
             }
             $v['is_last'] = $is_last;
         } elseif ($v instanceof \Closure) {
             $v = array(
-                'type' => 'callback',
+                'type'     => 'callback',
                 'callback' => $v
             );
         }
-        $this->params['validators'][]= $v;
+        $this->params['validators'][] = $v;
     }
 
 
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset)
+    {
         unset($this->params[$offset]);
     }
 
-    public function addTemplateRecordMeta($html, $collection, $index, $is_subroot) {
+    public function addTemplateRecordMeta($html, $collection, $index, $is_subroot)
+    {
         $entity = $this['_entity'];
         if ($entity) {
             return $entity->addTemplateRecordMeta($html, $collection, $index, $is_subroot);
@@ -230,7 +251,8 @@ class Field implements \ArrayAccess, Template\Entity {
         return $html;
     }
 
-    public function getFieldMeta($field_keyword) {
+    public function getFieldMeta($field_keyword)
+    {
         $entity = $this['_entity'];
         if ($entity) {
             $meta = $entity->getFieldMeta($field_keyword);
@@ -241,8 +263,8 @@ class Field implements \ArrayAccess, Template\Entity {
             $v_id = $this['name'];
             $field_meta = array(
                 'var_type' => 'visual',
-                'id' => $field_keyword.'_'.$v_id,
-                'name' => $field_keyword.'_'.$v_id
+                'id'       => $field_keyword . '_' . $v_id,
+                'name'     => $field_keyword . '_' . $v_id
             );
             return $field_meta;
         }

@@ -2,6 +2,7 @@
 
 namespace Floxim\Main\Project;
 
-class Entity extends \Floxim\Main\Page\Entity {
-    
+class Entity extends \Floxim\Main\Page\Entity
+{
+
 }

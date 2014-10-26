@@ -1,6 +1,7 @@
 <?php
 namespace Floxim\Main\News;
 
-class Controller extends \Floxim\Main\Publication\Controller {
-    
+class Controller extends \Floxim\Main\Publication\Controller
+{
+
 }

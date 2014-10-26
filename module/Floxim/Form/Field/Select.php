@@ -2,6 +2,7 @@
 
 namespace Floxim\Form\Field;
 
-class Select extends Options {
+class Select extends Options
+{
 
 }
