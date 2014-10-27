@@ -12,7 +12,7 @@
         </div>
         <div class="anounce">{$description}</div>
         <div class="text">{$text}</div>
-        {call component_classifier.entity_classifier with $tags as $items}
+        {*{call component_classifier.entity_classifier with $tags as $items}*}
         
     </div>
 </div>
