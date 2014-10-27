@@ -11,5 +11,5 @@
             <div fx:if="$birthday" class="birthday">Birthday: <b>{$birthday|'F, d'}</b></div>
         </div>
     </div>
-    {apply component_content.pagination}
+    {apply content:pagination}
 </div>
