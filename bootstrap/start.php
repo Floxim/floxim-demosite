@@ -14,7 +14,7 @@ if ($result) {
 }
 
 fx::listen('unlink', function ($e) {
-    if (fx::path()->isInside($e->file, fx::path('thumbs'))) {
+    if (fx::path()->isInside($e->file, fx::path('@thumbs'))) {
         return;
     }
     $thumbs = Floxim\Floxim\System\Thumb::findThumbs($e->file);

@@ -25,7 +25,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
     protected function getConfigSources()
     {
         $sources = array();
-        $sources [] = fx::path('module', fx::getComponentPath('content') . '/cfg.php');
+        $sources [] = fx::path('@module/' . fx::getComponentPath('content') . '/cfg.php');
         $com = $this->getComponent();
         if (!$com instanceof \Floxim\Floxim\Component\Component\Entity) {
             fx::log('wrong com', $this, debug_backtrace());
@@ -33,7 +33,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
         }
         $chain = $com->getChain();
         foreach ($chain as $com) {
-            $com_file = fx::path('module', fx::getComponentPath($com['keyword']) . '/cfg.php');
+            $com_file = fx::path('@module/' . fx::getComponentPath($com['keyword']) . '/cfg.php');
             if (file_exists($com_file)) {
                 $sources[] = $com_file;
             }
