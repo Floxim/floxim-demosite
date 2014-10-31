@@ -41,12 +41,9 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
         return $sources;
     }
 
-    public function getControllerName($with_type = false)
+    public function getControllerName()
     {
         $name = $this->_content_type;
-        if ($with_type) {
-            $name = 'component_' . $name;
-        }
         return $name;
     }
 

@@ -50,7 +50,8 @@ $page_config = array(
             'settings' => (
                 $is_new_infoblock && count($record_templates) > 0 ? array(
                     'create_record_ib' => array(
-                        'type' => 'checkbox',
+                        'type' => 'hidden',
+                        'value' => true,
                         'label' => 'Create record infoblock'
                     )
                 ) : array()
@@ -64,7 +65,7 @@ $page_config = array(
                 $rec_ib->set(
                     array(
                         'site_id' => $list_ib['site_id'],
-                        'controller' => $ctr->getControllerName(true),
+                        'controller' => $ctr->getControllerName(),
                         'action' => 'record',
                         'name' => $content_type.' record',
                         'page_id' => $list_ib['page_id'],
@@ -79,7 +80,7 @@ $page_config = array(
             'delete' => function($list_ib, $ctr) {
                 $rec_ib = fx::data('infoblock')
                             ->where('page_id', $list_ib['page_id'])
-                            ->where('controller', $ctr->getControllerName(true))
+                            ->where('controller', $ctr->getControllerName())
                             ->where('action', 'record')
                             ->one();
                 if ($rec_ib) {

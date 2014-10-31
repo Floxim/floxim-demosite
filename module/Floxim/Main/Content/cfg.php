@@ -58,7 +58,8 @@ return array(
                 $ctr->bindLostContent($ib, $params);
             },
             'default_scope' => function() {
-                return fx::env('page_id').'-this-';
+                $ds = fx::env('page_id').'-this-';
+                return $ds;
             },
             'settings' => array(
                 'sorting' => array(
