@@ -138,4 +138,22 @@ class Entity extends \Floxim\Main\Content\Entity
         }
         return $res;
     }
+    
+    public function getFormFields() 
+    {
+        $fields = fx::collection(parent::getFormFields());
+        $pass_field = $fields->findOne('name', 'password');
+        $fields->remove($pass_field);
+        $fields[]= array(
+            'name' => 'password',
+            'type' => 'password',
+            'label' => $pass_field['label']
+        );
+        $fields[]= array(
+            'name' => 'confirm_password',
+            'type' => 'password',
+            'label' => fx::alang('Confirm').' '. $pass_field['label']
+        );
+        return $fields;
+    }
 }

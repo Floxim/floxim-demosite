@@ -5,50 +5,7 @@ use Floxim\Floxim\System\Fx as fx;
 
 class Entity extends \Floxim\Main\Content\Entity
 {
-    protected $parent_ids = null;
-    protected $path = null;
-
-    /**
-     * Get the id of the page-parents
-     * @return array
-     */
-    public function getParentIds()
-    {
-        if (!is_null($this->parent_ids)) {
-            return $this->parent_ids;
-        }
-
-        $path = $this['materialized_path'];
-        if (!empty($path)) {
-            $path = explode(".", trim($path, '.'));
-            $this->parent_ids = $path;
-            return $this->parent_ids;
-        }
-
-        $c_pid = $this->get('parent_id');
-        // if page has null parent, hold it as if it was nested to index
-        if ($c_pid === null && ($site = fx::env('site')) && ($index_id = $site['index_page_id'])) {
-            return $index_id != $this['id'] ? array($index_id) : array();
-        }
-        $ids = array();
-        while ($c_pid != 0) {
-            array_unshift($ids, $c_pid);
-            $c_pid = fx::data('page', $ids[0])->get('parent_id');
-        }
-        $this->parent_ids = $ids;
-        return $ids;
-    }
-
-    public function getPath()
-    {
-        if ($this->path) {
-            return $this->path;
-        }
-        $path_ids = $this->getParentIds();
-        $path_ids [] = $this['id'];
-        $this->path = fx::data('page')->where('id', $path_ids)->all();
-        return $this->path;
-    }
+    
 
     protected $_active;
 

@@ -15,7 +15,14 @@ class Field implements \ArrayAccess, Template\Entity
         if (!isset($params['type'])) {
             $params['type'] = 'text';
         }
-        $classname = 'Floxim\\Floxim\\Helper\\Form\\Field\\' . ucfirst($params['type']);
+        $type_map = array(
+            'bool' => 'checkbox',
+            'string' => 'text'
+        );
+        if (isset($type_map[$params['type']])) {
+            $params['type'] = $type_map[$params['type']];
+        }
+        $classname = 'Floxim\\Form\\Field\\' . ucfirst($params['type']);
         try {
             if (!class_exists($classname)) {
                 throw new \Exception();
@@ -145,7 +152,6 @@ class Field implements \ArrayAccess, Template\Entity
 
     public function offsetGet($offset)
     {
-
         if (preg_match("~^%~", $offset)) {
             $entity = $this['_entity'];
             if ($entity) {

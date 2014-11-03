@@ -12,7 +12,8 @@ class Form implements \ArrayAccess
     public function __construct($params = array())
     {
         $params = array_merge(array(
-            'method' => 'POST'
+            'method' => 'POST',
+            'skin' => 'default'
         ), $params);
         $fields = new Fields();
         $fields->form = $this;
@@ -24,17 +25,47 @@ class Form implements \ArrayAccess
     public function addFields($fields)
     {
         foreach ($fields as $name => $props) {
-            $props['name'] = $name;
+            if (!isset($props['name'])) {
+                $props['name'] = $name;
+            }
             $this->addField($props);
         }
     }
 
     /**
-     * @todo we need $_POST + $_FILES merge here
+     * Returns input with merged $_FILES array
      */
-    protected function getInput()
+    public function getInput()
     {
-        return strtolower($this['method']) == 'post' ? $_POST : $_GET;
+        $input = strtolower($this['method']) == 'post' ? $_POST : $_GET;
+        $merge_branch_copy = function($branch, $key, &$target, $last_key) use (&$merge_branch_copy) {
+            if (!isset($target[$key])) {
+                $target[$key] = array();
+            }
+            if (is_array($branch)) {
+                foreach ($branch as $branch_key => $sub) {
+                    $merge_branch_copy($sub, $branch_key, $target[$key], $last_key);
+                }
+            } else {
+                $target[$key][$last_key] = $branch;
+            }
+        };
+        foreach ($_FILES as $top_key => $props) {
+            if (!isset($input[$top_key])) {
+                $input[$top_key] = array();
+            }
+            $res =& $input[$top_key];
+            if (isset($props['name']) && !is_array($props['name'])) {
+                $res = $props;
+            } else {
+                foreach ($props as $pkey => $pr) {
+                    foreach ($pr as $bkey => $b) {
+                        $merge_branch_copy($b, $bkey, $res, $pkey);
+                    }
+                }
+            }
+        }
+        return $input;
     }
 
     public function getId()
@@ -84,7 +115,7 @@ class Form implements \ArrayAccess
             $input = $this->getInput();
             $this->is_sent = isset($input[$this->getId() . '_sent']);
             if ($this->is_sent) {
-                $this->loadValues();
+                $this->loadValues($input);
                 $this->validate();
                 $this->trigger('sent');
             }
@@ -103,7 +134,14 @@ class Form implements \ArrayAccess
             $source = $this->getInput();
         }
         foreach ($this->params['fields'] as $name => $field) {
-            $field->setValue(isset($source[$name]) ? $source[$name] : null);
+            if (preg_match("~\[~", $name)) {
+                $name_path = preg_replace("~(?<=[^\]])\[|\]\[~", '.', $name);
+                $name_path = trim($name_path, ']');
+                $c_value = fx::dig($source, $name_path);
+            } else {
+                $c_value = isset($source[$name]) ? $source[$name] : null;
+            }
+            $field->setValue($c_value);
         }
     }
 

@@ -867,4 +867,23 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
     {
         return fx::collection();
     }
+    
+    public function doFormEdit() 
+    {
+        $item_id = $this->getParam('item_id');
+        if ($item_id) {
+            $item = $this->getFinder()->getById($item_id);
+        } else {
+            $item = fx::env('page');
+        }
+        $fields = $item->getFormFields();
+        $form  = new \Floxim\Form\Form();
+        $form->addFields($fields);
+        if ($form->isSent()) {
+            $vals = $form->getValues();
+            $item->setFieldValues($vals);
+            $item->save();
+        }
+        return array('form' => $form, 'item' => $item);
+    }
 }

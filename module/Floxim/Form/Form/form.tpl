@@ -1,15 +1,22 @@
+{template id="form" test="!($ instanceof \Floxim\Form\Form)"}
+    {if $form instanceof \Floxim\Form\Form}
+        {apply form with $form /}
+    {/if}
+{/template}
+
 <form 
     fx:template="form" 
     fx:if="$ instanceof \Floxim\Form\Form"
     action="{$action}" 
     method="{$method}" 
-    id="{$.get_id()}"
-    class="fx_form {$class} {if $is_sent} fx_form_sent{/if}{if $.ajax} fx_form_ajax{/if}">
+    id="{$.getId()}"
+    class="fx_form {$class} {if $is_sent} fx_form_sent{/if}{if $.ajax} fx_form_ajax{/if}"
+    enctype="multipart/form-data">
     {js}
         FX_JQUERY_PATH as jquery
         form.js
     {/js}
-    {if $_.skin == 'default'}
+    {if $.skin == 'default'}
         {css}
             form_default.less
         {/css}
@@ -25,7 +32,9 @@
     {/$}
 </form>
 
-<form fx:template="form[$is_finished]" class="fx_form fx_form_sent fx_form_finished {$class}">
+<form 
+    fx:template="form[$is_finished]" 
+    class="fx_form fx_form_sent fx_form_finished {$class}">
     {apply messages with $messages->find('after_finish') as $messages /}
 </form>
 
@@ -59,7 +68,7 @@
 </div>
 
 <label fx:template="label" class="fx_label" for="{$id}" fx:if="!in_array($type, array('hidden', 'submit'))">
-    <span class="label">{$%label}</span>
+    <span class="fx_label_title">{$%label}</span>
     <span fx:if="$required" class="required">*</span>
 </label>
     
@@ -151,4 +160,54 @@
         <input type="checkbox" name="{$field_name}[{$key}]" {if $value && $value.$key}checked="checked"{/if} />
         <span>{$option.name}</span>
     </label>
+</div>
+    
+<div fx:template="input[$type == 'file' || $type == 'image']">
+    {set $field_name = $name}
+    <div fx:if="count($inputs) > 1" class="fx_file_switcher">
+        <label fx:each="$inputs">
+            <input type="radio" name="{$name}" {if $checked}checked="checked"{/if} value="{$type}" />
+            <span>{$label}</span>
+        </label>
+    </div>
+    <div fx:with-each="$inputs">
+        <span class="fx_file_input {if !$checked}fx_file_input_inactive{/if} fx_file_input_{$type}" fx:item>
+            <input type="{if $type == 'file'}file{else}text{/if}" name="{$field_name}[{$type}]" />
+        </span>
+    </div>
+</div>
+        
+
+<div
+    fx:template="input[$type == 'livesearch']"
+    {set $f_postfix = $name_postfix ? '[' . $name_postfix . ']' : ''}
+    {set $input_name = $name}
+    class="livesearch" 
+    data-params='{$params | json_encode }'
+    data-prototype_name="{$name}[prototype]{$f_postfix}"
+    data-is_multiple="{if $is_multiple}Y{else}N{/if}">
+        {if $is_multiple && $value && !$ajax_preload}
+            <input  
+                fx:each="$value as $vi => $vv" 
+                class="preset_value" type="hidden" 
+                name="{$input_name}[{$vv.value_id}]{$f_postfix}"
+                value="{$vv.id}"
+                data-name="{$vv.name}" />
+        {elseif !$is_multiple}
+            <input 
+                class="preset_value" 
+                type="hidden" name="{$input_name}"
+                {if $value}
+                    value="{$value.id}" 
+                    data-name="{$value.name}"
+                {/if}
+                />
+        {/if}
+    <ul class="livesearch_items">
+        <li class="livesearch_input">
+            <input type="text" class="livesearch_input" {*name="livesearch_input"*} autocomplete="off" style="width:3px;" />
+        </li>
+    </ul>
+    <div class="livesearch_results">
+    </div>
 </div>

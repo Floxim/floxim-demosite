@@ -122,10 +122,8 @@ class Controller extends \Floxim\Main\Page\Controller
 
     public function doBreadcrumbs()
     {
-        if (!($page_id = $this->getParam('page_id'))) {
-            $page_id = fx::env('page_id');
-        }
-        $entity_page = fx::data('page', $page_id);
+        $entity_page = fx::env('page');
+        
         $entity_page['active'] = true;
         if ($this->getParam('header_only')) {
             $pages = new System\Collection(array($entity_page));

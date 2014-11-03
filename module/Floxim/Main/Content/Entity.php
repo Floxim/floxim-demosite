@@ -76,6 +76,7 @@ class Entity extends System\Entity implements Template\Entity
         if (count($values) == 0) {
             return;
         }
+        fx::log('sfv', $values, $save_fields);
         $fields = $save_fields ? $this->getFields()->find('keyword', $save_fields) : $this->getFields();
         $result = array('status' => 'ok');
         foreach ($fields as $field) {
@@ -567,4 +568,58 @@ class Entity extends System\Entity implements Template\Entity
         return isset($this->_is_adder_placeholder) && $this->_is_adder_placeholder;
 
     }
+    
+    protected $parent_ids = null;
+    protected $path = null;
+
+    /**
+     * Get the id of the page-parents
+     * @return array
+     */
+    public function getParentIds()
+    {
+        if (!is_null($this->parent_ids)) {
+            return $this->parent_ids;
+        }
+
+        $path = $this['materialized_path'];
+        if (!empty($path)) {
+            $path = explode(".", trim($path, '.'));
+            $this->parent_ids = $path;
+            return $this->parent_ids;
+        }
+
+        $c_pid = $this->get('parent_id');
+        // if page has null parent, hold it as if it was nested to index
+        if ($c_pid === null && ($site = fx::env('site')) && ($index_id = $site['index_page_id'])) {
+            return $index_id != $this['id'] ? array($index_id) : array();
+        }
+        $ids = array();
+        while ($c_pid != 0) {
+            array_unshift($ids, $c_pid);
+            $c_pid = fx::data('page', $ids[0])->get('parent_id');
+        }
+        $this->parent_ids = $ids;
+        return $ids;
+    }
+
+    public function getPath()
+    {
+        if ($this->path) {
+            return $this->path;
+        }
+        $path_ids = $this->getParentIds();
+        $path_ids [] = $this['id'];
+        $this->path = fx::data('content')->where('id', $path_ids)->all();
+        return $this->path;
+    }
+    
+    /**
+     * Force "virtual" path for the entity
+     * @param array $path
+     */
+    public function setVirtualPath($path) {
+        $this->path = fx::collection($path);
+    }
+    
 }
