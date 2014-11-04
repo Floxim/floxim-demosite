@@ -12,13 +12,3 @@ if ($result) {
     echo $result;
     fx::complete();
 }
-
-fx::listen('unlink', function ($e) {
-    if (fx::path()->isInside($e->file, fx::path('@thumbs'))) {
-        return;
-    }
-    $thumbs = Floxim\Floxim\System\Thumb::findThumbs($e->file);
-    foreach ($thumbs as $thumb) {
-        fx::files()->rm($thumb);
-    }
-});

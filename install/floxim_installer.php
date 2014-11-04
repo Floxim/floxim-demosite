@@ -63,7 +63,9 @@ function fx_check_env()
     if (!fx_check_gd()) {
         $errors['errors']['gd'] = 'GD doesn\'t exist or GD version is lower than 2.0';
     }
-
+    
+    // nginx is ok too =)
+    /*
     try {
         if (!in_array('mod_rewrite', apache_get_modules())) {
             $errors['warnings']['rewrite'] = '<code>mod_rewrite</code> is not enabled.';
@@ -71,6 +73,8 @@ function fx_check_env()
     } catch (Exeption $e) {
         $errors['warnings']['apache'] = 'We recommend to use Apache server.';
     }
+     * 
+     */
     return $errors;
 }
 
