@@ -9,7 +9,7 @@ class Controller extends \Floxim\Main\Page\Controller
 
     public function doList()
     {
-        $this->listen('query_ready', function (System\Data $query) {
+        $this->listen('query_ready', function (System\Finder $query) {
             $query->with('tags');
         });
         return parent::doList();
@@ -99,7 +99,7 @@ class Controller extends \Floxim\Main\Page\Controller
     public function doListInfoblock()
     {
         if (isset($_GET['month'])) {
-            $this->listen('query_ready', function (System\Data $query) {
+            $this->listen('query_ready', function (System\Finder $query) {
                 list($month, $year) = explode(".", $_GET['month']);
                 $start = $year . '-' . $month . '-01, 00:00:00';
                 $end = $year . '-' . $month . '-' . date('t', strtotime($start)) . ', 23:59:59';

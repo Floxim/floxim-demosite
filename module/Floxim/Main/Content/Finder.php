@@ -6,7 +6,7 @@ use Floxim\Floxim\Component\Field;
 use Floxim\Floxim\Component\Lang;
 use Floxim\Floxim\System\Fx as fx;
 
-class Finder extends System\Data
+class Finder extends System\Finder
 {
 
     public function relations()

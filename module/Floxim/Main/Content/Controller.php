@@ -202,7 +202,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
             }
             if ($field['type'] == Field\Entity::FIELD_MULTILINK) {
                 $relation = $field->getRelation();
-                $res['content_type'] = $relation[0] == System\Data::MANY_MANY ? $relation[4] : $relation[1];
+                $res['content_type'] = $relation[0] == System\Finder::MANY_MANY ? $relation[4] : $relation[1];
             }
             // Add allow values for select parent page
             if ($field['keyword'] == 'parent_id') {
@@ -691,7 +691,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
                             $ids[] = $v;
                         }
                         $relation = $field->getRelation();
-                        if ($relation[0] === System\Data::MANY_MANY) {
+                        if ($relation[0] === System\Finder::MANY_MANY) {
                             $content_ids = fx::data($relation[1])->
                             where($relation[5], $ids)->
                             select('content_id')->
@@ -785,7 +785,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
     protected $_finder = null;
 
     /**
-     * @return \Floxim\Floxim\System\Data data finder
+     * @return \Floxim\Floxim\System\Finder data finder
      */
     public function getFinder()
     {

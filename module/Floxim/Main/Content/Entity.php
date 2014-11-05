@@ -412,7 +412,7 @@ class Entity extends System\Entity implements Template\Entity
             $related_field_keyword = $relation[2];
 
             switch ($relation[0]) {
-                case System\Data::HAS_MANY:
+                case System\Finder::HAS_MANY:
                     $old_data = isset($this->modified_data[$link_field['keyword']]) ?
                         $this->modified_data[$link_field['keyword']] :
                         new System\Collection();
@@ -428,7 +428,7 @@ class Entity extends System\Entity implements Template\Entity
                         $i->delete();
                     });
                     break;
-                case System\Data::MANY_MANY:
+                case System\Finder::MANY_MANY:
                     $old_linkers = isset($this->modified_data[$link_field['keyword']]->linker_map) ?
                         $this->modified_data[$link_field['keyword']]->linker_map :
                         new System\Collection();
