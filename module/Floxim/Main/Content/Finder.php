@@ -424,6 +424,12 @@ class Finder extends System\Finder
             }
         }
         if ($collection) {
+            // collection has linker map, so it contains final many-many related data, 
+            // and current finder can generate only linkers
+            // @todo invent something to add-in-place many-many items
+            if ($collection->linker_map) {
+                return null;
+            }
             foreach ($collection->getFilters() as $coll_filter) {
                 list($filter_field, $filter_value) = $coll_filter;
                 if (is_scalar($filter_value)) {
