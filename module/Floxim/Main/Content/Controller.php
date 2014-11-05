@@ -346,7 +346,7 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
         $f = $this->getFinder();
         $this->trigger('query_ready', $f);
         $items = $f->all();
-
+        
         if (count($items) === 0) {
             $this->_meta['hidden'] = true;
         }
@@ -694,8 +694,8 @@ class Controller extends \Floxim\Floxim\Controller\Frontoffice
                         if ($relation[0] === System\Finder::MANY_MANY) {
                             $content_ids = fx::data($relation[1])->
                             where($relation[5], $ids)->
-                            select('content_id')->
-                            getData()->getValues('content_id');
+                            select($relation[2])->
+                            getData()->getValues($relation[2]);
                         } else {
                             $content_ids = fx::data($relation[1])->
                             where('id', $ids)->

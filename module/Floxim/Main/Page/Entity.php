@@ -170,7 +170,7 @@ class Entity extends \Floxim\Main\Content\Entity
     public function getNestedInfoblocks($with_own = true)
     {
         $q = fx::data('page')->descendantsOf($this, $with_own);
-        $q->join('{{infoblock}}', '{{infoblock}}.page_id = {{content}}.id');
+        $q->join('{{infoblock}}', '{{infoblock}}.page_id = {{floxim_main_content}}.id');
         $q->select('{{infoblock}}.id');
         $ids = $q->getData()->getValues('id');
         if (count($ids) === 0) {

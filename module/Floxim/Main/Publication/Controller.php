@@ -18,11 +18,7 @@ class Controller extends \Floxim\Main\Page\Controller
     public function doListByTag()
     {
         $this->listen('query_ready', function ($query) {
-            $ids = fx::data('classifier_linker')->
-            where('classifier_id', fx::env('page')->get('id'))->
-            select('content_id')->
-            getData()->getValues('content_id');
-            $query->where('id', $ids);
+            $query->where('tags.id', fx::env('page_id'));
         });
         return $this->doList();
     }
@@ -65,7 +61,7 @@ class Controller extends \Floxim\Main\Page\Controller
         $months = $this->getFinder()->
         select('DATE_FORMAT(`publish_date`, "%m") as month')->
         select('DATE_FORMAT(`publish_date`, "%Y") as year')->
-        select('COUNT(DISTINCT({{content}}.id)) as `count`')->
+        select('COUNT(DISTINCT({{floxim_main_content}}.id)) as `count`')->
         where('site_id', fx::env('site')->get('id'))->
         order('publish_date', 'DESC')->
         group('month')->group('year')->

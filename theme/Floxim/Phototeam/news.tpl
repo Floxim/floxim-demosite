@@ -35,6 +35,9 @@
     <div class="image">
         <div class="slide active">
             <img src="{$image|'crop:middle,height:360,width:735'}img/ship.jpg{/$}">
+            <div class="tags" fx:with-each="$tags" fx:separator=", ">
+                <a fx:item href="{$url}">{$name}</a>
+            </div>
         </div>
     </div>
     <div class="short-desc">

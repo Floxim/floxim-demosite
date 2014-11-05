@@ -51,6 +51,7 @@ class Entity extends System\Entity implements Template\Entity
 
     public function isInstanceof($type)
     {
+        $type = fx::getComponentFullName($type);
         if ($this['type'] == $type) {
             return true;
         }
@@ -105,6 +106,7 @@ class Entity extends System\Entity implements Template\Entity
                 $result['fields'][] = $field_keyword;
             }
         }
+        fx::log('ready to save', $result, $this);
         return $result;
     }
 
@@ -359,7 +361,7 @@ class Entity extends System\Entity implements Template\Entity
             return;
         }
         $rel_priority = fx::db()->getVar(array(
-            'select priority from {{content}} where id = %d',
+            'select priority from {{floxim_main_content}} where id = %d',
             $rel_item_id
         ));
         //fx::debug($rel_priority, $rel_item_id);
@@ -377,7 +379,7 @@ class Entity extends System\Entity implements Template\Entity
         );
          *
          */
-        $q = 'update {{content}} ' .
+        $q = 'update {{floxim_main_content}} ' .
             'set priority = priority + 1 ' .
             'where parent_id = %d ' .
             'and infoblock_id = %d ' .

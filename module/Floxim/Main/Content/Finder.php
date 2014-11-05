@@ -95,7 +95,9 @@ class Finder extends System\Finder
     public function getTables()
     {
         if (isset(self::$_com_tables_cache[$this->component_id])) {
-            return self::$_com_tables_cache[$this->component_id];
+            
+            $cached = self::$_com_tables_cache[$this->component_id];
+            return $cached;
         }
         $chain = fx::data('component', $this->component_id)->getChain();
         $tables = array();
@@ -118,7 +120,7 @@ class Finder extends System\Finder
     public function setComponent($component_id_or_code)
     {
         // todo: psr0 need remove after rename tables
-        $component_id_or_code = str_replace('floxim.main.', '', $component_id_or_code);
+        // $component_id_or_code = str_replace('floxim.main.', '', $component_id_or_code);
 
         $component = fx::data('component', $component_id_or_code);
         if (!$component) {
@@ -140,7 +142,7 @@ class Finder extends System\Finder
         if (is_null($content_by_type)) {
             $res = fx::db()->getResults(
                 'select `type`, count(*) as cnt '
-                . 'from {{content}} '
+                . 'from {{floxim_main_content}} '
                 . 'where site_id = "' . fx::env('site_id') . '" '
                 . 'group by `type`'
             );
@@ -185,7 +187,7 @@ class Finder extends System\Finder
     public function nextPriority()
     {
         return fx::db()->getVar(
-            "SELECT MAX(`priority`)+1 FROM `{{content}}`"
+            "SELECT MAX(`priority`)+1 FROM `{{floxim_main_content}}`"
         );
     }
 
@@ -204,7 +206,7 @@ class Finder extends System\Finder
             $c_type = $component['keyword'];
         }
         if (!$component) {
-            throw new Exception("No component: " . $c_type);
+            throw new \Exception("No component: " . $c_type);
         }
         $chain = array_reverse($component->getChain());
 
@@ -363,7 +365,7 @@ class Finder extends System\Finder
             $fields = $level_component->fields();
             $field_keywords = $fields->getValues('keyword');
             // while the underlying field content manually prescription
-            if ($level_component['keyword'] == 'content') {
+            if ($level_component['keyword'] == 'floxim.main.content') {
                 $field_keywords = array_merge($field_keywords, array(
                     'priority',
                     'checked',
@@ -465,7 +467,7 @@ class Finder extends System\Finder
                 continue;
             }
             $table = '{{' . $com->getContentTable() . '}}';
-            $this->join($table, $table . '.id = {{content}}.id', 'left');
+            $this->join($table, $table . '.id = {{floxim_main_content}}.id', 'left');
             $cond = array(
                 array(),
                 false,
