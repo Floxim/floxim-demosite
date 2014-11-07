@@ -163,7 +163,7 @@ class Finder extends System\Finder
         $component = fx::data('component', $this->component_id);
 
         $obj['created'] = date("Y-m-d H:i:s");
-        if ($component['keyword'] != 'user' && ($user = fx::env()->getUser())) {
+        if ($component['keyword'] != 'floxim.main.user' && ($user = fx::env()->getUser())) {
             $obj['user_id'] = $user['id'];
         }
         $obj['checked'] = 1;
