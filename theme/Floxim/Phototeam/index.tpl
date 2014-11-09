@@ -146,7 +146,7 @@
                             <div style="clear:both;"></div>
                         </ul>
                     </div>
-                    <a class="email">{%email}floxim@floxim.loc{/%}</a>
+                    <a class="email" href="mailto:{%email}floxim@floxim.loc{/%}">{%email /}</a>
                     <a class="phone">{%phone}8 (800) 192 16 81{/%}</a>
                     <div style="clear:both;"></div>
                     <div

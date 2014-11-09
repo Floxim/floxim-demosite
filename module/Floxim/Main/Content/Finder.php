@@ -114,7 +114,7 @@ class Finder extends System\Finder
     {
         parent::__construct($table);
 
-        $this->setComponent(fx::getComponentNameByClass(get_class($this))); // full component name, ex 'floxim.main.user'
+        $this->setComponent(fx::getComponentNameByClass(get_class($this)));
     }
 
     public function setComponent($component_id_or_code)
@@ -163,7 +163,7 @@ class Finder extends System\Finder
         $component = fx::data('component', $this->component_id);
 
         $obj['created'] = date("Y-m-d H:i:s");
-        if ($component['keyword'] != 'floxim.main.user' && ($user = fx::env()->getUser())) {
+        if ($component['keyword'] != 'floxim.user.user' && ($user = fx::env()->getUser())) {
             $obj['user_id'] = $user['id'];
         }
         $obj['checked'] = 1;
