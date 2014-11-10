@@ -188,3 +188,6 @@ pip-log.txt
 /floxim_files/asset_cache/*
 /config.php
 /config.php
+/vendor
+!/vendor/Floxim/Floxim
+!/vendor/Floxim/Cache

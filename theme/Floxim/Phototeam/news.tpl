@@ -19,7 +19,8 @@
     fx:template="news_mixed" 
     fx:name="News list mixed" 
     fx:of="publication:list"
-    data-fx_count_featured="{%count_featured type='int' label='Count featured'}2{/%}">
+    data-fx_count_featured="{%count_featured type='int' label='Count featured'}2{/%}"
+    class="news-list-mixed">
     {if $count_featured > 0}
         {apply featured_news_list with $items->slice(0,$count_featured) as $items /}
     {/if}
@@ -35,7 +36,7 @@
     <div class="image">
         <div class="slide active">
             <img src="{$image|'crop:middle,height:360,width:735'}img/ship.jpg{/$}">
-            <div class="tags" fx:with-each="$tags" fx:separator=", ">
+            <div class="tags" fx:with-each="$tags">
                 <a fx:item href="{$url}">{$name}</a>
             </div>
         </div>

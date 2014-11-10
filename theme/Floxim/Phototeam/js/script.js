@@ -16,6 +16,12 @@ $(function(){
             var width = $item.width();
             $item.height(width*ratio);
         });
+        var $wrapper = $('body>.wrapper');
+        ///var top_padding = $wrapper.css('padding-top').replace(/[^\d]+/g,'');
+        $wrapper.css({
+            'min-height': (full_height - 1 )+'px',
+            'padding-bottom': $('>footer', $wrapper).outerHeight()-3+'px'
+        });
     }
     
     toggleIconPane($('form.fx_form_sent').closest('li.icon'));

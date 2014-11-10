@@ -110,8 +110,8 @@
                             </div>
                         </div>
                     </div>
-                    <div fx:template="block_titled" fx:of="wrapper" class="left-titled-block">
-                        <h2>{%header}Block Header{/%}</h2>
+                    <div fx:template="block_titled" fx:of="wrapper" class="left-titled-block" fx:suit="local">
+                        <h2>{%header}{$infoblock.name /}{/%}</h2>
                         <div class="content">
                             {$content}
                         </div>
@@ -120,16 +120,20 @@
                 </div>
             </div>
         </section>
-        <section fx:template="gray_block" fx:of="wrapper" class="titled_wrapper gray">
-            <h2>{%header}Block Header{/%}</h2>
+        <section fx:template="gray_block" fx:of="wrapper" class="titled_wrapper gray"  fx:suit="main_column, breadcrumbs-area">
+            <h2>{%header}{$infoblock.name /}{/%}</h2>
             <div class="main-column">{$content}</div>
             <div style="clear: both;"></div>
         </section>
-        <section fx:template="titled_block" fx:of="wrapper" class="titled_wrapper">
-            <h2>{%header}Block Header{/%}</h2>
+        <section fx:template="titled_block" fx:of="wrapper" class="titled_wrapper" fx:suit="main_column, breadcrumbs-area">
+            <h2>{%header}{$infoblock.name /}{/%}</h2>
             <div class="main-column">{$content}</div>
             <div style="clear: both;"></div>
         </section>
+        <div fx:template="col_block" fx:of="wrapper" class="col_block" fx:suit="left_column">
+            <h2>{%header}{$infoblock.name /}{/%}</h2>
+            <div class="block_data">{$content}</div>
+        </div>
         <footer>
             <div class="holder">
                 <div class="top-block">

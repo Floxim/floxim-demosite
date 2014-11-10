@@ -10,6 +10,10 @@
 
 .wrapper {
     padding-top:40px;
+    position:relative;
+    box-sizing:border-box;
+    min-height:500px;
+    padding-bottom:186px;
 }
 
 blockquote {
@@ -59,6 +63,42 @@ a {
             font-size: 16px;
             font-family: Arial;
             line-height:165%;
+    }
+}
+
+.more_link {
+    float: left;
+    clear: left;
+    text-decoration: none;
+    font-size: 22px;
+    color: #32ccfe;
+    margin-top: 20px;
+    font-weight: 300;
+    padding-right: 40px;
+    background: url(../img/metro-arrow_small.png) no-repeat 100% 4px;
+}
+
+.col_block {
+    margin-top:30px;
+    &:first-child {
+        margin-top:0;
+    }
+    h2 {
+        font-size:32px;
+        margin-bottom:5px;
+    }
+}
+
+.left-column .tag_list .tag {
+    display:inline-block;
+    margin-right:5px;
+    margin-bottom:5px;
+    a {
+        font-size:13px;
+    }
+    &.tag_active a {
+        color:#000;
+        text-decoration:none;
     }
 }
 
@@ -588,17 +628,7 @@ section {
             }
         }
         .more {
-            color: #32ccfe;
-            font-weight: 300;
-            margin-top: 20px;
-            font-size: 34px;
-            text-decoration: none;
-            float: left;
-            padding-right: 45px;
-            background-image: url(../img/metro-arrow_small.png);
-            background-repeat: no-repeat;
-            background-position-x: 100%;
-            background-position-y: 14px;
+            .more_link();
         }
     }
     .person-list {
@@ -746,11 +776,14 @@ section {
         }
     }
 
-    .news-list {
-        width: 100%;
+    .news-list-mixed .news-list {
         margin-top: 40px;
         padding-top: 30px;
         border-top: 1px solid #e8e8e8;
+    }
+    
+    .news-list {
+        width: 100%;
         .month-container {
             width: 100%;
             padding-left: 100px;
@@ -836,26 +869,15 @@ section {
                 margin: 0;
                 margin-bottom: 20px;
                 &, a {
-                                            color: #32ccfe;
-                                            text-decoration:none;
-                                        }
+                    color: #32ccfe;
+                    text-decoration:none;
+                }
             }
             .desc {
                 font-family: Arial;
             }
             .more {
-                float: left;
-                clear: left;
-                text-decoration: none;
-                font-size: 22px;
-                color: #32ccfe;
-                margin-top: 20px;
-                font-weight: 300;
-                padding-right: 30px;
-                background-image: url(../img/metro-arrow_small.png);
-                background-repeat: no-repeat;
-                background-position-x: 100%;
-                background-position-y: 4px;
+                .more_link();
             }
         }
     }
@@ -931,6 +953,28 @@ section {
     }
     .news-record {
         .g_record();
+        .slide {
+            position:relative;
+            .tags {
+                position:absolute;
+                bottom:10px;
+                left:10px;
+                a {
+                    display: inline-block;
+                    padding: 6px 10px;
+                    background-color: rgba(0, 0, 0, 0.36);
+                    color: #FFF;
+                    text-decoration: none;
+                    margin-right: 10px;
+                    border-radius: 5px;
+                    line-height: 100%;
+                    font-size: 18px;
+                    &:hover {
+                       background:#000;
+                    }
+                }
+            }
+        }
     }
     .person-record {
         .g_record();
@@ -1011,7 +1055,7 @@ section {
             width: 15%;
             float: left;
         }
-        .main-column {
+        &>.holder>.main-column, &>.main-column {
             width: 83%;
             float: right;
         }
@@ -1046,6 +1090,8 @@ footer {
     width: 100%;
     padding:21px 0;
     background-color: #202020;
+    position:absolute;
+    bottom:0;
     .footer-menu-area {
         float: left;
         width: 60%;

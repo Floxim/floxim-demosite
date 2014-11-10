@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 09 2014 г., 08:08
+-- Время создания: Ноя 10 2014 г., 13:11
 -- Версия сервера: 5.5.38-log
 -- Версия PHP: 5.4.29
 
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_main_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2801 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2803 ;
 
 --
 -- Дамп данных таблицы `fx_floxim_main_content`
@@ -408,7 +408,7 @@ INSERT INTO `fx_floxim_main_content` (`id`, `priority`, `checked`, `created`, `l
 (2692, 1, 1, '2014-01-31 18:14:59', '2014-11-09 02:47:21', 2367, 'floxim.media.photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2693, 3, 1, '2014-01-31 18:16:05', '2014-11-09 02:47:21', 2367, 'floxim.media.photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2694, 0, 1, '2014-01-31 18:27:50', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 391, 18, 2640, '2635.2640.', 2),
-(2701, 1, 1, '2014-01-31 19:09:46', '2014-11-05 09:30:56', 2367, 'floxim.main.text', 397, 18, 2641, '2635.2640.2641.', 3),
+(2701, 2, 1, '2014-01-31 19:09:46', '2014-11-10 08:16:41', 2367, 'floxim.main.text', 397, 18, 2641, '2635.2640.2641.', 3),
 (2735, 4, 1, '2014-03-11 16:15:11', '2014-11-09 02:47:20', 2367, 'floxim.corporate.person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2737, 1, 1, '2014-03-11 17:08:49', '2014-11-09 02:47:21', 2367, 'floxim.corporate.vacancy', 374, 18, 2656, '2635.2640.2656.', 3),
 (2739, 266, 1, '2014-03-11 21:44:50', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2652, '2635.2638.2652.', 3),
@@ -433,7 +433,7 @@ INSERT INTO `fx_floxim_main_content` (`id`, `priority`, `checked`, `created`, `l
 (2762, 280, 1, '2014-05-04 13:43:11', '2014-11-05 09:30:56', 2367, 'floxim.main.mail_template', 0, 18, 0, '.', 1),
 (2764, 0, 1, '2014-05-04 15:40:55', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 381, 18, 2635, '2635.', 1),
 (2765, 0, 1, '2014-05-05 00:44:29', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 411, 18, 2635, '2635.', 1),
-(2767, 2, 1, '2014-05-06 11:26:33', '2014-11-05 09:30:56', 2367, 'floxim.main.text', 397, 18, 2641, '2635.2640.2641.', 3),
+(2767, 1, 1, '2014-05-06 11:26:33', '2014-11-10 08:16:41', 2367, 'floxim.main.text', 397, 18, 2641, '2635.2640.2641.', 3),
 (2768, 2, 1, '2014-07-18 12:28:52', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 381, 18, 2635, '2635.', 1),
 (2769, 3, 1, '2014-07-18 12:31:17', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 381, 18, 2635, '2635.', 1),
 (2779, 281, 1, '2014-11-05 08:27:32', '2014-11-09 02:47:20', 2367, 'floxim.nav.tag', 0, 18, 2657, '2635.2640.2657.', 3),
@@ -447,17 +447,19 @@ INSERT INTO `fx_floxim_main_content` (`id`, `priority`, `checked`, `created`, `l
 (2787, 289, 1, '2014-11-05 08:28:37', '2014-11-09 02:47:20', 2367, 'floxim.nav.tag', 0, 18, 2657, '2635.2640.2657.', 3),
 (2788, 290, 1, '2014-11-05 08:28:37', '2014-11-05 13:28:37', 2367, 'floxim.main.linker', 0, 18, 2679, '2635.2640.2657.2679.', 4),
 (2789, 291, 1, '2014-11-05 08:29:12', '2014-11-09 02:47:20', 2367, 'floxim.nav.tag', 0, 18, 2657, '2635.2640.2657.', 3),
-(2790, 292, 1, '2014-11-05 08:29:12', '2014-11-05 13:29:12', 2367, 'floxim.main.linker', 0, 18, 2680, '2635.2640.2657.2680.', 4),
+(2790, 2, 1, '2014-11-05 08:29:12', '2014-11-10 07:55:40', 2367, 'floxim.main.linker', 0, 18, 2680, '2635.2640.2657.2680.', 4),
 (2791, 293, 1, '2014-11-05 08:29:12', '2014-11-09 02:47:20', 2367, 'floxim.nav.tag', 0, 18, 2657, '2635.2640.2657.', 3),
-(2792, 294, 1, '2014-11-05 08:29:12', '2014-11-05 13:29:12', 2367, 'floxim.main.linker', 0, 18, 2680, '2635.2640.2657.2680.', 4),
+(2792, 1, 1, '2014-11-05 08:29:12', '2014-11-10 07:55:40', 2367, 'floxim.main.linker', 0, 18, 2680, '2635.2640.2657.2680.', 4),
 (2793, 295, 1, '2014-11-05 08:29:12', '2014-11-09 02:47:20', 2367, 'floxim.nav.tag', 0, 18, 2657, '2635.2640.2657.', 3),
-(2794, 296, 1, '2014-11-05 08:29:12', '2014-11-05 13:29:12', 2367, 'floxim.main.linker', 0, 18, 2680, '2635.2640.2657.2680.', 4),
+(2794, 3, 1, '2014-11-05 08:29:12', '2014-11-10 07:55:40', 2367, 'floxim.main.linker', 0, 18, 2680, '2635.2640.2657.2680.', 4),
 (2795, 297, 1, '2014-11-05 08:29:26', '2014-11-05 13:29:26', 2367, 'floxim.main.linker', 0, 18, 2681, '2635.2640.2657.2681.', 4),
 (2796, 298, 1, '2014-11-05 08:30:16', '2014-11-09 02:47:20', 2367, 'floxim.nav.tag', 0, 18, 2657, '2635.2640.2657.', 3),
 (2797, 299, 1, '2014-11-05 08:30:16', '2014-11-05 13:30:16', 2367, 'floxim.main.linker', 0, 18, 2678, '2635.2640.2657.2678.', 4),
 (2798, 300, 1, '2014-11-05 08:30:16', '2014-11-09 02:47:20', 2367, 'floxim.nav.tag', 0, 18, 2657, '2635.2640.2657.', 3),
 (2799, 301, 1, '2014-11-05 08:30:16', '2014-11-05 13:30:16', 2367, 'floxim.main.linker', 0, 18, 2678, '2635.2640.2657.2678.', 4),
-(2800, 302, 1, '2014-11-05 08:30:45', '2014-11-05 13:30:45', 2367, 'floxim.main.linker', 0, 18, 2679, '2635.2640.2657.2679.', 4);
+(2800, 302, 1, '2014-11-05 08:30:45', '2014-11-05 13:30:45', 2367, 'floxim.main.linker', 0, 18, 2679, '2635.2640.2657.2679.', 4),
+(2801, 303, 1, '2014-11-10 04:06:04', '2014-11-10 09:06:05', 2367, 'floxim.main.text', 440, 18, 2652, '2635.2638.2652.', 3),
+(2802, 304, 1, '2014-11-10 04:07:00', '2014-11-10 09:07:00', 2367, 'floxim.main.text', 440, 18, 2652, '2635.2638.2652.', 3);
 
 -- --------------------------------------------------------
 
@@ -570,7 +572,7 @@ INSERT INTO `fx_floxim_main_page` (`id`, `url`, `name`, `title`, `comments_count
 (2636, '/404', 'Page not found', NULL, 0, NULL, NULL),
 (2638, '/Catalog', 'What we do', 'Catalog', 0, NULL, NULL),
 (2639, '/Projects', 'Projects', 'Projects', 0, NULL, NULL),
-(2640, '/About-Us-2', 'About', '', 0, NULL, NULL),
+(2640, '/About', 'About', '', 0, NULL, NULL),
 (2641, '/Contacts', 'Contacts', '', 0, NULL, NULL),
 (2652, '/Sport-series', 'Sport', 'Sport series', 0, NULL, NULL),
 (2654, '/people-photo', 'People', '', 0, NULL, NULL),
@@ -630,8 +632,10 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_main_text` (
 --
 
 INSERT INTO `fx_floxim_main_text` (`id`, `text`) VALUES
-(2701, '<h4><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">Sanctus sea sed takimata</span></h4>\r\n<p>\r\n	<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;">Sanctus sea sed takimata</span>\r\n</p>'),
-(2767, '<p>\n	  This is regular text, and it is so regular...\n</p>\n<p>\n	 Ok regularrr\n</p>\n<p>\n	 Yeah.\n</p>');
+(2701, '<h4>Also&nbsp;feel free to visit our studio office!</h4>'),
+(2767, '<p>For questions or any information please call or e-mail us:</p><ul><li>8 (800) 123 45 67</li><li>info@phototeam.loc</li></ul>'),
+(2801, '<p class="">We have special conditions for sport series!</p>'),
+(2802, '<p class="">Please&nbsp;<a href="/Contacts">contact us</a> to get more info.</p>');
 
 -- --------------------------------------------------------
 
@@ -832,7 +836,7 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock` (
   `scope` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=439 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=441 ;
 
 --
 -- Дамп данных таблицы `fx_infoblock`
@@ -867,7 +871,7 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (398, 0, 18, 2657, 1, 'News / Single entry', 'news', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:4:"news";}'),
 (399, 345, 18, 2635, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
 (400, 0, 18, 2635, 1, 'Navigation / ', 'section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2638";}}s:5:"new_2";a:3:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:3:"346";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
-(404, 0, 18, 2640, 1, 'Navigation / ', 'section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2640";}}s:5:"new_2";a:3:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:3:"346";}}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
+(404, 0, 18, 2640, 1, 'All About Us', 'section', 'list_filtered', 'a:3:{s:10:"conditions";a:2:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2640";}}s:5:"new_2";a:2:{s:4:"name";s:12:"infoblock_id";s:8:"operator";s:1:"=";}}s:7:"submenu";s:4:"none";s:16:"extra_infoblocks";b:0;}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (408, 0, 18, 2635, 1, 'Auth form', 'user', 'auth_form', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (409, 0, 18, 2635, 1, 'Greet', 'user', 'greet', 'a:0:{}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
 (410, 0, 18, 2635, 1, 'Two columns', 'grid', 'two_columns', 'a:0:{}', 'a:2:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";}'),
@@ -878,7 +882,7 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (416, 0, 18, 2639, 1, 'Project neighbours', 'project', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:7:"project";}'),
 (418, 0, 18, 2655, 1, 'Person record', 'person', 'record', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
 (419, 0, 18, 2655, 1, 'Person neighbours', 'person', 'neighbours', 'a:3:{s:7:"sorting";s:4:"auto";s:11:"sorting_dir";s:3:"asc";s:15:"group_by_parent";s:1:"0";}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:6:"person";}'),
-(422, 0, 18, 2641, 1, 'Map', 'map', 'show', 'a:1:{s:3:"map";a:3:{s:7:"address";s:76:"Большой Саввинский переулок, 12 строение 18";s:3:"lat";s:18:"55.732346350157044";s:3:"lon";s:17:"37.56402175659173";}}', 'a:2:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";}'),
+(422, 0, 18, 2641, 1, 'Map', 'map', 'show', 'a:1:{s:3:"map";a:3:{s:7:"address";s:47:"Bolshoy Savvinskiy pereulok, 17, Moscow, Russia";s:3:"lat";s:16:"55.7330887805793";s:3:"lon";s:17:"37.56590033995053";}}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (423, 345, 18, 2638, 1, '', 'layout', 'show', 'a:0:{}', 'a:2:{s:5:"pages";s:8:"children";s:9:"page_type";s:0:"";}'),
 (426, 0, 18, 2773, 1, 'News test', 'news', 'list_infoblock', 'a:4:{s:5:"limit";s:0:"";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (427, 0, 18, 2773, 1, 'Menu test', 'section', 'list_infoblock', 'a:2:{s:7:"submenu";s:3:"all";s:16:"extra_infoblocks";a:1:{i:0;s:3:"426";}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
@@ -886,7 +890,9 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (431, 0, 18, 2635, 1, 'Text', 'text', 'list_infoblock', 'a:1:{s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (435, 0, 18, 2640, 1, 'Person by filter', 'person', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:4:"desc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (436, 0, 18, 2657, 1, 'News by tag', 'floxim.blog.news', 'list_by_tag', 'a:4:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:15:"floxim.main.tag";s:10:"visibility";s:3:"all";}'),
-(437, 0, 18, 2657, 1, 'Tags', 'floxim.nav.tag', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:3:"asc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}');
+(437, 0, 18, 2657, 1, 'Tags', 'floxim.nav.tag', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:3:"asc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(439, 0, 18, 2635, 1, 'News by tag', 'floxim.blog.news', 'list_by_tag', 'a:4:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:14:"floxim.nav.tag";s:10:"visibility";s:3:"all";}'),
+(440, 0, 18, 2652, 1, 'Special conditions!', 'floxim.main.text', 'list_infoblock', 'a:1:{s:11:"parent_type";s:13:"mount_page_id";}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}');
 
 -- --------------------------------------------------------
 
@@ -906,28 +912,28 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `infoblock_id` (`infoblock_id`,`layout_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=607 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=609 ;
 
 --
 -- Дамп данных таблицы `fx_infoblock_visual`
 --
 
 INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`, `wrapper_visual`, `template`, `template_visual`, `area`, `priority`) VALUES
-(417, 345, 12, '', '', 'theme.floxim.phototeam:two_columns', 'a:8:{s:5:"phone";s:17:"8 (800) 123 12 45";s:4:"logo";s:0:"";s:17:"two_column_header";s:29:"\n                Yes, we can!";s:17:"one_column_header";s:25:"\n                Our news";s:9:"logo_name";s:10:"Photo Team";s:8:"icon_408";s:43:"/floxim_files/content/icon_login_active.png";s:8:"icon_409";s:39:"/floxim_files/content/icon_login_on.png";s:5:"email";s:17:"floxim@floxim.loc";}', '', 1),
+(417, 345, 12, '', '', 'theme.floxim.phototeam:two_columns', 'a:8:{s:5:"phone";s:17:"8 (800) 123 45 67";s:4:"logo";s:0:"";s:17:"two_column_header";s:29:"\n                Yes, we can!";s:17:"one_column_header";s:25:"\n                Our news";s:9:"logo_name";s:10:"Photo Team";s:8:"icon_408";s:43:"/floxim_files/content/icon_login_active.png";s:8:"icon_409";s:39:"/floxim_files/content/icon_login_on.png";s:5:"email";s:18:"info@phototeam.loc";}', '', 1),
 (418, 346, 12, '', '', 'theme.floxim.phototeam:main_menu', '', 'top_nav', 1),
 (419, 347, 12, '', '', 'theme.floxim.phototeam:footer_menu', '', 'footer_menu', 1),
 (431, 359, 12, '', '', 'theme.floxim.phototeam:one_column', '', '', 2),
 (432, 360, 12, '', '', 'theme.floxim.phototeam:breadcrumbs', '', 'breadcrumbs-area', 1),
 (433, 361, 12, '', '', 'theme.floxim.phototeam:featured_list', 'a:7:{s:5:"image";s:38:"/floxim_files/content/HansIsland_0.png";s:10:"image_2652";s:35:"/floxim_files/content/5_ski_4_0.JPG";s:10:"four_items";s:1:"1";s:8:"image_id";s:32:"/floxim_files/content/7394_0.jpg";s:10:"image_2654";s:40:"/floxim_files/content/5_people_cover.jpg";s:10:"image_2658";s:38:"/floxim_files/content/5_nature_5_0.jpg";s:10:"image_2744";s:40:"/floxim_files/content/6_events_cover.jpg";}', 'main_column', 2),
 (434, 362, 12, '', '', 'theme.floxim.phototeam:banner', 'a:3:{s:18:"banner_header_2652";s:37:"<p class="">\n	 Special conditions</p>";s:16:"banner_text_2652";s:34:"<p class="">\n	For sport series</p>";s:17:"banner_image_2652";s:34:"/floxim_files/content/5_swim_0.jpg";}', 'main_column', 1),
-(436, 364, 12, '', '', 'theme.floxim.phototeam:featured_list', 'a:1:{s:10:"four_items";s:1:"0";}', 'main_column', 3),
+(436, 364, 12, '', '', 'theme.floxim.phototeam:featured_list', 'a:1:{s:10:"four_items";s:1:"1";}', 'main_column', 3),
 (439, 367, 12, '', '', 'theme.floxim.phototeam:product_record', '', 'main_column', 4),
 (441, 369, 12, '', '', 'theme.floxim.phototeam:banner', 'a:6:{s:18:"banner_header_2660";s:28:"<p>\n	  Greate ship\n</p>\n<br>";s:16:"banner_text_2660";s:43:"<p>\n	It''s really <strong>cool</strong>\n</p>";s:7:"go_2660";s:2:"Go";s:17:"banner_image_2740";s:32:"/floxim_files/content/3b_6_0.jpg";s:16:"banner_text_2740";s:32:"<p class="">Better than ever</p>";s:18:"banner_header_2740";s:24:"<p class="">Portrait</p>";}', 'grid_content_410', 1),
 (442, 370, 12, '', 'a:1:{s:6:"header";s:10:"Best ships";}', 'theme.floxim.phototeam:featured_list', 'a:2:{s:10:"four_items";s:1:"0";s:10:"photo_2743";s:0:"";}', 'grid_content_410', 2),
 (444, 372, 12, '', '', 'theme.floxim.phototeam:person_list', 'a:4:{s:13:"facebook_2671";s:0:"";s:7:"vk_2671";s:0:"";s:7:"li_2671";s:0:"";s:12:"twitter_2671";s:0:"";}', 'main_column', 5),
 (446, 374, 12, '', '', 'theme.floxim.phototeam:vacancies_list', 'a:3:{s:14:"more_info_2677";s:27:"More info about the vacancy";s:14:"more_info_2771";s:22:"more info for supermen";s:14:"more_info_2791";s:9:"More info";}', 'main_column', 6),
 (451, 379, 12, '', '', 'theme.floxim.phototeam:news_mixed', 'a:3:{s:9:"show_more";s:1:"0";s:12:"show_anounce";s:1:"1";s:14:"count_featured";s:1:"2";}', 'main_column', 7),
-(453, 381, 12, 'theme.floxim.phototeam:gray_block', 'a:1:{s:6:"header";s:16:"What''s happening";}', 'theme.floxim.phototeam:featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/news";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"1";}', 'main_column', 16),
+(453, 381, 12, 'theme.floxim.phototeam:gray_block', 'a:1:{s:6:"header";s:16:"What''s happening";}', 'theme.floxim.phototeam:featured_news_list', 'a:3:{s:13:"more_news_url";s:5:"/News";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"1";}', 'main_column', 16),
 (454, 382, 12, '', '', 'theme.floxim.phototeam:full_width', '', '', 8),
 (457, 385, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:30:"/floxim_files/content/2a_2.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 12),
 (458, 386, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:17:"About the project";}', 'theme.floxim.phototeam:project_record', '', 'main_column', 13),
@@ -940,27 +946,29 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (470, 398, 12, '', '', 'theme.floxim.phototeam:news_record', '', 'main_column', 11),
 (471, 399, 12, '', '', 'theme.floxim.phototeam:index', '', '', 11),
 (472, 400, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'grid_sidebar_410', 1),
-(476, 404, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 2),
+(476, 404, 12, '', 'a:1:{s:6:"header";s:8:"About us";}', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 2),
 (575, 408, 12, '', '', 'theme.floxim.phototeam:auth_form', 'a:4:{s:11:"label_email";s:30:"E-mail                        ";s:14:"label_password";s:8:"Password";s:14:"label_remember";s:11:"Remember me";s:12:"label_submit";s:6:"Log in";}', 'icons_area', 1),
 (576, 409, 12, '', '', 'user:greet', '', 'icons_area', 2),
 (577, 410, 12, 'theme.floxim.phototeam:titled_block', 'a:1:{s:6:"header";s:51:"We shoot everything and everywhere around the world";}', 'theme.floxim.phototeam:two_columns_grid', '', 'main_column', 17),
-(578, 411, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', 'a:3:{s:11:"header_2635";s:63:"<p class="">Team of super cool</p><p class="">photographers</p>";s:12:"caption_2635";s:108:"We come in&nbsp;any fucking&nbsp;sizes and shapes ready <em>to<br></em>\n	shoot any series&nbsp;you like.<br>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 15),
-(579, 412, 12, '', '', 'page:neighbours', '', 'main_column', 18),
-(580, 413, 12, '', '', 'page:neighbours', '', 'main_column', 19),
-(581, 414, 12, '', '', 'page:neighbours', '', 'main_column', 28),
-(583, 416, 12, '', '', 'page:neighbours', '', 'main_column', 20),
-(585, 418, 12, '', '', 'theme.floxim.phototeam:person_record', '', 'main_column', 21),
-(586, 419, 12, '', '', 'page:neighbours', '', 'main_column', 22),
-(588, 376, 12, '', '', 'theme.floxim.phototeam:vacancy_record', '', 'main_column', 23),
-(590, 422, 12, '', '', 'map:static_google_map', 'a:3:{s:9:"map_width";s:3:"940";s:10:"map_height";s:3:"340";s:8:"map_zoom";s:2:"14";}', 'main_column', 24),
+(578, 411, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', 'a:3:{s:11:"header_2635";s:58:"<p class="">Team of&nbsp;</p><p class="">photographers</p>";s:12:"caption_2635";s:86:"We come in&nbsp;any sizes and shapes ready to<br>\n	shoot any series&nbsp;you like.<br>";s:7:"bg_2635";s:44:"/floxim_files/content/6_pascua_toro_19_0.JPG";}', 'main_column', 15),
+(579, 412, 12, '', '', 'page:neighbours', '', 'main_column', 19),
+(580, 413, 12, '', '', 'page:neighbours', '', 'main_column', 20),
+(581, 414, 12, '', '', 'page:neighbours', '', 'main_column', 29),
+(583, 416, 12, '', '', 'page:neighbours', '', 'main_column', 21),
+(585, 418, 12, '', '', 'theme.floxim.phototeam:person_record', '', 'main_column', 22),
+(586, 419, 12, '', '', 'page:neighbours', '', 'main_column', 23),
+(588, 376, 12, '', '', 'theme.floxim.phototeam:vacancy_record', '', 'main_column', 24),
+(590, 422, 12, '', '', 'floxim.corporate.map:static_google_map', 'a:3:{s:9:"map_width";s:3:"940";s:10:"map_height";s:3:"340";s:8:"map_zoom";s:2:"15";}', 'main_column', 25),
 (591, 423, 12, '', '', 'theme.floxim.phototeam:one_column', '', '', 12),
-(594, 426, 12, '', '', 'theme.floxim.phototeam:featured_news_list', 'a:5:{s:12:"show_anounce";s:1:"1";s:18:"read_more_#new_id#";s:4:"More";s:14:"read_more_2778";s:4:"More";s:14:"read_more_2782";s:11:"Reed Mooore";s:14:"read_more_2783";s:16:"Read more please";}', 'main_column', 25),
-(595, 427, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:9:"Infoblock";}', 'section:listing_deep', '', 'main_column', 26),
-(597, 429, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:8:"Filtered";}', 'section:listing_deep', '', 'main_column', 27),
+(594, 426, 12, '', '', 'theme.floxim.phototeam:featured_news_list', 'a:5:{s:12:"show_anounce";s:1:"1";s:18:"read_more_#new_id#";s:4:"More";s:14:"read_more_2778";s:4:"More";s:14:"read_more_2782";s:11:"Reed Mooore";s:14:"read_more_2783";s:16:"Read more please";}', 'main_column', 26),
+(595, 427, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:9:"Infoblock";}', 'section:listing_deep', '', 'main_column', 27),
+(597, 429, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:8:"Filtered";}', 'section:listing_deep', '', 'main_column', 28),
 (599, 431, 12, '', '', 'text:list', '', 'sidebar_430', 1),
 (603, 435, 12, 'theme.floxim.phototeam:titled_block', 'a:1:{s:6:"header";s:19:"Meet the super team";}', 'theme.floxim.phototeam:featured_list', 'a:1:{s:10:"four_items";s:1:"1";}', 'main_column', 30),
 (604, 436, 12, '', '', 'theme.floxim.phototeam:featured_news_list', '', 'main_column', 31),
-(605, 437, 12, '', '', 'floxim.nav.tag:tag_list', '', 'left_column', 3);
+(605, 437, 12, 'theme.floxim.phototeam:col_block', '', 'floxim.nav.tag:tag_list', '', 'left_column', 3),
+(607, 439, 12, '', '', 'theme.floxim.phototeam:news_list', '', 'main_column', 32),
+(608, 440, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:8:"Caution!";}', 'theme.floxim.phototeam:text', 'a:1:{s:12:"hilight_2801";s:1:"1";}', 'main_column', 18);
 
 -- --------------------------------------------------------
 
@@ -1651,7 +1659,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `fx_session`
@@ -1659,7 +1667,8 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
 (13, '5a582a2854ca07204199aae724737929', 2367, 0, 1415156978, 1415197814, 2130706433, 0),
-(15, 'c46a82bc6a3cf9d29998f8696b95329e', 2367, 0, 1415504499, 1415504866, 2130706433, 0);
+(15, 'c46a82bc6a3cf9d29998f8696b95329e', 2367, 0, 1415504499, 1415609269, 2130706433, 0),
+(16, '0586983626e298f54af44c5cda6272e3', 2367, 0, 1415609643, 1415610626, 2130706433, 0);
 
 -- --------------------------------------------------------
 
@@ -1783,7 +1792,7 @@ CREATE TABLE IF NOT EXISTS `fx_url_alias` (
 INSERT INTO `fx_url_alias` (`id`, `url`, `site_id`, `page_id`, `is_original`) VALUES
 (1, '/', 18, 2635, 1),
 (2, '/404', 18, 2636, 1),
-(3, '/About-Us-2', 18, 2640, 1),
+(3, '/About', 18, 2640, 1),
 (4, '/Athletics', 18, 2739, 1),
 (5, '/Birthday-parties', 18, 2745, 1),
 (6, '/Bull-Easter', 18, 2757, 1),
@@ -1853,10 +1862,10 @@ CREATE TABLE IF NOT EXISTS `fx_widget` (
 --
 
 INSERT INTO `fx_widget` (`id`, `name_en`, `name_ru`, `keyword`, `description_en`, `description_ru`, `checked`, `vendor`) VALUES
-(4, 'Block set', 'Набор блоков', 'blockset', '', '', 1, ''),
-(8, 'Grid', 'Сетка', 'grid', NULL, '', 1, ''),
-(9, 'Сustom code', '', 'custom_code', NULL, '', 1, ''),
-(10, 'Map', '', 'map', NULL, '', 1, 'std');
+(4, 'Block set', 'Набор блоков', 'floxim.layout.blockset', '', '', 1, ''),
+(8, 'Grid', 'Сетка', 'floxim.layout.grid', NULL, '', 1, ''),
+(9, 'Сustom code', '', 'floxim.layout.custom_code', NULL, '', 1, ''),
+(10, 'Map', '', 'floxim.corporate.map', NULL, '', 1, 'std');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
