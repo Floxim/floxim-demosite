@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 10 2014 г., 13:11
+-- Время создания: Ноя 10 2014 г., 15:31
 -- Версия сервера: 5.5.38-log
 -- Версия PHP: 5.4.29
 
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_main_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2803 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2804 ;
 
 --
 -- Дамп данных таблицы `fx_floxim_main_content`
@@ -890,7 +890,7 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 (431, 0, 18, 2635, 1, 'Text', 'text', 'list_infoblock', 'a:1:{s:11:"parent_type";s:15:"current_page_id";}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (435, 0, 18, 2640, 1, 'Person by filter', 'person', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:4:"desc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:3:{s:5:"pages";s:4:"this";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (436, 0, 18, 2657, 1, 'News by tag', 'floxim.blog.news', 'list_by_tag', 'a:4:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:15:"floxim.main.tag";s:10:"visibility";s:3:"all";}'),
-(437, 0, 18, 2657, 1, 'Tags', 'floxim.nav.tag', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:3:"asc";s:10:"conditions";a:1:{s:5:"new_1";a:2:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";}}}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
+(437, 0, 18, 2657, 1, 'Tags', 'floxim.nav.tag', 'list_filtered', 'a:5:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:4:"name";s:11:"sorting_dir";s:3:"asc";s:10:"conditions";a:1:{s:5:"new_1";a:3:{s:4:"name";s:9:"parent_id";s:8:"operator";s:1:"=";s:5:"value";a:1:{i:0;s:4:"2657";}}}}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}'),
 (439, 0, 18, 2635, 1, 'News by tag', 'floxim.blog.news', 'list_by_tag', 'a:4:{s:5:"limit";b:0;s:10:"pagination";s:1:"0";s:7:"sorting";s:12:"publish_date";s:11:"sorting_dir";s:4:"desc";}', 'a:3:{s:5:"pages";s:8:"children";s:9:"page_type";s:14:"floxim.nav.tag";s:10:"visibility";s:3:"all";}'),
 (440, 0, 18, 2652, 1, 'Special conditions!', 'floxim.main.text', 'list_infoblock', 'a:1:{s:11:"parent_type";s:13:"mount_page_id";}', 'a:3:{s:5:"pages";s:11:"descendants";s:9:"page_type";s:0:"";s:10:"visibility";s:3:"all";}');
 
@@ -1668,7 +1668,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
 (13, '5a582a2854ca07204199aae724737929', 2367, 0, 1415156978, 1415197814, 2130706433, 0),
 (15, 'c46a82bc6a3cf9d29998f8696b95329e', 2367, 0, 1415504499, 1415609269, 2130706433, 0),
-(16, '0586983626e298f54af44c5cda6272e3', 2367, 0, 1415609643, 1415610626, 2130706433, 0);
+(16, '0586983626e298f54af44c5cda6272e3', 2367, 0, 1415609643, 1415619056, 2130706433, 0);
 
 -- --------------------------------------------------------
 
@@ -1783,7 +1783,7 @@ CREATE TABLE IF NOT EXISTS `fx_url_alias` (
   PRIMARY KEY (`id`),
   KEY `url` (`url`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54 ;
 
 --
 -- Дамп данных таблицы `fx_url_alias`
