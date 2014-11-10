@@ -1,3 +1,33 @@
 [submodule "vendor/Floxim/Floxim"]
 	path = vendor/Floxim/Floxim
 	url = https://github.com/Floxim/floxim.git
+[submodule "vendor/Floxim/Cache"]
+	path = vendor/Floxim/Cache
+	url = https://github.com/Floxim/floxim-cache.git
+[submodule "module/Floxim/User"]
+	path = module/Floxim/User
+	url = https://github.com/Floxim/module-user.git
+[submodule "module/Floxim/Nav"]
+	path = module/Floxim/Nav
+	url = https://github.com/Floxim/module-nav.git
+[submodule "module/Floxim/Main"]
+	path = module/Floxim/Main
+	url = https://github.com/Floxim/module-main.git
+[submodule "module/Floxim/Corporate"]
+	path = module/Floxim/Corporate
+	url = https://github.com/Floxim/module-corporate.git
+[submodule "module/Floxim/Blog"]
+	path = module/Floxim/Blog
+	url = https://github.com/Floxim/module-blog.git
+[submodule "module/Floxim/Form"]
+	path = module/Floxim/Form
+	url = https://github.com/Floxim/module-form.git
+[submodule "module/Floxim/Layout"]
+	path = module/Floxim/Layout
+	url = https://github.com/Floxim/module-layout.git
+[submodule "module/Floxim/Shop"]
+	path = module/Floxim/Shop
+	url = https://github.com/Floxim/module-shop.git
+[submodule "module/Floxim/Media"]
+	path = module/Floxim/Media
+	url = https://github.com/Floxim/module-media.git
