@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 10 2014 г., 15:31
+-- Время создания: Ноя 12 2014 г., 01:55
 -- Версия сервера: 5.5.38-log
 -- Версия PHP: 5.4.29
 
@@ -51,11 +51,11 @@ CREATE TABLE IF NOT EXISTS `fx_component` (
 INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group`, `icon`, `store_id`, `parent_id`, `item_name_en`, `name_ru`, `item_name_ru`, `description_ru`, `vendor`) VALUES
 (1, 'floxim.user.user', 'User', '', '', '', 'component.user', 36, 'User', 'Пользователи', 'Пользователь', '', ''),
 (19, 'floxim.main.text', 'Text', '', '', '', 'component.text', 36, 'text', 'Текст', 'Текст', '', ''),
-(23, 'floxim.main.page', 'Pages', '', '', '', NULL, 36, 'page', 'Страницы', 'Страница', '', ''),
-(24, 'floxim.nav.section', 'Sections', '', '', '', NULL, 23, 'Section', 'Разделы', 'Раздел', '', ''),
+(23, 'floxim.main.page', 'Page', '', '', '', NULL, 36, 'page', 'Страницы', 'Страница', '', ''),
+(24, 'floxim.nav.section', 'Section', '', '', '', NULL, 23, '', 'Разделы', 'Раздел', '', ''),
 (36, 'floxim.main.content', 'Content', '', 'Basic', '', NULL, 0, 'Content', 'Контент', 'Контент', NULL, ''),
-(48, 'floxim.media.photo', 'Photos', '', '', '', NULL, 36, 'Photo', 'Фото', 'Фото', '', ''),
-(49, 'floxim.blog.publication', 'Publications', NULL, '', '', NULL, 23, 'Publication', 'Публикации', 'Публикация', '', ''),
+(48, 'floxim.media.photo', 'Photo', '', '', '', NULL, 36, 'Photo', 'Фото', 'Фото', '', ''),
+(49, 'floxim.blog.publication', 'Publication', '', '', '', NULL, 23, 'Publication', 'Публикации', 'Публикация', '', ''),
 (50, 'floxim.blog.comment', 'Comment', NULL, '', '', NULL, 36, 'comment', 'Комментарии', 'Комментарий', '', ''),
 (59, 'floxim.media.video', 'Video', NULL, '', '', NULL, 36, 'Video', 'Видео', 'Видео', '', ''),
 (62, 'floxim.corporate.project', 'Project', NULL, '', '', NULL, 23, 'Project', 'Проекты', 'Проект', '', ''),
@@ -67,8 +67,8 @@ INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group
 (75, 'floxim.shop.product', 'Product', NULL, '', '', NULL, 23, 'Product', 'Продукты', 'Продукт', '', ''),
 (77, 'floxim.main.linker', 'Linker', NULL, '', '', NULL, 36, 'Linker', 'Привязка', 'Привязка', '', ''),
 (78, 'floxim.nav.tag', 'Tag', '', '', '', NULL, 64, 'Tag', 'Теги', 'Тег', '', ''),
-(80, 'floxim.main.message_template', 'Message templates', NULL, 'Main', '', NULL, 36, 'Message template', 'Шаблоны сообщений', 'Шаблон сообщения', '', ''),
-(81, 'floxim.main.mail_template', 'Mail templates', NULL, 'Main', '', NULL, 80, 'Mail template', 'Почтовые шаблоны', 'Почтовый шаблон', '', '');
+(80, 'floxim.main.message_template', 'Message template', NULL, 'Main', '', NULL, 36, 'Message template', 'Шаблоны сообщений', 'Шаблон сообщения', '', ''),
+(81, 'floxim.main.mail_template', 'Mail template', NULL, 'Main', '', NULL, 80, 'Mail template', 'Почтовые шаблоны', 'Почтовый шаблон', '', '');
 
 -- --------------------------------------------------------
 
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_main_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2804 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2803 ;
 
 --
 -- Дамп данных таблицы `fx_floxim_main_content`
@@ -580,7 +580,7 @@ INSERT INTO `fx_floxim_main_page` (`id`, `url`, `name`, `title`, `comments_count
 (2656, '/Vacancies', 'Vacancies', 'Vacancies', 0, NULL, NULL),
 (2657, '/News', 'News', 'News', 0, NULL, NULL),
 (2658, '/Landscapes', 'Landscapes', '', 0, NULL, NULL),
-(2660, '/Football-photo-report', 'Football photo report', '', 0, '<p>\r\n	Our photographers have been shooting Champion League matches since 2008, the finals of UEFA Euro 2008 and 2012. They are now getting ready for World Cup 2014 in Brazil.</p><p>\r\n	If you want the drama of football match captured by professionals, hire us. We’ve got all the skills, experience, and equipment needed to shot high-quality photo set for you.</p>', NULL),
+(2660, '/Football-photo-report', 'Football photos', '', 0, '<p>\r\n	Our photographers have been shooting Champion League matches since 2008, the finals of UEFA Euro 2008 and 2012. They are now getting ready for World Cup 2014 in Brazil.</p><p>\r\n	If you want the drama of football match captured by professionals, hire us. We’ve got all the skills, experience, and equipment needed to shot high-quality photo set for you.</p>', NULL),
 (2661, '/Skiing', 'Skiing', '', 0, '<p>\n	Ken’s speaking:\n</p>\n<blockquote>\n	I love to shoot winter sports, especially skiing competitions. It’s dynamic, it’s graphic because skis and ski poles give the picture a great rhythm.\n</blockquote>\n<blockquote>\n	The crowd of skiers looks fantastic on the snow. And scenery is always beautiful. I love winter forest – perhaps that’s my Russian roots talking.\n</blockquote>\n<p>\n	Ken’s been shooting ski competitions around the world for several years. If you need a winter sports series he is your guy.\n</p>', NULL),
 (2662, '/Swimming', 'Swimming', '', 0, '<p>\n	After all the time she spent in pools and seas, our photographer Leila is basically half-human half-dolphin. She knows all the details about shooting in water, and even has a couple of inventions of her own for underwater shooting.\n</p>\n<p>\n	Leila’s speaking:\n</p>\n<blockquote>\n	I love how water changes the light, shapes, and textures of things. It can be very expressive. I’m currently getting ready for European Aquatic Championship. A great photo report’s waiting to be made!\n</blockquote>', NULL),
 (2671, '/Ken-Cold', 'Ken The Cold', '', 0, '<p>\r\n	Ken is romantics’ ideal – serene, sensitive, and a bit shy.</p><p>\r\n	When led into the wild, he blends into the nature to capture it beautifully.</p>', NULL),
@@ -938,7 +938,7 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (457, 385, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', 'a:13:{s:7:"bg_2688";s:38:"/floxim_files/content/HansIsland_8.png";s:3:"bg_";s:0:"";s:7:"bg_2690";s:69:"/floxim_files/content/1280px-Sortie_de_l_op_ra_en_l_an_2000-2_1_0.jpg";s:11:"header_2688";s:0:"";s:12:"caption_2688";s:71:"<p>\n	 The carnival of Potosi\n</p>\n<p>\n	<strong>in Bolivia</strong>\n</p>";s:11:"header_2690";s:0:"";s:11:"header_2639";s:42:"<p>\n	 Our projects\n</p>\n<p>\n	are cool\n</p>";s:12:"caption_2639";s:11:"Ain''t they?";s:12:"caption_2690";s:27:"<p>\n	The age old sport\n</p>";s:7:"bg_2639";s:30:"/floxim_files/content/2a_2.JPG";s:12:"caption_2751";s:20:"<p>\n	Pagan fest\n</p>";s:12:"caption_2757";s:28:"<p>\n	a.k.a. Pascua Toro\n</p>";s:7:"bg_2761";s:0:"";}', 'main_column', 12),
 (458, 386, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:17:"About the project";}', 'theme.floxim.phototeam:project_record', '', 'main_column', 13),
 (460, 388, 12, '', '', 'theme.floxim.phototeam:side_menu', 'a:1:{s:10:"unstylized";s:1:"0";}', 'left_column', 1),
-(461, 389, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:6:"Images";}', 'theme.floxim.phototeam:slider', 'a:1:{s:10:"thumbnails";s:1:"1";}', 'main_column', 14),
+(461, 389, 12, 'theme.floxim.phototeam:block_titled', 'a:1:{s:6:"header";s:6:"Images";}', 'theme.floxim.phototeam:slider', 'a:1:{s:10:"thumbnails";s:1:"0";}', 'main_column', 14),
 (462, 390, 12, '', '', 'theme.floxim.phototeam:one_column', '', '', 9),
 (463, 391, 12, '', '', 'theme.floxim.phototeam:banner', 'a:3:{s:18:"banner_header_2656";s:27:"<p class="">\n	Need job?</p>";s:16:"banner_text_2656";s:39:"<p class="">\n	Look at our vacancies</p>";s:17:"banner_image_2656";s:40:"/floxim_files/content/5_open_air_2_0.jpg";}', 'main_column', 9),
 (464, 392, 12, 'theme.floxim.phototeam:gray_block', 'a:1:{s:6:"header";s:11:"Latest news";}', 'theme.floxim.phototeam:featured_news_list', 'a:4:{s:13:"more_news_url";s:5:"/News";s:9:"show_more";s:1:"1";s:12:"show_anounce";s:1:"0";s:9:"more_news";s:8:"all news";}', 'main_column', 8),
@@ -1593,7 +1593,7 @@ CREATE TABLE IF NOT EXISTS `fx_option` (
 --
 
 INSERT INTO `fx_option` (`id`, `keyword`, `name`, `value`, `autoload`) VALUES
-(1, 'fx.version', 'Current floxim version', '0.1.1', 1);
+(1, 'fx.version', 'Current Floxim version', '0.1.1', 1);
 
 -- --------------------------------------------------------
 
@@ -1668,7 +1668,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
 (13, '5a582a2854ca07204199aae724737929', 2367, 0, 1415156978, 1415197814, 2130706433, 0),
 (15, 'c46a82bc6a3cf9d29998f8696b95329e', 2367, 0, 1415504499, 1415609269, 2130706433, 0),
-(16, '0586983626e298f54af44c5cda6272e3', 2367, 0, 1415609643, 1415619056, 2130706433, 0);
+(16, '0586983626e298f54af44c5cda6272e3', 2367, 0, 1415609643, 1415742240, 2130706433, 0);
 
 -- --------------------------------------------------------
 
@@ -1783,7 +1783,7 @@ CREATE TABLE IF NOT EXISTS `fx_url_alias` (
   PRIMARY KEY (`id`),
   KEY `url` (`url`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=54 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Дамп данных таблицы `fx_url_alias`

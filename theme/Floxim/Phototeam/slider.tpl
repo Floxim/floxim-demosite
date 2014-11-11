@@ -3,10 +3,11 @@
     fx:name="Simple slider"
     fx:of="photo:list"
     fx:size="high,wide"
+    fx:add="false"
     data-thumbnails="{%thumbnails type='bool' label='Show thumnails'}0{/%}"
     class="slider-wrapper">
     <div  class="slider">
-        <div fx:each="$items" class="slide {if $is_first}active{/if}">
+        <div fx:each="$items" class="slide {if $position == 1}active{/if}">
             <img src="{$photo|'width:990px,height:360'}<?=$template_dir?>img/ship.jpg{/$}">
         </div>
         {if count($items)>1}

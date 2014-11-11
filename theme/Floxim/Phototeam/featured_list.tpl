@@ -4,7 +4,7 @@
     fx:of="page:list"
     fx:size="low,wide"
     data-four_items="{%four_items type='bool' label='Four items'}0{/%}"
-    class="featured-list  {if $four_items}four-items{/if}">
+    class="featured-list  {if $four_items && count($items) > 3}four-items{/if}">
     <a
         fx:each="$items"
         href="{$url}#{/$}"
