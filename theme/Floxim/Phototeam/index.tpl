@@ -92,24 +92,7 @@
                     fx:area="main_column"
                     fx:size="wide,high"
                     class="main-column">
-                    <div
-                        fx:template="full_width_banner"
-                        fx:name="Full width banner"
-                        fx:of="page:list"
-                        fx:size="high,wide"
-                        style="background-image: url({$image});"
-                        class="full-back">
-                        <div class="caption">
-                            <h2>
-                                {%header}<p>Header</p>{/%}
-                                <div style="clear:both;"></div>
-                            </h2>
-                            <div fx:if="$text" class="text">
-                                {$text}
-                                <a fx:if="$url" class="go" href="{$url}">Go</a>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div fx:template="block_titled" fx:of="wrapper" class="left-titled-block" fx:suit="local">
                         <h2>{%header}{$infoblock.name /}{/%}</h2>
                         <div class="content">
