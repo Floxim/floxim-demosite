@@ -19,7 +19,7 @@
             <div class="h3">
                 <p>{$name}</p>
             </div>
-            <div fx:if="$price" class="price">{$price} {$currency}${/$}</div>
+            <div fx:if="$price" class="price">{$currency}${/$}{$price}</div>
             <div style="clear:both;"></div>
         </div>
     </a>

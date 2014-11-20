@@ -15,7 +15,7 @@
             <div class="text">
                 {$short_description}<p>Description</p>{/$}
             </div>
-            <div class="extra price">{$price} {%product_currency}${/%}</div>
+            <div class="extra price">{%product_currency}${/%}{$price}</div>
             <div style="clear: both;"></div>
         </div>
         <div style="clear:both;"></div>
