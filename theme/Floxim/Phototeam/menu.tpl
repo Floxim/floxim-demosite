@@ -54,18 +54,18 @@
         {set $ai = $items.first()}
     {/if}
     {set $cid = fx::env('page_id')}
-    style="background-image: url('{%bg_$cid | 'max-width:1200'}{$ai.image}{$ai.photo}img/ship.jpg{/$}{/$}{/%}');"
+    style="background-image: url('{%bg_$cid label="Image" | 'max-width:1200'}{$ai.image}{$ai.photo}img/ship.jpg{/$}{/$}{/%}');"
     class="full-back">
 
-    <div class="caption">
+    <div class="caption" fx:with="$ai">
         <div class="h2">
             {%header_$cid}
             <p>{$ai.name}Place header here{/$}</p>
             {/%}
         </div>
         <div class="text">
-            <div>{%caption_$cid type="html"}{$ai.short_description}<p>This writing is on</p>{/$}{/%}</div>
-            <a fx:if="$ai" class="go" href="{$ai.url}#content"></a>
+            <div>{%caption_$cid type="html"}{$short_description}<p>This writing is on</p>{/$}{/%}</div>
+            <a fx:if="$ai" class="go" href="{$url}#content"></a>
         </div>
     </div>
     
