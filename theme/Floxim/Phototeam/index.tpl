@@ -47,7 +47,7 @@
                                 <div class="form auth_form" fx:template="auth_form" fx:of="user:auth_form">
                                     {apply form.form:form with $form}
                                         <div class="input-group {$name}" fx:each="$fields">
-                                            {apply form.form:label  /}
+                                            {if $type != 'submit'}{apply form.form:label  /}{/if}
                                             {apply form.form:input /}
                                             {apply form.form:errors /}
                                         </div>
