@@ -545,8 +545,7 @@ function fx_update_db()
         "UPDATE `fx_site` SET `domain` = '" . mysql_real_escape_string('alt.' . $_SERVER['HTTP_HOST']) . "' WHERE `id` = 1",
         "UPDATE `fx_floxim_user_user` SET `password` = '"
         . crypt($_SESSION['pwd'], uniqid(mt_rand(), true))
-        . "', `email` = '" . mysql_real_escape_string(fx_post_get('email')) . "'",
-        "UPDATE `fx_settings` SET `value` = '" . mysql_real_escape_string(fx_post_get('email')) . "' WHERE `key` = 'spam_from_email'"
+        . "', `email` = '" . mysql_real_escape_string(fx_post_get('email')) . "'"
     );
 
     foreach ($sql as $query) {
