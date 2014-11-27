@@ -1,17 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.0.10
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Ноя 24 2014 г., 15:34
--- Версия сервера: 5.5.39
--- Версия PHP: 5.4.31
+-- Хост: 127.0.0.1:3306
+-- Время создания: Ноя 27 2014 г., 18:50
+-- Версия сервера: 5.5.38-log
+-- Версия PHP: 5.5.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
--- База данных: `floxim`
+-- База данных: `floxim_loc`
 --
 
 -- --------------------------------------------------------
@@ -21,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `fx_component` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `keyword` varchar(255) NOT NULL,
   `name_en` varchar(255) NOT NULL,
   `description_en` text COMMENT 'Описание компонента',
@@ -33,7 +39,9 @@ CREATE TABLE IF NOT EXISTS `fx_component` (
   `name_ru` varchar(255) DEFAULT NULL,
   `item_name_ru` varchar(255) DEFAULT NULL,
   `description_ru` text,
-  `vendor` varchar(255) NOT NULL
+  `vendor` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Class_Group` (`group`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=100 AUTO_INCREMENT=82 ;
 
 --
@@ -69,12 +77,13 @@ INSERT INTO `fx_component` (`id`, `keyword`, `name_en`, `description_en`, `group
 --
 
 CREATE TABLE IF NOT EXISTS `fx_datatype` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` char(64) NOT NULL,
   `priority` int(11) DEFAULT NULL,
   `searchable` tinyint(1) NOT NULL DEFAULT '1',
   `not_null` tinyint(1) NOT NULL DEFAULT '1',
-  `default` tinyint(1) NOT NULL DEFAULT '1'
+  `default` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=204 AUTO_INCREMENT=15 ;
 
 --
@@ -102,7 +111,7 @@ INSERT INTO `fx_datatype` (`id`, `name`, `priority`, `searchable`, `not_null`, `
 --
 
 CREATE TABLE IF NOT EXISTS `fx_field` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `component_id` int(11) NOT NULL DEFAULT '0',
   `keyword` char(64) NOT NULL,
   `name_en` varchar(255) NOT NULL,
@@ -115,7 +124,12 @@ CREATE TABLE IF NOT EXISTS `fx_field` (
   `default` char(255) DEFAULT NULL,
   `type_of_edit` int(11) NOT NULL DEFAULT '1',
   `checked` tinyint(1) NOT NULL DEFAULT '1',
-  `form_tab` tinyint(4) NOT NULL
+  `form_tab` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Checked` (`checked`),
+  KEY `component_id` (`component_id`),
+  KEY `TypeOfData_ID` (`type`),
+  KEY `TypeOfEdit_ID` (`type_of_edit`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=95 AUTO_INCREMENT=320 ;
 
 --
@@ -195,7 +209,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_blog_comment` (
   `comment_text` text,
   `publish_date` datetime DEFAULT NULL,
   `user_name` varchar(255) DEFAULT NULL,
-  `is_moderated` tinyint(4) DEFAULT NULL
+  `is_moderated` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -205,7 +220,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_blog_comment` (
 --
 
 CREATE TABLE IF NOT EXISTS `fx_floxim_blog_news` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -228,7 +244,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_blog_publication` (
   `id` int(11) NOT NULL,
   `publish_date` datetime DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
-  `text` text
+  `text` text,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -236,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_blog_publication` (
 --
 
 INSERT INTO `fx_floxim_blog_publication` (`id`, `publish_date`, `image`, `text`) VALUES
-(2678, '2014-04-17 00:00:00', '/floxim_files/content/news/image/2a_0.jpg', 'We say goodbye to our old studio.\r\n<br>\r\n\r\n	The new one is almost ready for us to move in.\r\n<br>\r\n\r\n	It’s bigger, lighter, and there is a small garden to throw a studio-warming party.\r\n<br>'),
+(2678, '2014-04-17 00:00:00', '/floxim_files/content/news/image/2a_0.jpg', '<p class="">We say goodbye to our old studio.</p><p class="">	The new one is almost ready for us to move in.</p><p class="">	It’s bigger, lighter, and there is a small garden to throw a studio-warming party.</p>'),
 (2679, '2013-01-12 15:37:34', '/floxim_files/content/news/image/5_city_6_0.jpg', 'Guys didn’t win this time but we’ll be back next year.\r\n<br>\r\n\r\n	   For now, have Nika and her crazy hair having fun in Russia.\r\n<br>'),
 (2680, '2014-02-21 15:19:29', '/floxim_files/content/news/image/2v_10_0.jpg', 'We are back from Sheregesh, a small village in Syberia.\r\n<br>\r\n\r\n	The place is perfect for free ride and Russian snow is the fluffiest.\r\n<br>'),
 (2681, '2014-08-07 15:39:50', '/floxim_files/content/news/image/5_athlet_5_0.jpg', 'We made a photo report about Moscow Athletics Championship.\r\n<br>\r\n\r\n	In other news - Nika lost her voice while cheering for a cute runner.\r\n<br>');
@@ -250,7 +267,8 @@ INSERT INTO `fx_floxim_blog_publication` (`id`, `publish_date`, `image`, `text`)
 CREATE TABLE IF NOT EXISTS `fx_floxim_corporate_contact` (
   `id` int(11) NOT NULL,
   `value` varchar(255) DEFAULT NULL,
-  `contact_type` varchar(255) DEFAULT NULL
+  `contact_type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -265,7 +283,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_corporate_person` (
   `department` varchar(255) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   `short_description` varchar(255) DEFAULT NULL,
-  `birthday` datetime DEFAULT NULL
+  `birthday` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -289,7 +308,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_corporate_project` (
   `image` varchar(255) DEFAULT NULL,
   `client` varchar(255) DEFAULT NULL,
   `short_description` varchar(255) DEFAULT NULL,
-  `date` datetime DEFAULT NULL
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -316,7 +336,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_corporate_vacancy` (
   `responsibilities` text,
   `work_conditions` text,
   `currency` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -334,7 +355,7 @@ INSERT INTO `fx_floxim_corporate_vacancy` (`id`, `salary_from`, `salary_to`, `re
 --
 
 CREATE TABLE IF NOT EXISTS `fx_floxim_main_content` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `priority` int(11) NOT NULL DEFAULT '0',
   `checked` tinyint(4) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -345,7 +366,9 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_main_content` (
   `site_id` int(11) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `materialized_path` varchar(255) NOT NULL,
-  `level` tinyint(3) unsigned NOT NULL
+  `level` tinyint(3) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `materialized_path` (`materialized_path`,`level`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2803 ;
 
 --
@@ -356,21 +379,21 @@ INSERT INTO `fx_floxim_main_content` (`id`, `priority`, `checked`, `created`, `l
 (2367, 135, 1, '2013-10-21 15:21:23', '2014-11-09 02:32:39', 99, 'floxim.user.user', 0, NULL, NULL, '', 0),
 (2635, 216, 1, '2014-01-28 11:39:50', '2014-11-05 09:30:56', 2367, 'floxim.main.page', 0, 18, NULL, '', 0),
 (2636, 217, 1, '2014-01-28 11:39:50', '2014-11-05 09:30:56', 2367, 'floxim.main.page', 0, 18, 2635, '2635.', 1),
-(2638, 3, 1, '2014-01-28 12:04:17', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2635, '2635.', 1),
+(2638, 5, 1, '2014-01-28 12:04:17', '2014-11-27 14:16:38', 2367, 'floxim.nav.section', 346, 18, 2635, '2635.', 1),
 (2639, 2, 1, '2014-01-28 12:04:33', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2635, '2635.', 1),
 (2640, 1, 1, '2014-01-28 12:07:04', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2635, '2635.', 1),
 (2641, 2, 1, '2014-01-28 12:07:17', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
 (2652, 4, 1, '2014-01-30 13:34:21', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2638, '2635.2638.', 2),
 (2654, 2, 1, '2014-01-30 13:34:34', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2638, '2635.2638.', 2),
 (2655, 1, 1, '2014-01-30 13:38:14', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
-(2656, 4, 1, '2014-01-30 13:38:26', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
-(2657, 3, 1, '2014-01-30 13:38:46', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
+(2656, 3, 1, '2014-01-30 13:38:26', '2014-11-27 13:12:54', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
+(2657, 4, 1, '2014-01-30 13:38:46', '2014-11-27 13:12:54', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
 (2658, 1, 1, '2014-01-30 14:00:50', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2638, '2635.2638.', 2),
 (2659, 0, 1, '2014-01-30 14:07:10', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 362, 18, 2638, '2635.2638.', 2),
 (2660, 230, 1, '2014-01-30 14:38:47', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2661, 231, 1, '2014-01-30 14:40:14', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2662, 232, 1, '2014-01-30 14:42:35', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2652, '2635.2638.2652.', 3),
-(2668, 2, 1, '2014-01-30 15:08:08', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
+(2668, 1, 1, '2014-01-30 15:08:08', '2014-11-27 13:45:25', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
 (2671, 2, 1, '2014-02-13 15:14:27', '2014-11-09 02:47:20', 2367, 'floxim.corporate.person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2673, 3, 1, '2014-01-30 15:19:09', '2014-11-09 02:47:20', 2367, 'floxim.corporate.person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2675, 1, 1, '2014-01-30 15:19:48', '2014-11-09 02:47:20', 2367, 'floxim.corporate.person', 372, 18, 2655, '2635.2640.2655.', 3),
@@ -396,8 +419,8 @@ INSERT INTO `fx_floxim_main_content` (`id`, `priority`, `checked`, `created`, `l
 (2744, 3, 1, '2014-03-11 21:59:51', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2638, '2635.2638.', 2),
 (2745, 2, 1, '2014-03-11 22:01:34', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2744, '2635.2638.2744.', 3),
 (2746, 1, 1, '2014-03-11 22:02:45', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2744, '2635.2638.2744.', 3),
-(2747, 3, 1, '2014-03-12 05:01:05', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
-(2748, 1, 1, '2014-03-12 05:01:05', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
+(2747, 2, 1, '2014-03-12 05:01:05', '2014-11-27 12:27:38', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
+(2748, 3, 1, '2014-03-12 05:01:05', '2014-11-27 13:45:25', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
 (2749, 0, 1, '2014-03-12 05:02:10', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 369, 18, 2635, '2635.', 1),
 (2750, 2, 1, '2014-03-14 14:09:54', '2014-11-09 02:47:21', 2367, 'floxim.media.photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2751, 3, 1, '2014-03-14 18:24:30', '2014-11-09 02:47:21', 2367, 'floxim.corporate.project', 385, 18, 2639, '2635.2639.', 2),
@@ -446,7 +469,8 @@ INSERT INTO `fx_floxim_main_content` (`id`, `priority`, `checked`, `created`, `l
 
 CREATE TABLE IF NOT EXISTS `fx_floxim_main_linker` (
   `id` int(11) NOT NULL,
-  `linked_id` int(11) DEFAULT NULL
+  `linked_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -488,7 +512,8 @@ INSERT INTO `fx_floxim_main_linker` (`id`, `linked_id`) VALUES
 CREATE TABLE IF NOT EXISTS `fx_floxim_main_mail_template` (
   `id` int(11) NOT NULL,
   `from` varchar(255) DEFAULT NULL,
-  `bcc` varchar(255) DEFAULT NULL
+  `bcc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -509,7 +534,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_main_message_template` (
   `subject` varchar(255) DEFAULT NULL,
   `message` text,
   `language_id` int(11) DEFAULT NULL,
-  `keyword` varchar(255) DEFAULT NULL
+  `keyword` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -532,7 +558,9 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_main_page` (
   `title` varchar(255) DEFAULT NULL,
   `comments_counter` int(11) DEFAULT NULL,
   `description` text,
-  `h1` varchar(255) DEFAULT NULL
+  `h1` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `url` (`url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=62;
 
 --
@@ -557,12 +585,12 @@ INSERT INTO `fx_floxim_main_page` (`id`, `url`, `name`, `title`, `comments_count
 (2662, '/Swimming', 'Swimming', '', 0, '<p>\n	After all the time she spent in pools and seas, our photographer Leila is basically half-human half-dolphin. She knows all the details about shooting in water, and even has a couple of inventions of her own for underwater shooting.\n</p>\n<p>\n	Leila’s speaking:\n</p>\n<blockquote>\n	I love how water changes the light, shapes, and textures of things. It can be very expressive. I’m currently getting ready for European Aquatic Championship. A great photo report’s waiting to be made!\n</blockquote>', NULL),
 (2671, '/Ken-Cold', 'Ken The Cold', '', 0, '<p>\r\n	Ken is romantics’ ideal – serene, sensitive, and a bit shy.</p><p>\r\n	When led into the wild, he blends into the nature to capture it beautifully.</p>', NULL),
 (2673, '/Leila-Stoparsson', 'Leila Stoparsson', '', 0, '<p>\r\n	Leila is the best at shooting interiors.</p><p>\r\n	Her photographs always give you the sense of the place.</p>', NULL),
-(2675, '/Nika-Lightman', 'Nika Lightman', '', 0, '<p>\r\n	Nika Lightman has a gift to shoot portraits.</p><p class="">\r\n	We all have pictures of ourselves made by Nika.</p><p>\r\n	Accurate yet flattering!</p>', NULL),
+(2675, '/Nika-Lightman', 'Nika Lightman', '', 0, '<p>\n	Nika Lightman has a gift to shoot portraits.</p><p class="">\n	We all have pictures of ourselves made by Nika.</p><p class="">\n	Accurate yet flattering!</p>', NULL),
 (2677, '/Maker-up', 'Maker up', '', 0, NULL, NULL),
-(2678, '/Redecoration-in-our-new-studio', 'Redecoration in our new studio', '', 0, '<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">Last touches, and we are ready to move in!</span><br>', NULL),
-(2679, '/Moscow-Streetshot-Contest', 'Moscow Streetshot Contest', '', 0, '<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">Nika’s and Ken’s street series were shortlisted for Moscow Streetshot Contest.</span><br>', NULL),
-(2680, '/Free-ride-proof-pics', 'Free ride proof pics!', '', 0, '<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">The whole team went for free ride. Proof pics!</span><br>', NULL),
-(2681, '/Moscow-Athletics-Championship', 'Moscow Athletics Championship', 'Moscow Athletics Championship', 0, '<span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">We made some great photo series during Moscow Athletics Championship.</span><br>\r\n	Check them out.<br>', NULL),
+(2678, '/Redecoration-in-our-new-studio', 'Redecoration in our new studio', '', 0, '<p><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">Last touches, and we are ready to move in!</span></p>', NULL),
+(2679, '/Moscow-Streetshot-Contest', 'Moscow Streetshot Contest', '', 0, '<p><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">Nika’s and Ken’s street series were shortlisted for Moscow Streetshot Contest.</span></p>', NULL),
+(2680, '/Free-ride-proof-pics', 'Free ride proof pics!', '', 0, '<p><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">The whole team went for free ride. Proof pics!</span></p>', NULL),
+(2681, '/Moscow-Athletics-Championship', 'Moscow Athletics Championship', 'Moscow Athletics Championship', 0, '<p><span style="font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;" class="">We made some great photo series during Moscow Athletics Championship.</span><br>\n	Check them out.</p>', NULL),
 (2688, '/Carnival-of-miners', 'Carnival of miners', '', 0, '<p>\n	The patron of miners, the Devil, has combined both positive – Indian mythology – and negative – Catholic – roots. The miners attributed their good fortune directly with a grace of the devil, and thank him in their crazy carnival dances.\n</p>\n<p>\n	Leila went to Bolivia after Young Pathfinder offered her to do a series about miners’ life in Sought America. Leila came back with a beautiful photo report.\n</p>', NULL),
 (2690, '/Cockfights', 'Cockfights', '', 0, '<p>\n	Cockfighting is a blood sport due in some part to the physical trauma the cocks inflict on each other. Advocates of the "age old sport" often list cultural and religious relevance as reasons for perpetuation of cockfighting as a sport.\n</p>\n<p>\n	Nika disapproves of the whole thing but she went to Cuba to document the fights, the true professional she is.\n</p>', NULL),
 (2735, '/Sonya-Zoomer', 'Sonya Zoomer', '', 0, '<blockquote>\r\n	 “She is a genius, a philosopher, an abstract thinker. She has a brain of the first order. She sits motionless, like a spider in the center of its web, but that web has a thousand radiations, and she knows well every quiver of each of them. She does little himself. She only plans&hellip;”\r\n</blockquote><p>\r\n	 Meet Sonya, our manager.</p>', NULL),
@@ -595,7 +623,8 @@ INSERT INTO `fx_floxim_main_page` (`id`, `url`, `name`, `title`, `comments_count
 
 CREATE TABLE IF NOT EXISTS `fx_floxim_main_text` (
   `id` int(11) NOT NULL,
-  `text` text
+  `text` text,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=1199;
 
 --
@@ -618,7 +647,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_media_photo` (
   `id` int(11) NOT NULL,
   `photo` varchar(255) DEFAULT NULL,
   `description` text,
-  `copy` varchar(255) DEFAULT NULL
+  `copy` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -644,7 +674,8 @@ INSERT INTO `fx_floxim_media_photo` (`id`, `photo`, `description`, `copy`) VALUE
 CREATE TABLE IF NOT EXISTS `fx_floxim_media_video` (
   `id` int(11) NOT NULL,
   `embed_html` text,
-  `description` text
+  `description` text,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -654,7 +685,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_media_video` (
 --
 
 CREATE TABLE IF NOT EXISTS `fx_floxim_nav_classifier` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -679,7 +711,8 @@ INSERT INTO `fx_floxim_nav_classifier` (`id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fx_floxim_nav_section` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=7;
 
 --
@@ -706,7 +739,8 @@ INSERT INTO `fx_floxim_nav_section` (`id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fx_floxim_nav_tag` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -734,7 +768,8 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_shop_product` (
   `id` int(11) NOT NULL,
   `short_description` text,
   `image` varchar(255) DEFAULT NULL,
-  `price` int(11) DEFAULT NULL
+  `price` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -770,7 +805,9 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_user_user` (
   `pa_balance` double NOT NULL DEFAULT '0',
   `auth_hash` varchar(50) NOT NULL DEFAULT '',
   `is_admin` tinyint(4) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `User_ID` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=104;
 
 --
@@ -787,7 +824,7 @@ INSERT INTO `fx_floxim_user_user` (`id`, `email`, `login`, `name`, `registration
 --
 
 CREATE TABLE IF NOT EXISTS `fx_infoblock` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_infoblock_id` int(11) NOT NULL DEFAULT '0',
   `site_id` int(11) NOT NULL,
   `page_id` int(10) unsigned NOT NULL,
@@ -796,7 +833,9 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock` (
   `controller` varchar(50) NOT NULL,
   `action` varchar(50) NOT NULL,
   `params` text NOT NULL,
-  `scope` text NOT NULL
+  `scope` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `page_id` (`page_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=441 ;
 
 --
@@ -862,7 +901,7 @@ INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `
 --
 
 CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `infoblock_id` int(10) unsigned NOT NULL,
   `layout_id` int(10) unsigned NOT NULL,
   `wrapper` varchar(255) NOT NULL,
@@ -870,7 +909,9 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
   `template` varchar(255) NOT NULL,
   `template_visual` text NOT NULL,
   `area` varchar(50) NOT NULL,
-  `priority` int(11) NOT NULL
+  `priority` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `infoblock_id` (`infoblock_id`,`layout_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=609 ;
 
 --
@@ -906,7 +947,7 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (471, 399, 12, '', '', 'theme.floxim.phototeam:index', '', '', 11),
 (472, 400, 12, '', '', 'theme.floxim.phototeam:side_menu', '{"unstylized":"0"}', 'grid_sidebar_410', 1),
 (476, 404, 12, '', '{"header":"About us"}', 'theme.floxim.phototeam:side_menu', '{"unstylized":"0"}', 'left_column', 2),
-(575, 408, 12, '', '', 'theme.floxim.phototeam:auth_form', '{"label_email":"E-mail                        ","label_password":"Password","label_remember":"Remember me","label_submit":"Log in"}', 'icons_area', 1),
+(575, 408, 12, '', '', 'theme.floxim.phototeam:auth_form', '{"label_email":"E-mail                        ","label_password":"Password","label_remember":"Remember me","label_submit":"Log in","label_auth_form_submit":""}', 'icons_area', 1),
 (576, 409, 12, '', '', 'user:greet', '', 'icons_area', 2),
 (577, 410, 12, 'theme.floxim.phototeam:titled_block', '{"header":"We shoot everything and everywhere around the world"}', 'theme.floxim.phototeam:two_columns_grid', '', 'main_column', 17),
 (578, 411, 12, '', '', 'theme.floxim.phototeam:full_screen_menu', '{"header_2635":"<p class=\\"\\">Team of&nbsp;<\\/p><p class=\\"\\">photographers<\\/p>","caption_2635":"We come in&nbsp;any sizes and shapes ready to<br>\\n\\tshoot any series&nbsp;you like.<br>","bg_2635":"\\/floxim_files\\/content\\/6_pascua_toro_19_0.JPG"}', 'main_column', 15),
@@ -936,10 +977,12 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 --
 
 CREATE TABLE IF NOT EXISTS `fx_lang` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `en_name` varchar(100) NOT NULL,
   `native_name` varchar(100) NOT NULL,
-  `lang_code` varchar(5) NOT NULL
+  `lang_code` varchar(5) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `lang_code` (`lang_code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
@@ -957,12 +1000,13 @@ INSERT INTO `fx_lang` (`id`, `en_name`, `native_name`, `lang_code`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fx_lang_string` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `dict` varchar(45) DEFAULT NULL,
   `string` text,
   `lang_en` text,
-  `lang_ru` text
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1106 ;
+  `lang_ru` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1115 ;
 
 --
 -- Дамп данных таблицы `fx_lang_string`
@@ -1483,7 +1527,16 @@ INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALU
 (1102, 'controller_component', 'After submission...', 'After submission...', NULL),
 (1103, 'system', 'Refresh page', 'Refresh page', NULL),
 (1104, 'system', 'Go to the created page', 'Go to the created page', NULL),
-(1105, 'system', 'Go to the parent page', 'Go to the parent page', NULL);
+(1105, 'system', 'Go to the parent page', 'Go to the parent page', NULL),
+(1106, 'system', 'After login', 'After login', NULL),
+(1107, 'system', 'Refresh current page', 'Refresh current page', NULL),
+(1108, 'system', 'Redirect to homepage', 'Redirect to homepage', NULL),
+(1109, 'system', 'Redirect to custom URL...', 'Redirect to custom URL...', NULL),
+(1110, 'system', 'Target URL', 'Target URL', NULL),
+(1111, 'system', 'The content contains some descendants', 'The content contains some descendants', NULL),
+(1112, 'system', 'items. These items will be removed.', 'items. These items will be removed.', NULL),
+(1113, 'system', 'after', 'after', NULL),
+(1114, 'system', 'before', 'before', NULL);
 
 -- --------------------------------------------------------
 
@@ -1492,9 +1545,10 @@ INSERT INTO `fx_lang_string` (`id`, `dict`, `string`, `lang_en`, `lang_ru`) VALU
 --
 
 CREATE TABLE IF NOT EXISTS `fx_layout` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `keyword` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=64 AUTO_INCREMENT=13 ;
 
 --
@@ -1511,13 +1565,15 @@ INSERT INTO `fx_layout` (`id`, `keyword`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fx_module` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `installed` tinyint(4) NOT NULL DEFAULT '0',
   `inside_admin` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `checked` tinyint(4) unsigned NOT NULL DEFAULT '1'
+  `checked` tinyint(4) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `Checked` (`checked`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=68 AUTO_INCREMENT=5 ;
 
 --
@@ -1536,11 +1592,14 @@ INSERT INTO `fx_module` (`id`, `name`, `keyword`, `description`, `installed`, `i
 --
 
 CREATE TABLE IF NOT EXISTS `fx_option` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `keyword` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL,
-  `autoload` tinyint(1) NOT NULL DEFAULT '1'
+  `autoload` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `autoload` (`autoload`),
+  KEY `keyword` (`keyword`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
@@ -1557,13 +1616,14 @@ INSERT INTO `fx_option` (`id`, `keyword`, `name`, `value`, `autoload`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fx_patch` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `to` varchar(255) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `description` char(255) NOT NULL,
   `from` varchar(255) NOT NULL,
   `status` varchar(20) NOT NULL,
-  `url` varchar(255) NOT NULL
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
@@ -1580,9 +1640,11 @@ INSERT INTO `fx_patch` (`id`, `to`, `created`, `description`, `from`, `status`, 
 --
 
 CREATE TABLE IF NOT EXISTS `fx_patch_migration` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
@@ -1600,22 +1662,26 @@ INSERT INTO `fx_patch_migration` (`id`, `name`, `created`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `fx_session` (
-`id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `session_key` char(32) NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `site_id` int(10) unsigned NOT NULL,
   `start_time` int(11) NOT NULL DEFAULT '0',
   `last_activity_time` int(11) NOT NULL DEFAULT '0',
   `ip` bigint(11) NOT NULL DEFAULT '0',
-  `remember` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=19 ;
+  `remember` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `User_ID` (`user_id`),
+  KEY `session_key` (`session_key`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=22 ;
 
 --
 -- Дамп данных таблицы `fx_session`
 --
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
-(18, '4cd332d31219861495f6936303b704bf', 2367, 0, 1416834822, 1416834827, 2130706433, 1);
+(18, '4cd332d31219861495f6936303b704bf', 2367, 0, 1416834822, 1416834827, 2130706433, 1),
+(21, '98e9ea9fd3b719f6eb9517f4d8fd7335', 2367, 0, 1417053187, 1417099796, 2130706433, 0);
 
 -- --------------------------------------------------------
 
@@ -1624,7 +1690,7 @@ INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time
 --
 
 CREATE TABLE IF NOT EXISTS `fx_site` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL,
   `domain` varchar(128) NOT NULL,
@@ -1642,7 +1708,9 @@ CREATE TABLE IF NOT EXISTS `fx_site` (
   `type` enum('useful','mobile') NOT NULL DEFAULT 'useful' COMMENT 'Тип сайта: обычный или мобильный',
   `language` varchar(255) NOT NULL DEFAULT 'en',
   `offline_text` varchar(255) DEFAULT NULL,
-  `store_id` text
+  `store_id` text,
+  PRIMARY KEY (`id`),
+  KEY `Checked` (`checked`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=292 AUTO_INCREMENT=19 ;
 
 --
@@ -1659,11 +1727,14 @@ INSERT INTO `fx_site` (`id`, `parent_id`, `name`, `domain`, `layout_id`, `color`
 --
 
 CREATE TABLE IF NOT EXISTS `fx_url_alias` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) DEFAULT NULL,
   `site_id` int(11) NOT NULL DEFAULT '0',
   `page_id` int(11) NOT NULL DEFAULT '0',
-  `is_original` tinyint(3) unsigned NOT NULL DEFAULT '0'
+  `is_original` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `url` (`url`),
+  KEY `page_id` (`page_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
@@ -1727,14 +1798,15 @@ INSERT INTO `fx_url_alias` (`id`, `url`, `site_id`, `page_id`, `is_original`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `fx_widget` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name_en` varchar(255) NOT NULL,
   `name_ru` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL,
   `description_en` text,
   `description_ru` text NOT NULL,
   `checked` tinyint(1) NOT NULL DEFAULT '1',
-  `vendor` varchar(255) NOT NULL
+  `vendor` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=111 AUTO_INCREMENT=11 ;
 
 --
@@ -1747,312 +1819,6 @@ INSERT INTO `fx_widget` (`id`, `name_en`, `name_ru`, `keyword`, `description_en`
 (9, 'Сustom code', '', 'floxim.layout.custom_code', NULL, '', 1, ''),
 (10, 'Map', '', 'floxim.corporate.map', NULL, '', 1, 'std');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `fx_component`
---
-ALTER TABLE `fx_component`
- ADD PRIMARY KEY (`id`), ADD KEY `Class_Group` (`group`);
-
---
--- Indexes for table `fx_datatype`
---
-ALTER TABLE `fx_datatype`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_field`
---
-ALTER TABLE `fx_field`
- ADD PRIMARY KEY (`id`), ADD KEY `Checked` (`checked`), ADD KEY `component_id` (`component_id`), ADD KEY `TypeOfData_ID` (`type`), ADD KEY `TypeOfEdit_ID` (`type_of_edit`);
-
---
--- Indexes for table `fx_floxim_blog_comment`
---
-ALTER TABLE `fx_floxim_blog_comment`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_blog_news`
---
-ALTER TABLE `fx_floxim_blog_news`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_blog_publication`
---
-ALTER TABLE `fx_floxim_blog_publication`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_corporate_contact`
---
-ALTER TABLE `fx_floxim_corporate_contact`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_corporate_person`
---
-ALTER TABLE `fx_floxim_corporate_person`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_corporate_project`
---
-ALTER TABLE `fx_floxim_corporate_project`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_corporate_vacancy`
---
-ALTER TABLE `fx_floxim_corporate_vacancy`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_main_content`
---
-ALTER TABLE `fx_floxim_main_content`
- ADD PRIMARY KEY (`id`), ADD KEY `materialized_path` (`materialized_path`,`level`);
-
---
--- Indexes for table `fx_floxim_main_linker`
---
-ALTER TABLE `fx_floxim_main_linker`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_main_mail_template`
---
-ALTER TABLE `fx_floxim_main_mail_template`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_main_message_template`
---
-ALTER TABLE `fx_floxim_main_message_template`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_main_page`
---
-ALTER TABLE `fx_floxim_main_page`
- ADD PRIMARY KEY (`id`), ADD KEY `url` (`url`);
-
---
--- Indexes for table `fx_floxim_main_text`
---
-ALTER TABLE `fx_floxim_main_text`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_media_photo`
---
-ALTER TABLE `fx_floxim_media_photo`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_media_video`
---
-ALTER TABLE `fx_floxim_media_video`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_nav_classifier`
---
-ALTER TABLE `fx_floxim_nav_classifier`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_nav_section`
---
-ALTER TABLE `fx_floxim_nav_section`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_nav_tag`
---
-ALTER TABLE `fx_floxim_nav_tag`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_shop_product`
---
-ALTER TABLE `fx_floxim_shop_product`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_floxim_user_user`
---
-ALTER TABLE `fx_floxim_user_user`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `User_ID` (`id`);
-
---
--- Indexes for table `fx_infoblock`
---
-ALTER TABLE `fx_infoblock`
- ADD PRIMARY KEY (`id`), ADD KEY `page_id` (`page_id`);
-
---
--- Indexes for table `fx_infoblock_visual`
---
-ALTER TABLE `fx_infoblock_visual`
- ADD PRIMARY KEY (`id`), ADD KEY `infoblock_id` (`infoblock_id`,`layout_id`);
-
---
--- Indexes for table `fx_lang`
---
-ALTER TABLE `fx_lang`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `lang_code` (`lang_code`);
-
---
--- Indexes for table `fx_lang_string`
---
-ALTER TABLE `fx_lang_string`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_layout`
---
-ALTER TABLE `fx_layout`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_module`
---
-ALTER TABLE `fx_module`
- ADD PRIMARY KEY (`id`), ADD KEY `Checked` (`checked`);
-
---
--- Indexes for table `fx_option`
---
-ALTER TABLE `fx_option`
- ADD PRIMARY KEY (`id`), ADD KEY `autoload` (`autoload`), ADD KEY `keyword` (`keyword`);
-
---
--- Indexes for table `fx_patch`
---
-ALTER TABLE `fx_patch`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fx_patch_migration`
---
-ALTER TABLE `fx_patch_migration`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
-
---
--- Indexes for table `fx_session`
---
-ALTER TABLE `fx_session`
- ADD PRIMARY KEY (`id`), ADD KEY `User_ID` (`user_id`), ADD KEY `session_key` (`session_key`);
-
---
--- Indexes for table `fx_site`
---
-ALTER TABLE `fx_site`
- ADD PRIMARY KEY (`id`), ADD KEY `Checked` (`checked`);
-
---
--- Indexes for table `fx_url_alias`
---
-ALTER TABLE `fx_url_alias`
- ADD PRIMARY KEY (`id`), ADD KEY `url` (`url`), ADD KEY `page_id` (`page_id`);
-
---
--- Indexes for table `fx_widget`
---
-ALTER TABLE `fx_widget`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `fx_component`
---
-ALTER TABLE `fx_component`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=82;
---
--- AUTO_INCREMENT for table `fx_datatype`
---
-ALTER TABLE `fx_datatype`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT for table `fx_field`
---
-ALTER TABLE `fx_field`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=320;
---
--- AUTO_INCREMENT for table `fx_floxim_main_content`
---
-ALTER TABLE `fx_floxim_main_content`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2803;
---
--- AUTO_INCREMENT for table `fx_infoblock`
---
-ALTER TABLE `fx_infoblock`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=441;
---
--- AUTO_INCREMENT for table `fx_infoblock_visual`
---
-ALTER TABLE `fx_infoblock_visual`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=609;
---
--- AUTO_INCREMENT for table `fx_lang`
---
-ALTER TABLE `fx_lang`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `fx_lang_string`
---
-ALTER TABLE `fx_lang_string`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1106;
---
--- AUTO_INCREMENT for table `fx_layout`
---
-ALTER TABLE `fx_layout`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `fx_module`
---
-ALTER TABLE `fx_module`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `fx_option`
---
-ALTER TABLE `fx_option`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `fx_patch`
---
-ALTER TABLE `fx_patch`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT for table `fx_patch_migration`
---
-ALTER TABLE `fx_patch_migration`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `fx_session`
---
-ALTER TABLE `fx_session`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `fx_site`
---
-ALTER TABLE `fx_site`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `fx_url_alias`
---
-ALTER TABLE `fx_url_alias`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
---
--- AUTO_INCREMENT for table `fx_widget`
---
-ALTER TABLE `fx_widget`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
