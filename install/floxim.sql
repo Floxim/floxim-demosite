@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 27 2014 г., 18:50
+-- Время создания: Дек 01 2014 г., 13:18
 -- Версия сервера: 5.5.38-log
 -- Версия PHP: 5.5.13
 
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `fx_floxim_main_content` (
   `level` tinyint(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `materialized_path` (`materialized_path`,`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2803 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=47 AUTO_INCREMENT=2819 ;
 
 --
 -- Дамп данных таблицы `fx_floxim_main_content`
@@ -382,18 +382,18 @@ INSERT INTO `fx_floxim_main_content` (`id`, `priority`, `checked`, `created`, `l
 (2638, 5, 1, '2014-01-28 12:04:17', '2014-11-27 14:16:38', 2367, 'floxim.nav.section', 346, 18, 2635, '2635.', 1),
 (2639, 2, 1, '2014-01-28 12:04:33', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2635, '2635.', 1),
 (2640, 1, 1, '2014-01-28 12:07:04', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2635, '2635.', 1),
-(2641, 2, 1, '2014-01-28 12:07:17', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
+(2641, 4, 1, '2014-01-28 12:07:17', '2014-12-01 08:58:32', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
 (2652, 4, 1, '2014-01-30 13:34:21', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2638, '2635.2638.', 2),
 (2654, 2, 1, '2014-01-30 13:34:34', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2638, '2635.2638.', 2),
 (2655, 1, 1, '2014-01-30 13:38:14', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
-(2656, 3, 1, '2014-01-30 13:38:26', '2014-11-27 13:12:54', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
-(2657, 4, 1, '2014-01-30 13:38:46', '2014-11-27 13:12:54', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
+(2656, 5, 1, '2014-01-30 13:38:26', '2014-12-01 08:58:32', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
+(2657, 6, 1, '2014-01-30 13:38:46', '2014-12-01 08:58:32', 2367, 'floxim.nav.section', 346, 18, 2640, '2635.2640.', 2),
 (2658, 1, 1, '2014-01-30 14:00:50', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2638, '2635.2638.', 2),
 (2659, 0, 1, '2014-01-30 14:07:10', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 362, 18, 2638, '2635.2638.', 2),
 (2660, 230, 1, '2014-01-30 14:38:47', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2661, 231, 1, '2014-01-30 14:40:14', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2652, '2635.2638.2652.', 3),
 (2662, 232, 1, '2014-01-30 14:42:35', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2652, '2635.2638.2652.', 3),
-(2668, 1, 1, '2014-01-30 15:08:08', '2014-11-27 13:45:25', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
+(2668, 0, 1, '2014-01-30 15:08:08', '2014-12-01 09:16:22', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
 (2671, 2, 1, '2014-02-13 15:14:27', '2014-11-09 02:47:20', 2367, 'floxim.corporate.person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2673, 3, 1, '2014-01-30 15:19:09', '2014-11-09 02:47:20', 2367, 'floxim.corporate.person', 372, 18, 2655, '2635.2640.2655.', 3),
 (2675, 1, 1, '2014-01-30 15:19:48', '2014-11-09 02:47:20', 2367, 'floxim.corporate.person', 372, 18, 2655, '2635.2640.2655.', 3),
@@ -419,8 +419,8 @@ INSERT INTO `fx_floxim_main_content` (`id`, `priority`, `checked`, `created`, `l
 (2744, 3, 1, '2014-03-11 21:59:51', '2014-11-09 02:47:20', 2367, 'floxim.nav.section', 346, 18, 2638, '2635.2638.', 2),
 (2745, 2, 1, '2014-03-11 22:01:34', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2744, '2635.2638.2744.', 3),
 (2746, 1, 1, '2014-03-11 22:02:45', '2014-11-09 02:47:20', 2367, 'floxim.shop.product', 364, 18, 2744, '2635.2638.2744.', 3),
-(2747, 2, 1, '2014-03-12 05:01:05', '2014-11-27 12:27:38', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
-(2748, 3, 1, '2014-03-12 05:01:05', '2014-11-27 13:45:25', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
+(2747, 1, 1, '2014-03-12 05:01:05', '2014-12-01 09:16:22', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
+(2748, 2, 1, '2014-03-12 05:01:05', '2014-12-01 09:16:22', 2367, 'floxim.main.linker', 370, 18, 2635, '2635.', 1),
 (2749, 0, 1, '2014-03-12 05:02:10', '2014-11-05 09:30:56', 2367, 'floxim.main.linker', 369, 18, 2635, '2635.', 1),
 (2750, 2, 1, '2014-03-14 14:09:54', '2014-11-09 02:47:21', 2367, 'floxim.media.photo', 389, 18, 2688, '2635.2639.2688.', 3),
 (2751, 3, 1, '2014-03-14 18:24:30', '2014-11-09 02:47:21', 2367, 'floxim.corporate.project', 385, 18, 2639, '2635.2639.', 2),
@@ -836,7 +836,7 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock` (
   `scope` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=441 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=210 AUTO_INCREMENT=452 ;
 
 --
 -- Дамп данных таблицы `fx_infoblock`
@@ -844,51 +844,48 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock` (
 
 INSERT INTO `fx_infoblock` (`id`, `parent_infoblock_id`, `site_id`, `page_id`, `checked`, `name`, `controller`, `action`, `params`, `scope`) VALUES
 (345, 0, 18, 2635, 1, '', 'layout', 'show', '[]', '{"pages":"descendants","page_type":""}'),
-(346, 0, 18, 2635, 1, 'Main menu', 'section', 'list_infoblock', '{"submenu":"all","extra_infoblocks":["385"]}', '{"pages":"descendants","page_type":""}'),
-(347, 0, 18, 2635, 1, 'Footer nav', 'section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2635"]}},"submenu":"none","extra_infoblocks":false}', '{"pages":"descendants","page_type":""}'),
+(346, 0, 18, 2635, 1, 'Main menu', 'floxim.nav.section', 'list_infoblock', '{"submenu":"all","extra_infoblocks":["385"]}', '{"pages":"descendants","page_type":""}'),
+(347, 0, 18, 2635, 1, 'Footer nav', 'floxim.nav.section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2635"]}},"submenu":"none","extra_infoblocks":false}', '{"pages":"descendants","page_type":""}'),
 (359, 345, 18, 2638, 1, '', 'layout', 'show', '[]', '{"pages":"this","page_type":""}'),
-(360, 0, 18, 2635, 1, 'Navigation / breadcrumbs', 'section', 'breadcrumbs', '{"header_only":"0","hide_on_index":"0"}', '{"pages":"children","page_type":""}'),
-(361, 0, 18, 2638, 1, 'Navigation / ', 'section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2638"]}},"submenu":"none"}', '{"pages":"this","page_type":""}'),
-(362, 0, 18, 2638, 1, 'Navigation / ', 'section', 'list_selected', '{"submenu":"none"}', '{"pages":"this","page_type":""}'),
-(364, 0, 18, 2638, 1, 'Products', 'product', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"children","page_type":"section"}'),
-(367, 0, 18, 2638, 1, 'Product / Single entry', 'product', 'record', '[]', '{"pages":"children","page_type":"product"}'),
-(369, 0, 18, 2635, 1, 'Product / ', 'product', 'list_selected', '{"sorting":"manual","sorting_dir":"asc"}', '{"pages":"this","page_type":""}'),
-(370, 0, 18, 2635, 1, 'Product / ', 'product', 'list_selected', '{"sorting":"manual","sorting_dir":"asc"}', '{"pages":"this","page_type":""}'),
-(372, 0, 18, 2655, 1, 'Persons', 'person', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
-(374, 0, 18, 2656, 1, 'Vacancies', 'vacancy', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"this","page_type":""}'),
-(376, 0, 18, 2656, 1, 'Vacancy / Single entry', 'vacancy', 'record', '[]', '{"pages":"children","page_type":"vacancy"}'),
-(379, 0, 18, 2657, 1, 'News', 'news', 'list_infoblock', '{"limit":"","sorting":"publish_date","sorting_dir":"desc","parent_type":"current_page_id"}', '{"pages":"this","page_type":""}'),
-(381, 0, 18, 2635, 1, 'Featured news', 'news', 'list_selected', '{"sorting":"publish_date","sorting_dir":"desc","parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
+(360, 0, 18, 2635, 1, 'Navigation / breadcrumbs', 'floxim.nav.section', 'breadcrumbs', '{"header_only":"0","hide_on_index":"0"}', '{"pages":"children","page_type":""}'),
+(361, 0, 18, 2638, 1, 'Navigation / ', 'floxim.nav.section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2638"]}},"submenu":"none"}', '{"pages":"this","page_type":""}'),
+(362, 0, 18, 2638, 1, 'Navigation / ', 'floxim.nav.section', 'list_selected', '{"submenu":"none"}', '{"pages":"this","page_type":""}'),
+(364, 0, 18, 2638, 1, 'Products', 'floxim.shop.product', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"children","page_type":"section"}'),
+(367, 0, 18, 2638, 1, 'Product / Single entry', 'floxim.shop.product', 'record', '[]', '{"pages":"children","page_type":"product"}'),
+(369, 0, 18, 2635, 1, 'Main offer', 'floxim.shop.product', 'list_selected', '{"sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
+(370, 0, 18, 2635, 1, 'Featured products', 'floxim.shop.product', 'list_selected', '{"sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
+(372, 0, 18, 2655, 1, 'Persons', 'floxim.corporate.person', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
+(374, 0, 18, 2656, 1, 'Vacancies', 'floxim.corporate.vacancy', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"this","page_type":""}'),
+(376, 0, 18, 2656, 1, 'Vacancy / Single entry', 'floxim.corporate.vacancy', 'record', '[]', '{"pages":"children","page_type":"vacancy"}'),
+(379, 0, 18, 2657, 1, 'News', 'floxim.blog.news', 'list_infoblock', '{"limit":"","sorting":"publish_date","sorting_dir":"desc","parent_type":"current_page_id"}', '{"pages":"this","page_type":""}'),
+(381, 0, 18, 2635, 1, 'Featured news', 'floxim.blog.news', 'list_selected', '{"sorting":"publish_date","sorting_dir":"desc","parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
 (382, 345, 18, 2639, 1, '', 'layout', 'show', '[]', '{"pages":"descendants","page_type":""}'),
-(385, 0, 18, 2639, 1, 'Projects', 'project', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"mount_page_id"}', '{"pages":"descendants","page_type":""}'),
-(386, 0, 18, 2639, 1, 'Project / Single entry', 'project', 'record', '[]', '{"pages":"children","page_type":"project"}'),
-(388, 0, 18, 2638, 1, 'Navigation / ', 'section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2638"]}},"submenu":"none"}', '{"pages":"children","page_type":""}'),
-(389, 0, 18, 2639, 1, 'Project gallery', 'photo', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"children","page_type":"project"}'),
+(385, 0, 18, 2639, 1, 'Projects', 'floxim.corporate.project', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"mount_page_id"}', '{"pages":"descendants","page_type":""}'),
+(386, 0, 18, 2639, 1, 'Project / Single entry', 'floxim.corporate.project', 'record', '[]', '{"pages":"children","page_type":"project"}'),
+(388, 0, 18, 2638, 1, 'Navigation / ', 'floxim.nav.section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2638"]}},"submenu":"none"}', '{"pages":"children","page_type":""}'),
+(389, 0, 18, 2639, 1, 'Project gallery', 'floxim.media.photo', 'list_infoblock', '{"limit":"","sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"children","page_type":"project"}'),
 (390, 345, 18, 2640, 1, '', 'layout', 'show', '[]', '{"pages":"this","page_type":""}'),
-(391, 0, 18, 2640, 1, 'Navigation / ', 'section', 'list_selected', '{"submenu":"none"}', '{"pages":"this","page_type":""}'),
-(392, 0, 18, 2640, 1, 'Last news', 'news', 'list_filtered', '{"limit":"4","pagination":"0","sorting":"created","sorting_dir":"asc","conditions":{"new_1":{"name":"parent_id","operator":"="}}}', '{"pages":"this","page_type":""}'),
-(397, 0, 18, 2641, 1, 'Contacts text', 'text', 'list_infoblock', '{"limit":"","parent_type":"current_page_id"}', '{"pages":"this","page_type":""}'),
-(398, 0, 18, 2657, 1, 'News / Single entry', 'news', 'record', '[]', '{"pages":"children","page_type":"news"}'),
+(391, 0, 18, 2640, 1, 'Navigation / ', 'floxim.nav.section', 'list_selected', '{"submenu":"none"}', '{"pages":"this","page_type":""}'),
+(392, 0, 18, 2640, 1, 'Last news', 'floxim.blog.news', 'list_filtered', '{"limit":"4","pagination":"0","sorting":"created","sorting_dir":"asc","conditions":{"new_1":{"name":"parent_id","operator":"="}}}', '{"pages":"this","page_type":""}'),
+(397, 0, 18, 2641, 1, 'Contacts text', 'floxim.main.text', 'list_infoblock', '{"limit":"","parent_type":"current_page_id"}', '{"pages":"this","page_type":""}'),
+(398, 0, 18, 2657, 1, 'News / Single entry', 'floxim.blog.news', 'record', '[]', '{"pages":"children","page_type":"news"}'),
 (399, 345, 18, 2635, 1, '', 'layout', 'show', '[]', '{"pages":"this","page_type":""}'),
-(400, 0, 18, 2635, 1, 'Navigation / ', 'section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2638"]},"new_2":{"name":"infoblock_id","operator":"=","value":["346"]}},"submenu":"none","extra_infoblocks":false}', '{"pages":"this","page_type":"","visibility":"all"}'),
-(404, 0, 18, 2640, 1, 'All About Us', 'section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2640"]},"new_2":{"name":"infoblock_id","operator":"="}},"submenu":"none","extra_infoblocks":false}', '{"pages":"children","page_type":"","visibility":"all"}'),
-(408, 0, 18, 2635, 1, 'Auth form', 'user', 'auth_form', '[]', '{"pages":"descendants","page_type":""}'),
-(409, 0, 18, 2635, 1, 'Greet', 'user', 'greet', '[]', '{"pages":"descendants","page_type":""}'),
-(410, 0, 18, 2635, 1, 'Two columns', 'grid', 'two_columns', '[]', '{"pages":"this","page_type":""}'),
-(411, 0, 18, 2635, 1, 'Featured pages', 'page', 'list_selected', '{"sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"this","page_type":""}'),
-(412, 0, 18, 2638, 1, 'Product neighbours', 'product', 'neighbours', '{"sorting":"auto","sorting_dir":"asc","group_by_parent":"1"}', '{"pages":"children","page_type":"product"}'),
-(413, 0, 18, 2657, 1, 'News neighbours', 'news', 'neighbours', '{"sorting":"auto","sorting_dir":"asc"}', '{"pages":"children","page_type":"news"}'),
-(414, 0, 18, 2656, 1, 'Vacancy neighbours', 'vacancy', 'neighbours', '[]', '{"pages":"children","page_type":"vacancy"}'),
-(416, 0, 18, 2639, 1, 'Project neighbours', 'project', 'neighbours', '{"sorting":"auto","sorting_dir":"asc","group_by_parent":"0"}', '{"pages":"children","page_type":"project"}'),
-(418, 0, 18, 2655, 1, 'Person record', 'person', 'record', '[]', '{"pages":"children","page_type":"person"}'),
-(419, 0, 18, 2655, 1, 'Person neighbours', 'person', 'neighbours', '{"sorting":"auto","sorting_dir":"asc","group_by_parent":"0"}', '{"pages":"children","page_type":"person"}'),
-(422, 0, 18, 2641, 1, 'Map', 'map', 'show', '{"map":{"address":"Bolshoy Savvinskiy pereulok, 17, Moscow, Russia","lat":"55.7330887805793","lon":"37.56590033995053"}}', '{"pages":"descendants","page_type":"","visibility":"all"}'),
+(400, 0, 18, 2635, 1, 'What we do', 'floxim.nav.section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2638"]},"new_2":{"name":"infoblock_id","operator":"=","value":["346"]}},"submenu":"none","extra_infoblocks":false}', '{"pages":"this","page_type":"","visibility":"all"}'),
+(404, 0, 18, 2640, 1, 'All About Us', 'floxim.nav.section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2640"]},"new_2":{"name":"infoblock_id","operator":"=","value":["346"]}},"submenu":"none","extra_infoblocks":false}', '{"pages":"children","page_type":"","visibility":"all"}'),
+(408, 0, 18, 2635, 1, 'Auth form', 'floxim.user.user', 'auth_form', '[]', '{"pages":"descendants","page_type":""}'),
+(409, 0, 18, 2635, 1, 'Greet', 'floxim.user.user', 'greet', '[]', '{"pages":"descendants","page_type":""}'),
+(410, 0, 18, 2635, 1, 'Two columns', 'floxim.layout.grid', 'two_columns', '[]', '{"pages":"this","page_type":""}'),
+(411, 0, 18, 2635, 1, 'Featured pages', 'floxim.main.page', 'list_selected', '{"sorting":"manual","sorting_dir":"asc","parent_type":"current_page_id"}', '{"pages":"this","page_type":""}'),
+(412, 0, 18, 2638, 1, 'Product neighbours', 'floxim.shop.product', 'neighbours', '{"sorting":"auto","sorting_dir":"asc","group_by_parent":"1"}', '{"pages":"children","page_type":"product"}'),
+(413, 0, 18, 2657, 1, 'News neighbours', 'floxim.blog.news', 'neighbours', '{"sorting":"auto","sorting_dir":"asc"}', '{"pages":"children","page_type":"news"}'),
+(414, 0, 18, 2656, 1, 'Vacancy neighbours', 'floxim.corporate.vacancy', 'neighbours', '[]', '{"pages":"children","page_type":"vacancy"}'),
+(416, 0, 18, 2639, 1, 'Project neighbours', 'floxim.corporate.project', 'neighbours', '{"sorting":"auto","sorting_dir":"asc","group_by_parent":"0"}', '{"pages":"children","page_type":"project"}'),
+(418, 0, 18, 2655, 1, 'Person record', 'floxim.corporate.person', 'record', '[]', '{"pages":"children","page_type":"person"}'),
+(419, 0, 18, 2655, 1, 'Person neighbours', 'floxim.corporate.person', 'neighbours', '{"sorting":"auto","sorting_dir":"asc","group_by_parent":"0"}', '{"pages":"children","page_type":"person"}'),
+(422, 0, 18, 2641, 1, 'Map', 'floxim.corporate.map', 'show', '{"map":{"address":"Bolshoy Savvinskiy pereulok, 17, Moscow, Russia","lat":"55.7330887805793","lon":"37.56590033995053"}}', '{"pages":"descendants","page_type":"","visibility":"all"}'),
 (423, 345, 18, 2638, 1, '', 'layout', 'show', '[]', '{"pages":"children","page_type":""}'),
-(426, 0, 18, 2773, 1, 'News test', 'news', 'list_infoblock', '{"limit":"","sorting":"publish_date","sorting_dir":"desc","parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
-(427, 0, 18, 2773, 1, 'Menu test', 'section', 'list_infoblock', '{"submenu":"all","extra_infoblocks":["426"]}', '{"pages":"this","page_type":"","visibility":"all"}'),
-(429, 0, 18, 2773, 1, 'Sections by filter', 'section', 'list_filtered', '{"conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2635","2773"]}},"submenu":"all","extra_infoblocks":false}', '{"pages":"descendants","page_type":"","visibility":"all"}'),
-(431, 0, 18, 2635, 1, 'Text', 'text', 'list_infoblock', '{"parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
-(435, 0, 18, 2640, 1, 'Person by filter', 'person', 'list_filtered', '{"limit":false,"pagination":"0","sorting":"name","sorting_dir":"desc","conditions":{"new_1":{"name":"parent_id","operator":"="}}}', '{"pages":"this","page_type":"","visibility":"all"}'),
+(431, 0, 18, 2635, 1, 'Text', 'floxim.main.text', 'list_infoblock', '{"parent_type":"current_page_id"}', '{"pages":"this","page_type":"","visibility":"all"}'),
+(435, 0, 18, 2640, 1, 'Person by filter', 'floxim.corporate.person', 'list_filtered', '{"limit":false,"pagination":"0","sorting":"name","sorting_dir":"desc","conditions":{"new_1":{"name":"parent_id","operator":"="}}}', '{"pages":"this","page_type":"","visibility":"all"}'),
 (436, 0, 18, 2657, 1, 'News by tag', 'floxim.blog.news', 'list_by_tag', '{"limit":false,"pagination":"0","sorting":"publish_date","sorting_dir":"desc"}', '{"pages":"children","page_type":"floxim.main.tag","visibility":"all"}'),
 (437, 0, 18, 2657, 1, 'Tags', 'floxim.nav.tag', 'list_filtered', '{"limit":false,"pagination":"0","sorting":"name","sorting_dir":"asc","conditions":{"new_1":{"name":"parent_id","operator":"=","value":["2657"]}}}', '{"pages":"descendants","page_type":"","visibility":"all"}'),
 (439, 0, 18, 2635, 1, 'News by tag', 'floxim.blog.news', 'list_by_tag', '{"limit":false,"pagination":"0","sorting":"publish_date","sorting_dir":"desc"}', '{"pages":"children","page_type":"floxim.nav.tag","visibility":"all"}'),
@@ -912,7 +909,7 @@ CREATE TABLE IF NOT EXISTS `fx_infoblock_visual` (
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `infoblock_id` (`infoblock_id`,`layout_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=609 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=138 AUTO_INCREMENT=620 ;
 
 --
 -- Дамп данных таблицы `fx_infoblock_visual`
@@ -960,9 +957,6 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (588, 376, 12, '', '', 'theme.floxim.phototeam:vacancy_record', '', 'main_column', 24),
 (590, 422, 12, '', '', 'floxim.corporate.map:static_google_map', '{"map_width":"940","map_height":"340","map_zoom":"15"}', 'main_column', 25),
 (591, 423, 12, '', '', 'theme.floxim.phototeam:one_column', '', '', 12),
-(594, 426, 12, '', '', 'theme.floxim.phototeam:featured_news_list', '{"show_anounce":"1","read_more_#new_id#":"More","read_more_2778":"More","read_more_2782":"Reed Mooore","read_more_2783":"Read more please"}', 'main_column', 26),
-(595, 427, 12, 'theme.floxim.phototeam:block_titled', '{"header":"Infoblock"}', 'section:listing_deep', '', 'main_column', 27),
-(597, 429, 12, 'theme.floxim.phototeam:block_titled', '{"header":"Filtered"}', 'section:listing_deep', '', 'main_column', 28),
 (599, 431, 12, '', '', 'text:list', '', 'sidebar_430', 1),
 (603, 435, 12, 'theme.floxim.phototeam:titled_block', '{"header":"Meet the super team"}', 'theme.floxim.phototeam:featured_list', '{"four_items":"1"}', 'main_column', 30),
 (604, 436, 12, '', '', 'theme.floxim.phototeam:featured_news_list', '', 'main_column', 31),
@@ -1673,7 +1667,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
   PRIMARY KEY (`id`),
   KEY `User_ID` (`user_id`),
   KEY `session_key` (`session_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=126 AUTO_INCREMENT=23 ;
 
 --
 -- Дамп данных таблицы `fx_session`
@@ -1681,7 +1675,8 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
 (18, '4cd332d31219861495f6936303b704bf', 2367, 0, 1416834822, 1416834827, 2130706433, 1),
-(21, '98e9ea9fd3b719f6eb9517f4d8fd7335', 2367, 0, 1417053187, 1417099796, 2130706433, 0);
+(21, '98e9ea9fd3b719f6eb9517f4d8fd7335', 2367, 0, 1417053187, 1417099796, 2130706433, 0),
+(22, '659a70c4d0d2eb744440d3c0fe0a4f62', 2367, 0, 1417418762, 1417425471, 2130706433, 0);
 
 -- --------------------------------------------------------
 
@@ -1735,7 +1730,7 @@ CREATE TABLE IF NOT EXISTS `fx_url_alias` (
   PRIMARY KEY (`id`),
   KEY `url` (`url`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
 
 --
 -- Дамп данных таблицы `fx_url_alias`
