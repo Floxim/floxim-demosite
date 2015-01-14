@@ -1,18 +1,29 @@
+.clearfix() {
+    &:after {
+        content:'';
+        height: 0;
+        clear:both;
+        display: block;
+    }
+}
+
 .person_tiles {
     .person {
         float:left;
-        height:150px;
+        //height:150px;
         width:48%;
         margin:0 2% 2% 0;
         .pic {
             float:left;
+            width:28%;
             img {
-                width:130px;
-                height:130px;
+                width:100%;
             }
         }
         .data {
-            margin-left:145px;
+            float:left;
+            width:70%;
+            margin-left:2%;
             &>div {margin-bottom:10px;}
         }
         .title a {
@@ -27,5 +38,23 @@
             span {font-size:14px;}
         }
         .desc {font-weight:200;}
+        
+        
+        .contacts {
+            float:right;
+            width:95%;
+        }
+        .contact {
+            .clearfix();
+            font-size:14px;
+            font-weight:200;
+            .type {
+                float:left;
+                font-size:12px;
+            }
+            .val {
+                float:right;
+            }
+        }
     }
 }
