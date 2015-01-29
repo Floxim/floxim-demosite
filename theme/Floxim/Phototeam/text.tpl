@@ -8,7 +8,7 @@
         fx:each="$items"
         data-hilight="{%hilight_$id type='bool' label='Blue?'}0{/%}"
         class="{if $hilight_$id}hilight{else}regular{/if}">
-        {$text}Text{/$}
+        {$text /}
     </div>
     <div style="clear:both;"></div>
 </div>

@@ -117,7 +117,7 @@
             <h2>{%header}{$infoblock.name /}{/%}</h2>
             <div class="block_data">{$content}</div>
         </div>
-        <footer>
+        <footer class="layout_footer">
             <div class="holder">
                 <div class="top-block">
                     <div
