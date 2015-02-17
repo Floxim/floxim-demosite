@@ -46,8 +46,8 @@ $(function(){
         
         function unfreeze_menu() {
             menu_frozen = false;
-            var $active = $('nav .main-menu .main-menu-item.active');
-            hide_menu_item($active);
+            //var $active = $('nav .main-menu .main-menu-item.active');
+            //hide_menu_item($active);
         }
         
         function show_menu_item($item, delay) {
@@ -77,28 +77,13 @@ $(function(){
             if (menu_frozen) {
                 return;
             }
-            //if ($item.hasClass('dropdown')){
-                //$item.data('mouseout_timeout', setTimeout(
-                menu_timeout = setTimeout(
-                    function() {
-                        $item.removeClass('active');
-                    }, menu_delay
-                );
-            //}
+            menu_timeout = setTimeout(
+                function() {
+                    $item.removeClass('active');
+                }, menu_delay
+            );
         }
         
-        /*
-        $('html').on('keypress', function(e) {
-            if (e.which === 102) {
-                if (menu_frozen){
-                    unfreeze_menu();
-                } else {
-                    freeze_menu();
-                }
-                return false;
-            }
-        });
-        */
 
 
         $('html').on('mouseout.res', 'nav .main-menu .main-menu-item', function (e) {

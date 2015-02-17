@@ -19,7 +19,7 @@
             <div class="h3">
                 <p>{$name}</p>
             </div>
-            <div fx:if="$price" class="price">{$currency}${/$}{$price}</div>
+            <div fx:if="$.hasField('price')" fx:aif="$price" class="price">{$currency}${/$}{$price}</div>
             <div style="clear:both;"></div>
         </div>
     </a>

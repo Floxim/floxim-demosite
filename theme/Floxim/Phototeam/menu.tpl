@@ -69,7 +69,7 @@
         </div>
     </div>
     
-    <ul fx:if="count($items) > 1" class="side-menu">
+    <ul fx:aif="count($items) > 1" class="side-menu">
         <li
             fx:each="$items"
             class="side-menu-item {if $is_active}active{/if}">

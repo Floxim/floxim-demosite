@@ -94,7 +94,7 @@
                     class="main-column">
                     
                     <div fx:template="block_titled" fx:of="wrapper" class="left-titled-block" fx:suit="local">
-                        <h2>{%header}{$infoblock.name /}{/%}</h2>
+                        <h2 class="block_title">{%header}{$infoblock.name /}{/%}</h2>
                         <div class="content">
                             {$content}
                         </div>
