@@ -14,12 +14,4 @@ if (!file_exists($config_file) || !($config_res = include_once ($config_file))) 
 $loader = require_once(DOCUMENT_ROOT.'/vendor/autoload.php');
 $loader->add('Floxim', DOCUMENT_ROOT.'/vendor');
 
-// Register Floxim Auto Loader
-Floxim\Floxim\System\ClassLoader::register();
-Floxim\Floxim\System\ClassLoader::addDirectories(array(DOCUMENT_ROOT.'/module'));
-
-// Register global short alias
-class_alias('\\Floxim\\Floxim\\System\\Fx', 'fx');
-
-// Load config
-fx::load($config_res);
+Floxim\Floxim\System\Fx::load($config_res);
