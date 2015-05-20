@@ -1,3 +1,12 @@
 <?php
 require_once 'boot.php';
-require_once 'bootstrap/start.php';
+
+$result = fx::router()->route();
+
+if (fx::env('ajax')) {
+    fx::page()->addAssetsAjax();
+}
+
+echo $result;
+
+fx::complete();
