@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 20 2015 г., 15:14
+-- Время создания: Май 20 2015 г., 19:39
 -- Версия сервера: 5.5.41-log
 -- Версия PHP: 5.5.19
 
@@ -981,7 +981,7 @@ INSERT INTO `fx_infoblock_visual` (`id`, `infoblock_id`, `layout_id`, `wrapper`,
 (431, 359, 12, '', '', 'theme.floxim.phototeam:one_column', '', '', 2),
 (432, 360, 12, '', '', 'theme.floxim.phototeam:breadcrumbs', '', 'breadcrumbs-area', 1),
 (433, 361, 12, '', '', 'theme.floxim.phototeam:featured_list', '{"image":"\\/floxim_files\\/content\\/HansIsland_0.png","image_2652":"\\/floxim_files\\/content\\/5_ski_4_0.JPG","four_items":"1","image_id":"\\/floxim_files\\/content\\/7394_0.jpg","image_2654":"\\/floxim_files\\/content\\/5_people_cover.jpg","image_2658":"\\/floxim_files\\/content\\/5_nature_5_0.jpg","image_2744":"\\/floxim_files\\/content\\/6_events_cover.jpg","photo_2894":"\\/floxim_files\\/content\\/6_Carnival_of_miners_13_0.jpg","photo_2652":"\\/floxim_files\\/content\\/18\\/visual\\/5_ski_4_0.JPG","photo_2654":"\\/floxim_files\\/content\\/18\\/visual\\/5_people_cover.jpg","photo_2658":"\\/floxim_files\\/content\\/18\\/visual\\/5_nature_5_0.jpg","photo_2744":"\\/floxim_files\\/content\\/18\\/visual\\/6_events_cover.jpg"}', 'main_column', 3),
-(434, 362, 12, '', '', 'theme.floxim.phototeam:banner', '{"banner_header_2652":"<p>\\n\\t Special conditions\\n<\\/p>","banner_text_2652":"<p>\\n\\tFor sport series\\n<\\/p>","banner_image_2652":"\\/floxim_files\\/content\\/5_swim_0.jpg"}', 'main_column', 1),
+(434, 362, 12, '', '', 'theme.floxim.phototeam:banner', '{"banner_header_2652":"<p>\\n\\t Special conditions\\n<\\/p>","banner_text_2652":"<p>\\n\\tFor sport series\\n<\\/p>","banner_image_2652":"\\/floxim_files\\/content\\/18\\/visual\\/5_swim_0.jpg"}', 'main_column', 1),
 (436, 364, 12, '', '', 'theme.floxim.phototeam:featured_list', '{"four_items":"1","photo_2972":"\\/floxim_files\\/content\\/forest-4.jpg"}', 'main_column', 4),
 (439, 367, 12, '', '', 'theme.floxim.phototeam:product_record', '', 'main_column', 5),
 (441, 369, 12, '', '', 'theme.floxim.phototeam:banner', '{"banner_header_2660":"<p>\\n\\t  Greate ship\\n<\\/p>\\n<br>","banner_text_2660":"<p>\\n\\tIt''s really <strong>cool<\\/strong>\\n<\\/p>","go_2660":"Go","banner_image_2740":"\\/floxim_files\\/content\\/3b_6_0.jpg","banner_text_2740":"","banner_header_2740":""}', 'grid_content_410', 2),
@@ -1744,7 +1744,7 @@ CREATE TABLE IF NOT EXISTS `fx_session` (
 
 INSERT INTO `fx_session` (`id`, `session_key`, `user_id`, `site_id`, `start_time`, `last_activity_time`, `ip`, `remember`) VALUES
 (21, '0b0b1b42bc5c7d5de08bb53cbe565f99', 2367, 0, 1430903496, 1431619744, 2130706433, 0),
-(22, '55d1909526123f3536148c44bf689f65', 2367, 0, 1431713143, 1432123979, 2130706433, 0);
+(22, '55d1909526123f3536148c44bf689f65', 2367, 0, 1431713143, 1432139873, 2130706433, 0);
 
 -- --------------------------------------------------------
 
